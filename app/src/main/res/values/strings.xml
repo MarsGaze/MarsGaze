@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MarsGaze</string>
+    <string name="tvSaudacoes">Saudações!</string>
+    <string name="tvOnboarding">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="tvOnboarding2">Pronto para explorar?</string>
+    <string name="btnComecar">Começar</string>
+</resources>
