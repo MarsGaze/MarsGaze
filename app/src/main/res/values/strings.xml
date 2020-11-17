@@ -1,7 +1,16 @@
 <resources>
     <string name="app_name">MarsGaze</string>
-    <string name="tvSaudacoes">Saudações!</string>
-    <string name="tvOnboarding">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
-    <string name="tvOnboarding2">Pronto para explorar?</string>
+    <string name="tvBoasVindas">Seja bem-vindo!</string>
+    <string name="tvOnboarding">Conheça o nosso aplicativo MarsGaze e aprenda várias coisas sobre marte além de poder explorar ela através dos rovers.</string>
+    <string name="tvOnboarding2">Então, pronto para explorar?</string>
     <string name="btnComecar">Começar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="htEmail">Email</string>
+    <string name="htSenha">Senha</string>
+    <string name="btnLogin">Login</string>
+    <string name="tvCadastro">Ainda não tem uma conta? Cadastre-se.</string>
+    <string name="htNome">Nome</string>
+    <string name="htRepeteSenha">Repetir Senha</string>
+    <string name="btnCadastro">Cadastro</string>
 </resources>
