@@ -4,4 +4,11 @@
     <string name="tvOnboarding">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
     <string name="tvOnboarding2">Pronto para explorar?</string>
     <string name="btnComecar">Começar</string>
+
+    <!-- Welcome Page Resources -->
+    <string name="welcomeUser">Saudações, %1$s!</string>
+    <string name="welcomeExplore">Vamos explorar marte?</string>
+    <string name="welcomeMarte">O que você precisa saber sobre o planeta vermelho</string>
+    <string name="welcomeRover">Descubra Marte pelos olhos dos rovers da NASA</string>
+    <string name="welcomeInsight">Como está a temperatura na superfície do planeta vermelho</string>
 </resources>
