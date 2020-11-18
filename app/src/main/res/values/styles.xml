@@ -7,4 +7,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+<!--    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">-->
+<!--        <item name="boxStrokeColor">#E08A10</item>-->
+<!--        <item name="boxStrokeWidth">2dp</item>-->
+<!--    </style>-->
+
+<!--    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">-->
+<!--        <item name="boxStrokeColor">@color/colorAccentDark</item>-->
+<!--        <item name="boxStrokeWidth">2dp</item>-->
+<!--    </style>-->
+
 </resources>

@@ -12,5 +12,5 @@
     <string name="tvCadastro">Ainda não tem uma conta? Cadastre-se.</string>
     <string name="htNome">Nome</string>
     <string name="htRepeteSenha">Repetir Senha</string>
-    <string name="btnCadastro">Cadastro</string>
+    <string name="btnCadastro">Cadastrar</string>
 </resources>
