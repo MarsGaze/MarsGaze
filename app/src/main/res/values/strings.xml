@@ -8,7 +8,7 @@
     <!-- Welcome Page Resources -->
     <string name="welcomeUser">Saudações, %1$s!</string>
     <string name="welcomeExplore">Vamos explorar marte?</string>
-    <string name="welcomeMarte">O que você precisa saber sobre o planeta vermelho</string>
-    <string name="welcomeRover">Descubra Marte pelos olhos dos rovers da NASA</string>
-    <string name="welcomeInsight">Como está a temperatura na superfície do planeta vermelho</string>
+    <string name="welcomeMarte">O que você precisa\nsaber sobre o planeta\nvermelho</string>
+    <string name="welcomeRover">Descubra Marte pelos\nolhos dos rovers da\nNASA</string>
+    <string name="welcomeInsight">Como está a\ntemperatura na\nsuperfície do planeta\nvermelho</string>
 </resources>
