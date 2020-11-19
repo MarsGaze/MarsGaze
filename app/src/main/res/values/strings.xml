@@ -4,4 +4,7 @@
     <string name="tvOnboarding">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
     <string name="tvOnboarding2">Pronto para explorar?</string>
     <string name="btnComecar">Começar</string>
+
+    //activity exception
+    <string name="tv_mensagemException">Não foi possível carregar a imagem</string>
 </resources>
