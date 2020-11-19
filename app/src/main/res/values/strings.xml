@@ -19,4 +19,9 @@
     <string name="profileAccountCreationVisual">01/10/1958</string>
     <string name="profileUserNameVisual">Desconhecido</string>
 
+    <!-- Favorite Card Text -->
+    <string name="favoriteTitle">Meus favoritos</string>
+    <string name="favoriteCardText">Sol %1$d - %2$s</string>
+    <string name="favoriteCardTextVisual">Sol 690 - FHAZ</string>
+
 </resources>
