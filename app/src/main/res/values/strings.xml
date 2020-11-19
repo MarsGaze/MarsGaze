@@ -23,4 +23,12 @@
     <string name="htNome">Nome</string>
     <string name="htRepeteSenha">Repetir Senha</string>
     <string name="btnCadastro">Cadastrar</string>
+
+    <!-- Profile Page Resources -->
+    <string name="profileEmail">email</string>
+    <string name="profileEmailVisual">super.astro.nauta@nasa.gov</string>
+    <string name="profileAccountCreation">data de aterrissagem</string>
+    <string name="profileAccountCreationVisual">01/10/1958</string>
+    <string name="profileUserNameVisual">Desconhecido</string>
+
 </resources>
