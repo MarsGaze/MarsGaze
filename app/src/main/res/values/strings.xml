@@ -7,4 +7,55 @@
 
     //activity exception
     <string name="tv_mensagemException">Não foi possível carregar a imagem</string>
+
+    //activity Curiosidades
+    //Cabeçalho
+    <string name="titulo1">O que você precisa saber sobre o</string>
+    <string name="titulo2">Planeta vermelho</string>
+    <string name="texto"> Marte é o quarto planeta do Sistema Solar, um mundo desértico e gelado, com 687 dias por ano, tem duas luas e é o segundo menor do Sistema Solar</string>
+
+    //Corpo
+    //Texto sobre a Historia
+    <string name="historia">História</string>
+    <string name="textoHistoria">Durante a formação do Sistema Solar, Marte foi criado como resultado de um acúmulo de matéria,
+            a partir do disco protoplanetário que orbitava o Sol. Marte tem muitas características químicas próprias causadas por sua
+            posição no Sistema Solar. Elementos com pontos de ebulição relativamente baixos, como cloro, fósforo e enxofre são muito mais
+            comuns em Marte do que na Terra. Estes elementos, provavelmente, foram removidos das áreas mais próximas ao Sol pelo vento solar da jovem estrela.</string>
+
+    //texto sobre o Nome
+    <string name="oNome">Nome</string>
+    <string name="oNomeTexto">Considerando sua cor de sangue, os gregos batizaram Marte com o nome do deus da guerra, Ares. Até as duas pequenas luas de Marte,
+            Fobos e Deimos, receberam o nome dos cavalos que puxavam a carruagem da figura mitológica. Outras civilizações antigas também levaram em conta a coloração do
+            planeta para decidir como chamá-lo: os egípcios usaram “Seu Desher”, que significa “a vermelha”, e astrônomos chineses o chamavam de “estrela do fogo”.</string>
+
+    //texto sobre o Clima
+    <string name="clima">Clima</string>
+    <string name="climaTexto">De todos os planetas do Sistema Solar, Marte é o que possui as estações do ano mais parecidas com as da Terra, devido às inclinações semelhantes
+            de eixos de rotação dos dois planetas. As durações das estações marcianas são cerca de duas vezes as da Terra, já que Marte está a uma maior distância do Sol, o que leva
+            o ano marciano a ter duração equivalente a cerca de dois anos terrestres. As temperaturas de superfície de Marte variam de −143 °C (no inverno nas calotas polares) até
+            máximas de 35 °C (no verão equatorial). A ampla variação de temperaturas é devida à fina atmosfera, que não consegue armazenar muito calor solar, à baixa pressão
+            atmosférica e à baixa inércia térmica do solo marciano. O planeta também é 1,52 vez mais distante do Sol que a Terra, o que resulta em apenas 43% da quantidade de luz
+            solar em comparação com a Terra.</string>
+
+    //texto sobre o Solo
+    <string name="solo">Solo</string>
+    <string name="soloTexto">A crosta do planeta é composta, principalmente, por silicatos de ferro e de magnésio, distribuídos em basaltos vulcânicos com alto teor de óxidos
+            de ferro (que fornece a famosa cor vermelha do planeta), ferrosilicatos e aluminatos. O núcleo, que compõe 21% da massa do planeta, é composto 78% por ferro metálico,
+            e o restante por enxofre, liga com níquel e cobalto. A história geológica marciana é dividida em três períodos: Noachiano, Hesperiano e Amazônico.</string>
+
+    //texto sobre os Satélites
+    <string name="satelites">Satélites</string>
+    <string name="satelitesTexto">As duas luas de Marte são Fobos e Deimos (terror e medo em grego) os nomes do filho do deus Ares na Grécia antiga. Estas luas de Marte pode muito
+            bem ser asteroides capturados da cintura de asteroides entre Marte e Júpiter. Eles orbitam em torno do planeta, milhares de quilômetros dele, 9 380 km para Phobos e 23 460
+            km para Deimos. Eles são compostos de rochas ricas em carbono e de gelo (como asteroides do tipo C). Ambos estão crivadas de crateras de impacto como todos os objetos
+            terrestres do sistema solar.</string>
+
+    //texto sobre a Atmosfera
+    <string name="atmosfera">Atmosfera</string>
+    <string name="atmosferaTexto">* Dióxido de Carbono (CO2): 95.32% \n* Azoto (N2): 2.7% \n* Árgon (Ar): 1.6% \n* Oxigénio (O2): 0.13% \n* Água (H2O): 0.03% \n* Néon (Ne): 0.00025%</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    //fim - activity Curiosidades
+
+
 </resources>

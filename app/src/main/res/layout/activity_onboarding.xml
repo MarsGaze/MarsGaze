@@ -88,7 +88,7 @@
         app:layout_constraintHorizontal_bias="0.955"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/arrow_forward"
-        android:background="transparent"/>
+        android:background="#00FFFFFF"/>
 
     <fragment
         android:layout_width="match_parent"
