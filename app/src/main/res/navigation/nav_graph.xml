@@ -3,20 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/onboardingActivity">
-
-    <activity
-        android:id="@+id/onboardingActivity"
-        android:name="com.digitalhouse.marsgaze.ui.OnboardingActivity"
-        android:label="activity_onboarding"
-        tools:layout="@layout/activity_onboarding" >
-        <action
-            android:id="@+id/action_onboardingActivity_to_onboardingActivity2"
-            app:destination="@id/onboardingActivity2" />
-    </activity>
-    <activity
-        android:id="@+id/onboardingActivity2"
-        android:name="com.digitalhouse.marsgaze.ui.OnboardingActivity2"
-        android:label="activity_onboarding2"
-        tools:layout="@layout/activity_onboarding2" />
+    app:startDestination="@id/favoriteFragment">
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.digitalhouse.marsgaze.ui.FavoriteFragment"
+        android:label="FavoriteFragment" />
 </navigation>
