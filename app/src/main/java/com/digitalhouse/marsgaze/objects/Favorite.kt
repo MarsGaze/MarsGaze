@@ -3,6 +3,12 @@ package com.digitalhouse.marsgaze.objects
 import com.digitalhouse.marsgaze.R
 
 /**
+ * Classe temporária para o elemneto Favorito
+ *
+ * O Favorito, assim por se dizer, é o conteudo provido de um rover na qual
+ * o usuário gostou. Ela é temporária já que vai ser usado somente para os
+ * visuais.
+ *
  * Dummy class for a Favorite element.
  *
  * Favorite, as per say, is the content of an image from a rover which the
