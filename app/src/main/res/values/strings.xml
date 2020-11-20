@@ -36,4 +36,18 @@
     <string name="favoriteCardText">Sol %1$d - %2$s</string>
     <string name="favoriteCardTextVisual">Sol 690 - FHAZ</string>
 
+    <!-- Insight Page Resources -->
+    <string name="insightSelectDate">%1$d de %2$s</string>
+    <string name="insightSelectDateVisual">19 de Novembro</string>
+    <string name="insightSolMars">Sol %1$d</string>
+    <string name="insightSolMarsVisual">Sol 421</string>
+    <string name="insightSeasonVisual">Verão</string>
+
+    <string name="insightTemperature">Temperatura média</string>
+    <string name="insightPressure">Pressão média</string>
+    <string name="insightMinAny">Minima</string>
+    <string name="insightMaxAny">Máxima</string>
+    <string name="insightSampleSize">Amostras registradas: %1$d</string>
+    <string name="insightTempVisual">70ºC</string>
+
 </resources>
