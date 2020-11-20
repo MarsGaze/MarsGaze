@@ -320,9 +320,10 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="arrow_forward" />
-                            <entry key="sourceFile" value="C:\Users\vick_\Desktop\MarsGaze" />
+                            <entry key="outputName" value="ic_onboarding" />
+                            <entry key="sourceFile" value="C:\Users\mtheu\Downloads\Mask Group (7).svg" />
                           </map>
                         </option>
                       </PersistentState>
