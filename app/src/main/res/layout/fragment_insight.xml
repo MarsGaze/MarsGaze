@@ -7,15 +7,12 @@
     android:background="@color/colorPrimary"
     android:backgroundTint="@color/colorPrimaryDark">
 
-    <androidx.appcompat.widget.Toolbar
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/toolbar"
+        android:name="com.digitalhouse.marsgaze.ui.ClassicToolbarFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/menu_accent_dark" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView5"

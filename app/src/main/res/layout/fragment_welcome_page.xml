@@ -7,12 +7,12 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark">
 
-    <androidx.appcompat.widget.Toolbar
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/welcomeToolbar"
+        android:name="com.digitalhouse.marsgaze.ui.ClassicToolbarFragment"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/menu_accent_dark" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView5"
@@ -161,9 +161,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="210dp"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="120dp"
         android:layout_marginEnd="15dp"
-        android:layout_marginBottom="2dp"
+        android:layout_marginBottom="15dp"
         android:adjustViewBounds="false"
         android:cropToPadding="false"
         android:scaleType="fitCenter"
@@ -173,7 +173,7 @@
         app:layout_constraintStart_toStartOf="@+id/welcomeMarte"
         app:layout_constraintTop_toBottomOf="@+id/welcomeToolbar"
         app:layout_constraintVertical_bias="0.57"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/ic_logo" />
 
     <ImageView
         android:id="@+id/rover"
@@ -181,7 +181,6 @@
         android:layout_height="0dp"
         android:layout_marginStart="210dp"
         android:layout_marginEnd="15dp"
-        android:layout_marginBottom="10dp"
         android:adjustViewBounds="true"
         android:cropToPadding="false"
         android:scaleType="fitCenter"
