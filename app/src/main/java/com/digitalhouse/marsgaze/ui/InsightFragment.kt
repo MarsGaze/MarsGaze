@@ -1,21 +1,29 @@
 package com.digitalhouse.marsgaze.ui
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.adapters.InsightAdapter
 import com.digitalhouse.marsgaze.adapters.InsightAdapterInsightData
 import com.digitalhouse.marsgaze.adapters.InsightAdapterPageTitle
-import kotlinx.android.synthetic.main.activity_insight.*
+import kotlinx.android.synthetic.main.fragment_insight.*
 
-class InsightActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_insight)
+class InsightFragment : Fragment() {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_insight, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         insightVP.adapter = InsightAdapter()
-        insightDataInfo.adapter = InsightAdapterInsightData()
-        insightDataTitle.adapter = InsightAdapterPageTitle(insightDataInfo)
 
         btnInsightBackDay.setOnClickListener {
             val value = insightVP.currentItem - 1
@@ -31,6 +39,8 @@ class InsightActivity : AppCompatActivity() {
             }
         }
 
+        insightDataInfo.adapter = InsightAdapterInsightData()
+        insightDataTitle.adapter = InsightAdapterPageTitle(insightDataInfo)
         insightDataForward.setOnClickListener {
             val value = insightDataTitle.currentItem + 1
             if (value != (insightDataTitle.adapter as InsightAdapterPageTitle).count) {

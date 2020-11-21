@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.adapters.FavoriteAdapter
 import com.digitalhouse.marsgaze.objects.Favorite
-import kotlinx.android.synthetic.main.activity_favoritos.*
+import kotlinx.android.synthetic.main.fragment_favoritos.*
 
 class FavoriteFragment : Fragment() {
     override fun onCreateView(
@@ -17,7 +17,7 @@ class FavoriteFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.activity_favoritos, container, false)
+        return inflater.inflate(R.layout.fragment_favoritos, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -28,6 +28,5 @@ class FavoriteFragment : Fragment() {
         recyFav.setHasFixedSize(true)
         recyFav.adapter = adapter
         recyFav.layoutManager = LinearLayoutManager(context)
-
     }
 }
