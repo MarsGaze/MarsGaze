@@ -71,7 +71,7 @@ class CuriosidadesActivity : AppCompatActivity() {
         val botaoClima = findViewById<ImageView>(R.id.expand_button_clima)
         val textoClima = findViewById<TextView>(R.id.hidden_text_clima)
 
-        //ação para mostrar o texto NOME
+        //ação para mostrar o texto CLIMA
         botaoClima.setOnClickListener {
             when(textoClima.visibility) {
                 View.VISIBLE -> {
@@ -93,7 +93,7 @@ class CuriosidadesActivity : AppCompatActivity() {
         val botaoSolo = findViewById<ImageView>(R.id.expand_button_solo)
         val textoSolo = findViewById<TextView>(R.id.hidden_text_solo)
 
-        //ação para mostrar o texto NOME
+        //ação para mostrar o texto SOLO
         botaoSolo.setOnClickListener {
             when(textoSolo.visibility) {
                 View.VISIBLE -> {
@@ -115,7 +115,7 @@ class CuriosidadesActivity : AppCompatActivity() {
         val botaoSatelites = findViewById<ImageView>(R.id.expand_button_satelites)
         val textoSatelites = findViewById<TextView>(R.id.hidden_text_satelites)
 
-        //ação para mostrar o texto NOME
+        //ação para mostrar o texto SATELITES
         botaoSatelites.setOnClickListener {
             when(textoSatelites.visibility) {
                 View.VISIBLE -> {
@@ -137,7 +137,7 @@ class CuriosidadesActivity : AppCompatActivity() {
         val botaoAtmosfera = findViewById<ImageView>(R.id.expand_button_atmosfera)
         val textoAtmosfera = findViewById<TextView>(R.id.hidden_text_atmosfera)
 
-        //ação para mostrar o texto NOME
+        //ação para mostrar o texto ATMOSFERA
         botaoAtmosfera.setOnClickListener {
             when(textoAtmosfera.visibility) {
                 View.VISIBLE -> {
@@ -150,6 +150,129 @@ class CuriosidadesActivity : AppCompatActivity() {
                     TransitionManager.beginDelayedTransition(cardAtmosfera, AutoTransition())
                     botaoAtmosfera.setImageResource(R.drawable.ic_arrow_up_white)
                     textoAtmosfera.visibility = View.VISIBLE
+                }
+            }
+        }
+
+        //PARTE DE CURIOSIDADES
+
+        //variaveis de controle para o card que contém o texto CYDONIA
+        val cardCydonia = findViewById<CardView>(R.id.expandable_text_cydonia)
+        val botaoCydonia = findViewById<ImageView>(R.id.expand_button_cydonia)
+        val imgCydonia = findViewById<ImageView>(R.id.img_cydonia)
+        val textoCydonia = findViewById<TextView>(R.id.hidden_text_cydonia)
+
+        //ação para mostrar o texto CYDONIA
+        botaoCydonia.setOnClickListener {
+            when(textoCydonia.visibility) {
+                View.VISIBLE -> {
+                    textoCydonia.visibility = View.GONE
+                    imgCydonia.visibility = View.GONE
+                    TransitionManager.beginDelayedTransition(cardCydonia, AutoTransition())
+                    botaoCydonia.setImageResource(R.drawable.ic_arrow_down_white)
+                }
+
+                else -> {
+                    TransitionManager.beginDelayedTransition(cardCydonia, AutoTransition())
+                    botaoCydonia.setImageResource(R.drawable.ic_arrow_up_white)
+                    textoCydonia.visibility = View.VISIBLE
+                    imgCydonia.visibility = View.VISIBLE
+                }
+            }
+        }
+
+        //variaveis de controle para o card que contém o texto HAPPY FACE
+        val cardHappyFace = findViewById<CardView>(R.id.expandable_text_happyFace)
+        val botaoHappyFace = findViewById<ImageView>(R.id.expand_button_happyFace)
+        val imgHappyFace = findViewById<ImageView>(R.id.img_happyFace)
+        val textoHappyFace = findViewById<TextView>(R.id.hidden_text_happyFace)
+
+        //ação para mostrar o texto HAPPY FACE
+        botaoHappyFace.setOnClickListener {
+            when(textoHappyFace.visibility) {
+                View.VISIBLE -> {
+                    textoHappyFace.visibility = View.GONE
+                    imgHappyFace.visibility = View.GONE
+                    TransitionManager.beginDelayedTransition(cardHappyFace, AutoTransition())
+                    botaoHappyFace.setImageResource(R.drawable.ic_arrow_down_white)
+                }
+
+                else -> {
+                    TransitionManager.beginDelayedTransition(cardHappyFace, AutoTransition())
+                    botaoHappyFace.setImageResource(R.drawable.ic_arrow_up_white)
+                    textoHappyFace.visibility = View.VISIBLE
+                    imgHappyFace.visibility = View.VISIBLE
+                }
+            }
+        }
+
+        //variaveis de controle para o card que contém o texto BUTTERFLY
+        val cardButterfly = findViewById<CardView>(R.id.expandable_text_butterfly)
+        val botaoButterfly = findViewById<ImageView>(R.id.expand_button_butterfly)
+        val imgButterfly = findViewById<ImageView>(R.id.img_butterfly)
+        val textoButterfly = findViewById<TextView>(R.id.hidden_text_butterfly)
+
+        //ação para mostrar o texto BUTTERFLY
+        botaoButterfly.setOnClickListener {
+            when(textoButterfly.visibility) {
+                View.VISIBLE -> {
+                    textoButterfly.visibility = View.GONE
+                    imgButterfly.visibility = View.GONE
+                    TransitionManager.beginDelayedTransition(cardButterfly, AutoTransition())
+                    botaoButterfly.setImageResource(R.drawable.ic_arrow_down_white)
+                }
+
+                else -> {
+                    TransitionManager.beginDelayedTransition(cardButterfly, AutoTransition())
+                    botaoButterfly.setImageResource(R.drawable.ic_arrow_up_white)
+                    textoButterfly.visibility = View.VISIBLE
+                    imgButterfly.visibility = View.VISIBLE
+                }
+            }
+        }
+
+        //variaveis de controle para o card que contém o texto ANEL DE MARTE
+        val cardAnelMarte = findViewById<CardView>(R.id.expandable_text_anelMarte)
+        val botaoAnelMarte = findViewById<ImageView>(R.id.expand_button_anelMarte)
+        val textoAnelMarte = findViewById<TextView>(R.id.hidden_text_anelMarte)
+
+        //ação para mostrar o texto ANEL DE MARTE
+        botaoAnelMarte.setOnClickListener {
+            when(textoAnelMarte.visibility) {
+                View.VISIBLE -> {
+                    textoAnelMarte.visibility = View.GONE
+                    imgButterfly.visibility = View.GONE
+                    TransitionManager.beginDelayedTransition(cardAnelMarte, AutoTransition())
+                    botaoAnelMarte.setImageResource(R.drawable.ic_arrow_down_white)
+                }
+
+                else -> {
+                    TransitionManager.beginDelayedTransition(cardAnelMarte, AutoTransition())
+                    botaoAnelMarte.setImageResource(R.drawable.ic_arrow_up_white)
+                    textoAnelMarte.visibility = View.VISIBLE
+                    imgButterfly.visibility = View.VISIBLE
+                }
+            }
+        }
+
+        //variaveis de controle para o card que contém o texto CURIOSIDADES GEOGRAFICAS
+        val cardCuriosidadesGeograficas = findViewById<CardView>(R.id.expandable_text_curiosidadesGeograficas)
+        val botaoCuriosidadesGeograficas = findViewById<ImageView>(R.id.expand_button_curiosidadesGeograficas)
+        val textoCuriosidadesGeograficas = findViewById<TextView>(R.id.hidden_text_curiosidadesGeograficas)
+
+        //ação para mostrar o texto CURIOSIDADES GEOGRAFICAS
+        botaoCuriosidadesGeograficas.setOnClickListener {
+            when(textoCuriosidadesGeograficas.visibility) {
+                View.VISIBLE -> {
+                    textoCuriosidadesGeograficas.visibility = View.GONE
+                    TransitionManager.beginDelayedTransition(cardCuriosidadesGeograficas, AutoTransition())
+                    botaoCuriosidadesGeograficas.setImageResource(R.drawable.ic_arrow_down_white)
+                }
+
+                else -> {
+                    TransitionManager.beginDelayedTransition(cardCuriosidadesGeograficas, AutoTransition())
+                    botaoCuriosidadesGeograficas.setImageResource(R.drawable.ic_arrow_up_white)
+                    textoCuriosidadesGeograficas.visibility = View.VISIBLE
                 }
             }
         }

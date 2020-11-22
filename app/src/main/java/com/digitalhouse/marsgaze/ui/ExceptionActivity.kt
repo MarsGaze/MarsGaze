@@ -11,7 +11,7 @@ class ExceptionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exception)
 
-        iv_backArrowCuriosidades.setOnClickListener {
+        iv_backArrow_exception.setOnClickListener {
             finish()
         }
     }

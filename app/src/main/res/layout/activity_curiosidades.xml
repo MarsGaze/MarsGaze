@@ -55,27 +55,29 @@
                 android:textAlignment="center"
                 android:textColor="@color/colorWhite"
                 android:textSize="24dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tv_texto"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/texto"
-                android:textAlignment="center"
-                android:textColor="@color/colorWhite"
-                android:textSize="18dp" />
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"/>
 
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="30dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_texto"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/texto"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="18dp" />
 
                     <!-- HISTORIA -->
                     <androidx.cardview.widget.CardView
@@ -410,6 +412,338 @@
                                 android:textSize="16sp"
                                 android:visibility="gone"
                                 app:layout_constraintTop_toBottomOf="@+id/expand_button_atmosfera" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!--curiosidades -->
+                    <TextView
+                        android:id="@+id/tv_curiosidades"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/curiosidades"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="24dp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginBottom="16dp"/>
+
+                    <!-- Cydonia -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/expandable_text_cydonia"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:backgroundTint="@color/colorPrimary"
+                        app:cardCornerRadius="10dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingVertical="8dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/expand_button_cydonia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginEnd="16dp"
+                                android:src="@drawable/ic_arrow_down_white"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/texto_cydonia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto"
+                                android:padding="16dp"
+                                android:text="@string/cydonia"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="20dp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/img_cydonia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:layout_marginBottom="12dp"
+                                android:src="@drawable/cydonia_mars_face"
+                                android:visibility="gone"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.497"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/texto_cydonia" />
+
+                            <TextView
+                                android:id="@+id/hidden_text_cydonia"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto"
+                                android:layout_marginTop="16dp"
+                                android:paddingHorizontal="16dp"
+                                android:paddingBottom="16dp"
+                                android:text="@string/cydoniaTexto"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="16sp"
+                                android:visibility="gone"
+                                app:layout_constraintTop_toBottomOf="@+id/img_cydonia" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Happy Face -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/expandable_text_happyFace"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:backgroundTint="@color/colorPrimary"
+                        app:cardCornerRadius="10dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingVertical="8dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/expand_button_happyFace"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginEnd="16dp"
+                                android:src="@drawable/ic_arrow_down_white"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/texto_happyFace"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto"
+                                android:padding="16dp"
+                                android:text="@string/happyFace"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="20dp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/img_happyFace"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:layout_marginBottom="12dp"
+                                android:src="@drawable/happy_face"
+                                android:visibility="gone"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.497"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/texto_happyFace" />
+
+                            <TextView
+                                android:id="@+id/hidden_text_happyFace"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto"
+                                android:layout_marginTop="16dp"
+                                android:paddingHorizontal="16dp"
+                                android:paddingBottom="16dp"
+                                android:text="@string/happyFaceTexto"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="16sp"
+                                android:visibility="gone"
+                                app:layout_constraintTop_toBottomOf="@+id/img_happyFace" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Butterfly -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/expandable_text_butterfly"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:backgroundTint="@color/colorPrimary"
+                        app:cardCornerRadius="10dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingVertical="8dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/expand_button_butterfly"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginEnd="16dp"
+                                android:src="@drawable/ic_arrow_down_white"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/texto_butterfly"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto"
+                                android:padding="16dp"
+                                android:text="@string/butterfly"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="20dp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/img_butterfly"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:layout_marginBottom="12dp"
+                                android:src="@drawable/butterfly"
+                                android:visibility="gone"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.497"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/texto_butterfly" />
+
+                            <TextView
+                                android:id="@+id/hidden_text_butterfly"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto"
+                                android:layout_marginTop="16dp"
+                                android:paddingHorizontal="16dp"
+                                android:paddingBottom="16dp"
+                                android:text="@string/butterflyTexto"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="16sp"
+                                android:visibility="gone"
+                                app:layout_constraintTop_toBottomOf="@+id/img_butterfly" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- ANEL DE MARTE -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/expandable_text_anelMarte"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:backgroundTint="@color/colorPrimary"
+                        app:cardCornerRadius="10dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingVertical="8dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/expand_button_anelMarte"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginEnd="16dp"
+                                android:src="@drawable/ic_arrow_down_white"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/texto_anelMarte"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto"
+                                android:padding="16dp"
+                                android:text="@string/anelMarte"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="20dp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/hidden_text_anelMarte"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto"
+                                android:layout_marginTop="16dp"
+                                android:paddingHorizontal="16dp"
+                                android:paddingBottom="16dp"
+                                android:text="@string/anelMarteTexto"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="16sp"
+                                android:visibility="gone"
+                                app:layout_constraintTop_toBottomOf="@+id/expand_button_anelMarte" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- CURIOSIDADES GEOGRÁFICAS -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/expandable_text_curiosidadesGeograficas"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:backgroundTint="@color/colorPrimary"
+                        app:cardCornerRadius="10dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingVertical="8dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/expand_button_curiosidadesGeograficas"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginEnd="16dp"
+                                android:src="@drawable/ic_arrow_down_white"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/texto_curiosidadesGeograficas"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto"
+                                android:padding="16dp"
+                                android:text="@string/curiosidadesGeograficas"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="20dp"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/hidden_text_curiosidadesGeograficas"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto"
+                                android:layout_marginTop="16dp"
+                                android:paddingHorizontal="16dp"
+                                android:paddingBottom="16dp"
+                                android:text="@string/curiosidadesGeograficasTexto"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="16sp"
+                                android:visibility="gone"
+                                app:layout_constraintTop_toBottomOf="@+id/expand_button_curiosidadesGeograficas" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </androidx.cardview.widget.CardView>
 
