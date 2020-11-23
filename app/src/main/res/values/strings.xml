@@ -4,6 +4,16 @@
     <string name="tvOnboarding">Conheça o nosso aplicativo MarsGaze e aprenda várias coisas sobre marte além de poder explorar ela através dos rovers.</string>
     <string name="tvOnboarding2">Então, pronto para explorar?</string>
     <string name="btnComecar">Começar</string>
+
+    <!-- Welcome Page Resources -->
+    <string name="welcomeUser">Saudações, %1$s!</string>
+    <string name="welcomeExplore">Vamos explorar marte?</string>
+    // Placeholder
+    <string name="ipsumPlaceholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</string>
+    <string name="welcomeMarte">O que você precisa\nsaber sobre o planeta\nvermelho</string>
+    <string name="welcomeRover">Descubra Marte pelos\nolhos dos rovers da\nNASA</string>
+    <string name="welcomeInsight">Como está a\ntemperatura na\nsuperfície do planeta\nvermelho</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="htEmail">Email</string>
@@ -13,17 +23,6 @@
     <string name="htNome">Nome</string>
     <string name="htRepeteSenha">Repetir Senha</string>
     <string name="btnCadastro">Cadastrar</string>
-
-
-    // Placeholder
-    <string name="ipsumPlaceholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</string>
-
-    <!-- Welcome Page Resources -->
-    <string name="welcomeUser">Saudações, %1$s!</string>
-    <string name="welcomeExplore">Vamos explorar marte?</string>
-    <string name="welcomeMarte">O que você precisa\nsaber sobre o planeta\nvermelho</string>
-    <string name="welcomeRover">Descubra Marte pelos\nolhos dos rovers da\nNASA</string>
-    <string name="welcomeInsight">Como está a\ntemperatura na\nsuperfície do planeta\nvermelho</string>
 
     <!-- Profile Page Resources -->
     <string name="profileEmail">email</string>
@@ -59,5 +58,101 @@
     <string name="navigationItemRover">Rovers</string>
     <string name="navigationItemInsight">Clima</string>
     <string name="navigationItemAboutMars">Sobre Marte</string>
+
+    //activity exception
+    <string name="tv_mensagemException">Não foi possível carregar a imagem</string>
+
+    //activity Curiosidades
+    //Cabeçalho
+    <string name="titulo1">O que você precisa saber sobre o</string>
+    <string name="titulo2">Planeta vermelho</string>
+    <string name="texto"> Marte é o quarto planeta do Sistema Solar, um mundo desértico e gelado, com 687 dias por ano, tem duas luas e é o segundo menor do Sistema Solar</string>
+
+    //Corpo
+    //Texto sobre a Historia
+    <string name="historia">História</string>
+    <string name="textoHistoria">Durante a formação do Sistema Solar, Marte foi criado como resultado de um acúmulo de matéria,
+            a partir do disco protoplanetário que orbitava o Sol. Marte tem muitas características químicas próprias causadas por sua
+            posição no Sistema Solar. Elementos com pontos de ebulição relativamente baixos, como cloro, fósforo e enxofre são muito mais
+            comuns em Marte do que na Terra. Estes elementos, provavelmente, foram removidos das áreas mais próximas ao Sol pelo vento solar da jovem estrela.</string>
+
+    //texto sobre o Nome
+    <string name="oNome">Nome</string>
+    <string name="oNomeTexto">Considerando sua cor de sangue, os gregos batizaram Marte com o nome do deus da guerra, Ares. Até as duas pequenas luas de Marte,
+            Fobos e Deimos, receberam o nome dos cavalos que puxavam a carruagem da figura mitológica. Outras civilizações antigas também levaram em conta a coloração do
+            planeta para decidir como chamá-lo: os egípcios usaram “Seu Desher”, que significa “a vermelha”, e astrônomos chineses o chamavam de “estrela do fogo”.</string>
+
+    //texto sobre o Clima
+    <string name="clima">Clima</string>
+    <string name="climaTexto">De todos os planetas do Sistema Solar, Marte é o que possui as estações do ano mais parecidas com as da Terra, devido às inclinações semelhantes
+            de eixos de rotação dos dois planetas. As durações das estações marcianas são cerca de duas vezes as da Terra, já que Marte está a uma maior distância do Sol, o que leva
+            o ano marciano a ter duração equivalente a cerca de dois anos terrestres. As temperaturas de superfície de Marte variam de −143 °C (no inverno nas calotas polares) até
+            máximas de 35 °C (no verão equatorial). A ampla variação de temperaturas é devida à fina atmosfera, que não consegue armazenar muito calor solar, à baixa pressão
+            atmosférica e à baixa inércia térmica do solo marciano. O planeta também é 1,52 vez mais distante do Sol que a Terra, o que resulta em apenas 43% da quantidade de luz
+            solar em comparação com a Terra.</string>
+
+    //texto sobre o Solo
+    <string name="solo">Solo</string>
+    <string name="soloTexto">A crosta do planeta é composta, principalmente, por silicatos de ferro e de magnésio, distribuídos em basaltos vulcânicos com alto teor de óxidos
+            de ferro (que fornece a famosa cor vermelha do planeta), ferrosilicatos e aluminatos. O núcleo, que compõe 21% da massa do planeta, é composto 78% por ferro metálico,
+            e o restante por enxofre, liga com níquel e cobalto. A história geológica marciana é dividida em três períodos: Noachiano, Hesperiano e Amazônico.</string>
+
+    //texto sobre os Satélites
+    <string name="satelites">Satélites</string>
+    <string name="satelitesTexto">As duas luas de Marte são Fobos e Deimos (terror e medo em grego) os nomes do filho do deus Ares na Grécia antiga. Estas luas de Marte pode muito
+            bem ser asteroides capturados da cintura de asteroides entre Marte e Júpiter. Eles orbitam em torno do planeta, milhares de quilômetros dele, 9 380 km para Phobos e 23 460
+            km para Deimos. Eles são compostos de rochas ricas em carbono e de gelo (como asteroides do tipo C). Ambos estão crivadas de crateras de impacto como todos os objetos
+            terrestres do sistema solar.</string>
+
+    //texto sobre a Atmosfera
+    <string name="atmosfera">Atmosfera</string>
+    <string name="atmosferaTexto">A atmosfera de Marte é bastante diferente da atmosfera da Terra. É composta principalmente por dióxido de carbono com pequenas porções de outros gases.
+        Os seis componentes mais comuns da atmosfera são:\n\n
+        * Dióxido de Carbono (CO2): 95.32% \n
+        * Azoto (N2): 2.7%\n
+        * Árgon (Ar): 1.6% \n
+        * Oxigénio (O2): 0.13% \n
+        * Água (H2O): 0.03% \n
+        * Néon (Ne): 0.00025%</string>
+
+    //segunda parte - Curiosidades
+    <string name="curiosidades">Cusiosidades</string>
+
+    //texto sobre Cydonia - O rosto
+    <string name="cydonia">Cydonia: um Rosto em marte</string>
+    <string name="cydoniaTexto">É mais provável que este monte, nas planícies do norte, tenha sido erodido pelo vento de forma a ter um aspecto parecido com um rosto</string>
+
+    //texto sobre Happy Face
+    <string name="happyFace">Happy Face</string>
+    <string name="happyFaceTexto">Uma grande pilha de sedimentos em camadas na parte sul da cratera e vários regos paralelos é sinal de uma possível evidência de água líquida
+        na superfície marciana. Seu interior mostra uma superfície que é moldada por atividade eólica</string>
+
+    //texto sobre a cratera Butterfly
+    <string name="butterfly">Cratera Butterfly</string>
+    <string name="butterflyTexto">Enquanto a maioria das crateras de impacto são relativamente circulares, a forma elíptica dessa cratera sugere um ângulo de impacto muito baixo,
+        de aproximadamente menos de 10 graus.</string>
+
+    //texto sobre o futuro anel de Marte
+    <string name="anelMarte">Anel de Marte</string>
+    <string name="anelMarteTexto">Assim como Saturno, um dia Marte poderá ter um anel formado pela sua maior lua, Phobos, que deve ser desintegrada por forças gravitacionais
+        entre os próximos 30 e 50 milhões de anos. Assim que surgir, o anel deve durar até 100 milhões de anos.</string>
+
+    //texto de curiosidades geograficas extras
+    <string name="curiosidadesGeograficas">Curiosidades Geográficas</string>
+    <string name="curiosidadesGeograficasTexto">
+        * A gravidade da superfície de Marte é apenas 37% do que você encontraria na Terra, o que torna possível que os vulcões sejam mais altos sem entrar em colapso.\n\n
+        * O Monte Olimpo é a maior montanha do Sistema Solar, subindo cerca de 27 quilômetros de altura, 600 km de diâmetro e está rodeada por um penhasco de 6 km de altura.\n\n
+        * Tharsis: uma grande proeminência na superfície marciana, com 4000 km de comprimento e 10 km de largura.\n\n
+        * Relias Planitia: uma cratera de impacto no hemisfério sul, com mais de 6 km de profundidade e 2000 km de diâmetro.\n\n
+        * Valles Marineris: nome dado em homenagem à espaçonave (Mariner 9) que o descobriu. É um desfiladeiro profundo e largo, em algumas partes, o canyon tem 7 quilômetros
+        de profundidade. De acordo com a NASA , o vale é tão largo quanto os Estados Unidos e tem cerca de 20% do diâmetro do Planeta Vermelho.</string>
+
+    //fim - activity Curiosidades
+
+    //fragment Fullscreen Image
+    <string name="anoSol">Sol 999</string>
+    <string name="infoImage">23 de Outubro, 14:36 \n
+        FHAZ - Front Hazard Avoidance Camera \n
+        Foto X</string>
 
 </resources>
