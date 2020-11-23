@@ -95,4 +95,10 @@
 
     //fim - activity Curiosidades
 
+    //fragment Fullscreen Image
+    <string name="anoSol">Sol 999</string>
+    <string name="infoImage">23 de Outubro, 14:36 \n
+        FHAZ - Front Hazard Avoidance Camera \n
+        Foto X</string>
+
 </resources>
