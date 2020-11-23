@@ -72,7 +72,7 @@ class NavigationActivity : AppCompatActivity() {
      * Troca de página caso não esteja nela, fechando o menu do drawer e removendo do stack
      * a última página.
      */
-    private fun changePage(title: String, res: Int) {
+    fun changePage(title: String, res: Int) {
         if (falseCall != title) {
             falseCall = title
             navControl.popBackStack()
