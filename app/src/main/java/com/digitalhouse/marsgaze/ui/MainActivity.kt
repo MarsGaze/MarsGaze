@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun callCuriosidades() {
-        var intent = Intent(this, CuriosidadesActivity::class.java)
+        var intent = Intent(this, CuriosidadesFragment::class.java)
 
         startActivity(intent)
     }

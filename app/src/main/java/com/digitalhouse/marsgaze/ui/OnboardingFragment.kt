@@ -16,7 +16,7 @@ class OnboardingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view: View = inflater!!.inflate(R.layout.fragment_onboarding, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_onboarding, container, false)
 
         view.btnNextOb.setOnClickListener{
             findNavController().navigate(R.id.action_onboardingFragment_to_onboarding2Fragment)

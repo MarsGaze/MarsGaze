@@ -17,8 +17,6 @@ class NavigationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // TODO: Colocar qual é a false call inicial.
-
         setContentView(R.layout.navigation_drawer)
     }
 
@@ -32,6 +30,8 @@ class NavigationActivity : AppCompatActivity() {
             val title = it.title.toString()
             when (it.title) {
                 resources.getString(R.string.navigationItemAboutMars) -> {
+                    changePage(title, R.id.curiosidadesFragment)
+
                     true
                 }
                 resources.getString(R.string.navigationItemFavorite) -> {
@@ -52,6 +52,7 @@ class NavigationActivity : AppCompatActivity() {
                 }
 
                 resources.getString(R.string.navigationItemRover) -> {
+                    changePage(title, R.id.roversFragment)
                     false
                 }
 

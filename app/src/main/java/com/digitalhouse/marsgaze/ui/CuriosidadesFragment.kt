@@ -5,49 +5,54 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.transition.AutoTransition
 import android.transition.TransitionManager
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.fragment.app.Fragment
 import com.digitalhouse.marsgaze.R
-import kotlinx.android.synthetic.main.activity_curiosidades.*
+import kotlinx.android.synthetic.main.fragment_curiosidades.*
 
-class CuriosidadesActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_curiosidades)
+class CuriosidadesFragment : Fragment() {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_curiosidades, container, false)
+    }
 
-        //botão de voltar
-        iv_backArrowCuriosidades.setOnClickListener {
-            finish()
-        }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         //variaveis de controle para o card que contém o texto HISTORIA
-        val cardHistoria = findViewById<CardView>(R.id.expandable_text_history)
-        val botaoHistoria = findViewById<ImageView>(R.id.expand_button_history)
-        val textoHistoria = findViewById<TextView>(R.id.hidden_text_historia)
+        val cardHistoria = expandable_text_history
+        val botaoHistoria = expand_button_history
+        val textoHistoria = hidden_text_historia
 
         //ação para mostrar o texto Hitória
         botaoHistoria.setOnClickListener {
-             when(textoHistoria.visibility) {
-                 View.VISIBLE -> {
-                     textoHistoria.visibility = View.GONE
-                     TransitionManager.beginDelayedTransition(cardHistoria, AutoTransition())
-                     botaoHistoria.setImageResource(R.drawable.ic_arrow_down_white)
-                 }
+            when(textoHistoria.visibility) {
+                View.VISIBLE -> {
+                    textoHistoria.visibility = View.GONE
+                    TransitionManager.beginDelayedTransition(cardHistoria, AutoTransition())
+                    botaoHistoria.setImageResource(R.drawable.ic_arrow_down_white)
+                }
 
-                 else -> {
-                     TransitionManager.beginDelayedTransition(cardHistoria, AutoTransition())
-                     botaoHistoria.setImageResource(R.drawable.ic_arrow_up_white)
-                     textoHistoria.visibility = View.VISIBLE
-                 }
-             }
+                else -> {
+                    TransitionManager.beginDelayedTransition(cardHistoria, AutoTransition())
+                    botaoHistoria.setImageResource(R.drawable.ic_arrow_up_white)
+                    textoHistoria.visibility = View.VISIBLE
+                }
+            }
         }
 
         //variaveis de controle para o card que contém o texto NOME
-        val cardNome = findViewById<CardView>(R.id.expandable_text_name)
-        val botaoNome = findViewById<ImageView>(R.id.expand_button_name)
-        val textoNome = findViewById<TextView>(R.id.hidden_text_name)
+        val cardNome = expandable_text_name
+        val botaoNome = expand_button_name
+        val textoNome = hidden_text_name
 
         //ação para mostrar o texto NOME
         botaoNome.setOnClickListener {
@@ -67,9 +72,9 @@ class CuriosidadesActivity : AppCompatActivity() {
         }
 
         //variaveis de controle para o card que contém o texto CLIMA
-        val cardClima = findViewById<CardView>(R.id.expandable_text_clima)
-        val botaoClima = findViewById<ImageView>(R.id.expand_button_clima)
-        val textoClima = findViewById<TextView>(R.id.hidden_text_clima)
+        val cardClima = expandable_text_clima
+        val botaoClima = expand_button_clima
+        val textoClima = hidden_text_clima
 
         //ação para mostrar o texto CLIMA
         botaoClima.setOnClickListener {
@@ -89,9 +94,9 @@ class CuriosidadesActivity : AppCompatActivity() {
         }
 
         //variaveis de controle para o card que contém o texto SOLO
-        val cardSolo = findViewById<CardView>(R.id.expandable_text_solo)
-        val botaoSolo = findViewById<ImageView>(R.id.expand_button_solo)
-        val textoSolo = findViewById<TextView>(R.id.hidden_text_solo)
+        val cardSolo = expandable_text_solo
+        val botaoSolo = expand_button_solo
+        val textoSolo = hidden_text_solo
 
         //ação para mostrar o texto SOLO
         botaoSolo.setOnClickListener {
@@ -111,9 +116,9 @@ class CuriosidadesActivity : AppCompatActivity() {
         }
 
         //variaveis de controle para o card que contém o texto SATELITES
-        val cardSatelites = findViewById<CardView>(R.id.expandable_text_satelites)
-        val botaoSatelites = findViewById<ImageView>(R.id.expand_button_satelites)
-        val textoSatelites = findViewById<TextView>(R.id.hidden_text_satelites)
+        val cardSatelites = expandable_text_satelites
+        val botaoSatelites = expand_button_satelites
+        val textoSatelites = hidden_text_satelites
 
         //ação para mostrar o texto SATELITES
         botaoSatelites.setOnClickListener {
@@ -133,9 +138,9 @@ class CuriosidadesActivity : AppCompatActivity() {
         }
 
         //variaveis de controle para o card que contém o texto ATMOSFERA
-        val cardAtmosfera = findViewById<CardView>(R.id.expandable_text_atmosfera)
-        val botaoAtmosfera = findViewById<ImageView>(R.id.expand_button_atmosfera)
-        val textoAtmosfera = findViewById<TextView>(R.id.hidden_text_atmosfera)
+        val cardAtmosfera = expandable_text_atmosfera
+        val botaoAtmosfera = expand_button_atmosfera
+        val textoAtmosfera = hidden_text_atmosfera
 
         //ação para mostrar o texto ATMOSFERA
         botaoAtmosfera.setOnClickListener {
@@ -157,10 +162,10 @@ class CuriosidadesActivity : AppCompatActivity() {
         //PARTE DE CURIOSIDADES
 
         //variaveis de controle para o card que contém o texto CYDONIA
-        val cardCydonia = findViewById<CardView>(R.id.expandable_text_cydonia)
-        val botaoCydonia = findViewById<ImageView>(R.id.expand_button_cydonia)
-        val imgCydonia = findViewById<ImageView>(R.id.img_cydonia)
-        val textoCydonia = findViewById<TextView>(R.id.hidden_text_cydonia)
+        val cardCydonia = expandable_text_cydonia
+        val botaoCydonia = expand_button_cydonia
+        val imgCydonia = img_cydonia
+        val textoCydonia = hidden_text_cydonia
 
         //ação para mostrar o texto CYDONIA
         botaoCydonia.setOnClickListener {
@@ -182,10 +187,10 @@ class CuriosidadesActivity : AppCompatActivity() {
         }
 
         //variaveis de controle para o card que contém o texto HAPPY FACE
-        val cardHappyFace = findViewById<CardView>(R.id.expandable_text_happyFace)
-        val botaoHappyFace = findViewById<ImageView>(R.id.expand_button_happyFace)
-        val imgHappyFace = findViewById<ImageView>(R.id.img_happyFace)
-        val textoHappyFace = findViewById<TextView>(R.id.hidden_text_happyFace)
+        val cardHappyFace = expandable_text_happyFace
+        val botaoHappyFace = expand_button_happyFace
+        val imgHappyFace = img_happyFace
+        val textoHappyFace = hidden_text_happyFace
 
         //ação para mostrar o texto HAPPY FACE
         botaoHappyFace.setOnClickListener {
@@ -207,10 +212,10 @@ class CuriosidadesActivity : AppCompatActivity() {
         }
 
         //variaveis de controle para o card que contém o texto BUTTERFLY
-        val cardButterfly = findViewById<CardView>(R.id.expandable_text_butterfly)
-        val botaoButterfly = findViewById<ImageView>(R.id.expand_button_butterfly)
-        val imgButterfly = findViewById<ImageView>(R.id.img_butterfly)
-        val textoButterfly = findViewById<TextView>(R.id.hidden_text_butterfly)
+        val cardButterfly = expandable_text_butterfly
+        val botaoButterfly = expand_button_butterfly
+        val imgButterfly = img_butterfly
+        val textoButterfly = hidden_text_butterfly
 
         //ação para mostrar o texto BUTTERFLY
         botaoButterfly.setOnClickListener {
@@ -232,9 +237,9 @@ class CuriosidadesActivity : AppCompatActivity() {
         }
 
         //variaveis de controle para o card que contém o texto ANEL DE MARTE
-        val cardAnelMarte = findViewById<CardView>(R.id.expandable_text_anelMarte)
-        val botaoAnelMarte = findViewById<ImageView>(R.id.expand_button_anelMarte)
-        val textoAnelMarte = findViewById<TextView>(R.id.hidden_text_anelMarte)
+        val cardAnelMarte = expandable_text_anelMarte
+        val botaoAnelMarte = expand_button_anelMarte
+        val textoAnelMarte = hidden_text_anelMarte
 
         //ação para mostrar o texto ANEL DE MARTE
         botaoAnelMarte.setOnClickListener {
@@ -256,9 +261,9 @@ class CuriosidadesActivity : AppCompatActivity() {
         }
 
         //variaveis de controle para o card que contém o texto CURIOSIDADES GEOGRAFICAS
-        val cardCuriosidadesGeograficas = findViewById<CardView>(R.id.expandable_text_curiosidadesGeograficas)
-        val botaoCuriosidadesGeograficas = findViewById<ImageView>(R.id.expand_button_curiosidadesGeograficas)
-        val textoCuriosidadesGeograficas = findViewById<TextView>(R.id.hidden_text_curiosidadesGeograficas)
+        val cardCuriosidadesGeograficas = expandable_text_curiosidadesGeograficas
+        val botaoCuriosidadesGeograficas = expand_button_curiosidadesGeograficas
+        val textoCuriosidadesGeograficas = hidden_text_curiosidadesGeograficas
 
         //ação para mostrar o texto CURIOSIDADES GEOGRAFICAS
         botaoCuriosidadesGeograficas.setOnClickListener {

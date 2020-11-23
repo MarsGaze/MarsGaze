@@ -3,7 +3,6 @@ package com.digitalhouse.marsgaze.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.digitalhouse.marsgaze.R
-import kotlinx.android.synthetic.main.activity_curiosidades.*
 import kotlinx.android.synthetic.main.activity_exception.*
 
 class ExceptionActivity : AppCompatActivity() {
