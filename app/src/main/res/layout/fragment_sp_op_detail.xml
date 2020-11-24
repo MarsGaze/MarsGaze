@@ -24,7 +24,6 @@
         android:fontFamily="@font/roboto"
         android:lineSpacingMultiplier="0.9"
         android:paddingStart="16dp"
-        android:paddingTop="18dp"
         android:paddingBottom="8dp"
         android:text="Spirit e\nOpportunity"
         android:textColor="@color/colorAccent"
@@ -39,7 +38,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="200dp"
-        android:background="@drawable/round_button_blue"
+        android:background="@drawable/round_card_dark"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,6 +66,7 @@
                     android:textColor="@color/colorAccent"
                     android:textSize="14sp"
                     android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/status_text"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintHorizontal_weight="1"
                     app:layout_constraintStart_toStartOf="parent"
@@ -80,21 +81,54 @@
                     android:textColor="@color/colorWhite"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/mission_text"
+                    app:layout_constraintStart_toStartOf="@+id/mission_text"
                     app:layout_constraintTop_toBottomOf="@+id/mission_text" />
+
+                <TextView
+                    android:id="@+id/status_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:paddingStart="10dp"
+                    android:text="Status"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toEndOf="@+id/mission_text"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/mission_status_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:layout_marginStart="23dp"
+                    android:layout_marginEnd="20dp"
+                    android:paddingStart="10dp"
+                    android:text="Finalizada"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/status_text"
+                    app:layout_constraintStart_toStartOf="@+id/status_text"
+                    app:layout_constraintTop_toBottomOf="@+id/status_text" />
 
                 <TextView
                     android:id="@+id/launch_text"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="18dp"
+                    android:paddingStart="16dp"
                     android:text="Lançamento"
                     android:textColor="@color/colorAccent"
                     android:textSize="14sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/mission_status_text" />
+                    app:layout_constraintEnd_toEndOf="@+id/mission_text"
+                    app:layout_constraintStart_toStartOf="@+id/mission_text"
+                    app:layout_constraintTop_toBottomOf="@+id/mission_name_text" />
 
                 <TextView
                     android:id="@+id/launch_date_text"
@@ -105,93 +139,72 @@
                     android:textColor="@color/colorWhite"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/mission_text"
+                    app:layout_constraintStart_toStartOf="@+id/mission_text"
                     app:layout_constraintTop_toBottomOf="@+id/launch_text" />
 
                 <TextView
                     android:id="@+id/launch_site_text"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
                     android:paddingStart="16dp"
                     android:text="Estação da Força Aérea de Cabo Canaveral (Flórida, EUA) "
                     android:textColor="@color/colorWhite"
                     android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="@+id/mission_text"
+                    app:layout_constraintStart_toStartOf="@+id/mission_text"
                     app:layout_constraintTop_toBottomOf="@+id/launch_date_text" />
 
                 <TextView
                     android:id="@+id/landing_text"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="18dp"
+                    android:paddingStart="10dp"
                     android:text="Aterrissagem"
                     android:textColor="@color/colorAccent"
                     android:textSize="14sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/launch_site_text" />
+                    app:layout_constraintEnd_toEndOf="@+id/status_text"
+                    app:layout_constraintStart_toStartOf="@+id/status_text"
+                    app:layout_constraintTop_toBottomOf="@+id/mission_status_text" />
 
                 <TextView
                     android:id="@+id/landing_date_text"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:paddingStart="10dp"
                     android:text="4 de janeiro de 2004 (Spirit)"
                     android:textColor="@color/colorWhite"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/status_text"
+                    app:layout_constraintStart_toStartOf="@+id/status_text"
                     app:layout_constraintTop_toBottomOf="@+id/landing_text" />
-
-                <TextView
-                    android:id="@+id/status_text"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="18dp"
-                    android:text="Status"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/mission_name_text" />
-
-                <TextView
-                    android:id="@+id/mission_status_text"
-                    android:layout_width="0dp"
-                    android:layout_height="21dp"
-                    android:layout_margin="0dp"
-                    android:paddingStart="16dp"
-                    android:text="Finalizada"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/status_text" />
 
                 <TextView
                     android:id="@+id/landing_date_text2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="5dp"
+                    android:paddingStart="10dp"
                     android:text="25 de janeiro de 2004 (Opportunity)"
                     android:textColor="@color/colorWhite"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/status_text"
+                    app:layout_constraintStart_toStartOf="@+id/status_text"
                     app:layout_constraintTop_toBottomOf="@+id/landing_site_text" />
 
                 <TextView
                     android:id="@+id/landing_site_text"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:paddingStart="10dp"
                     android:text="Cratera Gusev, Marte"
                     android:textColor="@color/colorWhite"
                     android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/status_text"
+                    app:layout_constraintStart_toStartOf="@+id/status_text"
                     app:layout_constraintTop_toBottomOf="@+id/landing_date_text" />
 
                 <TextView
@@ -199,62 +212,66 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="0dp"
+                    android:paddingStart="10dp"
                     android:text="Meridiani Planum, Marte"
                     android:textColor="@color/colorWhite"
                     android:textSize="12sp"
-                    android:paddingStart="16dp"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/status_text"
+                    app:layout_constraintStart_toStartOf="@+id/status_text"
                     app:layout_constraintTop_toBottomOf="@+id/landing_date_text2" />
 
                 <TextView
                     android:id="@+id/dimensions_text"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="18dp"
+                    android:paddingStart="16dp"
                     android:text="Dimensões"
                     android:textColor="@color/colorAccent"
                     android:textSize="14sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/landing_site_text2" />
+                    app:layout_constraintEnd_toEndOf="@+id/mission_text"
+                    app:layout_constraintStart_toStartOf="@+id/mission_text"
+                    app:layout_constraintTop_toBottomOf="@+id/launch_site_text" />
 
                 <TextView
                     android:id="@+id/dimensions_measurement_text"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:paddingStart="16dp"
                     android:text="1,5m x 2,3m x 1,6m"
                     android:textColor="@color/colorWhite"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/mission_text"
+                    app:layout_constraintStart_toStartOf="@+id/mission_text"
                     app:layout_constraintTop_toBottomOf="@+id/dimensions_text" />
 
                 <TextView
                     android:id="@+id/dimensions_hint_text"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:paddingStart="16dp"
                     android:text="altura x largura x comprimento"
                     android:textColor="@color/colorWhite"
                     android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/mission_text"
+                    app:layout_constraintStart_toStartOf="@+id/mission_text"
                     app:layout_constraintTop_toBottomOf="@+id/dimensions_measurement_text" />
 
                 <TextView
                     android:id="@+id/about_text"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="18dp"
+                    android:paddingStart="16dp"
                     android:text="Sobre"
                     android:textColor="@color/colorAccent"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/mission_text"
+                    app:layout_constraintStart_toStartOf="@+id/mission_text"
                     app:layout_constraintTop_toBottomOf="@+id/dimensions_hint_text" />
-
 
                 <TextView
                     android:id="@+id/mission_description_text"
@@ -263,16 +280,15 @@
                     android:fontFamily="@font/roboto"
                     android:paddingHorizontal="20dp"
                     android:paddingStart="16dp"
-                    android:text=" Parte da missão Mars Exploration Rovers da NASA, os gêmeos geologistas Spirit e Opportunity aterrisaram em lados opostos de Marte em janeiro de 2004. Com muito mais mobilidade que o rover Pathfinder de 1997, os exploradores robóticos viajaram por kilometros da superfície do planeta conduzindo geologia de campo e realizando observações atmosféricas.
-        \n\n O propósito primário de suas jornadas era procurar e caracterizar uma variedade de rochas e solos buscando por pistas de atividade de água em Marte. Os irmãos objetivaram sítios que poderiam ter sido afetados por água líquida no passado em lados opostos do planeta.
-        \n\n Spirit aterrisou na Cratera Gusev, possivelmente um antigo lago em uma gigante cratera de impacto, enquanto Opportunity foi destinado à Meridiani Planum, um local onde depósitos minerais sugeriam que Marte apresentou água em algum momento de sua história."
+                    android:text="Parte da missão Mars Exploration Rovers da NASA, os gêmeos geologistas Spirit e Opportunity aterrisaram em lados opostos de Marte em janeiro de 2004. Com muito mais mobilidade que o rover Pathfinder de 1997, os exploradores robóticos viajaram por kilometros da superfície do planeta conduzindo geologia de campo e realizando observações atmosféricas.\n\nO propósito primário de suas jornadas era procurar e caracterizar uma variedade de rochas e solos buscando por pistas de atividade de água em Marte. Os irmãos objetivaram sítios que poderiam ter sido afetados por água líquida no passado em lados opostos do planeta.\nSpirit aterrisou na Cratera Gusev, possivelmente um antigo lago em uma gigante cratera de impacto, enquanto Opportunity foi destinado à Meridiani Planum, um local onde depósitos minerais sugeriam que Marte apresentou água em algum momento de sua história."
                     android:textColor="@color/colorWhite"
                     android:textSize="16sp"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/status_text"
+                    app:layout_constraintStart_toStartOf="@id/mission_text"
                     app:layout_constraintTop_toBottomOf="@+id/about_text" />
 
                 <TextView
-                    android:id="@+id/about_text2"
+                    android:id="@+id/missao_concluida"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="18dp"
@@ -281,23 +297,23 @@
                     android:textColor="@color/colorAccent"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/mission_text"
+                    app:layout_constraintStart_toStartOf="@+id/mission_text"
                     app:layout_constraintTop_toBottomOf="@+id/mission_description_text" />
 
                 <TextView
-                    android:id="@+id/mission_description_text2"
+                    android:id="@+id/mission_accomplished"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
                     android:paddingHorizontal="20dp"
                     android:paddingStart="16dp"
-                    android:text=" Em maio de 2009, Spirit atolou em areia e passou 8 meses tentando se libertar quando foi declarado irrecuperável de sua obstrução e passou a realizar pesquisas científicas daquela posição estacionária. As comunicações com Spirit foram perdidas em 22 de março de 2010 e sua missão foi anunciada como concluída em 24 de maio de 2011.
-                    \n\n A missão de Opportunity é considerada uma das missões de maior sucesso da NASA, excedendo seu plano de operação em mais de 14 anos. Porém, graças a uma tempestade de areia planetária, as comunicações com Opportunity foram perdidas em 12 de junho de 2018 e, em 13 de fevereiro de 2019, sua missão foi oficializada como concluída.
-"
+                    android:text="Em maio de 2009, Spirit atolou em areia e passou 8 meses tentando se libertar quando foi declarado irrecuperável de sua obstrução e passou a realizar pesquisas científicas daquela posição estacionária. As comunicações com Spirit foram perdidas em 22 de março de 2010 e sua missão foi anunciada como concluída em 24 de maio de 2011.\n\nA missão de Opportunity é considerada uma das missões de maior sucesso da NASA, excedendo seu plano de operação em mais de 14 anos. Porém, graças a uma tempestade de areia planetária, as comunicações com Opportunity foram perdidas em 12 de junho de 2018 e, em 13 de fevereiro de 2019, sua missão foi oficializada como concluída."
                     android:textColor="@color/colorWhite"
                     android:textSize="16sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/about_text2" />
+                    app:layout_constraintEnd_toEndOf="@id/status_text"
+                    app:layout_constraintStart_toStartOf="@id/mission_text"
+                    app:layout_constraintTop_toBottomOf="@+id/missao_concluida" />
 
                 <TextView
                     android:id="@+id/reference_text"
@@ -310,8 +326,9 @@
                     android:textColor="@color/colorAccent"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/mission_description_text2" />
+                    app:layout_constraintEnd_toEndOf="@id/status_text"
+                    app:layout_constraintStart_toEndOf="@id/mission_text"
+                    app:layout_constraintTop_toBottomOf="@+id/mission_accomplished" />
 
                 <TextView
                     android:id="@+id/reference_link_text"
@@ -324,7 +341,7 @@
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/status_text"
                     app:layout_constraintTop_toBottomOf="@+id/reference_text" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
