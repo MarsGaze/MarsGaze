@@ -12,7 +12,9 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         Handler().postDelayed({
-            startActivity(Intent(this@SplashActivity, OnboardingActivity::class.java))
+            startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
+            // Limpamos o nosso planeta também, ok?
+            finish()
         }, 5000)
     }
 }

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rovers_navigation"
+    app:startDestination="@id/roversFragment">
+
+    <fragment
+        android:id="@+id/roversFragment"
+        android:name="com.digitalhouse.marsgaze.ui.RoversFragment"
+        android:label="RoversFragment"
+        tools:layout="@layout/fragment_rovers" >
+        <action
+            android:id="@+id/action_roversFragment_to_curiosityDetailFragment"
+            app:destination="@id/curiosityDetailFragment" />
+        <action
+            android:id="@+id/action_roversFragment_to_spOpDetailFragment"
+            app:destination="@id/spOpDetailFragment" />
+        <action
+            android:id="@+id/action_roversFragment_to_roversResultFragment"
+            app:destination="@id/roversResultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/curiosityDetailFragment"
+        android:name="com.digitalhouse.marsgaze.ui.CuriosityDetailFragment"
+        android:label="CuriosityDetailFragment"
+        tools:layout="@layout/fragment_curiosity_detail" />
+    <fragment
+        android:id="@+id/spOpDetailFragment"
+        android:name="com.digitalhouse.marsgaze.ui.SpOpDetailFragment"
+        android:label="SpOpDetailFragment"
+        tools:layout="@layout/fragment_sp_op_detail" />
+    <fragment
+        android:id="@+id/roversResultFragment"
+        android:name="com.digitalhouse.marsgaze.ui.RoversResultFragment"
+        android:label="fragment_rovers_result"
+        tools:layout="@layout/fragment_rovers_result" />
+
+</navigation>
