@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.digitalhouse.marsgaze">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,8 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.LoginActivity"></activity>
-        <activity android:name=".ui.OnboardingActivity2" />
+        <activity android:name=".ui.LoginActivity" />
         <activity android:name=".ui.OnboardingActivity" />
         <activity android:name=".ui.SplashActivity">
             <intent-filter>
@@ -19,7 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.NavigationActivity" />
         <activity android:name=".ui.MainActivity" />
+        <activity
+            android:name=".ui.RoversActivity"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="preloaded_fonts"
