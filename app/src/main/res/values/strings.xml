@@ -1,9 +1,18 @@
 <resources>
+    <!-- Onboarding, Login e Cadastro -->
     <string name="app_name">MarsGaze</string>
     <string name="tvBoasVindas">Seja bem-vindo!</string>
-    <string name="tvOnboarding">Conheça o nosso aplicativo MarsGaze e aprenda várias coisas sobre marte além de poder explorar ela através dos rovers.</string>
+<!--    Conheça o nosso aplicativo MarsGaze e aprenda várias coisas sobre marte além de poder explorar ela através dos rovers.-->
+    <string name="tvOnboarding">Conheça o MarsGaze e aprenda mais sobre Marte enquanto explora o planeta vermelho através dos nossos robôs!</string>
     <string name="tvOnboarding2">Então, pronto para explorar?</string>
     <string name="btnComecar">Começar</string>
+    <string name="htEmail">Email</string>
+    <string name="htSenha">Senha</string>
+    <string name="btnLogin">Login</string>
+    <string name="tvCadastro">Ainda não tem uma conta? Cadastre-se.</string>
+    <string name="htNome">Nome</string>
+    <string name="htRepeteSenha">Repetir Senha</string>
+    <string name="btnCadastro">Cadastrar</string>
 
     <!-- Welcome Page Resources -->
     <string name="welcomeUser">Saudações, %1$s!</string>
@@ -14,20 +23,12 @@
     <string name="welcomeRover">Descubra Marte pelos\nolhos dos rovers da\nNASA</string>
     <string name="welcomeInsight">Como está a\ntemperatura na\nsuperfície do planeta\nvermelho</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="htEmail">Email</string>
-    <string name="htSenha">Senha</string>
-    <string name="btnLogin">Login</string>
-    <string name="tvCadastro">Ainda não tem uma conta? Cadastre-se.</string>
-    <string name="htNome">Nome</string>
-    <string name="htRepeteSenha">Repetir Senha</string>
-    <string name="btnCadastro">Cadastrar</string>
 
     <!-- Profile Page Resources -->
-    <string name="profileEmail">email</string>
+    <string name="profileNome">Nome</string>
+    <string name="profileEmail">Email</string>
     <string name="profileEmailVisual">super.astro.nauta@nasa.gov</string>
-    <string name="profileAccountCreation">data de aterrissagem</string>
+    <string name="profileAccountCreation">Data de aterrissagem</string>
     <string name="profileAccountCreationVisual">01/10/1958</string>
     <string name="profileUserNameVisual">Desconhecido</string>
 
@@ -64,8 +65,8 @@
 
     //activity Curiosidades
     //Cabeçalho
-    <string name="titulo1">O que você precisa saber sobre o</string>
-    <string name="titulo2">Planeta vermelho</string>
+    <string name="titulo1">O que você precisa saber sobre</string>
+    <string name="titulo2">o Planeta vermelho</string>
     <string name="texto"> Marte é o quarto planeta do Sistema Solar, um mundo desértico e gelado, com 687 dias por ano, tem duas luas e é o segundo menor do Sistema Solar</string>
 
     //Corpo
@@ -125,7 +126,7 @@
     //texto sobre Happy Face
     <string name="happyFace">Happy Face</string>
     <string name="happyFaceTexto">Uma grande pilha de sedimentos em camadas na parte sul da cratera e vários regos paralelos é sinal de uma possível evidência de água líquida
-        na superfície marciana. Seu interior mostra uma superfície que é moldada por atividade eólica</string>
+        na superfície marciana. Seu interior mostra uma superfície que é moldada por atividade eólica.</string>
 
     //texto sobre a cratera Butterfly
     <string name="butterfly">Cratera Butterfly</string>
@@ -154,5 +155,11 @@
     <string name="infoImage">23 de Outubro, 14:36 \n
         FHAZ - Front Hazard Avoidance Camera \n
         Foto X</string>
+    <string name="tvRovers">Um rover marciano é um veículo motorizado automatizado capaz de impulsionar a si mesmo sobre a superfície do planeta.\n
+         Rovers examinam um território grande, podem ser direcionados a acidentes geográficos interessantes, e podem posicionar a si mesmos em lugares ensolarados para sobreviver aos meses de inverno.\n
+         Até hoje, os rovers mais bem-sucedidos foram/são os gêmeos Spirit e Opportunity, e o Curiosity.</string>
+    <string name="profileSenhaAtual">Senha atual</string>
+    <string name="profileSenhaAtualVisual">banana123</string>
+    <string name="btnEditar">Editar</string>
 
 </resources>

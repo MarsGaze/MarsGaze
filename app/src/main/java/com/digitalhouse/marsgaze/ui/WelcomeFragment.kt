@@ -32,7 +32,7 @@ class WelcomeFragment : Fragment() {
         }
 
         welcomeRover.setOnClickListener {
-            changePage(getString(R.string.navigationItemStartPage), R.id.roversFragment)
+            changePage(getString(R.string.navigationItemRover), R.id.roversFragment)
         }
     }
 

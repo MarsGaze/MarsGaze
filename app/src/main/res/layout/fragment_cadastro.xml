@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,146 +8,154 @@
     android:background="@color/colorPrimaryDark"
     tools:context=".ui.CadastroFragment">
 
+    <ImageButton
+        android:id="@+id/btnBackLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorTransparent"
+        android:src="@drawable/arrow_orange"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/logo_pequeno"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorPrimaryDark"
-        android:orientation="vertical">
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/rounded_otop_card"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4">
 
-        <ImageButton
-            android:id="@+id/btnBackLogin"
-            android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tiNome"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:background="@color/colorTransparent"
-            android:src="@drawable/arow_laranja" />
+            android:textColorHint="@color/colorWhite"
+            app:boxStrokeWidth="2dp">
 
-        <ImageView
-            android:id="@+id/imageView4"
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorAccentDark"
+                android:hint="@string/htNome"
+                android:textColor="@color/colorWhite" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tiEmail"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:textColorHint="@color/colorWhite"
+            app:boxStrokeWidth="2dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorAccentDark"
+                android:hint="@string/htEmail"
+                android:textColor="@color/colorWhite" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tiSenha"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:inputType="textPassword"
+            android:textColorHint="@color/colorWhite"
+            app:boxStrokeWidth="2dp"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/colorWhite">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorAccentDark"
+                android:hint="@string/htSenha"
+                android:textColor="@color/colorWhite" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tiRepeteSenha"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:inputType="textPassword"
+            android:textColorHint="@color/colorWhite"
+            app:boxStrokeWidth="2dp"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/colorWhite">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorAccentDark"
+                android:hint="@string/htRepeteSenha"
+                android:textColor="@color/colorWhite" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnCadastrar"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/round_button"
+            android:fontFamily="@font/source_sans_pro_bold"
+            android:text="@string/btnCadastro"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="24sp" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/logo_pequeno" />
+            android:layout_marginTop="26dp"
+            android:orientation="horizontal">
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="330dp"
-            android:layout_height="490dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="0dp"
-            android:background="@drawable/round_card"
-            android:orientation="vertical">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tiNome"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:textColorHint="@color/colorWhite"
-                app:boxStrokeWidth="2dp">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/htNome"
-                    android:textColor="@color/colorWhite"
-                    android:backgroundTint="@color/colorAccentDark"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tiEmail"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:textColorHint="@color/colorWhite"
-                app:boxStrokeWidth="2dp">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/htEmail"
-                    android:textColor="@color/colorWhite"
-                    android:backgroundTint="@color/colorAccentDark"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tiSenha"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:inputType="textPassword"
-                android:textColorHint="@color/colorWhite"
-                app:boxStrokeWidth="2dp"
-                app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@color/colorWhite">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/htSenha"
-                    android:textColor="@color/colorWhite"
-                    android:backgroundTint="@color/colorAccentDark"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tiRepeteSenha"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:inputType="textPassword"
-                android:textColorHint="@color/colorWhite"
-                app:boxStrokeWidth="2dp"
-                app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@color/colorWhite">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/htRepeteSenha"
-                    android:textColor="@color/colorWhite"
-                    android:backgroundTint="@color/colorAccentDark"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <Button
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="70dp"
-                android:layout_marginTop="40dp"
-                android:background="@drawable/round_button"
-                android:text="@string/btnCadastro"
-                android:textAllCaps="false"
-                android:textColor="@color/colorWhite"
-                android:textSize="20sp" />
-
-            <LinearLayout
+            <ImageButton
+                android:id="@+id/btnFacebook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="26dp"
-                android:orientation="horizontal">
+                android:layout_marginRight="20dp"
+                android:background="@color/colorTransparent"
+                android:src="@drawable/facebook" />
 
-                <ImageButton
-                    android:id="@+id/btnFacebook"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="20dp"
-                    android:background="@color/colorTransparent"
-                    android:src="@drawable/facebook" />
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorTransparent"
+                android:src="@drawable/google" />
 
-                <ImageButton
-                    android:id="@+id/imageButton3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorTransparent"
-                    android:src="@drawable/google" />
-
-            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

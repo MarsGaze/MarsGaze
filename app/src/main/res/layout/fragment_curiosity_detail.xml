@@ -38,8 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="200dp"
-        android:background="@drawable/round_card_dark"
-        android:backgroundTint="@color/colorPrimaryDark"
+        android:background="@drawable/round_button_blue"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,6 +60,7 @@
                     android:id="@+id/mission_text"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
                     android:paddingStart="16dp"
                     android:text="Missão"
                     android:textColor="@color/colorAccent"
@@ -90,6 +90,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="0dp"
+                    android:layout_marginTop="4dp"
                     android:paddingStart="10dp"
                     android:text="Status"
                     android:textColor="@color/colorAccent"
@@ -120,7 +121,7 @@
                     android:id="@+id/launch_text"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="18dp"
                     android:paddingStart="16dp"
                     android:text="Lançamento"
                     android:textColor="@color/colorAccent"
@@ -159,13 +160,14 @@
                     android:id="@+id/landing_text"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="18dp"
                     android:paddingStart="10dp"
-                    android:text="Atterissagem"
+                    android:text="Aterrissagem"
                     android:textColor="@color/colorAccent"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="@+id/status_text"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/status_text"
                     app:layout_constraintTop_toBottomOf="@+id/mission_status_text" />
 
@@ -200,7 +202,7 @@
                     android:id="@+id/dimensions_text"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="18dp"
                     android:paddingStart="16dp"
                     android:text="Dimensões"
                     android:textColor="@color/colorAccent"
@@ -239,7 +241,7 @@
                     android:id="@+id/about_text"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="18dp"
                     android:paddingStart="16dp"
                     android:text="Sobre"
                     android:textColor="@color/colorAccent"
@@ -256,7 +258,7 @@
                     android:fontFamily="@font/roboto"
                     android:paddingHorizontal="20dp"
                     android:paddingStart="16dp"
-                    android:text="Com 75 kilos de instrumentos científicos, Curiosity é o maior e mais qualificado rover já enviado para Marte. \n\nA jornada de mais de 500 milhões de kilometros até Marte busca investigar sua habitabilidade, estudando seu clima e geologia para verificar se o planeta já apresentou ou apresenta condições ambientais favoráveis à formas de vida. \n\nCuriosity coleta e analisa amostras de ar, rochas e solo (especialmente suas interações passadas com água), cuja química e estrutura são capazes de revelar a história do planeta.\n\nO Rover é capaz de escalar obstáculos e cobre uma distância aproximada de 30 metros por hora.\nSeu sistema de energia utiliza o calor proveniente do decaimento radioativo do plutônio para gerar eletricidade e já supera o requisito de vida útil do projeto de pelo menos um ano Marciano (687 dias Terrestres). \n\nEm dezembro de 2012, a missão de Curiosity foi estendida indefinidamente."
+                    android:text="Com 75 kilos de instrumentos científicos, Curiosity é o maior e mais qualificado rover já enviado para Marte. \n\nA jornada de mais de 500 milhões de kilometros até Marte busca investigar sua habitabilidade, estudando seu clima e geologia para verificar se o planeta já apresentou ou apresenta condições ambientais favoráveis à formas de vida. \n\nCuriosity coleta e analisa amostras de ar, rochas e solo (especialmente suas interações passadas com água), cuja química e estrutura são capazes de revelar a história do planeta.\n\nO Rover é capaz de escalar obstáculos e cobre uma distância aproximada de 30 metros por hora.\nSeu sistema de energia utiliza o calor proveniente do decaimento radioativo do plutônio para gerar eletricidade e já supera o requisito de vida útil do projeto de pelo menos um ano Marciano (687 dias Terrestres)."
                     android:textColor="@color/colorWhite"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="@id/status_text"
@@ -264,10 +266,38 @@
                     app:layout_constraintTop_toBottomOf="@+id/about_text" />
 
                 <TextView
+                    android:id="@+id/mission"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:paddingHorizontal="20dp"
+                    android:text="Missão concluída?"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/mission_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/mission_description_text" />
+
+                <TextView
+                    android:id="@+id/mission_end"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="20dp"
+                    android:text="Em dezembro de 2012, a missão de Curiosity foi estendida indefinidamente."
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/roboto"
+                    app:layout_constraintEnd_toEndOf="@+id/mission_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/mission"/>
+
+
+                <TextView
                     android:id="@+id/reference_text"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="20dp"
                     android:paddingEnd="20dp"
                     android:text="Saiba mais em"
                     android:textAlignment="viewEnd"
@@ -276,17 +306,19 @@
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="@id/status_text"
                     app:layout_constraintStart_toEndOf="@id/mission_text"
-                    app:layout_constraintTop_toBottomOf="@+id/mission_description_text" />
+                    app:layout_constraintTop_toBottomOf="@+id/mission_end" />
 
                 <TextView
                     android:id="@+id/reference_link_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
                     android:paddingEnd="20dp"
                     android:text="https://mars.nasa.gov/msl/"
                     android:textColor="@color/colorAccent"
                     android:textSize="16sp"
                     android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@id/status_text"
                     app:layout_constraintTop_toBottomOf="@+id/reference_text" />
 
