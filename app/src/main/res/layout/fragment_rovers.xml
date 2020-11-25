@@ -17,7 +17,8 @@
             android:name="com.digitalhouse.marsgaze.ui.ClassicToolbarFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginBottom="20dp"/>
 
         <TextView
             android:id="@+id/text_rover"
@@ -59,6 +60,7 @@
             android:id="@+id/rover_expandable_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:layout_marginBottom="16dp"
             android:backgroundTint="@color/colorPrimary"
             app:cardCornerRadius="10dp"
@@ -91,7 +93,7 @@
                     android:padding="@dimen/spacing_regular"
                     android:text="O que é um rover?"
                     android:textColor="@color/colorWhite"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -104,7 +106,7 @@
                     android:fontFamily="@font/roboto"
                     android:paddingHorizontal="@dimen/spacing_regular"
                     android:paddingBottom="@dimen/spacing_regular"
-                    android:text="@string/ipsumPlaceholder"
+                    android:text="@string/tvRovers"
                     android:textColor="@color/colorWhite"
                     android:textSize="16sp"
                     android:visibility="gone"
@@ -145,13 +147,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/spacing_regular"
                     android:layout_marginTop="@dimen/spacing_small"
-                    android:fontFamily="@font/roboto"
+                    android:fontFamily="@font/kanit_bold"
                     android:text="Curiosity"
                     android:textColor="@color/colorAccent"
-                    android:textSize="28sp"
+                    android:textSize="26sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
 
                 <TextView
                     android:id="@+id/mission_rover_card"
@@ -160,7 +163,7 @@
                     android:fontFamily="@font/roboto"
                     android:text="Mars Science Laboratory"
                     android:textColor="@color/colorWhite"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/rover_name_header"
                     app:layout_constraintTop_toBottomOf="@+id/rover_name_header" />
@@ -219,10 +222,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/spacing_regular"
                     android:layout_marginTop="@dimen/spacing_small"
-                    android:fontFamily="@font/roboto"
+                    android:fontFamily="@font/kanit_bold"
                     android:text="Spirit"
                     android:textColor="@color/colorAccent"
-                    android:textSize="28sp"
+                    android:textSize="26sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -234,7 +237,7 @@
                     android:fontFamily="@font/roboto"
                     android:text="Mars Exploration Rovers"
                     android:textColor="@color/colorWhite"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/name_rover_card2"
                     app:layout_constraintTop_toBottomOf="@+id/name_rover_card2" />
@@ -296,10 +299,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
-                    android:fontFamily="@font/roboto"
+                    android:fontFamily="@font/kanit_bold"
                     android:text="Opportunity"
                     android:textColor="@color/colorAccent"
-                    android:textSize="28sp"
+                    android:textSize="26sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -311,7 +314,7 @@
                     android:fontFamily="@font/roboto"
                     android:text="Mars Exploration Rovers"
                     android:textColor="@color/colorWhite"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/name_rover_card3"
                     app:layout_constraintTop_toBottomOf="@+id/name_rover_card3" />

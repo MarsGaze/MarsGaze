@@ -1,23 +1,18 @@
-    package com.digitalhouse.marsgaze.ui
+package com.digitalhouse.marsgaze.ui
 
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
-import android.view.InputQueue
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RadioGroup
-import android.widget.TextView
 import androidx.cardview.widget.CardView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.res.ResourcesCompat
+import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.AutoTransition
 import androidx.transition.TransitionManager
@@ -28,13 +23,9 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.digitalhouse.marsgaze.R
 import com.google.android.material.textfield.TextInputLayout
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import org.json.JSONArray
-import org.json.JSONObject
-import java.lang.Exception
 
-class RoversResultFragment : Fragment() {
+class RoversResultFragment : Fragment(), RoversImageAdapter.OnItemClickListener {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var imageAdapter: RoversImageAdapter
@@ -54,11 +45,6 @@ class RoversResultFragment : Fragment() {
         imageList = ArrayList()
         requestQueue = Volley.newRequestQueue(context)
         parseJson()
-
-        Handler(Looper.getMainLooper()).postDelayed({
-
-        }, 5000)
-
 
         // Setting expandable text click listener and behavior
         val expandableCard = view.findViewById<CardView>(R.id.filter_card)
@@ -90,14 +76,13 @@ class RoversResultFragment : Fragment() {
             }
         } // End expand button click listener
 
-
         return view
     }
 
     private fun parseJson(context: Context = requireContext()) {
 
         val url =
-            "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=200&page=1&api_key=aYqv4pRlxcPJ2jcv0E26dh8c1VFgF5FDIRKnMbwg"
+            "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=555&api_key=aYqv4pRlxcPJ2jcv0E26dh8c1VFgF5FDIRKnMbwg"
         val request = JsonObjectRequest(
             Request.Method.GET,
             url,
@@ -114,8 +99,9 @@ class RoversResultFragment : Fragment() {
 //                        Log.i("size", "${imageList.size}")
                     }
 
-                    imageAdapter = RoversImageAdapter(context, imageList)
+                    imageAdapter = RoversImageAdapter(context, imageList, this)
                     recyclerView.adapter = imageAdapter
+
 
                 } catch (e: Exception) {
                     e.printStackTrace()
@@ -123,6 +109,15 @@ class RoversResultFragment : Fragment() {
             }, Response.ErrorListener { error -> error.printStackTrace() })
 
         requestQueue.add(request)
+    }
+
+    override fun onItemClick(position: Int) {
+        val clickedItem: RoversImageItem = imageList[position]
+        view?.findNavController()?.navigate(
+            RoversResultFragmentDirections.actionRoversResultFragmentToImageDetailFragment2(
+                clickedItem.imageUrl
+            )
+        )
     }
 
 }
