@@ -50,10 +50,23 @@
         android:id="@+id/roversResultFragment"
         android:name="com.digitalhouse.marsgaze.ui.RoversResultFragment"
         android:label="fragment_rovers_result"
-        tools:layout="@layout/fragment_rovers_result" />
+        tools:layout="@layout/fragment_rovers_result" >
+        <action
+            android:id="@+id/action_roversResultFragment_to_imageDetailFragment2"
+            app:destination="@id/imageDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/curiosidadesFragment"
         android:name="com.digitalhouse.marsgaze.ui.CuriosidadesFragment"
         android:label="fragment_curiosidades"
         tools:layout="@layout/fragment_curiosidades" />
+    <fragment
+        android:id="@+id/imageDetailFragment"
+        android:name="com.digitalhouse.marsgaze.ui.ImageDetailFragment"
+        android:label="fragment_image_detail"
+        tools:layout="@layout/fragment_image_detail" >
+        <argument
+            android:name="imageUrl"
+            app:argType="string" />
+    </fragment>
 </navigation>
