@@ -54,19 +54,5 @@
         <item name="android:textColor">@color/colorWhite</item>
     </style>
 
-    <style name="MaterialTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-
-        <item name="colorSecondary">@color/colorAccentDark</item>
-        <item name="colorControlNormal">@color/colorAccentDark</item>
-        <item name="colorControlHighlight">@color/colorAccentDark</item>
-        <item name="colorControlActivated">@color/colorAccentDark</item>
-        <item name="colorOnSurface">@color/colorAccentDark</item>
-        <item name="boxStrokeColor">@color/filled_stroke_disabled</item>
-        <item name="android:textColor">@color/colorWhite</item>
-
-    </style>
 
 </resources>
