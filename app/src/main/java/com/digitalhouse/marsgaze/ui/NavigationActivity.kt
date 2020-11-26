@@ -1,7 +1,6 @@
 package com.digitalhouse.marsgaze.ui
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -10,18 +9,39 @@ import kotlinx.android.synthetic.main.navigation_drawer.*
 
 class NavigationActivity : AppCompatActivity() {
     // Controla em qual parte estamos para evitar uma chamada redundante.
-    var falseCall = ""
+    private lateinit var falseCall: String
+
+    private lateinit var defaultPage: String
+    // Controla quantas páginas estão abertas
+    private var pages = 0;
+    // Ajuda na verificação do controle de páginas, evitando falsas adições.
+    private var withToolbarPage = true
 
     lateinit var navControl: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        defaultPage = getString(R.string.navigationItemStartPage)
+        falseCall = defaultPage
+
         setContentView(R.layout.navigation_drawer)
     }
 
     override fun onStart() {
         super.onStart()
+
+        navControl = findNavController(R.id.nav_host_fragment)
+
+        navControl.addOnDestinationChangedListener() { _, _, _ ->
+            // Toda iteração passa por aqui. Então quando voltamos o stack passamos aqui novamente
+            // logo deduzimos duas vezes dos números de páginas, uma para entrar e outra do
+            // aparecimento de outra tela.
+            ++pages
+            if (pages > 2) {
+                withToolbarPage = false
+            }
+        }
 
         navControl = findNavController(R.id.nav_host_fragment)
         nav_view.setNavigationItemSelectedListener {
@@ -75,10 +95,41 @@ class NavigationActivity : AppCompatActivity() {
     fun changePage(title: String, res: Int) {
         if (falseCall != title) {
             falseCall = title
-            navControl.popBackStack()
-            navControl.navigate(res)
+            when (title) {
+                getString(R.string.navigationItemStartPage) ->  {
+                    withToolbarPage = true
+                    navControl.popBackStack()
+                    pages -= 2
+                }
+                else -> {
+                    withToolbarPage = true
+                    if (pages == 1) {
+                        navControl.navigate(res)
+                    } else {
+                        pages -= 2
+                        navControl.popBackStack()
+                        navControl.navigate(res)
+                    }
+                }
+            }
         }
 
+        // Mesmo com uma iteração repetida fechamos o drawer.
         drawer_layout.close()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+
+        // Evita problemas na hora de voltar quando temos telas de outros fragmentos
+        // Não devemos mexer na navegação das outras telas afinal.
+        if (pages > 3 && !withToolbarPage) {
+            pages -= 2
+        } else {
+            pages -= 2
+            if (pages == 1) {
+                falseCall = defaultPage
+            }
+        }
     }
 }
