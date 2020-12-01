@@ -1,34 +1,39 @@
 package com.digitalhouse.marsgaze.ui
-
+// pew, pew, pew
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewConfiguration
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import com.digitalhouse.marsgaze.R
+import com.digitalhouse.marsgaze.databinding.FragmentImageDetailBinding
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_image_detail.*
 
 class ImageDetailFragment : Fragment() {
-
-    val args: ImageDetailFragmentArgs by navArgs()
-
+    private val args: ImageDetailFragmentArgs by navArgs()
+    private lateinit var binding: FragmentImageDetailBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+        binding = FragmentImageDetailBinding.inflate(inflater, container, false)
+
         val imageUrl = args.imageUrl
+        val sol = "Sol ${args.sol}"
+        val cameraText = "${args.cameraAbrr} - ${args.cameraFull}"
+        val earthDate = "Data: ${args.earthDate}"
 
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_image_detail, container, false)
+        binding.tvInfoSol.text = sol
+        binding.tvInfoImgCamera.text = cameraText
+        binding.tvInfoImgEarthDate.text = earthDate
 
-        val detailImageView: ImageView = view.findViewById(R.id.iv_fullImage)
+        val detailImageView: ImageView = binding.ivFullImage
         Picasso.get().load(imageUrl).fit().centerInside().into(detailImageView)
 
-        return view
+        return binding.root
     }
 
 }

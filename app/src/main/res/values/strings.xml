@@ -152,9 +152,6 @@
 
     //fragment Fullscreen Image
     <string name="anoSol">Sol 999</string>
-    <string name="infoImage">23 de Outubro, 14:36 \n
-        FHAZ - Front Hazard Avoidance Camera \n
-        Foto X</string>
     <string name="tvRovers">Um rover marciano é um veículo motorizado automatizado capaz de impulsionar a si mesmo sobre a superfície do planeta.\n
          Rovers examinam um território grande, podem ser direcionados a acidentes geográficos interessantes, e podem posicionar a si mesmos em lugares ensolarados para sobreviver aos meses de inverno.\n
          Até hoje, os rovers mais bem-sucedidos foram/são os gêmeos Spirit e Opportunity, e o Curiosity.</string>

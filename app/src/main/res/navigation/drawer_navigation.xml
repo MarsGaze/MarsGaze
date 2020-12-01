@@ -54,6 +54,9 @@
         <action
             android:id="@+id/action_roversResultFragment_to_imageDetailFragment2"
             app:destination="@id/imageDetailFragment" />
+        <argument
+            android:name="rover"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/curiosidadesFragment"
@@ -67,6 +70,18 @@
         tools:layout="@layout/fragment_image_detail" >
         <argument
             android:name="imageUrl"
+            app:argType="string" />
+        <argument
+            android:name="sol"
+            app:argType="string" />
+        <argument
+            android:name="cameraAbrr"
+            app:argType="string" />
+        <argument
+            android:name="cameraFull"
+            app:argType="string" />
+        <argument
+            android:name="earthDate"
             app:argType="string" />
     </fragment>
 </navigation>

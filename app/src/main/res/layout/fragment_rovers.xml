@@ -12,14 +12,6 @@
         android:layout_height="wrap_content"
         android:paddingBottom="16dp">
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/toolbar"
-            android:name="com.digitalhouse.marsgaze.ui.ClassicToolbarFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginBottom="20dp"/>
-
         <TextView
             android:id="@+id/text_rover"
             android:layout_width="0dp"
@@ -39,7 +31,7 @@
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toEndOf="@+id/rover_expandable_text"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/toolbar"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <ImageView
@@ -60,13 +52,12 @@
             android:id="@+id/rover_expandable_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:backgroundTint="@color/colorPrimary"
             app:cardCornerRadius="10dp"
             app:layout_constraintBottom_toTopOf="@+id/curiosity_card"
             app:layout_constraintEnd_toEndOf="@+id/vector_rover"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/text_rover"
             app:layout_constraintTop_toBottomOf="@+id/text_rover">
 
@@ -142,7 +133,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/rover_name_header"
+                    android:id="@+id/name_curiosity_card"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/spacing_regular"
@@ -153,11 +144,10 @@
                     android:textSize="26sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/mission_rover_card"
+                    android:id="@+id/mission_curiosity_card"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
@@ -165,8 +155,8 @@
                     android:textColor="@color/colorWhite"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@+id/rover_name_header"
-                    app:layout_constraintTop_toBottomOf="@+id/rover_name_header" />
+                    app:layout_constraintStart_toStartOf="@+id/name_curiosity_card"
+                    app:layout_constraintTop_toBottomOf="@+id/name_curiosity_card" />
 
                 <Button
                     android:id="@+id/info_button_curiosity_card"
@@ -176,7 +166,7 @@
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <Button
-                    android:id="@+id/right_button_curiosity_card"
+                    android:id="@+id/photos_button_curiosity_card"
                     style="@style/AppTheme.RoverCard"
                     android:layout_height="40dp"
                     android:layout_marginEnd="@dimen/spacing_small"
@@ -202,7 +192,7 @@
             app:layout_constraintTop_toBottomOf="@+id/curiosity_card">
 
             <ImageView
-                android:id="@+id/portrait_sp_op_card"
+                android:id="@+id/portrait_sp_card"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
@@ -217,7 +207,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/name_rover_card2"
+                    android:id="@+id/name_sp_card"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/spacing_regular"
@@ -231,7 +221,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/mission_rover_card2"
+                    android:id="@+id/mission_sp_card"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
@@ -239,8 +229,8 @@
                     android:textColor="@color/colorWhite"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@+id/name_rover_card2"
-                    app:layout_constraintTop_toBottomOf="@+id/name_rover_card2" />
+                    app:layout_constraintStart_toStartOf="@+id/name_sp_card"
+                    app:layout_constraintTop_toBottomOf="@+id/name_sp_card" />
 
                 <Button
                     android:id="@+id/info_button_sp_card"
@@ -254,7 +244,7 @@
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <Button
-                    android:id="@+id/right_button_sp_op_card2"
+                    android:id="@+id/photos_button_sp_card"
                     style="@style/AppTheme.RoverCard"
                     android:layout_height="40dp"
                     android:layout_marginEnd="@dimen/spacing_small"
@@ -279,7 +269,7 @@
             app:layout_constraintTop_toBottomOf="@+id/sp_card">
 
             <ImageView
-                android:id="@+id/portrait_rover_card3"
+                android:id="@+id/portrait_op_card"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
@@ -294,7 +284,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/name_rover_card3"
+                    android:id="@+id/name_op_card"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -308,7 +298,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/mission_rover_card3"
+                    android:id="@+id/mission_op_card"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
@@ -316,8 +306,8 @@
                     android:textColor="@color/colorWhite"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@+id/name_rover_card3"
-                    app:layout_constraintTop_toBottomOf="@+id/name_rover_card3" />
+                    app:layout_constraintStart_toStartOf="@+id/name_op_card"
+                    app:layout_constraintTop_toBottomOf="@+id/name_op_card" />
 
                 <Button
                     android:id="@+id/info_button_op_card"
@@ -331,7 +321,7 @@
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <Button
-                    android:id="@+id/right_button_rover_card3"
+                    android:id="@+id/photos_button_op_card"
                     style="@style/AppTheme.RoverCard"
                     android:layout_height="40dp"
                     android:layout_marginEnd="@dimen/spacing_small"
@@ -346,4 +336,5 @@
         </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </ScrollView>

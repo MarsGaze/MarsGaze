@@ -1,62 +1,118 @@
 package com.digitalhouse.marsgaze.ui
-
-import android.content.Context
+// pew, pew, pew
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.RadioGroup
-import androidx.cardview.widget.CardView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.AutoTransition
 import androidx.transition.TransitionManager
-import com.android.volley.Request
-import com.android.volley.RequestQueue
-import com.android.volley.Response
-import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.Volley
 import com.digitalhouse.marsgaze.R
-import com.google.android.material.textfield.TextInputLayout
-import org.json.JSONArray
+import com.digitalhouse.marsgaze.adapters.RoversImageAdapter
+import com.digitalhouse.marsgaze.databinding.FragmentRoversResultBinding
+import com.digitalhouse.marsgaze.objects.RoverPhoto
+import com.digitalhouse.marsgaze.objects.RoverResponse
+import com.digitalhouse.marsgaze.services.MarsRoversPhotosService
+import com.digitalhouse.marsgaze.utils.hideKeyboard
+import com.digitalhouse.marsgaze.viewmodels.RoversResultViewModel
+import java.util.*
 
 class RoversResultFragment : Fragment(), RoversImageAdapter.OnItemClickListener {
+    private val args: RoversResultFragmentArgs by navArgs()
+    private val viewModel: RoversResultViewModel by viewModels() {
+        object : ViewModelProvider.Factory {
+            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+                return RoversResultViewModel(MarsRoversPhotosService.create()) as T
+            }
+        }
+    }
 
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var imageAdapter: RoversImageAdapter
-    private lateinit var imageList: ArrayList<RoversImageItem>
-    private lateinit var requestQueue: RequestQueue
+    private lateinit var binding: FragmentRoversResultBinding
+    private lateinit var imageList: RoverResponse
+    private lateinit var roverParameter: String
+    private lateinit var solParameter: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_rovers_result, container, false)
+    ): View {
+        binding = FragmentRoversResultBinding.inflate(inflater, container, false)
 
-        recyclerView = view.findViewById(R.id.recycler_view)
+        // Sets listener and behavior for "Filtrar" expandable menu and button
+        setExpandableFilterMenuClickListener()
+        setFilterButtonClickListener()
+
+        imageList = RoverResponse(listOf())
+        roverParameter = args.rover
+
+        val imageAdapter: RoversImageAdapter = RoversImageAdapter(imageList, this)
+        val recyclerView = binding.rvRoversResult
         recyclerView.layoutManager = GridLayoutManager(context, 2)
+        recyclerView.adapter = imageAdapter
 
-        imageList = ArrayList()
-        requestQueue = Volley.newRequestQueue(context)
-        parseJson()
+        viewModel.photoList.observe(viewLifecycleOwner) {
+            Log.i("RoversResultFragment", it.toString())
+            imageList = it
+            imageAdapter.adapterImageList = imageList
+            recyclerView.adapter = imageAdapter
 
-        // Setting expandable text click listener and behavior
-        val expandableCard = view.findViewById<CardView>(R.id.filter_card)
-        val expandButton = view.findViewById<ImageView>(R.id.expand_button)
-        val hiddenRadio = view.findViewById<RadioGroup>(R.id.radioGroup)
-        val hiddenTextInput = view.findViewById<TextInputLayout>(R.id.filledTextField)
+            if (imageList.photos.isEmpty()) {
+                Toast.makeText(
+                    context,
+                    """Não foram encontradas imagens de ${roverParameter.capitalize(Locale.ROOT)} no Sol $solParameter.
+                        |Alternativamente, buscamos as últimas imagens disponíveis.""".trimMargin(),
+                    Toast.LENGTH_LONG
+                ).show()
+
+                viewModel.getLatestRoverPhotos(roverParameter)
+            } else {
+                solParameter = imageList.photos[0].sol.toString()
+            }
+
+            binding.inputSol.setText(solParameter)
+        }
+
+        if (!this::solParameter.isInitialized) {
+            viewModel.getLatestRoverPhotos(roverParameter)
+        }
+
+        return binding.root
+    }
+
+    override fun onItemClick(position: Int) {
+        val clickedItem: RoverPhoto = imageList.photos[position]
+        findNavController(this).navigate(
+            RoversResultFragmentDirections.actionRoversResultFragmentToImageDetailFragment2(
+                clickedItem.imageUrl,
+                solParameter,
+                clickedItem.camera.abbrName,
+                clickedItem.camera.fullName,
+                clickedItem.earthDate
+            )
+        )
+    }
+
+    private fun setExpandableFilterMenuClickListener() {
+        val expandableCard = binding.filterCard
+        val expandButton = binding.expandButton
+        val hiddenRadio = binding.radioGroup
+        val hiddenTextInput = binding.filledTextField
+        val filterButton = binding.buttonFilter
 
         expandButton.setOnClickListener {
             when (hiddenRadio.visibility) {
                 View.VISIBLE -> {
                     hiddenRadio.visibility = View.GONE
                     hiddenTextInput.visibility = View.GONE
+                    filterButton.visibility = View.GONE
                     TransitionManager.beginDelayedTransition(
                         expandableCard,
                         AutoTransition()
@@ -69,55 +125,38 @@ class RoversResultFragment : Fragment(), RoversImageAdapter.OnItemClickListener 
                         expandableCard,
                         AutoTransition()
                     )
+
+                    when (roverParameter) {
+                        "curiosity" -> hiddenRadio.check(R.id.radio_curiosity)
+                        "spirit" -> hiddenRadio.check(R.id.radio_spirit)
+                        "opportunity" -> hiddenRadio.check(R.id.radio_opportunity)
+                    }
+
                     expandButton.setImageResource(R.drawable.ic_arrow_up_white)
                     hiddenRadio.visibility = View.VISIBLE
                     hiddenTextInput.visibility = View.VISIBLE
+                    filterButton.visibility = View.VISIBLE
                 }
             }
-        } // End expand button click listener
+        }
+    } // End setExpandableFilterClickListener()
 
-        return view
-    }
+    private fun setFilterButtonClickListener() {
+        binding.buttonFilter.setOnClickListener {
+            solParameter = binding.inputSol.text.toString()
+            roverParameter = when (binding.radioGroup.checkedRadioButtonId) {
+                R.id.radio_spirit -> "spirit"
+                R.id.radio_opportunity -> "opportunity"
+                R.id.radio_curiosity -> "curiosity"
+                else -> roverParameter
+            }
 
-    private fun parseJson(context: Context = requireContext()) {
+            if (solParameter.isBlank()) viewModel.getLatestRoverPhotos(roverParameter)
+            else viewModel.getRoverPhotos(roverParameter, solParameter.toInt())
 
-        val url =
-            "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=555&api_key=aYqv4pRlxcPJ2jcv0E26dh8c1VFgF5FDIRKnMbwg"
-        val request = JsonObjectRequest(
-            Request.Method.GET,
-            url,
-            null,
-            { response ->
-                try {
-                    val jsonArray: JSONArray = response.getJSONArray("photos")
-
-                    for (i in 0 until jsonArray.length()) {
-                        val photo = jsonArray.getJSONObject(i)
-                        val url: String = photo.getString("img_src").replace("http:", "https:")
-//                        Log.i("url:", url)
-                        imageList.add(RoversImageItem(url))
-//                        Log.i("size", "${imageList.size}")
-                    }
-
-                    imageAdapter = RoversImageAdapter(context, imageList, this)
-                    recyclerView.adapter = imageAdapter
-
-
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
-            }, Response.ErrorListener { error -> error.printStackTrace() })
-
-        requestQueue.add(request)
-    }
-
-    override fun onItemClick(position: Int) {
-        val clickedItem: RoversImageItem = imageList[position]
-        view?.findNavController()?.navigate(
-            RoversResultFragmentDirections.actionRoversResultFragmentToImageDetailFragment2(
-                clickedItem.imageUrl
-            )
-        )
+            hideKeyboard()
+            binding.expandButton.performClick()
+        }
     }
 
 }
