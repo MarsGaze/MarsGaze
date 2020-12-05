@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/roversFragment"
-        android:name="com.digitalhouse.marsgaze.ui.RoversFragment"
+        android:name="com.digitalhouse.marsgaze.ui.rovers.RoversFragment"
         android:label="RoversFragment"
         tools:layout="@layout/fragment_rovers" >
         <action
@@ -38,17 +38,17 @@
     </fragment>
     <fragment
         android:id="@+id/curiosityDetailFragment"
-        android:name="com.digitalhouse.marsgaze.ui.CuriosityDetailFragment"
+        android:name="com.digitalhouse.marsgaze.ui.rovers.CuriosityDetailFragment"
         android:label="CuriosityDetailFragment"
         tools:layout="@layout/fragment_curiosity_detail" />
     <fragment
         android:id="@+id/spOpDetailFragment"
-        android:name="com.digitalhouse.marsgaze.ui.SpOpDetailFragment"
+        android:name="com.digitalhouse.marsgaze.ui.rovers.SpOpDetailFragment"
         android:label="SpOpDetailFragment"
         tools:layout="@layout/fragment_sp_op_detail" />
     <fragment
         android:id="@+id/roversResultFragment"
-        android:name="com.digitalhouse.marsgaze.ui.RoversResultFragment"
+        android:name="com.digitalhouse.marsgaze.ui.rovers.RoversResultFragment"
         android:label="fragment_rovers_result"
         tools:layout="@layout/fragment_rovers_result" >
         <action
@@ -65,7 +65,7 @@
         tools:layout="@layout/fragment_curiosidades" />
     <fragment
         android:id="@+id/imageDetailFragment"
-        android:name="com.digitalhouse.marsgaze.ui.ImageDetailFragment"
+        android:name="com.digitalhouse.marsgaze.ui.rovers.RoversPhotoDetailFragment"
         android:label="fragment_image_detail"
         tools:layout="@layout/fragment_image_detail" >
         <argument

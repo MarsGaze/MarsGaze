@@ -1,4 +1,4 @@
-package com.digitalhouse.marsgaze.ui
+package com.digitalhouse.marsgaze.ui.rovers
 // pew, pew, pew
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,6 +11,7 @@ import androidx.transition.AutoTransition
 import androidx.transition.TransitionManager
 import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.databinding.FragmentRoversBinding
+import com.digitalhouse.marsgaze.ui.rovers.RoversFragmentDirections
 
 class RoversFragment : Fragment() {
 
@@ -38,33 +39,45 @@ class RoversFragment : Fragment() {
     private fun setInfoButtonsListeners() {
 
         // Curiosity "SAIBA MAIS"
-        binding.infoButtonCuriosityCard.setOnClickListener { View ->
-            findNavController(this).navigate(R.id.action_roversFragment_to_curiosityDetailFragment)
+        binding.infoButtonCuriosityCard.setOnClickListener {
+            navController.navigate(R.id.action_roversFragment_to_curiosityDetailFragment)
         }
 
         // Spirit "SAIBA MAIS"
-        binding.infoButtonSpCard.setOnClickListener { View ->
-            findNavController(this).navigate(R.id.action_roversFragment_to_spOpDetailFragment)
+        binding.infoButtonSpCard.setOnClickListener {
+            navController.navigate(R.id.action_roversFragment_to_spOpDetailFragment)
         }
 
         // Opportunity "SAIBA MAIS"
-        binding.infoButtonOpCard.setOnClickListener { View ->
-            findNavController(this).navigate(R.id.action_roversFragment_to_spOpDetailFragment)
+        binding.infoButtonOpCard.setOnClickListener {
+            navController.navigate(R.id.action_roversFragment_to_spOpDetailFragment)
         }
     }
 
     private fun setPhotosButtonsListeners() {
 
         binding.photosButtonCuriosityCard.setOnClickListener {
-            navController.navigate(RoversFragmentDirections.actionRoversFragmentToRoversResultFragment("curiosity"))
+            navController.navigate(
+                RoversFragmentDirections.actionRoversFragmentToRoversResultFragment(
+                    "curiosity"
+                )
+            )
         }
 
         binding.photosButtonSpCard.setOnClickListener {
-            navController.navigate(RoversFragmentDirections.actionRoversFragmentToRoversResultFragment("spirit"))
+            navController.navigate(
+                RoversFragmentDirections.actionRoversFragmentToRoversResultFragment(
+                    "spirit"
+                )
+            )
         }
 
         binding.photosButtonOpCard.setOnClickListener {
-            navController.navigate(RoversFragmentDirections.actionRoversFragmentToRoversResultFragment("opportunity"))
+            navController.navigate(
+                RoversFragmentDirections.actionRoversFragmentToRoversResultFragment(
+                    "opportunity"
+                )
+            )
         }
     }
 
@@ -73,6 +86,11 @@ class RoversFragment : Fragment() {
         val expandButton = binding.roverExpandButton
         val hiddenText = binding.hiddenText
 
+        /**
+         * Animated the arrow rotation instead of replacing with another drawable.
+         * TODO: Delete drawable/ic_arrow_up_white
+         *
+         */
         expandButton.setOnClickListener {
             when (hiddenText.visibility) {
                 View.VISIBLE -> {
@@ -81,7 +99,7 @@ class RoversFragment : Fragment() {
                         expandableText,
                         AutoTransition()
                     )
-                    expandButton.setImageResource(R.drawable.ic_arrow_down_white)
+                    expandButton.animate().rotationX(0F)
                 }
 
                 else -> {
@@ -89,7 +107,7 @@ class RoversFragment : Fragment() {
                         expandableText,
                         AutoTransition()
                     )
-                    expandButton.setImageResource(R.drawable.ic_arrow_up_white)
+                    expandButton.animate().rotationX(180F)
                     hiddenText.visibility = View.VISIBLE
                 }
             }

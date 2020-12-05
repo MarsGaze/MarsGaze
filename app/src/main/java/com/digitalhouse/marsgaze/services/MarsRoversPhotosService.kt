@@ -1,7 +1,6 @@
 package com.digitalhouse.marsgaze.services
 
-import com.digitalhouse.marsgaze.objects.RoverPhoto
-import com.digitalhouse.marsgaze.objects.RoverResponse
+import com.digitalhouse.marsgaze.models.rovers.RoverResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.logging.HttpLoggingInterceptor.Level
@@ -13,19 +12,23 @@ import retrofit2.http.Query
 
 private const val API_KEY = "aYqv4pRlxcPJ2jcv0E26dh8c1VFgF5FDIRKnMbwg"
 
-// https://api.nasa.gov/mars-photos/api/v1/rovers/{rover}/photos?api_key=API_KEY
-
 /**
  * Used to connect to the Mars Rover Photos API
  */
 interface MarsRoversPhotosService {
 
+    /**
+     * We need a different endpoint to fetch the latest photos from a rover.
+     */
     @GET("{rover}/latest_photos")
     suspend fun getLatestPhotos(
         @Path("rover") rover: String,
         @Query("api_key") api_key: String = API_KEY
     ): RoverResponse
 
+    /**
+     * Fetches photos from a single rover queried by martian sol
+     */
     @GET("{rover}/photos")
     suspend fun getPhotos(
         @Path("rover") rover: String,
@@ -37,13 +40,20 @@ interface MarsRoversPhotosService {
         private const val BASE_URL = "https://api.nasa.gov/mars-photos/api/v1/rovers/"
 
         fun create(): MarsRoversPhotosService {
-            val logger =
-                HttpLoggingInterceptor().apply { level = Level.BASIC }
+
+            /**
+             * Basic OkHttp interceptor which logs request and response data
+             * https://square.github.io/okhttp/interceptors/
+             *
+             */
+            val logger = HttpLoggingInterceptor().apply { level = Level.BASIC }
+
 
             val client = OkHttpClient.Builder()
                 .addInterceptor(logger)
                 .build()
 
+            // Default
             return Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(client)

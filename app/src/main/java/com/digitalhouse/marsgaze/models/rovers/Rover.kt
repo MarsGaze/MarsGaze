@@ -1,4 +1,4 @@
-package com.digitalhouse.marsgaze.objects
+package com.digitalhouse.marsgaze.models.rovers
 
 import com.google.gson.annotations.SerializedName
 

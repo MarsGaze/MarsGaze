@@ -1,10 +1,9 @@
-package com.digitalhouse.marsgaze.objects
+package com.digitalhouse.marsgaze.models.rovers
 
 import com.google.gson.annotations.SerializedName
 
 /**
- * Data class that represents the camera associated with a particular
- * photo from Mars Rover Photos.
+ * Data class that represents the camera associated with a photo from Mars Rover Photos.
  *
  */
 data class RoverCamera(

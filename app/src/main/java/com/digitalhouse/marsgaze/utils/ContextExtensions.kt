@@ -6,6 +6,11 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 
+/**
+ * This file contains extension functions for Context.
+ * You can call these functions from inside your fragment or activity.
+ *
+ */
 fun Fragment.hideKeyboard() {
     view?.let { activity?.hideKeyboard(it) }
 }

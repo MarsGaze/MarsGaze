@@ -1,7 +1,6 @@
-package com.digitalhouse.marsgaze.ui
-// pew, pew, pew
+package com.digitalhouse.marsgaze.ui.rovers
+
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,16 +15,16 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.transition.AutoTransition
 import androidx.transition.TransitionManager
 import com.digitalhouse.marsgaze.R
-import com.digitalhouse.marsgaze.adapters.RoversImageAdapter
+import com.digitalhouse.marsgaze.adapters.RoversResultAdapter
 import com.digitalhouse.marsgaze.databinding.FragmentRoversResultBinding
-import com.digitalhouse.marsgaze.objects.RoverPhoto
-import com.digitalhouse.marsgaze.objects.RoverResponse
+import com.digitalhouse.marsgaze.models.rovers.RoverPhoto
+import com.digitalhouse.marsgaze.models.rovers.RoverResponse
 import com.digitalhouse.marsgaze.services.MarsRoversPhotosService
 import com.digitalhouse.marsgaze.utils.hideKeyboard
 import com.digitalhouse.marsgaze.viewmodels.RoversResultViewModel
 import java.util.*
 
-class RoversResultFragment : Fragment(), RoversImageAdapter.OnItemClickListener {
+class RoversResultFragment : Fragment(), RoversResultAdapter.OnItemClickListener {
     private val args: RoversResultFragmentArgs by navArgs()
     private val viewModel: RoversResultViewModel by viewModels() {
         object : ViewModelProvider.Factory {
@@ -35,7 +34,7 @@ class RoversResultFragment : Fragment(), RoversImageAdapter.OnItemClickListener 
         }
     }
 
-    private lateinit var binding: FragmentRoversResultBinding
+    private lateinit var binding: FragmentRoversResultBinding // replaces kotlin synthetics
     private lateinit var imageList: RoverResponse
     private lateinit var roverParameter: String
     private lateinit var solParameter: String
@@ -53,17 +52,18 @@ class RoversResultFragment : Fragment(), RoversImageAdapter.OnItemClickListener 
         imageList = RoverResponse(listOf())
         roverParameter = args.rover
 
-        val imageAdapter: RoversImageAdapter = RoversImageAdapter(imageList, this)
+        val resultAdapter = RoversResultAdapter(imageList, this)
         val recyclerView = binding.rvRoversResult
         recyclerView.layoutManager = GridLayoutManager(context, 2)
-        recyclerView.adapter = imageAdapter
+        recyclerView.adapter = resultAdapter
 
+        // TODO: Check best practices
         viewModel.photoList.observe(viewLifecycleOwner) {
-            Log.i("RoversResultFragment", it.toString())
             imageList = it
-            imageAdapter.adapterImageList = imageList
-            recyclerView.adapter = imageAdapter
+            resultAdapter.adapterImageList = imageList
+            recyclerView.adapter = resultAdapter
 
+            // Behavior if query returns no photos -> get latest photos instead
             if (imageList.photos.isEmpty()) {
                 Toast.makeText(
                     context,
@@ -80,6 +80,7 @@ class RoversResultFragment : Fragment(), RoversImageAdapter.OnItemClickListener 
             binding.inputSol.setText(solParameter)
         }
 
+        // Self-explanatory
         if (!this::solParameter.isInitialized) {
             viewModel.getLatestRoverPhotos(roverParameter)
         }
@@ -87,6 +88,11 @@ class RoversResultFragment : Fragment(), RoversImageAdapter.OnItemClickListener 
         return binding.root
     }
 
+    /**
+     * Sets click behavior for photo items.
+     * This function is used by the adapter.
+     *
+     */
     override fun onItemClick(position: Int) {
         val clickedItem: RoverPhoto = imageList.photos[position]
         findNavController(this).navigate(
@@ -100,7 +106,10 @@ class RoversResultFragment : Fragment(), RoversImageAdapter.OnItemClickListener 
         )
     }
 
+    // Shrinks and expands filter menu
     private fun setExpandableFilterMenuClickListener() {
+
+        // TODO: Retry grouping views
         val expandableCard = binding.filterCard
         val expandButton = binding.expandButton
         val hiddenRadio = binding.radioGroup
@@ -117,7 +126,7 @@ class RoversResultFragment : Fragment(), RoversImageAdapter.OnItemClickListener 
                         expandableCard,
                         AutoTransition()
                     )
-                    expandButton.setImageResource(R.drawable.ic_arrow_down_white)
+                    expandButton.animate().rotationX(0F)
                 }
 
                 else -> {
@@ -126,13 +135,17 @@ class RoversResultFragment : Fragment(), RoversImageAdapter.OnItemClickListener 
                         AutoTransition()
                     )
 
+                    /**
+                     * Keeps the correct radio checked.
+                     * TODO: There might be a better way to do this.
+                     */
                     when (roverParameter) {
                         "curiosity" -> hiddenRadio.check(R.id.radio_curiosity)
                         "spirit" -> hiddenRadio.check(R.id.radio_spirit)
                         "opportunity" -> hiddenRadio.check(R.id.radio_opportunity)
                     }
 
-                    expandButton.setImageResource(R.drawable.ic_arrow_up_white)
+                    expandButton.animate().rotationX(180F)
                     hiddenRadio.visibility = View.VISIBLE
                     hiddenTextInput.visibility = View.VISIBLE
                     filterButton.visibility = View.VISIBLE
@@ -141,8 +154,13 @@ class RoversResultFragment : Fragment(), RoversImageAdapter.OnItemClickListener 
         }
     } // End setExpandableFilterClickListener()
 
+    // Performs a new API request based on rover and sol parameters when "Filtrar" is clicked
     private fun setFilterButtonClickListener() {
         binding.buttonFilter.setOnClickListener {
+
+            /**
+             * TODO: Check solParameter implementation
+             */
             solParameter = binding.inputSol.text.toString()
             roverParameter = when (binding.radioGroup.checkedRadioButtonId) {
                 R.id.radio_spirit -> "spirit"
@@ -154,6 +172,7 @@ class RoversResultFragment : Fragment(), RoversImageAdapter.OnItemClickListener 
             if (solParameter.isBlank()) viewModel.getLatestRoverPhotos(roverParameter)
             else viewModel.getRoverPhotos(roverParameter, solParameter.toInt())
 
+            // From utils/ContextExtensions
             hideKeyboard()
             binding.expandButton.performClick()
         }
