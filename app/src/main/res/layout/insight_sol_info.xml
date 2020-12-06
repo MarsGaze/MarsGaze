@@ -1,105 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/insightTempVisual"
+        android:textColor="@color/colorWhite"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:autoSizeMaxTextSize="72sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="0.3" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:text="@string/insightTempVisual"
-            android:textColor="@color/colorWhite"
-            android:textSize="36sp"
-            android:textStyle="bold" />
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintVertical_weight="0.5">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="15dp"
-                android:layout_weight="0.5"
-                android:orientation="vertical">
+                android:layout_height="match_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/textView12"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:layout_gravity="center"
+                    android:gravity="bottom|center|center_horizontal"
                     android:text="@string/insightMinAny"
                     android:textColor="@color/colorWhite"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    app:autoSizeMaxTextSize="36sp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintBottom_toTopOf="@+id/imageView9"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
+                    android:id="@+id/imageView9"
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView13"
+                    app:layout_constraintTop_toBottomOf="@+id/textView12"
                     app:srcCompat="@drawable/insight_divisor" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/insightTempVisual"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="24sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="15dp"
-                android:layout_weight="0.5"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/insightMaxAny"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="18sp" />
-
-                <ImageView
+                    android:id="@+id/textView13"
                     android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    app:srcCompat="@drawable/insight_divisor" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_gravity="center"
+                    android:gravity="center|center_horizontal|top"
                     android:text="@string/insightTempVisual"
                     android:textColor="@color/colorWhite"
-                    android:textSize="24sp" />
-            </LinearLayout>
+                    android:textSize="24sp"
+                    app:autoSizeMaxTextSize="48sp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/insightSampleSize"
-            android:textColor="@color/colorAccentDark"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:gravity="bottom|center_horizontal"
+                    android:text="@string/insightMaxAny"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp"
+                    app:autoSizeMaxTextSize="36sp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintBottom_toTopOf="@+id/imageView12"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageView12"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    app:layout_constraintBottom_toTopOf="@+id/textView14"
+                    app:layout_constraintTop_toBottomOf="@+id/textView15"
+                    app:srcCompat="@drawable/insight_divisor" />
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal|top"
+                    android:text="@string/insightTempVisual"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="24sp"
+                    app:autoSizeMaxTextSize="48sp"
+                    app:autoSizeTextType="uniform"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView12" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/insightSampleSize"
+        android:textColor="@color/colorAccentDark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:autoSizeMaxTextSize="28sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintVertical_weight="0.2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
