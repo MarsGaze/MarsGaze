@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.adapters.FavoriteAdapter
-import com.digitalhouse.marsgaze.objects.Favorite
+import com.digitalhouse.marsgaze.models.Favorite
 import kotlinx.android.synthetic.main.fragment_favoritos.*
 
 class FavoriteFragment : Fragment() {

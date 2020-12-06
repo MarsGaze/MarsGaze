@@ -1,128 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Deprecated -->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
-    >
+    android:background="@color/colorPrimaryDark">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/iv_fullImage"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/cydonia_mars_face" />
 
-        <ImageView
-            android:id="@+id/iv_fullImage"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/fullscreen_img"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/iv_info_image"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginHorizontal="16dp"
+        android:src="@drawable/round_button_transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <ImageView
-            android:id="@+id/iv_bg_arrow"
-            android:layout_width="46dp"
-            android:layout_height="47dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:src="@drawable/round_button_transparent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+    <TextView
+        android:id="@+id/tv_info_sol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/iv_info_image"
+        app:layout_constraintTop_toTopOf="@+id/iv_info_image"
+        tools:text="Sol 9999" />
 
-        <ImageView
-            android:id="@+id/iv_backArrowFullImage"
-            android:layout_width="46dp"
-            android:layout_height="47dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:src="@drawable/abc_vector_test"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+    <TextView
+        android:id="@+id/tv_info_img_earth_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/colorWhite"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/iv_favorite"
+        app:layout_constraintStart_toStartOf="@+id/tv_info_sol"
+        app:layout_constraintTop_toBottomOf="@+id/tv_info_sol"
+        tools:text="Earth date" />
 
-        <ImageView
-            android:id="@+id/iv_info_image"
-            android:layout_width="350dp"
-            android:layout_height="180dp"
-            android:src="@drawable/round_button_transparent2"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.491"
-            app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/tv_info_img_camera"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorWhite"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/iv_favorite"
+        app:layout_constraintStart_toStartOf="@+id/tv_info_sol"
+        app:layout_constraintTop_toBottomOf="@+id/tv_info_img_earth_date"
+        tools:text="CameraAbbr - CameraFull" />
 
-        <TextView
-            android:id="@+id/tv_info_sol"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/anoSol"
-            android:textColor="@color/colorAccent"
-            android:textSize="20dp"
-            app:layout_constraintStart_toStartOf="@+id/iv_info_image"
-            app:layout_constraintTop_toTopOf="@+id/iv_info_image" />
+    <ImageView
+        android:id="@+id/iv_favorite"
+        android:layout_width="35dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="20dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_favorite"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_info_sol"
+        app:layout_constraintEnd_toEndOf="@+id/iv_info_image"
+        app:layout_constraintTop_toTopOf="@+id/tv_info_sol" />
 
-        <TextView
-            android:id="@+id/tv_info_img"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:text="@string/infoImage"
-            android:textColor="@color/colorWhite"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/iv_info_image"
-            app:layout_constraintHorizontal_bias="0.55"
-            app:layout_constraintStart_toStartOf="@+id/iv_info_image"
-            app:layout_constraintTop_toTopOf="@+id/iv_info_image"
-            app:layout_constraintVertical_bias="0.413" />
+    <ImageView
+        android:id="@+id/iv_share"
+        android:layout_width="35dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="16dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_share"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_info_sol"
+        app:layout_constraintEnd_toStartOf="@+id/iv_favorite"
+        app:layout_constraintTop_toTopOf="@+id/tv_info_sol" />
 
-        <ImageView
-            android:id="@+id/iv_favorite"
-            android:layout_width="31dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="30dp"
-            android:src="@drawable/ic_favorite"
-            app:layout_constraintEnd_toEndOf="@+id/iv_info_image"
-            app:layout_constraintTop_toTopOf="@+id/iv_info_image" />
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:constraint_referenced_ids="iv_favorite, iv_info_image, iv_share, tv_info_img_camera, tv_info_img_earth_date, tv_info_sol" />
 
-        <ImageView
-            android:id="@+id/iv_share"
-            android:layout_width="31dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginRight="8dp"
-            android:src="@drawable/ic_share"
-            app:layout_constraintEnd_toStartOf="@+id/iv_favorite"
-            app:layout_constraintTop_toTopOf="@+id/iv_info_image" />
-
-        <ImageView
-            android:id="@+id/iv_next_photo"
-            android:layout_width="50dp"
-            android:layout_height="59dp"
-            android:src="@drawable/ic_next"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/iv_previous_photo"
-            android:layout_width="50dp"
-            android:layout_height="59dp"
-            android:src="@drawable/ic_before"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.digitalhouse.marsgaze.ui
+package com.digitalhouse.marsgaze.ui.rovers
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,11 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.digitalhouse.marsgaze.R
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SpOpDetailFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SpOpDetailFragment : Fragment() {
 
     override fun onCreateView(
