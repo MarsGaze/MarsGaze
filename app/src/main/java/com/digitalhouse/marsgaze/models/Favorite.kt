@@ -1,4 +1,4 @@
-package com.digitalhouse.marsgaze.objects
+package com.digitalhouse.marsgaze.models
 
 import com.digitalhouse.marsgaze.R
 
