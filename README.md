@@ -16,7 +16,13 @@ APIs from [NASA's portal](https://api.nasa.gov/):
   - [Light Mode](https://www.figma.com/proto/itTnJHfg1oEAI2AnQDQ4qd/MarsGaze---Light?node-id=2%3A290&scaling=min-zoom)
   
 ## Team :ok_hand:
-- [Angelica dos Santos](https://github.com/angelcomp)
-- [Jomar Junior](https://github.com/thinkaboutmin)
-- [Matheus Vianna](https://github.com/matheusvianna95)
-- [Victoria Prieto](https://github.com/VicPrieto)
+- Angelica dos Santos
+  - [GitHub](https://github.com/angelcomp)
+- Jomar Junior
+  - [GitHub](https://github.com/thinkaboutmin)
+- Matheus Vianna
+  - [GitHub](https://github.com/matheusvianna95)
+  - [LinkedIn](https://www.linkedin.com/in/matheus-vianna/)
+- Victoria Prieto
+  - [GitHub](https://github.com/VicPrieto)
+  - [LinkedIn](https://www.linkedin.com/in/vict%C3%B3ria-gamarano-prieto-32935a161/)
