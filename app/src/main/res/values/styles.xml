@@ -7,4 +7,52 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="MaterialTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+
+        <item name="colorSecondary">@color/colorAccentDark</item>
+        <item name="colorControlNormal">@color/colorAccentDark</item>
+        <item name="colorControlHighlight">@color/colorAccentDark</item>
+        <item name="colorControlActivated">@color/colorAccentDark</item>
+        <item name="colorOnSurface">@color/colorAccentDark</item>
+        <item name="boxStrokeColor">@color/filled_stroke_disabled</item>
+        <item name="android:textColor">@color/colorWhite</item>
+
+    </style>
+
+    <!--    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">-->
+    <!--        <item name="boxStrokeColor">#E08A10</item>-->
+    <!--        <item name="boxStrokeWidth">2dp</item>-->
+    <!--    </style>-->
+
+    <!--    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">-->
+    <!--        <item name="boxStrokeColor">@color/colorAccentDark</item>-->
+    <!--        <item name="boxStrokeWidth">2dp</item>-->
+    <!--    </style>-->
+
+
+    // Matheus - rovers fragment
+    <style name="AppTheme.RoverCard" parent="AppTheme">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="textAllCaps">true</item>
+        <item name="fontFamily">@font/roboto_bold</item>
+        <item name="android:background">@drawable/round_card_dark</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:layout_marginStart">@dimen/spacing_small</item>
+        <item name="android:layout_marginBottom">@dimen/spacing_small</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    // Matheus - rovers result fragment
+    <style name="AppTheme.RadioButton" parent="Theme.MaterialComponents">
+        <item name="colorSecondary">@color/colorAccent</item>
+        <item name="buttonTint">@color/colorAccentDark</item>
+        <item name="fontFamily">@font/roboto</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+
 </resources>

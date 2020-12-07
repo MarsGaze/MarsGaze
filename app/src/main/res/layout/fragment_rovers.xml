@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    tools:context=".ui.rovers.RoversFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp">
+
+        <TextView
+            android:id="@+id/text_rover"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/kanit_bold"
+            android:lineSpacingMultiplier="0.55"
+            android:text="Rov\ners"
+            android:textAllCaps="true"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toTopOf="@+id/rover_expandable_text"
+            app:layout_constraintEnd_toStartOf="@+id/vector_rover"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/rover_expandable_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <ImageView
+            android:id="@+id/vector_rover"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="16dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/vector_rover"
+            app:layout_constraintBottom_toBottomOf="@+id/text_rover"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/text_rover"
+            app:layout_constraintTop_toTopOf="@+id/text_rover" />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/rover_expandable_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/colorPrimary"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/curiosity_card"
+            app:layout_constraintEnd_toEndOf="@+id/vector_rover"
+            app:layout_constraintStart_toStartOf="@+id/text_rover"
+            app:layout_constraintTop_toBottomOf="@+id/text_rover">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingVertical="@dimen/spacing_small">
+
+                <ImageView
+                    android:id="@+id/rover_expand_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/ic_arrow_down_white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:padding="@dimen/spacing_regular"
+                    android:text="O que é um rover?"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/hidden_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_regular"
+                    android:fontFamily="@font/roboto"
+                    android:paddingHorizontal="@dimen/spacing_regular"
+                    android:paddingBottom="@dimen/spacing_regular"
+                    android:text="@string/tvRovers"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@+id/rover_expand_button" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/curiosity_card"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/card_height_tall"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="@dimen/spacing_regular"
+            app:layout_constraintBottom_toTopOf="@+id/sp_card"
+            app:layout_constraintEnd_toEndOf="@+id/vector_rover"
+            app:layout_constraintStart_toStartOf="@+id/text_rover"
+            app:layout_constraintTop_toBottomOf="@+id/rover_expandable_text">
+
+            <ImageView
+                android:id="@+id/portrait_curiosity_card"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/curiosity_portrait"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/name_curiosity_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_regular"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:fontFamily="@font/kanit_bold"
+                    android:text="Curiosity"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+                <TextView
+                    android:id="@+id/mission_curiosity_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="Mars Science Laboratory"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/name_curiosity_card"
+                    app:layout_constraintTop_toBottomOf="@+id/name_curiosity_card" />
+
+                <Button
+                    android:id="@+id/info_button_curiosity_card"
+                    style="@style/AppTheme.RoverCard"
+                    android:text="Saiba mais"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <Button
+                    android:id="@+id/photos_button_curiosity_card"
+                    style="@style/AppTheme.RoverCard"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="@dimen/spacing_small"
+                    android:layout_marginBottom="@dimen/spacing_small"
+                    android:gravity="center"
+                    android:text="Imagens"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/sp_card"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/card_height_tall"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="@dimen/spacing_regular"
+            app:layout_constraintBottom_toTopOf="@+id/op_card"
+            app:layout_constraintEnd_toEndOf="@+id/vector_rover"
+            app:layout_constraintStart_toStartOf="@+id/text_rover"
+            app:layout_constraintTop_toBottomOf="@+id/curiosity_card">
+
+            <ImageView
+                android:id="@+id/portrait_sp_card"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/sp_portrait"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/name_sp_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_regular"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:fontFamily="@font/kanit_bold"
+                    android:text="Spirit"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/mission_sp_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="Mars Exploration Rovers"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/name_sp_card"
+                    app:layout_constraintTop_toBottomOf="@+id/name_sp_card" />
+
+                <Button
+                    android:id="@+id/info_button_sp_card"
+                    style="@style/AppTheme.RoverCard"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="@dimen/spacing_small"
+                    android:layout_marginBottom="@dimen/spacing_small"
+                    android:gravity="center"
+                    android:text="Saiba mais"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <Button
+                    android:id="@+id/photos_button_sp_card"
+                    style="@style/AppTheme.RoverCard"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="@dimen/spacing_small"
+                    android:layout_marginBottom="@dimen/spacing_small"
+                    android:gravity="center"
+                    android:text="Imagens"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/op_card"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/card_height_tall"
+            app:cardCornerRadius="@dimen/spacing_regular"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/vector_rover"
+            app:layout_constraintStart_toStartOf="@+id/text_rover"
+            app:layout_constraintTop_toBottomOf="@+id/sp_card">
+
+            <ImageView
+                android:id="@+id/portrait_op_card"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/op_portrait"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/name_op_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/kanit_bold"
+                    android:text="Opportunity"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/mission_op_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="Mars Exploration Rovers"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/name_op_card"
+                    app:layout_constraintTop_toBottomOf="@+id/name_op_card" />
+
+                <Button
+                    android:id="@+id/info_button_op_card"
+                    style="@style/AppTheme.RoverCard"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="@dimen/spacing_small"
+                    android:layout_marginBottom="@dimen/spacing_small"
+                    android:gravity="center"
+                    android:text="Saiba mais"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <Button
+                    android:id="@+id/photos_button_op_card"
+                    style="@style/AppTheme.RoverCard"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="@dimen/spacing_small"
+                    android:layout_marginBottom="@dimen/spacing_small"
+                    android:gravity="center"
+                    android:text="Imagens"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
