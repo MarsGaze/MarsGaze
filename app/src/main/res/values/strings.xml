@@ -2,7 +2,8 @@
     <!-- Onboarding, Login e Cadastro -->
     <string name="app_name">MarsGaze</string>
     <string name="tvBoasVindas">Seja bem-vindo!</string>
-<!--    Conheça o nosso aplicativo MarsGaze e aprenda várias coisas sobre marte além de poder explorar ela através dos rovers.-->
+
+    <!-- Conheça o nosso aplicativo MarsGaze e aprenda várias coisas sobre marte além de poder explorar ela através dos rovers. -->
     <string name="tvOnboarding">Conheça o MarsGaze e aprenda mais sobre Marte enquanto explora o planeta vermelho através dos nossos robôs!</string>
     <string name="tvOnboarding2">Então, pronto para explorar?</string>
     <string name="btnComecar">Começar</string>
@@ -17,11 +18,11 @@
     <!-- Welcome Page Resources -->
     <string name="welcomeUser">Saudações, %1$s!</string>
     <string name="welcomeExplore">Vamos explorar marte?</string>
-    // Placeholder
+    <!-- Placeholder-->
     <string name="ipsumPlaceholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</string>
-    <string name="welcomeMarte">O que você precisa\nsaber sobre o planeta\nvermelho</string>
-    <string name="welcomeRover">Descubra Marte pelos\nolhos dos rovers da\nNASA</string>
-    <string name="welcomeInsight">Como está a\ntemperatura na\nsuperfície do planeta\nvermelho</string>
+    <string name="welcomeMarte">O que você precisa saber sobre o planeta vermelho</string>
+    <string name="welcomeRover">Descubra Marte pelos olhos dos rovers da NASA</string>
+    <string name="welcomeInsight">Como está a temperatura na superfície do planeta vermelho</string>
 
 
     <!-- Profile Page Resources -->
@@ -60,7 +61,7 @@
     <string name="navigationItemInsight">Clima</string>
     <string name="navigationItemAboutMars">Sobre Marte</string>
 
-    //activity exception
+    <!-- Activity exception -->
     <string name="tv_mensagemException">Não foi possível carregar a imagem</string>
 
     //activity Curiosidades
@@ -147,17 +148,13 @@
         * Relias Planitia: uma cratera de impacto no hemisfério sul, com mais de 6 km de profundidade e 2000 km de diâmetro.\n\n
         * Valles Marineris: nome dado em homenagem à espaçonave (Mariner 9) que o descobriu. É um desfiladeiro profundo e largo, em algumas partes, o canyon tem 7 quilômetros
         de profundidade. De acordo com a NASA , o vale é tão largo quanto os Estados Unidos e tem cerca de 20% do diâmetro do Planeta Vermelho.</string>
-
     //fim - activity Curiosidades
 
-    //fragment Fullscreen Image
-    <string name="anoSol">Sol 999</string>
-    <string name="infoImage">23 de Outubro, 14:36 \n
-        FHAZ - Front Hazard Avoidance Camera \n
-        Foto X</string>
-    <string name="tvRovers">Um rover marciano é um veículo motorizado automatizado capaz de impulsionar a si mesmo sobre a superfície do planeta.\n
-         Rovers examinam um território grande, podem ser direcionados a acidentes geográficos interessantes, e podem posicionar a si mesmos em lugares ensolarados para sobreviver aos meses de inverno.\n
-         Até hoje, os rovers mais bem-sucedidos foram/são os gêmeos Spirit e Opportunity, e o Curiosity.</string>
+
+    <string name="tvRovers">
+"Um rover marciano é um veículo motorizado automatizado capaz de impulsionar a si mesmo sobre a superfície do planeta.\n
+Rovers examinam um território grande, podem ser direcionados a acidentes geográficos interessantes, e podem posicionar a si mesmos em lugares ensolarados para sobreviver aos meses de inverno.\n
+Até hoje, os rovers mais bem-sucedidos foram/são os gêmeos Spirit e Opportunity, e o Curiosity."</string>
     <string name="profileSenhaAtual">Senha atual</string>
     <string name="profileSenhaAtualVisual">banana123</string>
     <string name="btnEditar">Editar</string>

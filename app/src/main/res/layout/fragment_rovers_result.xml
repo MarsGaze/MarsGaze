@@ -6,7 +6,14 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
     android:orientation="vertical"
-    tools:context=".ui.RoversResultFragment">
+    tools:context=".ui.rovers.RoversResultFragment">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView3"
+        android:name="com.digitalhouse.marsgaze.ui.ClassicToolbarFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/container_left"
@@ -40,9 +47,9 @@
         app:layout_constraintEnd_toStartOf="@+id/container_right"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintHorizontal_weight="4"
+        app:layout_constraintHorizontal_weight="5"
         app:layout_constraintStart_toEndOf="@+id/container_left"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="@+id/toolbar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -52,12 +59,15 @@
                 android:id="@+id/filter_text"
                 android:layout_width="wrap_content"
                 android:layout_height="?android:attr/actionBarSize"
+                android:layout_marginEnd="8dp"
                 android:fontFamily="@font/roboto"
                 android:gravity="center"
-                android:text="Filtrar"
+                android:text="Filtros"
                 android:textColor="@color/colorAccentDark"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/expand_button"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -65,9 +75,10 @@
                 android:id="@+id/expand_button"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_marginStart="8dp"
                 android:src="@drawable/ic_arrow_down_white"
                 app:layout_constraintBottom_toBottomOf="@+id/filter_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/filter_text"
                 app:layout_constraintTop_toTopOf="@id/filter_text" />
 
@@ -80,13 +91,12 @@
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/filledTextField"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/filter_text"
-                app:layout_constraintVertical_bias="1.0"
                 tools:visibility="visible">
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/radio_curiosity"
                     style="@style/AppTheme.RadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -95,6 +105,7 @@
                 </com.google.android.material.radiobutton.MaterialRadioButton>
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/radio_spirit"
                     style="@style/AppTheme.RadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -103,6 +114,7 @@
                 </com.google.android.material.radiobutton.MaterialRadioButton>
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/radio_opportunity"
                     style="@style/AppTheme.RadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -127,6 +139,7 @@
                 tools:visibility="visible">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_sol"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorAccentDark"
@@ -136,18 +149,36 @@
                     android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <Button
+                android:id="@+id/button_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/round_button"
+                android:fontFamily="@font/source_sans_pro_bold"
+                android:text="Filtrar"
+                android:textColor="@color/colorWhite"
+                android:textSize="14sp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/filledTextField"
+                tools:visibility="visible" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+        android:id="@+id/rv_RoversResult"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="4dp"
-        android:paddingTop="56dp"
-        android:clipToPadding="false"
         android:background="@color/colorPrimaryDark"
+        android:clipToPadding="false"
+        android:paddingTop="56dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

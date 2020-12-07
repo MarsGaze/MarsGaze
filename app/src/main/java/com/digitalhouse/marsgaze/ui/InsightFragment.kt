@@ -1,10 +1,10 @@
 package com.digitalhouse.marsgaze.ui
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.AbsListView
 import androidx.fragment.app.Fragment
+import androidx.viewpager2.widget.ViewPager2
 import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.adapters.InsightAdapter
 import com.digitalhouse.marsgaze.adapters.InsightAdapterInsightData
