@@ -20,9 +20,9 @@
     <string name="welcomeExplore">Vamos explorar marte?</string>
     <!-- Placeholder-->
     <string name="ipsumPlaceholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</string>
-    <string name="welcomeMarte">O que você precisa\nsaber sobre o planeta\nvermelho</string>
-    <string name="welcomeRover">Descubra Marte pelos\nolhos dos rovers da\nNASA</string>
-    <string name="welcomeInsight">Como está a\ntemperatura na\nsuperfície do planeta\nvermelho</string>
+    <string name="welcomeMarte">O que você precisa saber sobre o planeta vermelho</string>
+    <string name="welcomeRover">Descubra Marte pelos olhos dos rovers da NASA</string>
+    <string name="welcomeInsight">Como está a temperatura na superfície do planeta vermelho</string>
 
 
     <!-- Profile Page Resources -->

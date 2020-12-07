@@ -34,13 +34,15 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="50dp"
-        android:layout_marginBottom="305dp"
+        android:layout_marginBottom="10dp"
         android:orientation="horizontal"
         android:overScrollMode="never"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5">
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintVertical_bias="0.64"
+        app:layout_constraintVertical_weight="0.3">
 
         <ImageButton
             android:id="@+id/btnInsightBackDay"
@@ -76,12 +78,13 @@
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="50dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="20dp"
         android:background="@color/colorPrimary"
         android:backgroundTint="@color/colorPrimary"
         app:cardBackgroundColor="@color/colorPrimary"
@@ -89,7 +92,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -112,6 +116,7 @@
                     android:padding="10dp"
                     android:src="@drawable/insight_button" />
 
+
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/insightDataTitle"
                     android:layout_width="match_parent"
@@ -133,7 +138,7 @@
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/insightDataInfo"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
