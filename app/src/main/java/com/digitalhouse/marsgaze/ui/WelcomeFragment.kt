@@ -24,6 +24,10 @@ class WelcomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         welcomeInsight.setOnClickListener {
+            changePage(getString(R.string.navigationItemHubble), R.id.hubbleFragment)
+        }
+
+        welcomeInsight.setOnClickListener {
             changePage(getString(R.string.navigationItemInsight), R.id.insightFragment)
         }
 

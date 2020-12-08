@@ -40,7 +40,6 @@
             android:id="@+id/action_cadastroFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
-    app:startDestination="@id/favoriteFragment">
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.digitalhouse.marsgaze.ui.FavoriteFragment"
@@ -57,4 +56,9 @@
         android:id="@+id/welcomeFragment"
         android:name="com.digitalhouse.marsgaze.ui.WelcomeFragment"
         android:label="WelcomeFragment" />
+    <fragment
+        android:id="@+id/hubbleFragment"
+        android:name="com.digitalhouse.marsgaze.ui.hubble.HubbleFragment"
+        android:label="fragment_hubble"
+        tools:layout="@layout/fragment_hubble" />
 </navigation>

@@ -19,4 +19,7 @@
     <item
         android:icon="@drawable/navigation_mars"
         android:title="@string/navigationItemAboutMars" />
+    <item
+        android:icon="@drawable/navigation_hubble"
+        android:title="@string/navigationItemHubble" />
 </menu>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_hubble"
+    app:startDestination="@id/hubbleFragment2">
+
+
+    <fragment
+        android:id="@+id/hubbleFragment2"
+        android:name="com.digitalhouse.marsgaze.ui.hubble.HubbleFragment"
+        android:label="fragment_hubble"
+        tools:layout="@layout/fragment_hubble" >
+        <action
+            android:id="@+id/action_hubbleFragment2_to_detailHubbleFragment"
+            app:destination="@id/detailHubbleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailHubbleFragment"
+        android:name="com.digitalhouse.marsgaze.ui.hubble.DetailHubbleFragment"
+        android:label="fragment_detail_hubble"
+        tools:layout="@layout/fragment_detail_hubble" >
+        <argument
+            android:name="hubble"
+            app:argType="com.digitalhouse.marsgaze.models.hubble.Item" />
+    </fragment>
+</navigation>
