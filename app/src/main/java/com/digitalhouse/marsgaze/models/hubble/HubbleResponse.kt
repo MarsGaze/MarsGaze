@@ -4,13 +4,17 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class HubbleResponse(
-    val itens: List<Item>
+    val collection: PhotoCollection
+)
+
+data class PhotoCollection(
+    val items: List<Item>
 )
 
 data class Item (
-    val links: Link,
+    val links: List<Link>,
     @SerializedName("href") val itemHref: String,
-    val data: Data
+    val `data`: List<Data>
 ): Serializable
 
 data class Link (
@@ -24,11 +28,7 @@ data class Data (
     val center: String,
     val nasa_id: String,
     val description: String,    // IMPORTANT
-    val keywords: ArrayList<Keyword>,
+    val keywords: ArrayList<String>,
     val date_created: String,
     val title: String           // IMPORTANT
-): Serializable
-
-data class Keyword (
-    val keyword: String
 ): Serializable

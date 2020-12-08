@@ -47,7 +47,7 @@ class HubbleFragment : Fragment(), HubbleAdapter.OnItemClickListener {
     ): View? {
         binding = FragmentHubbleBinding.inflate(inflater, container, false)
 
-        hubbleImageList = HubbleResponse(listOf())
+        hubbleImageList = HubbleResponse(PhotoCollection(listOf()))
 
         val hubbleAdapter = HubbleAdapter(hubbleImageList, this)
         val rvHubble = binding.rvHubble
@@ -58,17 +58,18 @@ class HubbleFragment : Fragment(), HubbleAdapter.OnItemClickListener {
             hubbleImageList = it
             hubbleAdapter.adapterHubbleList = hubbleImageList
             rvHubble.adapter = hubbleAdapter
-
         }
+
+        viewModel.getHubbleImg()
 
         // Inflate the layout for this fragment
         return binding.root
     }
 
     override fun onItemClick(position: Int) {
-        val clickedItem: Item = hubbleImageList.itens[position]
+        val clickedItem: Item = hubbleImageList.collection.items[position]
         NavHostFragment.findNavController(this).navigate(
-            HubbleFragmentDirections.actionHubbleFragment2ToDetailHubbleFragment(
+            HubbleFragmentDirections.actionHubbleFragment3ToDetailHubbleFragment2(
                 clickedItem
             )
         )

@@ -10,9 +10,9 @@ import kotlinx.coroutines.launch
 class HubbleViewModel(private val service: HubbleService) : ViewModel() {
     val hubbleImgList = MutableLiveData<HubbleResponse>()
 
-    fun getRoverPhotos() {
+    fun getHubbleImg() {
         viewModelScope.launch {
-            hubbleImgList.value = service.getHubbleImg("mars%20hubble%20space%20telescope", "image")
+            hubbleImgList.value = service.getHubbleImg()
         }
     }
 }

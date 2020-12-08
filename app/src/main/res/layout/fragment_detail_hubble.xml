@@ -41,25 +41,14 @@
         android:id="@+id/tv_hubble_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:textColor="@color/colorAccent"
         android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/iv_share"
+        app:layout_constraintHorizontal_bias="0.117"
         app:layout_constraintStart_toStartOf="@+id/iv_info_image"
         app:layout_constraintTop_toTopOf="@+id/iv_info_image"
         tools:text="Título" />
-
-    <TextView
-        android:id="@+id/tv_hubble_description"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textColor="@color/colorWhite"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/iv_favorite"
-        app:layout_constraintStart_toStartOf="@+id/tv_hubble_title"
-        app:layout_constraintTop_toBottomOf="@+id/tv_hubble_title"
-        tools:text="Description" />
 
     <TextView
         android:id="@+id/tv_hubble_date"
@@ -69,7 +58,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/iv_favorite"
         app:layout_constraintStart_toStartOf="@+id/tv_hubble_title"
-        app:layout_constraintTop_toBottomOf="@+id/tv_hubble_description"
+        app:layout_constraintTop_toBottomOf="@+id/tv_hubble_title"
         tools:text="19/02/2002" />
 
     <ImageView
@@ -99,6 +88,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="visible"
-        app:constraint_referenced_ids="iv_favorite, iv_info_image, iv_share, tv_hubble_title, tv_hubble_date, tv_hubble_description" />
+        app:constraint_referenced_ids="iv_favorite, iv_info_image, iv_share, tv_hubble_title, tv_hubble_date" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,8 +23,8 @@ class WelcomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        welcomeInsight.setOnClickListener {
-            changePage(getString(R.string.navigationItemHubble), R.id.hubbleFragment)
+        welcomeHubble.setOnClickListener {
+            changePage(getString(R.string.navigationItemHubble), R.id.hubbleFragment3)
         }
 
         welcomeInsight.setOnClickListener {

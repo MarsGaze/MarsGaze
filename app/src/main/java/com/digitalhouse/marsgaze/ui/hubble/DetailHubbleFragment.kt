@@ -21,10 +21,10 @@ class DetailHubbleFragment : Fragment() {
     ): View? {
         binding = FragmentDetailHubbleBinding.inflate(inflater, container, false)
 
-        val imgUrl = args.hubble.links.linkHref
-        val title = args.hubble.data.title
-        val description = args.hubble.data.description
-        val date = args.hubble.data.date_created
+        val imgUrl = args.hubble.links[0].linkHref
+        val title = args.hubble.data[0].title
+        val description = args.hubble.data[0].description
+        val date = args.hubble.data[0].date_created
 
         binding.tvHubbleTitle.text = title
         binding.tvHubbleDescription.text = description

@@ -44,11 +44,11 @@ class HubbleAdapter(
     }
 
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
-        val currentItem = adapterHubbleList.itens[position]
-        val hubbleUrl = currentItem.links.linkHref
+        val currentItem = adapterHubbleList.collection.items[position]
+        val hubbleUrl = currentItem.links[0].linkHref
 
         Picasso.get().load(hubbleUrl).fit().centerCrop().into(holder.hubbleResult)
     }
 
-    override fun getItemCount() = adapterHubbleList.itens.size
+    override fun getItemCount() = adapterHubbleList.collection.items.size
 }
