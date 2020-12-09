@@ -1,8 +1,8 @@
 package com.digitalhouse.marsgaze.models
 
-import com.google.gson.annotations.SerializedName
 
 data class InsightInfo(
+    var sol: String = "NO_DATA",
     var firstUTC: String = "NO_DATA",
     var lastUTC: String = "NO_DATA",
     var PRE: Pressure,

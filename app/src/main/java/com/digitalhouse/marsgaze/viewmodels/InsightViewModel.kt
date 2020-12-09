@@ -13,7 +13,7 @@ import com.google.gson.JsonObject
 import kotlinx.coroutines.launch
 
 class InsightViewModel(private val repository: InsightService) : ViewModel() {
-    val insightResponse = MutableLiveData<Map<String, InsightInfo>>()
+    val insightResponse = MutableLiveData<ArrayList<InsightInfo>>()
 
     fun getInsightInfo() {
         viewModelScope.launch {
@@ -23,8 +23,8 @@ class InsightViewModel(private val repository: InsightService) : ViewModel() {
         }
     }
 
-    private fun parseJson(jsonElement: JsonObject): MutableMap<String, InsightInfo> {
-        val infoMap = mutableMapOf<String, InsightInfo>()
+    private fun parseJson(jsonElement: JsonObject): ArrayList<InsightInfo> {
+        val infoList = ArrayList<InsightInfo>()
         val solKeys = jsonElement.get("sol_keys").asJsonArray
         Log.i("sol_keys", solKeys.toString())
 
@@ -40,6 +40,8 @@ class InsightViewModel(private val repository: InsightService) : ViewModel() {
             info.lastUTC = solObject.asJsonObject.get("Last_UTC").asString.substring(0, 10)
             info.season = solObject.asJsonObject.get("Season").asString
 
+            info.sol = solKeys[i].asString
+            
             // Getting and setting atmospheric temperature (AT) values
             if (
                 try {
@@ -75,10 +77,10 @@ class InsightViewModel(private val repository: InsightService) : ViewModel() {
             }
 
             // Populating our map
-            infoMap.put(solKeys[i].toString(), info)
+            infoList.add(info)
         }
 
-        Log.i("map", infoMap.toString())
-        return infoMap
+        Log.i("map", infoList.toString())
+        return infoList
     }
 }

@@ -1,12 +1,14 @@
 package com.digitalhouse.marsgaze.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.viewpager.widget.ViewPager
 import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.adapters.InsightSolDateAdapter
 import com.digitalhouse.marsgaze.adapters.InsightDataAdapter
@@ -36,9 +38,44 @@ class InsightFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getInsightInfo()
+        viewModel.insightResponse.observe(viewLifecycleOwner) {
+            val adapterDate = insightVP.adapter as InsightSolDateAdapter
+            val adapterMedia = insightDataInfo.adapter as InsightDataAdapter
+
+            adapterDate.infoList = it
+            insightVP.adapter = adapterDate
+
+            adapterMedia.infoList = it
+            insightDataInfo.adapter = adapterMedia
+
+        }
+
+        insightVP.addOnPageChangeListener (object: ViewPager.OnPageChangeListener {
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+                position
+            }
+
+            override fun onPageSelected(position: Int) {
+                var data = insightDataInfo.adapter as InsightDataAdapter
+                data.sol = position
+
+                insightDataInfo.adapter = data
+            }
+
+            override fun onPageScrollStateChanged(state: Int) {
+                state
+            }
+        } )
 
         insightVP.adapter = InsightSolDateAdapter()
+        insightDataInfo.adapter = InsightDataAdapter()
+        insightDataTitle.adapter = InsightTitleMediaAdapter(insightDataInfo)
+
+        viewModel.getInsightInfo()
 
         btnInsightBackDay.setOnClickListener {
             val value = insightVP.currentItem - 1
@@ -54,8 +91,6 @@ class InsightFragment : Fragment() {
             }
         }
 
-        insightDataInfo.adapter = InsightDataAdapter()
-        insightDataTitle.adapter = InsightTitleMediaAdapter(insightDataInfo)
         insightDataForward.setOnClickListener {
             val value = insightDataTitle.currentItem + 1
             if (value != (insightDataTitle.adapter as InsightTitleMediaAdapter).count) {
