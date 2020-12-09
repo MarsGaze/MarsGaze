@@ -63,6 +63,7 @@ class InsightFragment : Fragment() {
                 var data = insightDataInfo.adapter as InsightDataAdapter
                 data.sol = position
 
+                insightDataTitle.currentItem = 0
                 insightDataInfo.adapter = data
             }
 
@@ -70,6 +71,9 @@ class InsightFragment : Fragment() {
                 state
             }
         } )
+
+        insightDataInfo.addOnPageChangeListener (InsightListener(1))
+        insightDataTitle.addOnPageChangeListener (InsightListener(0))
 
         insightVP.adapter = InsightSolDateAdapter()
         insightDataInfo.adapter = InsightDataAdapter()
@@ -113,6 +117,36 @@ class InsightFragment : Fragment() {
             if (value2 != -1) {
                 insightDataInfo.currentItem = value2
             }
+        }
+    }
+
+    inner class InsightListener(val insightTypeInsight: Int) : ViewPager.OnPageChangeListener {
+        override fun onPageScrolled(
+            position: Int,
+            positionOffset: Float,
+            positionOffsetPixels: Int
+        ) {
+            position
+        }
+
+        override fun onPageSelected(position: Int) {
+            when (insightTypeInsight) {
+                0 -> {
+                    insightDataInfo.currentItem = position
+                }
+                1 -> {
+                    insightDataTitle.currentItem = position
+                }
+            }
+
+//            var data = insightDataInfo.adapter as InsightDataAdapter
+//            data.sol = position
+
+//            insightDataInfo.adapter = data
+        }
+
+        override fun onPageScrollStateChanged(state: Int) {
+            state
         }
     }
 }
