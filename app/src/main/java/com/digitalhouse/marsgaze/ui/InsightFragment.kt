@@ -2,14 +2,29 @@ package com.digitalhouse.marsgaze.ui
 
 import android.os.Bundle
 import android.view.*
+import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.adapters.InsightSolDateAdapter
 import com.digitalhouse.marsgaze.adapters.InsightDataAdapter
 import com.digitalhouse.marsgaze.adapters.InsightTitleMediaAdapter
+import com.digitalhouse.marsgaze.services.InsightService
+import com.digitalhouse.marsgaze.viewmodels.InsightViewModel
 import kotlinx.android.synthetic.main.fragment_insight.*
 
 class InsightFragment : Fragment() {
+
+    private val viewModel by viewModels<InsightViewModel> {
+        object : ViewModelProvider.Factory {
+            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+                return InsightViewModel(InsightService.create()) as T
+            }
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -20,6 +35,8 @@ class InsightFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel.getInsightInfo()
 
         insightVP.adapter = InsightSolDateAdapter()
 

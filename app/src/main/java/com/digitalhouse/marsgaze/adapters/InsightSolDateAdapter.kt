@@ -3,18 +3,12 @@ package com.digitalhouse.marsgaze.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.viewpager.widget.PagerAdapter
 import com.digitalhouse.marsgaze.R
-import com.digitalhouse.marsgaze.models.insight.GenericWeather
-import com.digitalhouse.marsgaze.models.insight.NasaWeather
-
 class InsightSolDateAdapter() : PagerAdapter() {
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean = `object` == view
-    override fun getCount(): Int {
-        TODO("Not yet implemented")
-    }
+    override fun getCount(): Int = 0
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val view = LayoutInflater.from(container.context).inflate(

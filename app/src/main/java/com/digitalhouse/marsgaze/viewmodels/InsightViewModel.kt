@@ -1,47 +1,84 @@
 package com.digitalhouse.marsgaze.viewmodels
 
-
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.digitalhouse.marsgaze.models.insight.GenericWeather
-import com.digitalhouse.marsgaze.models.insight.NasaWeather
-import com.digitalhouse.marsgaze.services.MarsInsightService
+import com.digitalhouse.marsgaze.models.InsightInfo
+import com.digitalhouse.marsgaze.models.Pressure
+import com.digitalhouse.marsgaze.models.Temperature
+import com.digitalhouse.marsgaze.services.InsightService
+import com.google.gson.JsonElement
+import com.google.gson.JsonObject
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
-class InsightViewModel(val service: MarsInsightService) : ViewModel(){
-    val weather = MutableLiveData<Map<String, NasaWeather> >()
+class InsightViewModel(private val repository: InsightService) : ViewModel() {
+    val insightResponse = MutableLiveData<Map<String, InsightInfo>>()
 
-    fun getWeather() {
+    fun getInsightInfo() {
         viewModelScope.launch {
-            val call = service.getWeather()
-
-            // Não tenho certeza do q esta acontecendo aqui em baixo mas esta funcionando
-            call.enqueue(object : Callback<String> {
-                override fun onResponse(call: Call<String>, response: Response<String>) {
-                    //aqui vem o retorno para validar se deu algum erro na requisição
-                    if(response.isSuccessful) {
-                        val JsonString = response.body()
-                        if (JsonString != null) {
-                            //limpa o json, aquela parte de baixo
-                            val newJsonString = JsonString.substring(0, JsonString.indexOf("\"sol_keys\":")).trim().dropLast(1) + "}"
-
-                            //converte para a classe desejava
-                            weather.value = GenericWeather.fromJson(newJsonString)
-                        }
-                    }
-                }
-
-                //provavelmente esse erro que vai vir aqui em baixo é erro de autorização,etc
-                override fun onFailure(call: Call<String>, t: Throwable) {
-                    Log.e("TAG", "Deu RUIM! ")
-                }
-            })
-
+            val response = repository.getInsightResponse()
+            Log.i("reponse", response.toString())
+            insightResponse.value = parseJson(response)
         }
+    }
+
+    private fun parseJson(jsonElement: JsonObject): MutableMap<String, InsightInfo> {
+        val infoMap = mutableMapOf<String, InsightInfo>()
+        val solKeys = jsonElement.get("sol_keys").asJsonArray
+        Log.i("sol_keys", solKeys.toString())
+
+        // Gets each Sol object and puts into a map
+        for (i in 0 until solKeys.size()) {
+            Log.i("sol", solKeys[i].asString)
+            val solObject = jsonElement.get(solKeys[i].asString).asJsonObject
+            Log.i("solObject", solObject.toString())
+            val info = InsightInfo(PRE = Pressure(), AT = Temperature())
+
+            // Getting and setting Earth date and season values
+            info.firstUTC = solObject.asJsonObject.get("First_UTC").asString.substring(0, 10)
+            info.lastUTC = solObject.asJsonObject.get("Last_UTC").asString.substring(0, 10)
+            info.season = solObject.asJsonObject.get("Season").asString
+
+            // Getting and setting atmospheric temperature (AT) values
+            if (
+                try {
+                    !solObject.getAsJsonObject("AT").isJsonNull
+                } catch (ex: Exception) {
+                    false
+                }
+            ) {
+                info.AT.apply {
+                    val at = solObject.get("AT").asJsonObject
+                    av = at.get("av").asString.split(".")[0]
+                    mn = at.get("mn").asString.split(".")[0]
+                    mx = at.get("mx").asString.split(".")[0]
+                    ct = at.get("ct").asString
+                }
+            }
+
+            // Getting and setting pressure (PRE) values
+            if (
+                try {
+                    !solObject.getAsJsonObject("PRE").isJsonNull
+                } catch (ex: Exception) {
+                    false
+                }
+            ) {
+                info.PRE.apply {
+                    val at = solObject.get("PRE").asJsonObject
+                    av = at.get("av").asString.split(".")[0]
+                    mn = at.get("mn").asString.split(".")[0]
+                    mx = at.get("mx").asString.split(".")[0]
+                    ct = at.get("ct").asString
+                }
+            }
+
+            // Populating our map
+            infoMap.put(solKeys[i].toString(), info)
+        }
+
+        Log.i("map", infoMap.toString())
+        return infoMap
     }
 }
