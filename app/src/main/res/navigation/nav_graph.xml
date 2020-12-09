@@ -6,7 +6,7 @@
     app:startDestination="@id/onboardingFragment">
     <fragment
         android:id="@+id/onboardingFragment"
-        android:name="com.digitalhouse.marsgaze.ui.OnboardingFragment"
+        android:name="com.digitalhouse.marsgaze.ui.onboarding.OnboardingFragment"
         android:label="fragment_onboarding"
         tools:layout="@layout/fragment_onboarding">
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/onboarding2Fragment"
-        android:name="com.digitalhouse.marsgaze.ui.Onboarding2Fragment"
+        android:name="com.digitalhouse.marsgaze.ui.onboarding.Onboarding2Fragment"
         android:label="fragment_onboarding2"
         tools:layout="@layout/fragment_onboarding2">
         <action
@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.digitalhouse.marsgaze.ui.LoginFragment"
+        android:name="com.digitalhouse.marsgaze.ui.onboarding.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login">
         <action
@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/cadastroFragment"
-        android:name="com.digitalhouse.marsgaze.ui.CadastroFragment"
+        android:name="com.digitalhouse.marsgaze.ui.onboarding.CadastroFragment"
         android:label="fragment_cadastro"
         tools:layout="@layout/fragment_cadastro" >
         <action

@@ -1,4 +1,4 @@
-package com.digitalhouse.marsgaze.ui
+package com.digitalhouse.marsgaze.ui.onboarding
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.digitalhouse.marsgaze.R
+import com.digitalhouse.marsgaze.ui.NavigationActivity
 import kotlinx.android.synthetic.main.fragment_cadastro.*
 import kotlinx.android.synthetic.main.fragment_cadastro.view.*
-import kotlinx.android.synthetic.main.fragment_login.*
 
 class CadastroFragment : Fragment() {
 
