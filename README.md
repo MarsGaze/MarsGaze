@@ -14,7 +14,7 @@ APIs from [NASA's portal](https://api.nasa.gov/):
 - Color palette
 - Figma Prototypes:
   - [Dark Mode](https://www.figma.com/proto/ZlJ43LXIljbmLhnnS8r2kA/Mars-Gaze---Dark?node-id=217%3A123&scaling=min-zoom)
-  - [Light Mode](https://www.figma.com/proto/itTnJHfg1oEAI2AnQDQ4qd/MarsGaze---Light?node-id=2%3A290&scaling=min-zoom)
+  - [Light Mode](https://www.figma.com/proto/itTnJHfg1oEAI2AnQDQ4qd/MarsGaze---Light?node-id=1%3A1212&scaling=min-zoom)
   
 ## Team :ok_hand:
 - **Angelica dos Santos**
