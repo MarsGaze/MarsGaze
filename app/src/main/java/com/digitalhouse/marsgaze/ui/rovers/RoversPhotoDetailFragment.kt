@@ -11,6 +11,7 @@ import com.digitalhouse.marsgaze.databinding.FragmentImageDetailBinding
 import com.digitalhouse.marsgaze.ui.rovers.RoversPhotoDetailFragmentArgs
 import com.squareup.picasso.Picasso
 
+// TODO: Change layout name
 class RoversPhotoDetailFragment : Fragment() {
     private val args: RoversPhotoDetailFragmentArgs by navArgs()
     private lateinit var binding: FragmentImageDetailBinding

@@ -1,4 +1,4 @@
-package com.digitalhouse.marsgaze.ui
+package com.digitalhouse.marsgaze.ui.onboarding
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
