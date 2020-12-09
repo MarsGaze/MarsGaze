@@ -2,13 +2,11 @@ package com.digitalhouse.marsgaze.ui
 
 import android.os.Bundle
 import android.view.*
-import android.widget.AbsListView
 import androidx.fragment.app.Fragment
-import androidx.viewpager2.widget.ViewPager2
 import com.digitalhouse.marsgaze.R
-import com.digitalhouse.marsgaze.adapters.InsightAdapter
-import com.digitalhouse.marsgaze.adapters.InsightAdapterInsightData
-import com.digitalhouse.marsgaze.adapters.InsightAdapterPageTitle
+import com.digitalhouse.marsgaze.adapters.InsightSolDateAdapter
+import com.digitalhouse.marsgaze.adapters.InsightDataAdapter
+import com.digitalhouse.marsgaze.adapters.InsightTitleMediaAdapter
 import kotlinx.android.synthetic.main.fragment_insight.*
 
 class InsightFragment : Fragment() {
@@ -23,7 +21,7 @@ class InsightFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        insightVP.adapter = InsightAdapter()
+        insightVP.adapter = InsightSolDateAdapter()
 
         btnInsightBackDay.setOnClickListener {
             val value = insightVP.currentItem - 1
@@ -34,21 +32,21 @@ class InsightFragment : Fragment() {
 
         btnInsightForwardDay.setOnClickListener {
             val value = insightVP.currentItem + 1
-            if (value != (insightVP.adapter as InsightAdapter).count) {
+            if (value != (insightVP.adapter as InsightSolDateAdapter).count) {
                 insightVP.currentItem = value
             }
         }
 
-        insightDataInfo.adapter = InsightAdapterInsightData()
-        insightDataTitle.adapter = InsightAdapterPageTitle(insightDataInfo)
+        insightDataInfo.adapter = InsightDataAdapter()
+        insightDataTitle.adapter = InsightTitleMediaAdapter(insightDataInfo)
         insightDataForward.setOnClickListener {
             val value = insightDataTitle.currentItem + 1
-            if (value != (insightDataTitle.adapter as InsightAdapterPageTitle).count) {
+            if (value != (insightDataTitle.adapter as InsightTitleMediaAdapter).count) {
                 insightDataTitle.currentItem = value
             }
 
             val value2 = insightDataInfo.currentItem + 1
-            if (value2 != (insightDataInfo.adapter as InsightAdapterInsightData).count) {
+            if (value2 != (insightDataInfo.adapter as InsightDataAdapter).count) {
                 insightDataInfo.currentItem = value2
             }
         }

@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
 import com.digitalhouse.marsgaze.R
 
-class InsightAdapterInsightData : PagerAdapter() {
+class InsightDataAdapter : PagerAdapter() {
     override fun getCount(): Int = 2
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean = `object` == view
