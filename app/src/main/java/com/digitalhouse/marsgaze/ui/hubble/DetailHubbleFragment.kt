@@ -27,7 +27,6 @@ class DetailHubbleFragment : Fragment() {
         val date = args.hubble.data[0].date_created
 
         binding.tvHubbleTitle.text = title
-        binding.tvHubbleDescription.text = description
         binding.tvHubbleDate.text = date
 
         val ivDetail: ImageView = binding.ivHubbleFull

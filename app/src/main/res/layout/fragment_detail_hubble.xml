@@ -39,13 +39,13 @@
 
     <TextView
         android:id="@+id/tv_hubble_title"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
         android:textColor="@color/colorAccent"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/iv_share"
-        app:layout_constraintHorizontal_bias="0.117"
         app:layout_constraintStart_toStartOf="@+id/iv_info_image"
         app:layout_constraintTop_toTopOf="@+id/iv_info_image"
         tools:text="Título" />
@@ -53,6 +53,7 @@
     <TextView
         android:id="@+id/tv_hubble_date"
         android:layout_width="0dp"
+        android:layout_marginTop="8dp"
         android:layout_height="wrap_content"
         android:textColor="@color/colorWhite"
         android:textSize="20sp"

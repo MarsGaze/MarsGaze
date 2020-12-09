@@ -85,7 +85,7 @@
             app:argType="string" />
     </fragment>
     <fragment
-        android:id="@+id/hubbleFragment3"
+        android:id="@+id/hubbleFragment"
         android:name="com.digitalhouse.marsgaze.ui.hubble.HubbleFragment"
         android:label="fragment_hubble"
         tools:layout="@layout/fragment_hubble" >

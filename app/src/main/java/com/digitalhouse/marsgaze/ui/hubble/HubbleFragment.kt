@@ -19,6 +19,7 @@ import com.digitalhouse.marsgaze.databinding.FragmentHubbleBinding
 import com.digitalhouse.marsgaze.databinding.FragmentRoversResultBinding
 import com.digitalhouse.marsgaze.models.hubble.HubbleResponse
 import com.digitalhouse.marsgaze.models.hubble.Item
+import com.digitalhouse.marsgaze.models.hubble.PhotoCollection
 import com.digitalhouse.marsgaze.models.rovers.RoverPhoto
 import com.digitalhouse.marsgaze.models.rovers.RoverResponse
 import com.digitalhouse.marsgaze.services.HubbleService
