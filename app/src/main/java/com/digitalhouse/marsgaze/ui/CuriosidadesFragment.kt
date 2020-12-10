@@ -246,7 +246,6 @@ class CuriosidadesFragment : Fragment() {
             when(textoAnelMarte.visibility) {
                 View.VISIBLE -> {
                     textoAnelMarte.visibility = View.GONE
-                    imgButterfly.visibility = View.GONE
                     TransitionManager.beginDelayedTransition(cardAnelMarte, AutoTransition())
                     botaoAnelMarte.setImageResource(R.drawable.ic_arrow_down_white)
                 }
@@ -255,7 +254,6 @@ class CuriosidadesFragment : Fragment() {
                     TransitionManager.beginDelayedTransition(cardAnelMarte, AutoTransition())
                     botaoAnelMarte.setImageResource(R.drawable.ic_arrow_up_white)
                     textoAnelMarte.visibility = View.VISIBLE
-                    imgButterfly.visibility = View.VISIBLE
                 }
             }
         }
