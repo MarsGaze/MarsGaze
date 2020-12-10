@@ -7,15 +7,6 @@
     android:background="@color/colorPrimaryDark"
     tools:context=".ui.hubble.DetailHubbleFragment">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_hubble_detail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/arrow_orange" />
-
     <com.github.chrisbanes.photoview.PhotoView
         android:id="@+id/iv_hubble_full"
         android:layout_width="match_parent"
