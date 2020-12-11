@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.navigation.fragment.navArgs
+import androidx.transition.AutoTransition
+import androidx.transition.TransitionManager
 import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.databinding.FragmentDetailHubbleBinding
 import com.squareup.picasso.Picasso
@@ -28,6 +30,27 @@ class DetailHubbleFragment : Fragment() {
 
         binding.tvHubbleTitle.text = title
         binding.tvHubbleDate.text = date
+
+        binding.expandButton.setOnClickListener {
+            when (binding.groupInfo.visibility) {
+                View.VISIBLE -> {
+                    binding.groupInfo.visibility = View.GONE
+                    TransitionManager.beginDelayedTransition(
+                        binding.infoCard,
+                        AutoTransition()
+                    )
+                    binding.expandButton.animate().rotationX(180F)
+                }
+                else -> {
+                    binding.groupInfo.visibility = View.VISIBLE
+                    TransitionManager.beginDelayedTransition(
+                        binding.infoCard,
+                        AutoTransition()
+                    )
+                    binding.expandButton.animate().rotationX(0F)
+                }
+            }
+        }
 
         val ivDetail: ImageView = binding.ivHubbleFull
         Picasso.get().load(imgUrl).fit().centerInside().into(ivDetail)
