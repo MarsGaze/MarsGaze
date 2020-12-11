@@ -7,6 +7,15 @@
     android:background="@color/colorPrimaryDark"
     tools:context=".ui.hubble.DetailHubbleFragment">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_hubble_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/arrow_orange" />
+
     <com.github.chrisbanes.photoview.PhotoView
         android:id="@+id/iv_hubble_full"
         android:layout_width="match_parent"
@@ -18,102 +27,68 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/happy_face" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/info_card"
+    <ImageView
+        android:id="@+id/iv_info_image"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="180dp"
         android:layout_marginHorizontal="16dp"
-        android:backgroundTint="@color/colorPrimary"
-        android:src="@drawable/round_button_transparent"
-        app:cardCornerRadius="10dp"
+        android:src="@drawable/round_card"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="8dp">
+    <TextView
+        android:id="@+id/tv_hubble_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/iv_share"
+        app:layout_constraintStart_toStartOf="@+id/iv_info_image"
+        app:layout_constraintTop_toTopOf="@+id/iv_info_image"
+        tools:text="Título" />
 
-            <ImageView
-                android:id="@+id/expand_button"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginTop="8dp"
-                android:src="@drawable/ic_arrow_down_white"
-                app:layout_constraintBottom_toBottomOf="@+id/filter_text"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/tv_hubble_date"
+        android:layout_width="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorWhite"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/iv_favorite"
+        app:layout_constraintStart_toStartOf="@+id/tv_hubble_title"
+        app:layout_constraintTop_toBottomOf="@+id/tv_hubble_title"
+        tools:text="19/02/2002" />
 
-            <TextView
-                android:id="@+id/tv_hubble_title"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:textColor="@color/colorAccent"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toStartOf="@+id/iv_share"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/expand_button"
-                tools:text="Sol 9999" />
+    <ImageView
+        android:id="@+id/iv_favorite"
+        android:layout_width="35dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="20dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_favorite"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_hubble_title"
+        app:layout_constraintEnd_toEndOf="@+id/iv_info_image"
+        app:layout_constraintTop_toTopOf="@+id/tv_hubble_title" />
 
-            <TextView
-                android:id="@+id/tv_hubble_date"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/colorWhite"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@+id/iv_favorite"
-                app:layout_constraintStart_toStartOf="@+id/tv_hubble_title"
-                app:layout_constraintTop_toBottomOf="@+id/tv_hubble_title"
-                tools:text="Earth date" />
+    <ImageView
+        android:id="@+id/iv_share"
+        android:layout_width="35dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="16dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_share"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_hubble_title"
+        app:layout_constraintEnd_toStartOf="@+id/iv_favorite"
+        app:layout_constraintTop_toTopOf="@+id/tv_hubble_title" />
 
-            <TextView
-                android:id="@+id/tv_info_img_camera"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:paddingBottom="8dp"
-                android:textColor="@color/colorWhite"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@+id/iv_favorite"
-                app:layout_constraintStart_toStartOf="@+id/tv_hubble_title"
-                app:layout_constraintTop_toBottomOf="@+id/tv_hubble_date"
-                tools:text="CameraAbbr - CameraFull" />
-
-            <ImageView
-                android:id="@+id/iv_favorite"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginEnd="20dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_favorite"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_hubble_title" />
-
-            <ImageView
-                android:id="@+id/iv_share"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginEnd="16dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_share"
-                app:layout_constraintEnd_toStartOf="@+id/iv_favorite"
-                app:layout_constraintTop_toTopOf="@+id/tv_hubble_title" />
-
-            <androidx.constraintlayout.widget.Group
-                android:id="@+id/group_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="visible"
-                app:constraint_referenced_ids="iv_share, iv_favorite, tv_hubble_title, tv_hubble_date, tv_info_img_camera" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:constraint_referenced_ids="iv_favorite, iv_info_image, iv_share, tv_hubble_title, tv_hubble_date" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

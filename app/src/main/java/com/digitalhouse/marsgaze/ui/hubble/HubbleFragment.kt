@@ -45,13 +45,10 @@ class HubbleFragment : Fragment(), HubbleAdapter.OnItemClickListener {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         binding = FragmentHubbleBinding.inflate(inflater, container, false)
 
-        // Condition prevents clearing hubbleImageList.collections.items
-        if (!this::hubbleImageList.isInitialized) {
-            hubbleImageList = HubbleResponse(PhotoCollection(listOf()))
-        }
+        hubbleImageList = HubbleResponse(PhotoCollection(listOf()))
 
         val hubbleAdapter = HubbleAdapter(hubbleImageList, this)
         val rvHubble = binding.rvHubble
@@ -64,10 +61,7 @@ class HubbleFragment : Fragment(), HubbleAdapter.OnItemClickListener {
             rvHubble.adapter = hubbleAdapter
         }
 
-        // Condition prevents requesting when navigating back from DetailHubbleFragment
-        if (hubbleImageList.collection.items.isEmpty()) {
-            viewModel.getHubbleImg()
-        }
+        viewModel.getHubbleImg()
 
         // Inflate the layout for this fragment
         return binding.root

@@ -1,6 +1,5 @@
 package com.digitalhouse.marsgaze.services
 
-import com.digitalhouse.marsgaze.models.rovers.RoverPhoto
 import com.digitalhouse.marsgaze.models.rovers.RoverResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -21,7 +20,7 @@ interface MarsRoversPhotosService {
     /**
      * We need a different endpoint to fetch the latest photos from a rover.
      */
-    @GET("rovers/{rover}/latest_photos")
+    @GET("{rover}/latest_photos")
     suspend fun getLatestPhotos(
         @Path("rover") rover: String,
         @Query("api_key") api_key: String = API_KEY
@@ -30,34 +29,15 @@ interface MarsRoversPhotosService {
     /**
      * Fetches photos from a single rover queried by martian sol
      */
-
-    @GET("rovers/{rover}/photos")
+    @GET("{rover}/photos")
     suspend fun getPhotos(
         @Path("rover") rover: String,
         @Query("sol") sol: Int,
         @Query("api_key") api_key: String = API_KEY,
     ): RoverResponse
 
-
-    @GET("photos/{photo}")
-    /**
-     * PT-BR
-     * Pega uma imagem do rover a partir do ID.
-     *
-     * EN-US
-     * Pick an image of the rover from an ID.
-     *
-     * Rant: __Stupidly__ hard to find this simple endpoint... So troublesome, please doc this Nasa.
-     *
-     * @return RoverPhoto
-     */
-    suspend fun getPhoto(
-        @Path("photo") photo: String,
-        @Query("api_key") api_key: String = API_KEY
-    ): RoverPhoto
-
     companion object {
-        private const val BASE_URL = "https://api.nasa.gov/mars-photos/api/v1/"
+        private const val BASE_URL = "https://api.nasa.gov/mars-photos/api/v1/rovers/"
 
         fun create(): MarsRoversPhotosService {
 

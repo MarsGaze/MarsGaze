@@ -8,7 +8,6 @@ import com.google.gson.annotations.SerializedName
  *
  */
 data class RoverPhoto(
-    val id: Int,
     val sol: Int,
     val camera: RoverCamera,
     @SerializedName("img_src") val imageUrl: String,
