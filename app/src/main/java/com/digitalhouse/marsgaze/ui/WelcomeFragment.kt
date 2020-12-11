@@ -4,9 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.digitalhouse.marsgaze.R
 import kotlinx.android.synthetic.main.fragment_welcome_page.*
+import kotlinx.android.synthetic.main.navigation_drawer.*
 
 class WelcomeFragment : Fragment() {
     override fun onCreateView(
@@ -19,10 +22,6 @@ class WelcomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        welcomeHubble.setOnClickListener {
-            changePage(getString(R.string.navigationItemHubble), R.id.hubbleFragment)
-        }
 
         welcomeInsight.setOnClickListener {
             changePage(getString(R.string.navigationItemInsight), R.id.insightFragment)

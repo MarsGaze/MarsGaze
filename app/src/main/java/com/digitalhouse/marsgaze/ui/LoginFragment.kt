@@ -1,4 +1,4 @@
-package com.digitalhouse.marsgaze.ui.onboarding
+package com.digitalhouse.marsgaze.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,8 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.digitalhouse.marsgaze.R
-import com.digitalhouse.marsgaze.ui.NavigationActivity
 import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.android.synthetic.main.fragment_login.view.*
+import kotlinx.android.synthetic.main.fragment_onboarding2.view.*
+import kotlinx.android.synthetic.main.fragment_onboarding2.view.btnComecar
 
 class LoginFragment : Fragment() {
 

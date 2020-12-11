@@ -6,12 +6,13 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/tv_media"
+        android:id="@+id/textView8"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:gravity="center"
+        android:text="@string/insightTempVisual"
         android:textColor="@color/colorWhite"
         android:textSize="36sp"
         android:textStyle="bold"
@@ -31,10 +32,10 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/tv_amostras"
+        app:layout_constraintBottom_toTopOf="@+id/textView9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_media"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
         app:layout_constraintVertical_weight="0.5">
 
         <LinearLayout
@@ -51,7 +52,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/tv_minima"
+                    android:id="@+id/textView12"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_gravity="center"
@@ -68,16 +69,17 @@
                     android:id="@+id/imageView9"
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/tv_valorMinima"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_minima"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView13"
+                    app:layout_constraintTop_toBottomOf="@+id/textView12"
                     app:srcCompat="@drawable/insight_divisor" />
 
                 <TextView
-                    android:id="@+id/tv_valorMinima"
+                    android:id="@+id/textView13"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_gravity="center"
                     android:gravity="center|center_horizontal|top"
+                    android:text="@string/insightTempVisual"
                     android:textColor="@color/colorWhite"
                     android:textSize="24sp"
                     app:autoSizeMaxTextSize="48sp"
@@ -102,7 +104,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/tv_maxima"
+                    android:id="@+id/textView15"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_gravity="center"
@@ -119,16 +121,17 @@
                     android:id="@+id/imageView12"
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
-                    app:layout_constraintBottom_toTopOf="@+id/tv_valorMaxima"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_maxima"
+                    app:layout_constraintBottom_toTopOf="@+id/textView14"
+                    app:layout_constraintTop_toBottomOf="@+id/textView15"
                     app:srcCompat="@drawable/insight_divisor" />
 
                 <TextView
-                    android:id="@+id/tv_valorMaxima"
+                    android:id="@+id/textView14"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_gravity="center"
                     android:gravity="center_horizontal|top"
+                    android:text="@string/insightTempVisual"
                     android:textColor="@color/colorWhite"
                     android:textSize="24sp"
                     app:autoSizeMaxTextSize="48sp"
@@ -136,11 +139,12 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageView12" />
             </androidx.constraintlayout.widget.ConstraintLayout>
+
         </LinearLayout>
     </LinearLayout>
 
     <TextView
-        android:id="@+id/tv_amostras"
+        android:id="@+id/textView9"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_gravity="center"

@@ -23,7 +23,6 @@
     <string name="welcomeMarte">O que você precisa saber sobre o planeta vermelho</string>
     <string name="welcomeRover">Descubra Marte pelos olhos dos rovers da NASA</string>
     <string name="welcomeInsight">Como está a temperatura na superfície do planeta vermelho</string>
-    <string name="welcomeHubble">Veja as imagens tiradas pelo telescópio Hubble diretamente do espaço</string>
 
 
     <!-- Profile Page Resources -->
@@ -61,7 +60,6 @@
     <string name="navigationItemRover">Rovers</string>
     <string name="navigationItemInsight">Clima</string>
     <string name="navigationItemAboutMars">Sobre Marte</string>
-    <string name="navigationItemHubble">Telescópio Hubble</string>
 
     <!-- Activity exception -->
     <string name="tv_mensagemException">Não foi possível carregar a imagem</string>
@@ -160,16 +158,5 @@ Até hoje, os rovers mais bem-sucedidos foram/são os gêmeos Spirit e Opportuni
     <string name="profileSenhaAtual">Senha atual</string>
     <string name="profileSenhaAtualVisual">banana123</string>
     <string name="btnEditar">Editar</string>
-    <string name="title_activity_hubble">HubbleActivity</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

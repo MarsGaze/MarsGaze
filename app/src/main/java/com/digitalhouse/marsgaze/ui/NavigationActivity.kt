@@ -49,11 +49,6 @@ class NavigationActivity : AppCompatActivity() {
             // para evitar problemas caso haja mudança entre as posições dos elementos do menu
             val title = it.title.toString()
             when (it.title) {
-                resources.getString(R.string.navigationItemHubble) -> {
-                    changePage(title, R.id.hubbleFragment)
-
-                    true
-                }
                 resources.getString(R.string.navigationItemAboutMars) -> {
                     changePage(title, R.id.curiosidadesFragment)
 
