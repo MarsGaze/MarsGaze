@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.transition.AutoTransition
@@ -13,7 +12,6 @@ import androidx.transition.TransitionManager
 import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.databinding.FragmentRoversBinding
 import com.digitalhouse.marsgaze.ui.rovers.RoversFragmentDirections
-import kotlinx.android.synthetic.main.fragment_classic_toolbar.*
 
 class RoversFragment : Fragment() {
 

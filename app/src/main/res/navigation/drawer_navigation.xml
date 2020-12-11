@@ -84,22 +84,4 @@
             android:name="earthDate"
             app:argType="string" />
     </fragment>
-    <fragment
-        android:id="@+id/hubbleFragment"
-        android:name="com.digitalhouse.marsgaze.ui.hubble.HubbleFragment"
-        android:label="fragment_hubble"
-        tools:layout="@layout/fragment_hubble" >
-        <action
-            android:id="@+id/action_hubbleFragment3_to_detailHubbleFragment2"
-            app:destination="@id/detailHubbleFragment2" />
-    </fragment>
-    <fragment
-        android:id="@+id/detailHubbleFragment2"
-        android:name="com.digitalhouse.marsgaze.ui.hubble.DetailHubbleFragment"
-        android:label="fragment_detail_hubble"
-        tools:layout="@layout/fragment_detail_hubble" >
-        <argument
-            android:name="hubble"
-            app:argType="com.digitalhouse.marsgaze.models.hubble.Item" />
-    </fragment>
 </navigation>

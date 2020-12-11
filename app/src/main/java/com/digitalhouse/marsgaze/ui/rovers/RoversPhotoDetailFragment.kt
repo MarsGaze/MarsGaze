@@ -7,13 +7,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import androidx.transition.AutoTransition
-import androidx.transition.TransitionManager
 import com.digitalhouse.marsgaze.databinding.FragmentImageDetailBinding
 import com.digitalhouse.marsgaze.ui.rovers.RoversPhotoDetailFragmentArgs
 import com.squareup.picasso.Picasso
 
-// TODO: Change layout name
 class RoversPhotoDetailFragment : Fragment() {
     private val args: RoversPhotoDetailFragmentArgs by navArgs()
     private lateinit var binding: FragmentImageDetailBinding
@@ -29,36 +26,16 @@ class RoversPhotoDetailFragment : Fragment() {
     ): View {
         binding = FragmentImageDetailBinding.inflate(inflater, container, false)
 
+
         // TODO: Pass data as Serializable
         val imageUrl = args.imageUrl
         val sol = "Sol ${args.sol}"
         val cameraText = "${args.cameraAbrr} - ${args.cameraFull}"
         val earthDate = "Data: ${args.earthDate}"
 
-        binding.tvInfoTitle.text = sol
+        binding.tvInfoSol.text = sol
         binding.tvInfoImgCamera.text = cameraText
         binding.tvInfoImgEarthDate.text = earthDate
-
-        binding.expandButton.setOnClickListener {
-            when (binding.groupInfo.visibility) {
-                View.VISIBLE -> {
-                    binding.groupInfo.visibility = View.GONE
-                    TransitionManager.beginDelayedTransition(
-                        binding.infoCard,
-                        AutoTransition()
-                    )
-                    binding.expandButton.animate().rotationX(180F)
-                }
-                else -> {
-                    binding.groupInfo.visibility = View.VISIBLE
-                    TransitionManager.beginDelayedTransition(
-                        binding.infoCard,
-                        AutoTransition()
-                    )
-                    binding.expandButton.animate().rotationX(0F)
-                }
-            }
-        }
 
         val detailImageView: ImageView = binding.ivFullImage
         Picasso.get().load(imageUrl).fit().centerInside().into(detailImageView)

@@ -30,14 +30,12 @@ interface MarsRoversPhotosService {
     /**
      * Fetches photos from a single rover queried by martian sol
      */
-
     @GET("rovers/{rover}/photos")
     suspend fun getPhotos(
         @Path("rover") rover: String,
         @Query("sol") sol: Int,
         @Query("api_key") api_key: String = API_KEY,
     ): RoverResponse
-
 
     @GET("photos/{photo}")
     /**
@@ -60,7 +58,6 @@ interface MarsRoversPhotosService {
         private const val BASE_URL = "https://api.nasa.gov/mars-photos/api/v1/"
 
         fun create(): MarsRoversPhotosService {
-
             /**
              * Basic OkHttp interceptor which logs request and response data
              * https://square.github.io/okhttp/interceptors/

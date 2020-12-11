@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorPrimaryDark"
-    tools:context=".ui.onboarding.LoginActivity">
+    tools:context=".ui.LoginActivity">
 
         <fragment
             android:id="@+id/navHostfragment"

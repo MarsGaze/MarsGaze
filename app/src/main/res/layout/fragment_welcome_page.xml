@@ -87,21 +87,6 @@
         android:layout_height="0dp"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginBottom="30dp"
-        android:background="@color/colorPrimary"
-        android:backgroundTint="@color/colorPrimary"
-        app:cardCornerRadius="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/welcomeHubble"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/welcomeRover"/>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/welcomeHubble"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
         android:layout_marginBottom="40dp"
         android:background="@color/colorPrimary"
         android:backgroundTint="@color/colorPrimary"
@@ -109,7 +94,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeInsight"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeRover"
         app:layout_constraintVertical_bias="0.5">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -171,23 +156,6 @@
         app:layout_constraintTop_toTopOf="@+id/welcomeInsight"
         app:layout_constraintVertical_bias="0.31"
         app:srcCompat="@drawable/insight" />
-
-    <ImageView
-        android:id="@+id/hubble"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="15dp"
-        android:adjustViewBounds="true"
-        android:cropToPadding="false"
-        android:scaleType="fitCenter"
-        android:translationZ="2dp"
-        app:layout_constraintBottom_toBottomOf="@+id/welcomeHubble"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toTopOf="@+id/welcomeHubble"
-        app:layout_constraintVertical_bias="0.31"
-        app:srcCompat="@drawable/hubble" />
 
     <TextView
         android:id="@+id/textView2"
@@ -253,26 +221,5 @@
         app:layout_constraintHorizontal_weight="2"
         app:layout_constraintStart_toStartOf="@+id/welcomeInsight"
         app:layout_constraintTop_toTopOf="@+id/welcomeInsight" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:gravity="center_vertical"
-        android:text="@string/welcomeHubble"
-        android:textColor="@color/colorWhite"
-        android:textSize="18sp"
-        android:translationZ="2dp"
-        app:autoSizeMaxTextSize="24sp"
-        app:autoSizeMinTextSize="14.5sp"
-        app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toBottomOf="@+id/welcomeHubble"
-        app:layout_constraintEnd_toStartOf="@+id/insight"
-        app:layout_constraintHorizontal_weight="2"
-        app:layout_constraintStart_toStartOf="@+id/welcomeHubble"
-        app:layout_constraintTop_toTopOf="@+id/welcomeHubble" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

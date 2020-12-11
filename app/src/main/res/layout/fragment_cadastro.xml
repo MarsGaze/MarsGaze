@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    tools:context=".ui.onboarding.CadastroFragment">
+    tools:context=".ui.CadastroFragment">
 
     <ImageButton
         android:id="@+id/btnBackLogin"

@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.digitalhouse.marsgaze.R
 
-// TODO: Solve hardcoded strings
 class CuriosityDetailFragment : Fragment() {
 
     override fun onCreateView(
