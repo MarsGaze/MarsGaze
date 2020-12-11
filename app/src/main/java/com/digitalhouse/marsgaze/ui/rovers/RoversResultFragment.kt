@@ -49,8 +49,13 @@ class RoversResultFragment : Fragment(), RoversResultAdapter.OnItemClickListener
         setExpandableFilterMenuClickListener()
         setFilterButtonClickListener()
 
-        imageList = RoverResponse(listOf())
-        roverParameter = args.rover
+        // Conditions prevent overriding imageList and roverParameter when navigating back to this fragment
+        if (!this::imageList.isInitialized) {
+            imageList = RoverResponse(listOf())
+        }
+        if (!this::roverParameter.isInitialized) {
+            roverParameter = args.rover
+        }
 
         val resultAdapter = RoversResultAdapter(imageList, this)
         val recyclerView = binding.rvRoversResult
