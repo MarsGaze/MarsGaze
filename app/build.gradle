@@ -95,4 +95,6 @@ dependencies {
 
     // PhotoView -> zoomable ImageViews
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+
+    implementation 'com.squareup.retrofit2:converter-scalars:2.1.0'
 }

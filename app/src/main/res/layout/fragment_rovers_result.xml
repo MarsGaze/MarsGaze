@@ -8,13 +8,6 @@
     android:orientation="vertical"
     tools:context=".ui.rovers.RoversResultFragment">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView3"
-        android:name="com.digitalhouse.marsgaze.ui.ClassicToolbarFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <View
         android:id="@+id/container_left"
         android:layout_width="0dp"
@@ -49,7 +42,7 @@
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintHorizontal_weight="5"
         app:layout_constraintStart_toEndOf="@+id/container_left"
-        app:layout_constraintTop_toTopOf="@+id/toolbar">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

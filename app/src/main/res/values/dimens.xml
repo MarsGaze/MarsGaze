@@ -3,4 +3,5 @@
     <dimen name="spacing_regular">16dp</dimen>
     <dimen name="spacing_small">8dp</dimen>
     <dimen name="card_height_tall">240dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

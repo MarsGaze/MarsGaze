@@ -1,10 +1,13 @@
-package com.digitalhouse.marsgaze.ui
+package com.digitalhouse.marsgaze.ui.onboarding
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.digitalhouse.marsgaze.R
+import com.digitalhouse.marsgaze.services.MarsInsightService
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark">
+    android:background="@color/colorPrimaryDark"
+    tools:context=".ui.hubble.DetailHubbleFragment">
 
     <com.github.chrisbanes.photoview.PhotoView
-        android:id="@+id/iv_fullImage"
+        android:id="@+id/iv_hubble_full"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitCenter"
@@ -15,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/cydonia_mars_face" />
+        tools:src="@drawable/happy_face" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/info_card"
@@ -46,7 +47,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_info_title"
+                android:id="@+id/tv_hubble_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -61,15 +62,15 @@
                 tools:text="Sol 9999" />
 
             <TextView
-                android:id="@+id/tv_info_img_earth_date"
+                android:id="@+id/tv_hubble_date"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:textColor="@color/colorWhite"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="@+id/iv_favorite"
-                app:layout_constraintStart_toStartOf="@+id/tv_info_title"
-                app:layout_constraintTop_toBottomOf="@+id/tv_info_title"
+                app:layout_constraintStart_toStartOf="@+id/tv_hubble_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_hubble_title"
                 tools:text="Earth date" />
 
             <TextView
@@ -80,8 +81,8 @@
                 android:textColor="@color/colorWhite"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="@+id/iv_favorite"
-                app:layout_constraintStart_toStartOf="@+id/tv_info_title"
-                app:layout_constraintTop_toBottomOf="@+id/tv_info_img_earth_date"
+                app:layout_constraintStart_toStartOf="@+id/tv_hubble_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_hubble_date"
                 tools:text="CameraAbbr - CameraFull" />
 
             <ImageView
@@ -92,7 +93,7 @@
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_favorite"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_info_title" />
+                app:layout_constraintTop_toTopOf="@+id/tv_hubble_title" />
 
             <ImageView
                 android:id="@+id/iv_share"
@@ -102,14 +103,14 @@
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_share"
                 app:layout_constraintEnd_toStartOf="@+id/iv_favorite"
-                app:layout_constraintTop_toTopOf="@+id/tv_info_title" />
+                app:layout_constraintTop_toTopOf="@+id/tv_hubble_title" />
 
             <androidx.constraintlayout.widget.Group
                 android:id="@+id/group_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="visible"
-                app:constraint_referenced_ids="iv_share, iv_favorite, tv_info_title, tv_info_img_earth_date, tv_info_img_camera" />
+                app:constraint_referenced_ids="iv_share, iv_favorite, tv_hubble_title, tv_hubble_date, tv_info_img_camera" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
