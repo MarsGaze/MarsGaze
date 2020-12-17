@@ -5,6 +5,7 @@ import com.digitalhouse.marsgaze.models.rovers.RoverResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.logging.HttpLoggingInterceptor.Level
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -25,7 +26,7 @@ interface MarsRoversPhotosService {
     suspend fun getLatestPhotos(
         @Path("rover") rover: String,
         @Query("api_key") api_key: String = API_KEY
-    ): RoverResponse
+    ): Response<RoverResponse>
 
     /**
      * Fetches photos from a single rover queried by martian sol
@@ -36,7 +37,7 @@ interface MarsRoversPhotosService {
         @Path("rover") rover: String,
         @Query("sol") sol: Int,
         @Query("api_key") api_key: String = API_KEY,
-    ): RoverResponse
+    ): Response<RoverResponse>
 
 
     @GET("photos/{photo}")

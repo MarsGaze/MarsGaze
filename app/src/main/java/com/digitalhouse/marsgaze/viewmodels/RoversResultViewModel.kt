@@ -12,13 +12,13 @@ class RoversResultViewModel(private val repository: MarsRoversPhotosService) : V
 
     fun getLatestRoverPhotos(rover: String) {
         viewModelScope.launch {
-            photoList.value = repository.getLatestPhotos(rover)
+            photoList.value = repository.getLatestPhotos(rover).body()
         }
     }
 
     fun getRoverPhotos(rover: String, sol: Int) {
         viewModelScope.launch {
-            photoList.value = repository.getPhotos(rover, sol)
+            photoList.value = repository.getPhotos(rover, sol).body()
         }
     }
 }
