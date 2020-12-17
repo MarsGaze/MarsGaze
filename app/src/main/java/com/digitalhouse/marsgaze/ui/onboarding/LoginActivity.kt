@@ -3,7 +3,6 @@ package com.digitalhouse.marsgaze.ui.onboarding
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
-import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import com.digitalhouse.marsgaze.R
 

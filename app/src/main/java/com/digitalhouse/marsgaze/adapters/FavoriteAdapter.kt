@@ -40,7 +40,5 @@ class FavoriteAdapter(val list: ArrayList<Favorite>) : RecyclerView.Adapter<Favo
 
     override fun getItemCount(): Int = list.size
 
-    inner class FavoriteHolder(view: View) : RecyclerView.ViewHolder(view) {
-
-    }
+    inner class FavoriteHolder(view: View) : RecyclerView.ViewHolder(view)
 }

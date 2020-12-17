@@ -5,48 +5,42 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
-import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.adapters.HubbleAdapter
 import com.digitalhouse.marsgaze.databinding.FragmentHubbleBinding
-import com.digitalhouse.marsgaze.databinding.FragmentRoversResultBinding
 import com.digitalhouse.marsgaze.models.hubble.HubbleResponse
 import com.digitalhouse.marsgaze.models.hubble.Item
 import com.digitalhouse.marsgaze.models.hubble.PhotoCollection
-import com.digitalhouse.marsgaze.models.rovers.RoverPhoto
-import com.digitalhouse.marsgaze.models.rovers.RoverResponse
 import com.digitalhouse.marsgaze.services.HubbleService
-import com.digitalhouse.marsgaze.services.MarsRoversPhotosService
-import com.digitalhouse.marsgaze.ui.rovers.RoversResultFragmentArgs
-import com.digitalhouse.marsgaze.ui.rovers.RoversResultFragmentDirections
 import com.digitalhouse.marsgaze.viewmodels.HubbleViewModel
-import com.digitalhouse.marsgaze.viewmodels.RoversResultViewModel
-import java.util.*
 
 class HubbleFragment : Fragment(), HubbleAdapter.OnItemClickListener {
     private val viewModel: HubbleViewModel by viewModels() {
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+                @Suppress("UNCHECKED_CAST")
                 return HubbleViewModel(HubbleService.create()) as T
             }
         }
     }
 
-    private lateinit var binding: FragmentHubbleBinding // replaces kotlin synthetics
+    private var _binding: FragmentHubbleBinding? = null
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
+
+
     private lateinit var hubbleImageList: HubbleResponse
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentHubbleBinding.inflate(inflater, container, false)
+        _binding = FragmentHubbleBinding.inflate(inflater, container, false)
 
         // Condition prevents clearing hubbleImageList.collections.items
         if (!this::hubbleImageList.isInitialized) {
@@ -82,4 +76,8 @@ class HubbleFragment : Fragment(), HubbleAdapter.OnItemClickListener {
         )
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }

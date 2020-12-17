@@ -8,34 +8,42 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.digitalhouse.marsgaze.R
+import com.digitalhouse.marsgaze.databinding.FragmentCadastroBinding
 import com.digitalhouse.marsgaze.ui.NavigationActivity
-import kotlinx.android.synthetic.main.fragment_cadastro.*
-import kotlinx.android.synthetic.main.fragment_cadastro.view.*
 
 class CadastroFragment : Fragment() {
+    private var _binding: FragmentCadastroBinding? = null
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        val view: View = inflater!!.inflate(R.layout.fragment_cadastro, container, false)
+        _binding = FragmentCadastroBinding.inflate(inflater, container, false)
 
-        view.btnBackLogin.setOnClickListener {
+        binding.btnBackLogin.setOnClickListener {
             findNavController().navigate(R.id.action_cadastroFragment_to_loginFragment)
         }
 
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        btnCadastrar.setOnClickListener {
+        binding.btnCadastrar.setOnClickListener {
             val intent = Intent(requireActivity(), NavigationActivity::class.java)
             startActivity(intent)
             requireActivity().finish()
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }

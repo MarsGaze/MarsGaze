@@ -7,22 +7,26 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.digitalhouse.marsgaze.R
-import kotlinx.android.synthetic.main.fragment_onboarding.view.*
+import com.digitalhouse.marsgaze.databinding.FragmentOnboardingBinding
 
 class OnboardingFragment : Fragment() {
+    private var _binding: FragmentOnboardingBinding? = null
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        val view: View = inflater.inflate(R.layout.fragment_onboarding, container, false)
+        _binding = FragmentOnboardingBinding.inflate(inflater, container, false)
 
-        view.btnNextOb.setOnClickListener{
+        binding.btnNextOb.setOnClickListener{
             findNavController().navigate(R.id.action_onboardingFragment_to_onboarding2Fragment)
         }
 
-        return view
+        return binding.root
     }
 
 }

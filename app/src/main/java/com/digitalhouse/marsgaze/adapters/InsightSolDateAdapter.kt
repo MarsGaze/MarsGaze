@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.viewpager.widget.PagerAdapter
 import com.digitalhouse.marsgaze.R
-import com.digitalhouse.marsgaze.models.InsightInfo
+import com.digitalhouse.marsgaze.models.insight.InsightInfo
 
 class InsightSolDateAdapter(var infoList: ArrayList<InsightInfo> = ArrayList()) : PagerAdapter() {
 

@@ -5,15 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.digitalhouse.marsgaze.R
-import kotlinx.android.synthetic.main.navigation_drawer.*
+import com.digitalhouse.marsgaze.databinding.NavigationDrawerBinding
 
 class NavigationActivity : AppCompatActivity() {
+    private lateinit var binding: NavigationDrawerBinding
+
     // Controla em qual parte estamos para evitar uma chamada redundante.
     private lateinit var falseCall: String
 
     private lateinit var defaultPage: String
     // Controla quantas páginas estão abertas
-    private var pages = 0;
+    private var pages = 0
     // Ajuda na verificação do controle de páginas, evitando falsas adições.
     private var withToolbarPage = true
 
@@ -24,8 +26,9 @@ class NavigationActivity : AppCompatActivity() {
 
         defaultPage = getString(R.string.navigationItemStartPage)
         falseCall = defaultPage
+        binding = NavigationDrawerBinding.inflate(layoutInflater)
 
-        setContentView(R.layout.navigation_drawer)
+        setContentView(binding.root)
     }
 
     override fun onStart() {
@@ -33,7 +36,7 @@ class NavigationActivity : AppCompatActivity() {
 
         navControl = findNavController(R.id.nav_host_fragment)
 
-        navControl.addOnDestinationChangedListener() { _, _, _ ->
+        navControl.addOnDestinationChangedListener { _, _, _ ->
             // Toda iteração passa por aqui. Então quando voltamos o stack passamos aqui novamente
             // logo deduzimos duas vezes dos números de páginas, uma para entrar e outra do
             // aparecimento de outra tela.
@@ -44,7 +47,7 @@ class NavigationActivity : AppCompatActivity() {
         }
 
         navControl = findNavController(R.id.nav_host_fragment)
-        nav_view.setNavigationItemSelectedListener {
+        binding.navView.setNavigationItemSelectedListener {
             // Vamos comparar pelo titulo que utiliza o recurso de string
             // para evitar problemas caso haja mudança entre as posições dos elementos do menu
             val title = it.title.toString()
@@ -120,7 +123,7 @@ class NavigationActivity : AppCompatActivity() {
         }
 
         // Mesmo com uma iteração repetida fechamos o drawer.
-        drawer_layout.close()
+        binding.drawerLayout.close()
     }
 
     override fun onBackPressed() {

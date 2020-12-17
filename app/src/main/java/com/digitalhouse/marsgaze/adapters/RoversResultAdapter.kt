@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.models.rovers.RoverResponse
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.rovers_image_item.view.*
 
 class RoversResultAdapter(
     var adapterImageList: RoverResponse,
@@ -25,7 +24,7 @@ class RoversResultAdapter(
     class ImageViewHolder(
         itemView: View, listener: OnItemClickListener
     ) : RecyclerView.ViewHolder(itemView) {
-        val imageResult: ImageView = itemView.image_result
+        val imageResult: ImageView = itemView.findViewById(R.id.image_result)
 
         init {
             itemView.setOnClickListener {
