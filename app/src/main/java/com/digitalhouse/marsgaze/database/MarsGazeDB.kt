@@ -9,10 +9,39 @@ import com.digitalhouse.marsgaze.database.dao.UserDAO
 import com.digitalhouse.marsgaze.models.data.FavoriteTest
 import com.digitalhouse.marsgaze.models.data.User
 
+/**
+ * PT-BR
+ * Acesso ao banco de dados da nossa aplicação.
+ *
+ * EN-US
+ * Access of our database from our application.
+ *
+ * @author Jomar Júnior
+ */
 @Database(entities = [User::class, FavoriteTest::class], version = 1, exportSchema = false)
 abstract class MarsGazeDB : RoomDatabase() {
+    /**
+     * PT-BR
+     * Pega o DAO para acessar os métodos relacionado à tabela do usuário
+     *
+     * EN-US
+     * Get the DAO to access the methods related to the user table
+     *
+     * @return O DAO da tabela do usuário
+     *         The user DAO table.
+     */
     abstract fun userDAO(): UserDAO
 
+    /**
+     * PT-BR
+     * Pega o DAO para acessar os métodos relacionado à tabela dos favoritos
+     *
+     * EN-US
+     * Get the DAO to access the methods related to the favorites table
+     *
+     * @return O DAO da tabela dos favoritos
+     *         The favorites DAO table.
+     */
     abstract fun favoriteDAO(): FavoriteDAO
 
     // Cherry picked from
