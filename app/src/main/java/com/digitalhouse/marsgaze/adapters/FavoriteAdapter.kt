@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.digitalhouse.marsgaze.R
-import com.digitalhouse.marsgaze.models.Favorite
+import com.digitalhouse.marsgaze.models.data.Favorite
 
 
 class FavoriteAdapter(val list: ArrayList<Favorite>) : RecyclerView.Adapter<FavoriteAdapter.FavoriteHolder>() {

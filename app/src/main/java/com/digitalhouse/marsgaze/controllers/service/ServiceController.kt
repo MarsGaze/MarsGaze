@@ -1,10 +1,6 @@
 package com.digitalhouse.marsgaze.controllers.service
 
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
-import java.lang.Exception
-import java.net.UnknownHostException
 import retrofit2.Response as Response
 
 /**
@@ -13,7 +9,13 @@ import retrofit2.Response as Response
  * parte do programa. É também armazenado os valores retornados da API no cache para reutilização.
  *
  * EN-US
- * Control the cache from calls in a non persistent way.
+ * Control the API calls, ensuring that only one request is being made in any part of our software.
+ * We do actually save, on the memory, the last value taken from the API.
+ *
+ * @author Jomar Júnior
+ *
+ * @param CommonIdentifier Tipo que será usada para identificar as chamadas, usar enum class
+ *                         Type which will be used to identify the calls, use enum class
  */
 abstract class ServiceController<CommonIdentifier>() {
     protected val cache: MutableMap<CommonIdentifier, Any?> = mutableMapOf()

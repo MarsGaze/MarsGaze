@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.digitalhouse.marsgaze.adapters.FavoriteAdapter
 import com.digitalhouse.marsgaze.databinding.FragmentFavoritosBinding
-import com.digitalhouse.marsgaze.models.Favorite
+import com.digitalhouse.marsgaze.models.data.Favorite
 
 class FavoriteFragment : Fragment() {
     private var _binding: FragmentFavoritosBinding? = null

@@ -1,15 +1,21 @@
-package com.digitalhouse.marsgaze.models
+package com.digitalhouse.marsgaze.models.data
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.digitalhouse.marsgaze.helper.MessageHash
 
-@Entity
 /**
  * PT-BR
  * Usuário do nosso aplicativo
  *
+ * Importante: Sempre que criar um novo usuário, seja para salvar ou fazer qualquer outra coisa,
+ * favor utilizar o método hashAndSalt para criar um hash da senha.
+ *
  * EN-US
  * User of our app
+ *
+ * Important: Whenever a new user is created, be it to save on the DB or anything else, mind to
+ * use the method hashAndSalt to create a hash password.
  *
  * @author Jomar Júnior
  *
@@ -18,22 +24,12 @@ import com.digitalhouse.marsgaze.helper.MessageHash
  * @property email Email do usuário / User email
  * @property password Senha do usuário / User password
  */
-class User(
-    val id: Int? = null,
-    val name: String,
+@Entity(tableName = "user") class User(
+    @PrimaryKey
     val email: String,
-    private val _password: String,
-) : MessageHash(_password) {
-    /**
-     * PT-BR
-     * Proxy de acesso ao _password. Não necessitamos recolocar o valor de password.
-     *
-     * EN-US
-     * Acess proxy of _password. There's no need to reassign the password value
-     */
-    var password = _password
-    private set
-
+    val name: String,
+    var password: String,
+) : MessageHash(password) {
     /**
      * PT-BR
      * Realiza a operação de hashAndSalt de MessageHash e depois atribui o valor retornado para

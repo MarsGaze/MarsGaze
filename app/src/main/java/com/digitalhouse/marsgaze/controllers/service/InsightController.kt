@@ -6,13 +6,45 @@ import com.digitalhouse.marsgaze.services.InsightService
 import com.google.gson.JsonObject
 import retrofit2.Response
 
+/**
+ * PT-BR
+ * Controlador de chamadas para a API de Insight
+ *
+ * EN-US
+ * Controller for Insight API calls.
+ *
+ * @author Jomar Júnior
+ *
+ * @param insightService Interface com as chamadas para a API do Insight
+ *                       Interface with the API calls for Insight
+ */
 class InsightController private constructor(private val insightService: InsightService) :
         ServiceController<InsightType>() {
 
+
     init {
+        // Define as chamadas disponíveis para a realização do controle
         this.calls[InsightType.INSIGHT] = ::getInsightStub
     }
 
+    /**
+     * PT-BR
+     * Pega o valores do endpoint do insight.
+     *
+     * EN-US
+     * Request the values of the insight endpoint
+     *
+     * @param useCache Se pega o último resultado obtido. Resultados são guardados mesmo em chamadas
+     *                 com retorno sem sucesso.
+     *                 If it takes the last obtained result. Results are saved even if their calls
+     *                 return a non success.
+     *
+     * @exception Exception Qualquer execeção provida de Call.
+     *                      Any exception which comes from Call.
+     *
+     * @return Resposta com a lista de dados do insight.
+     *         Response with a list of insight data.
+     */
     suspend fun getInsight(useCache: Boolean = false): Response<ArrayList<InsightInfo>>? {
         if (useCache && cache[InsightType.INSIGHT] != null) {
             @Suppress("UNCHECKED_CAST")
@@ -22,6 +54,15 @@ class InsightController private constructor(private val insightService: InsightS
         return call(InsightType.INSIGHT)
     }
 
+    /**
+     * PT-BR
+     * Pega os valores do endpoint do insight porém com o intuito de somente salvar os resultados
+     * na mémoria.
+     *
+     * EN-US
+     * Request the values of the insight endpoint but with the intent of only saving it to the
+     * memory.
+     */
     suspend fun cacheInsight() {
         cacheCall<ArrayList<InsightInfo>>(InsightType.INSIGHT)
     }
@@ -39,6 +80,18 @@ class InsightController private constructor(private val insightService: InsightS
         }
     }
 
+    /**
+     * PT-BR
+     * Analisa o objeto JSON a fim de obter uma lista de dados do Insight.
+     *
+     * EN-US
+     * Parses the JSON object to get a list of InsightData
+     *
+     * @author Matheus
+     *
+     * @return Lista de dados do Insight
+     *         List of insight data
+     */
     private fun parseJson(jsonElement: JsonObject): ArrayList<InsightInfo> {
         val infoList = ArrayList<InsightInfo>()
         val solKeys = jsonElement.get("sol_keys").asJsonArray
@@ -73,6 +126,16 @@ class InsightController private constructor(private val insightService: InsightS
     }
 }
 
+
+/**
+ * PT-BR
+ * Difere o endpoint a ser usado para que a API controle as chamadas sendo feitas.
+ *
+ * EN-US
+ * Differs the endpoint to be used so that the API control the calls being done.
+ *
+ * @author Jomar Júnior
+ */
 enum class InsightType{
-    INSIGHT
+    INSIGHT // Endpoint principal do insight.
 }

@@ -1,5 +1,9 @@
-package com.digitalhouse.marsgaze.models
+package com.digitalhouse.marsgaze.models.data
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.ForeignKey
+import androidx.room.PrimaryKey
 import com.digitalhouse.marsgaze.R
 
 /**
@@ -25,14 +29,39 @@ class Favorite(val image: Int, val sol: Int, val rover: String) {
                    image = R.drawable.favorite_2
                 }
 
-                favorites.add(Favorite(
+                favorites.add(
+                    Favorite(
                     image,
                     i,
                     "Curiosity"
-                ))
+                )
+                )
             }
 
             return favorites
         }
     }
+}
+
+@Entity(
+    foreignKeys = [
+        ForeignKey(entity = User::class, onDelete = ForeignKey.CASCADE, parentColumns = ["email"],
+                   childColumns = ["user"])
+    ],
+    tableName = "Favorite"
+)
+data class FavoriteTest(
+    // Usamos identificador único a parte do id da imagem já que elas podem conflitar
+    // em relação ao seu tipo
+    @PrimaryKey(autoGenerate = true)
+    var id: Int,
+    @ColumnInfo(name="image_type")
+    val imageType: Int,
+    val imageId: Int,
+    val user: String
+)
+
+enum class ImageType{
+    HubbleImage,
+    RoverImage
 }
