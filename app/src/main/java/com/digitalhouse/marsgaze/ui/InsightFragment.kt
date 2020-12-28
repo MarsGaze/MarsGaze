@@ -123,6 +123,11 @@ class InsightFragment : Fragment() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
     inner class InsightListener(private val insightReflect: ViewPager) : ViewPager.OnPageChangeListener {
         override fun onPageScrolled(
             position: Int,
