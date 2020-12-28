@@ -1,8 +1,12 @@
 package com.digitalhouse.marsgaze.models.data
 
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import com.digitalhouse.marsgaze.helper.MessageHash
+import java.time.LocalDate
 
 /**
  * PT-BR
@@ -23,26 +27,14 @@ import com.digitalhouse.marsgaze.helper.MessageHash
  * @property name Nome do usuário / User name
  * @property email Email do usuário / User email
  * @property password Senha do usuário / User password
+ * @property createdOn Data de criação do usuário / User birthday
  */
 @Entity(tableName = "user") class User(
     @PrimaryKey
-    val email: String,
-    val name: String,
+    var email: String,
+    var name: String,
     var password: String,
-) : MessageHash(password) {
-    /**
-     * PT-BR
-     * Realiza a operação de hashAndSalt de MessageHash e depois atribui o valor retornado para
-     * password.
-     *
-     * EN-US
-     * Calls the hashAndSalt from MessageHash and then assigns the returned value to password.
-     *
-     * @return valor de hashAndSalt | hashAndSalt Value
-     */
-    override fun hashAndSalt(): String {
-        password = super.hashAndSalt()
-        return password
-    }
-}
+    @ColumnInfo(name = "created_on", defaultValue = "DATE(\"now\")")
+    var createdOn: String = ""
+)
 

@@ -1,9 +1,6 @@
 package com.digitalhouse.marsgaze.models.data
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.PrimaryKey
+import androidx.room.*
 import com.digitalhouse.marsgaze.R
 
 /**
@@ -48,14 +45,15 @@ class Favorite(val image: Int, val sol: Int, val rover: String) {
         ForeignKey(entity = User::class, onDelete = ForeignKey.CASCADE, parentColumns = ["email"],
                    childColumns = ["user"])
     ],
-    tableName = "Favorite"
+    tableName = "Favorite",
+    indices = [Index("user")]
 )
 data class FavoriteTest(
     // Usamos identificador único a parte do id da imagem já que elas podem conflitar
     // em relação ao seu tipo
     @PrimaryKey(autoGenerate = true)
     var id: Int,
-    @ColumnInfo(name="image_type")
+    @ColumnInfo(name = "image_type")
     val imageType: Int,
     val imageId: Int,
     val user: String
