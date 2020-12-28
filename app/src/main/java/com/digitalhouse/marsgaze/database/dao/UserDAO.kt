@@ -39,6 +39,20 @@ import com.digitalhouse.marsgaze.models.data.User
 
     /**
      * PT-BR
+     * Atualiza o usuário da tabela. Caso o haja algum conflito de campos únicos retornara uma
+     * exceção
+     *
+     * EN-US
+     * Updates the user of the table. If any unique column conflicts an exception will be given.
+     *
+     * @param user Usuário a ser atualizado
+     *             User to be updated
+     */
+    @Update
+    fun update(user: User)
+
+    /**
+     * PT-BR
      * Pega todos os favoritos de um usuário.
      *
      * EN-US

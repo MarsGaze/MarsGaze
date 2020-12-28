@@ -59,7 +59,7 @@ abstract class MarsGazeDB : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     MarsGazeDB::class.java,
-                    "word_database"
+                    "marsgaze_database"
                 ).build()
                 INSTANCE = instance
                 // return instance
