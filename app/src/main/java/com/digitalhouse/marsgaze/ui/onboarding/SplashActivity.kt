@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.controllers.service.InsightController
+import com.digitalhouse.marsgaze.database.MarsGazeDB
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -34,5 +35,8 @@ class SplashActivity : AppCompatActivity() {
                                                 "Razão: ${e.message}")
             }
         }
+
+        val test = MarsGazeDB.getDatabase(this)
+        val testDao = test.favoriteDAO()
     }
 }
