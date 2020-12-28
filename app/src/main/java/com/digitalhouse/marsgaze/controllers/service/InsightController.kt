@@ -68,15 +68,14 @@ class InsightController private constructor(private val insightService: InsightS
     }
 
     companion object {
-        var obj: InsightController? = null
+        var INSTANCE: InsightController? = null
 
         fun getController(service: InsightService = InsightService.create()): InsightController {
-            if (obj != null) {
-                return obj!!
+            return INSTANCE ?: synchronized(this) {
+                val instance = InsightController(service)
+                INSTANCE = instance
+                instance
             }
-
-            obj = InsightController(service)
-            return obj!!
         }
     }
 

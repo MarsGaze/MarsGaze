@@ -20,6 +20,13 @@ import retrofit2.Response as Response
 abstract class ServiceController<CommonIdentifier>() {
     protected val cache: MutableMap<CommonIdentifier, Any?> = mutableMapOf()
 
+    /**
+     * PT-BR
+     * Verifica se uma requisição ainda está em processo
+     *
+     * EN-US
+     * Verifies if a request is still on going
+     */
     protected val onCall: MutableMap<CommonIdentifier, Boolean> = mutableMapOf()
 
     protected val progressCalls:
