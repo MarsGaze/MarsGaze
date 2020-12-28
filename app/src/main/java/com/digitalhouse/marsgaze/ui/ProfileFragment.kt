@@ -90,9 +90,10 @@ class ProfileFragment : Fragment() {
     }
 
     private fun getUserFromTextInputs(): User = User(
-        binding.tiName.editText!!.text.toString(),
         binding.tiEmail.editText!!.text.toString(),
-        binding.tiPassword.editText!!.text.toString()
+        binding.tiName.editText!!.text.toString(),
+        binding.tiPassword.editText!!.text.toString(),
+        binding.tiDataAtrs.editText!!.text.toString()
     )
 
     inner class EditOrSaveManager {
