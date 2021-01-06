@@ -128,7 +128,7 @@ class CuriosidadesFragment : Fragment() {
         setExpandable(cardCuriosidadesGeograficas, botaoCuriosidadesGeograficas, textoCuriosidadesGeograficas, null)
     }
 
-    private fun setExpandable(expandableText: CardView,  expandButton: ImageView, hiddenText: TextView, hiddenImage: ImageView?) {
+    private fun setExpandable(expandableText: CardView,  expandButton: ImageView, hiddenText: TextView, hiddenImage: CardView?) {
         expandButton.setOnClickListener {
             when (hiddenText.visibility) {
                 View.VISIBLE -> {
