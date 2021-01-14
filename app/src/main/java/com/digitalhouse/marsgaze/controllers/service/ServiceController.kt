@@ -1,6 +1,9 @@
 package com.digitalhouse.marsgaze.controllers.service
 
+import kotlinx.coroutines.CompletableJob
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.supervisorScope
 import retrofit2.Response as Response
 
 /**
@@ -17,7 +20,7 @@ import retrofit2.Response as Response
  * @param CommonIdentifier Tipo que será usada para identificar as chamadas, usar enum class
  *                         Type which will be used to identify the calls, use enum class
  */
-abstract class ServiceController<CommonIdentifier>() {
+abstract class ServiceController<CommonIdentifier> {
     protected val cache: MutableMap<CommonIdentifier, Any?> = mutableMapOf()
 
     /**
@@ -41,11 +44,15 @@ abstract class ServiceController<CommonIdentifier>() {
 
         onCall[type] = true
 
+        // Controla se a chamada ainda está acontecendo
+        val job = Job()
+        progressCalls[type] = job
         // Temos certeza que devemos receber o tipo T correto aqui. Qualquer problema aqui não,
         // deve ser alcançado por usuário
         @Suppress("UNCHECKED_CAST")
-        val value: Response<T> = calls[type]?.invoke() as Response<T>
+        val value: Response<T> = calls[type]!!.invoke() as Response<T>
         cache[type] = value
+        job.complete()
 
         onCall[type] = false
 
@@ -68,8 +75,4 @@ abstract class ServiceController<CommonIdentifier>() {
         onCall[type] = false
     }
 
-    suspend fun awaitCall(type: CommonIdentifier) {
-        val future = progressCalls[type]
-        future?.join()
-    }
 }

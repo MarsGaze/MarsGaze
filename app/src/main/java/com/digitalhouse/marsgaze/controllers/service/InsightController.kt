@@ -4,6 +4,7 @@ import android.util.Log
 import com.digitalhouse.marsgaze.models.insight.InsightInfo
 import com.digitalhouse.marsgaze.services.InsightService
 import com.google.gson.JsonObject
+import kotlinx.coroutines.Job
 import retrofit2.Response
 
 /**
@@ -17,11 +18,12 @@ import retrofit2.Response
  *
  * @param insightService Interface com as chamadas para a API do Insight
  *                       Interface with the API calls for Insight
+ *
+ * TODO: No momento não verificamos chamadas que já estão ocorrendo ou possibilitamos a espera delas
+ *  junto com o recebimento do valor de tal
  */
 class InsightController private constructor(private val insightService: InsightService) :
         ServiceController<InsightType>() {
-
-
     init {
         // Define as chamadas disponíveis para a realização do controle
         this.calls[InsightType.INSIGHT] = ::getInsightStub
@@ -66,6 +68,20 @@ class InsightController private constructor(private val insightService: InsightS
     suspend fun cacheInsight() {
         cacheCall<ArrayList<InsightInfo>>(InsightType.INSIGHT)
     }
+
+    /**
+     * PT-BR
+     * Retorna um trabalho relacionado a chamada que pode ou já ocorreu durante algum período. Caso
+     * não tenha ocorrido nenhuma chamada ainda, é retornado nulo.
+     *
+     * EN-US
+     * Returns if there's a job related to the call which could or have happened in a time period.
+     * If no job happened prior to a call, null is returned.
+     *
+     * @return Job CompletableJob que indica se a chamada finalizou ou não
+     *             CompletableJob indicates if a call ended or not.
+     */
+    fun jobInsight(): Job? = progressCalls[InsightType.INSIGHT]
 
     companion object {
         var INSTANCE: InsightController? = null
@@ -112,6 +128,10 @@ class InsightController private constructor(private val insightService: InsightS
         return infoList
     }
 
+    /**
+     * PT-BR
+     * Cria uma nova Response onde nela vamos abranger retornos com o valor de 200 mas que
+     */
     private suspend fun getInsightStub(): Response<ArrayList<InsightInfo>> {
         val response = insightService.getInsightResponse()
         val body = response.body()

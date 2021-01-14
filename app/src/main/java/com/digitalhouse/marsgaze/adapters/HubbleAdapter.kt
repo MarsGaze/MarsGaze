@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.digitalhouse.marsgaze.R
-import com.digitalhouse.marsgaze.databinding.FragmentHubbleBinding
 import com.digitalhouse.marsgaze.models.hubble.HubbleResponse
 import com.squareup.picasso.Picasso
 
