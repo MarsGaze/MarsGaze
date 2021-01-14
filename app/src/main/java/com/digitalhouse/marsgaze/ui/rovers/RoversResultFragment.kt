@@ -16,7 +16,6 @@ import androidx.transition.AutoTransition
 import androidx.transition.TransitionManager
 import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.adapters.RoversResultAdapter
-import com.digitalhouse.marsgaze.databinding.FragmentOnboardingBinding
 import com.digitalhouse.marsgaze.databinding.FragmentRoversResultBinding
 import com.digitalhouse.marsgaze.models.rovers.RoverPhoto
 import com.digitalhouse.marsgaze.models.rovers.RoverResponse
@@ -27,7 +26,7 @@ import java.util.*
 
 class RoversResultFragment : Fragment(), RoversResultAdapter.OnItemClickListener {
     private val args: RoversResultFragmentArgs by navArgs()
-    private val viewModel: RoversResultViewModel by viewModels() {
+    private val viewModel: RoversResultViewModel by viewModels {
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
                 @Suppress("UNCHECKED_CAST")

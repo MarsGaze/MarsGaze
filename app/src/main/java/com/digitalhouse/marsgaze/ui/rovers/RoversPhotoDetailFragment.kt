@@ -10,8 +10,6 @@ import androidx.navigation.fragment.navArgs
 import androidx.transition.AutoTransition
 import androidx.transition.TransitionManager
 import com.digitalhouse.marsgaze.databinding.FragmentImageDetailBinding
-import com.digitalhouse.marsgaze.databinding.FragmentOnboardingBinding
-import com.digitalhouse.marsgaze.ui.rovers.RoversPhotoDetailFragmentArgs
 import com.squareup.picasso.Picasso
 
 // TODO: Change layout name
