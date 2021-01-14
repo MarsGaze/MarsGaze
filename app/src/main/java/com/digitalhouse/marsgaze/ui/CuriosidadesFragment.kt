@@ -7,23 +7,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import com.digitalhouse.marsgaze.R
+import kotlinx.android.synthetic.main.fragment_curiosidades.*
 import com.digitalhouse.marsgaze.databinding.FragmentCuriosidadesBinding
 
 class CuriosidadesFragment : Fragment() {
-    private var _binding: FragmentCuriosidadesBinding? = null
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+
+    private lateinit var binding: FragmentCuriosidadesBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentCuriosidadesBinding.inflate(inflater, container, false)
+    ): View? {
+        binding = FragmentCuriosidadesBinding.inflate(inflater, container, false)
 
         return binding.root
     }
@@ -31,217 +31,131 @@ class CuriosidadesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //PARTE HISTÓRICA
+
         //variaveis de controle para o card que contém o texto HISTORIA
-        val cardHistoria = binding.expandableTextHistory
-        val botaoHistoria = binding.expandButtonHistory
-        val textoHistoria = binding.hiddenTextHistoria
+        val cardHistoria = expandable_text_history
+        val botaoHistoria = expand_button_history
+        val textoHistoria = hidden_text_historia
 
         //ação para mostrar o texto Hitória
-        botaoHistoria.setOnClickListener {
-            hideOrShowCard(
-                textoHistoria,
-                cardHistoria,
-                botaoHistoria
-            )
-        }
+        setExpandable(cardHistoria, botaoHistoria, textoHistoria, null)
 
         //variaveis de controle para o card que contém o texto NOME
-        val cardNome = binding.expandableTextName
-        val botaoNome = binding.expandButtonName
-        val textoNome = binding.hiddenTextName
+        val cardNome = expandable_text_name
+        val botaoNome = expand_button_name
+        val textoNome = hidden_text_name
 
         //ação para mostrar o texto NOME
-        botaoNome.setOnClickListener {
-            hideOrShowCard(
-                textoNome,
-                cardNome,
-                botaoNome
-            )
-        }
+        setExpandable(cardNome, botaoNome, textoNome, null)
+
 
         //variaveis de controle para o card que contém o texto CLIMA
-        val cardClima = binding.expandableTextClima
-        val botaoClima = binding.expandButtonClima
-        val textoClima = binding.hiddenTextClima
+        val cardClima = expandable_text_clima
+        val botaoClima = expand_button_clima
+        val textoClima = hidden_text_clima
 
         //ação para mostrar o texto CLIMA
-        botaoClima.setOnClickListener {
-            hideOrShowCard(
-                textoClima,
-                cardClima,
-                botaoClima
-            )
-        }
+        setExpandable(cardClima, botaoClima, textoClima, null)
 
         //variaveis de controle para o card que contém o texto SOLO
-        val cardSolo = binding.expandableTextSolo
-        val botaoSolo = binding.expandButtonSolo
-        val textoSolo = binding.hiddenTextSolo
+        val cardSolo = expandable_text_solo
+        val botaoSolo = expand_button_solo
+        val textoSolo = hidden_text_solo
 
         //ação para mostrar o texto SOLO
-        botaoSolo.setOnClickListener {
-            hideOrShowCard(
-                textoSolo,
-                cardSolo,
-                botaoSolo
-            )
-        }
+        setExpandable(cardSolo, botaoSolo, textoSolo, null)
 
         //variaveis de controle para o card que contém o texto SATELITES
-        val cardSatelites = binding.expandableTextSatelites
-        val botaoSatelites = binding.expandButtonSatelites
-        val textoSatelites = binding.hiddenTextSatelites
+        val cardSatelites = expandable_text_satelites
+        val botaoSatelites = expand_button_satelites
+        val textoSatelites = hidden_text_satelites
 
         //ação para mostrar o texto SATELITES
-        botaoSatelites.setOnClickListener {
-            hideOrShowCard(
-                textoSatelites,
-                cardSatelites,
-                botaoSatelites
-            )
-        }
+        setExpandable(cardSatelites, botaoSatelites, textoSatelites, null)
 
         //variaveis de controle para o card que contém o texto ATMOSFERA
-        val cardAtmosfera = binding.expandableTextAtmosfera
-        val botaoAtmosfera = binding.expandButtonAtmosfera
-        val textoAtmosfera = binding.hiddenTextAtmosfera
+        val cardAtmosfera = expandable_text_atmosfera
+        val botaoAtmosfera = expand_button_atmosfera
+        val textoAtmosfera = hidden_text_atmosfera
 
         //ação para mostrar o texto ATMOSFERA
-        botaoAtmosfera.setOnClickListener {
-            hideOrShowCard(
-                textoAtmosfera,
-                cardAtmosfera,
-                botaoAtmosfera
-            )
-        }
+        setExpandable(cardAtmosfera, botaoAtmosfera, textoAtmosfera, null)
 
         //PARTE DE CURIOSIDADES
 
         //variaveis de controle para o card que contém o texto CYDONIA
-        val cardCydonia = binding.expandableTextCydonia
-        val botaoCydonia = binding.expandButtonCydonia
-        val imgCydonia = binding.imgCydonia
-        val textoCydonia = binding.hiddenTextCydonia
+        val cardCydonia = expandable_text_cydonia
+        val botaoCydonia = expand_button_cydonia
+        val textoCydonia = hidden_text_cydonia
+        val imgCydonia = img_cydonia
 
         //ação para mostrar o texto CYDONIA
-        botaoCydonia.setOnClickListener {
-            hideOrShowCard(
-                textoCydonia,
-                cardCydonia,
-                botaoCydonia,
-                listOf(imgCydonia)
-            )
-        }
+        setExpandable(cardCydonia, botaoCydonia, textoCydonia, imgCydonia)
 
         //variaveis de controle para o card que contém o texto HAPPY FACE
-        val cardHappyFace = binding.expandableTextHappyFace
-        val botaoHappyFace = binding.expandButtonHappyFace
-        val imgHappyFace = binding.imgHappyFace
-        val textoHappyFace = binding.hiddenTextHappyFace
+        val cardHappyFace = expandable_text_happyFace
+        val botaoHappyFace = expand_button_happyFace
+        val textoHappyFace = hidden_text_happyFace
+        val imgHappyFace = img_happyFace
 
         //ação para mostrar o texto HAPPY FACE
-        botaoHappyFace.setOnClickListener {
-            hideOrShowCard(
-                textoHappyFace,
-                cardHappyFace,
-                botaoHappyFace,
-                listOf(imgHappyFace)
-            )
-        }
+        setExpandable(cardHappyFace, botaoHappyFace, textoHappyFace, imgHappyFace)
 
         //variaveis de controle para o card que contém o texto BUTTERFLY
-        val cardButterfly = binding.expandableTextButterfly
-        val botaoButterfly = binding.expandButtonButterfly
-        val imgButterfly = binding.imgButterfly
-        val textoButterfly = binding.hiddenTextButterfly
+        val cardButterfly = expandable_text_butterfly
+        val botaoButterfly = expand_button_butterfly
+        val textoButterfly = hidden_text_butterfly
+        val imgButterfly = img_butterfly
 
         //ação para mostrar o texto BUTTERFLY
-        botaoButterfly.setOnClickListener {
-            hideOrShowCard(
-                textoButterfly,
-                cardButterfly,
-                botaoButterfly,
-                listOf(imgButterfly)
-            )
-        }
+        setExpandable(cardButterfly, botaoButterfly, textoButterfly, imgButterfly)
 
         //variaveis de controle para o card que contém o texto ANEL DE MARTE
-        val cardAnelMarte = binding.expandableTextAnelMarte
-        val botaoAnelMarte = binding.expandButtonAnelMarte
-        val textoAnelMarte = binding.hiddenTextAnelMarte
+        val cardAnelMarte = expandable_text_anelMarte
+        val botaoAnelMarte = expand_button_anelMarte
+        val textoAnelMarte = hidden_text_anelMarte
 
         //ação para mostrar o texto ANEL DE MARTE
-        botaoAnelMarte.setOnClickListener {
-            hideOrShowCard(
-                textoAnelMarte,
-                cardAnelMarte,
-                botaoAnelMarte
-            )
-        }
+        setExpandable(cardAnelMarte, botaoAnelMarte, textoAnelMarte, null)
 
         //variaveis de controle para o card que contém o texto CURIOSIDADES GEOGRAFICAS
-        val cardCuriosidadesGeograficas = binding.expandableTextCuriosidadesGeograficas
-        val botaoCuriosidadesGeograficas = binding.expandButtonCuriosidadesGeograficas
-        val textoCuriosidadesGeograficas = binding.hiddenTextCuriosidadesGeograficas
+        val cardCuriosidadesGeograficas = expandable_text_curiosidadesGeograficas
+        val botaoCuriosidadesGeograficas = expand_button_curiosidadesGeograficas
+        val textoCuriosidadesGeograficas = hidden_text_curiosidadesGeograficas
 
         //ação para mostrar o texto CURIOSIDADES GEOGRAFICAS
-        botaoCuriosidadesGeograficas.setOnClickListener {
-            hideOrShowCard(
-                textoCuriosidadesGeograficas,
-                cardCuriosidadesGeograficas,
-                botaoCuriosidadesGeograficas
-            )
-        }
+        setExpandable(cardCuriosidadesGeograficas, botaoCuriosidadesGeograficas, textoCuriosidadesGeograficas, null)
     }
 
-    /**
-     * PT-BR
-     * Mostra os itens de um card com animação dropdown. O que decide se a lista vai ser mostrada
-     * ou não é o judge, basicamente uma View, na qual será verificado o atributo visibility para
-     * decidir se vai ou não mostrar na tela os elementos.
-     *
-     * EN-US
-     * Show items from a card with a dropdown animation. The decision of showing or not is done
-     * with the judge variable, basically a View, which we verify the visibility attribute to
-     * decide if we're going the elements on the screen or not.
-     *
-     * @author Jomar Júnior / Angelica (overall logic) | (Lógica geral)
-     *
-     * @param judge - Decide se vai ou não mostrar na tela os elementos
-     *                Decides if it's going to show or not on the screen its elements
-     * @param card - Card que recebe a animação
-     *               Card which receives the animation
-     * @param button - Altera a posição da seta de acordo com o estado do elemento judge
-     *                 Alters the position of the arrow accordingly to the judge state.
-     * @param thingsToShowOrNot - Qualquer outra view dentro do card que precisa aparecer na tela
-     *                            Any view which is inside the card and needs to appear on the
-     *                            screen
-     */
-    private fun hideOrShowCard(judge: View, card: CardView, button: ImageView,
-                               thingsToShowOrNot: List<View> = listOf()) {
-        when(judge.visibility) {
-            View.VISIBLE -> {
-                judge.visibility = View.GONE
-                for (i in thingsToShowOrNot) {
-                    i.visibility = View.GONE
+    private fun setExpandable(expandableText: CardView,  expandButton: ImageView, hiddenText: TextView, hiddenImage: CardView?) {
+        expandButton.setOnClickListener {
+            when (hiddenText.visibility) {
+                View.VISIBLE -> {
+                    if (hiddenImage != null) {
+                        hiddenImage.visibility = View.GONE
+                    }
+                    hiddenText.visibility = View.GONE
+                    androidx.transition.TransitionManager.beginDelayedTransition(
+                        expandableText,
+                        androidx.transition.AutoTransition()
+                    )
+                    expandButton.animate().rotationX(0F)
                 }
-                TransitionManager.beginDelayedTransition(card, AutoTransition())
-                button.setImageResource(R.drawable.ic_arrow_down_white)
-            }
 
-            else -> {
-                TransitionManager.beginDelayedTransition(card, AutoTransition())
-                button.setImageResource(R.drawable.ic_arrow_up_white)
-                judge.visibility = View.VISIBLE
-                for (i in thingsToShowOrNot) {
-                    i.visibility = View.VISIBLE
+                else -> {
+                    if (hiddenImage != null) {
+                        hiddenImage.visibility = View.VISIBLE
+                    }
+
+                    hiddenText.visibility = View.VISIBLE
+                    androidx.transition.TransitionManager.beginDelayedTransition(
+                        expandableText,
+                        androidx.transition.AutoTransition()
+                    )
+                    expandButton.animate().rotationX(180F)
                 }
             }
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 }
