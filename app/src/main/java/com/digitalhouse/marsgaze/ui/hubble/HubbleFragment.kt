@@ -19,7 +19,7 @@ import com.digitalhouse.marsgaze.services.HubbleService
 import com.digitalhouse.marsgaze.viewmodels.HubbleViewModel
 
 class HubbleFragment : Fragment(), HubbleAdapter.OnItemClickListener {
-    private val viewModel: HubbleViewModel by viewModels() {
+    private val viewModel: HubbleViewModel by viewModels {
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
                 @Suppress("UNCHECKED_CAST")
