@@ -51,6 +51,7 @@
             android:layout_weight="0.1"
             android:background="?selectableItemBackgroundBorderless"
             android:padding="10dp"
+            android:visibility="gone"
             android:src="@drawable/insight_button" />
 
         <androidx.viewpager.widget.ViewPager
@@ -114,6 +115,7 @@
                     android:layout_weight="0.1"
                     android:background="?selectableItemBackgroundBorderless"
                     android:padding="10dp"
+                    android:visibility="gone"
                     android:src="@drawable/insight_button" />
 
 

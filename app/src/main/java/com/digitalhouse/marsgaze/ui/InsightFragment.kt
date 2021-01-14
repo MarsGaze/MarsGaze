@@ -63,6 +63,9 @@ class InsightFragment : Fragment() {
                 var data = insightDataInfo.adapter as InsightDataAdapter
                 data.sol = position
 
+                insightDataBack.visibility = View.INVISIBLE
+                insightDataForward.visibility = View.VISIBLE
+
                 insightDataTitle.currentItem = 0
                 insightDataInfo.adapter = data
             }
@@ -83,19 +86,44 @@ class InsightFragment : Fragment() {
 
         btnInsightBackDay.setOnClickListener {
             val value = insightVP.currentItem - 1
+            btnInsightForwardDay.visibility = View.VISIBLE
+
+
             if (value != -1) {
                 insightVP.currentItem = value
+
+                insightDataBack.visibility = View.INVISIBLE
+                insightDataForward.visibility = View.VISIBLE
+
+                if (insightVP.currentItem == 1) {
+                    btnInsightBackDay.visibility = View.INVISIBLE
+                    btnInsightForwardDay.visibility = View.VISIBLE
+                }
             }
         }
 
         btnInsightForwardDay.setOnClickListener {
             val value = insightVP.currentItem + 1
+
+            btnInsightBackDay.visibility = View.VISIBLE
+
             if (value != (insightVP.adapter as InsightSolDateAdapter).count) {
                 insightVP.currentItem = value
+
+                insightDataBack.visibility = View.INVISIBLE
+                insightDataForward.visibility = View.VISIBLE
+
+                val adapter = insightVP.adapter as InsightSolDateAdapter
+
+                if(adapter.infoList.size -1 == value) {
+                    btnInsightForwardDay.visibility = View.INVISIBLE
+                }
             }
         }
 
         insightDataForward.setOnClickListener {
+            insightDataBack.visibility = View.VISIBLE
+            insightDataForward.visibility = View.INVISIBLE
             val value = insightDataTitle.currentItem + 1
             if (value != (insightDataTitle.adapter as InsightTitleMediaAdapter).count) {
                 insightDataTitle.currentItem = value
@@ -108,6 +136,8 @@ class InsightFragment : Fragment() {
         }
 
         insightDataBack.setOnClickListener {
+            insightDataBack.visibility = View.INVISIBLE
+            insightDataForward.visibility = View.VISIBLE
             val value = insightDataTitle.currentItem - 1
             if (value != -1) {
                 insightDataTitle.currentItem = value
@@ -138,11 +168,6 @@ class InsightFragment : Fragment() {
                     insightDataTitle.currentItem = position
                 }
             }
-
-//            var data = insightDataInfo.adapter as InsightDataAdapter
-//            data.sol = position
-
-//            insightDataInfo.adapter = data
         }
 
         override fun onPageScrollStateChanged(state: Int) {
