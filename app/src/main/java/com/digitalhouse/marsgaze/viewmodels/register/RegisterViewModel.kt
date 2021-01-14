@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.controllers.user.Session
-import com.digitalhouse.marsgaze.database.MarsGazeDB
 import com.digitalhouse.marsgaze.models.data.User
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
