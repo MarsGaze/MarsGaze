@@ -59,7 +59,11 @@ data class FavoriteTest(
     val user: String
 )
 
-enum class ImageType{
-    HubbleImage,
-    RoverImage
-}
+
+data class RoverImage(
+    val a: String
+)
+
+data class HubbleImage(
+    val a: String
+)

@@ -1,12 +1,8 @@
 package com.digitalhouse.marsgaze.models.data
 
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.Ignore
 import androidx.room.PrimaryKey
-import com.digitalhouse.marsgaze.helper.MessageHash
-import java.time.LocalDate
 
 /**
  * PT-BR
