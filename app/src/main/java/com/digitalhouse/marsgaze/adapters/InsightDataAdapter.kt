@@ -1,5 +1,6 @@
 package com.digitalhouse.marsgaze.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,55 +11,48 @@ import com.digitalhouse.marsgaze.models.insight.InsightInfo
 
 class InsightDataAdapter(var infoList: ArrayList<InsightInfo> = ArrayList()) : PagerAdapter() {
     var sol: Int = 0
+    private lateinit var view: View
     override fun isViewFromObject(view: View, `object`: Any): Boolean = `object` == view
     override fun getCount(): Int = 2
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        val view = LayoutInflater.from(container.context).inflate(
-            R.layout.insight_sol_info, container, false
-        )
 
         if (infoList.isEmpty()) {
-            container.addView(view)
+            view = LayoutInflater.from(container.context).inflate(
+                R.layout.insight_exception, container, false )
             return view
         }
 
         val obj = infoList[sol]
 
-        val media = view.findViewById<TextView>(R.id.tv_media)
-        val tvValorMinima = view.findViewById<TextView>(R.id.tv_valorMinima)
-        val tvValorMaxima = view.findViewById<TextView>(R.id.tv_valorMaxima)
-        val tvAmostras = view.findViewById<TextView>(R.id.tv_amostras)
-
-
         when(position) {
             0 -> {
-                val res: (String) -> String =  {
-                    media!!.resources.getString(R.string.insightTemp, it)
+                if (obj.AT.av == "NO_DATA") {
+                    view = LayoutInflater.from(container.context).inflate(
+                        R.layout.insight_exception, container, false
+                    )
+                } else {
+                    view = LayoutInflater.from(container.context).inflate(
+                        R.layout.insight_sol_info, container, false
+                    )
+                    inflateDataLayout(view, position, obj)
                 }
-
-                media.text = res(obj.AT.av)
-                tvValorMinima.text = res(obj.AT.mn)
-                tvValorMaxima.text = res(obj.AT.mx)
-                val amostras = tvAmostras.resources.getString(
-                    R.string.insightSampleSize, obj.AT.ct
-                )
-                tvAmostras.text = amostras
             }
             1 -> {
-                val res: (String) -> String =  {
-                    media!!.resources.getString(R.string.insightPress, it)
+                if (obj.PRE.av == "NO_DATA") {
+                    view = LayoutInflater.from(container.context).inflate(
+                        R.layout.insight_exception, container, false
+                    )
+                } else {
+                    view = LayoutInflater.from(container.context).inflate(
+                        R.layout.insight_sol_info, container, false
+                    )
+                    inflateDataLayout(view, position, obj)
                 }
-
-                media.text = res(obj.PRE.av)
-                tvValorMinima.text = res(obj.PRE.mn)
-                tvValorMaxima.text = res(obj.PRE.mx)
-                val amostras = tvAmostras.resources.getString(
-                    R.string.insightSampleSize, obj.PRE.ct
-                )
-                tvAmostras.text = amostras
             }
         }
+
+
 
         container.addView(view)
 
@@ -67,5 +61,27 @@ class InsightDataAdapter(var infoList: ArrayList<InsightInfo> = ArrayList()) : P
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
         container.removeView(`object` as View)
+    }
+
+    fun inflateDataLayout(view: View, position: Int, obj: InsightInfo) {
+        val media = view.findViewById<TextView>(R.id.tv_media)
+        val tv_valorMinima = view.findViewById<TextView>(R.id.tv_valorMinima)
+        val tv_valorMaxima = view.findViewById<TextView>(R.id.tv_valorMaxima)
+        val tv_amostras = view.findViewById<TextView>(R.id.tv_amostras)
+
+        when(position) {
+            0 -> {
+                media.text = obj.AT.av
+                tv_valorMinima.text = obj.AT.mn
+                tv_valorMaxima.text = obj.AT.mx
+                tv_amostras.text = obj.AT.ct
+            }
+            1 -> {
+                media.text = obj.PRE.av
+                tv_valorMinima.text = obj.PRE.mn
+                tv_valorMaxima.text = obj.PRE.mx
+                tv_amostras.text = obj.PRE.ct
+            }
+        }
     }
 }
