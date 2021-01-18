@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.viewpager.widget.PagerAdapter
 import com.digitalhouse.marsgaze.R
-import com.digitalhouse.marsgaze.models.InsightInfo
+import com.digitalhouse.marsgaze.models.insight.InsightInfo
 
 class InsightSolDateAdapter(var infoList: ArrayList<InsightInfo> = ArrayList()) : PagerAdapter() {
 
@@ -23,8 +23,19 @@ class InsightSolDateAdapter(var infoList: ArrayList<InsightInfo> = ArrayList()) 
         val insightMarsDay = view.findViewById<TextView>(R.id.insightMarsDay)
         val insightSeason = view.findViewById<TextView>(R.id.insightSeason)
 
-        insightDate.text = obj.lastUTC
-        insightMarsDay.text = obj.sol
+
+
+        val splitUTC = obj.lastUTC.split("-")
+        val lastUTC = insightDate.resources.getString(
+            R.string.insightSelectDate,
+            splitUTC[2],
+            splitUTC[0]
+        )
+        insightDate.text = lastUTC
+        val sol = insightMarsDay.resources.getString(
+            R.string.insightSolMars, obj.sol
+        )
+        insightMarsDay.text = sol
         insightSeason.text = obj.season
 
         container.addView(view)

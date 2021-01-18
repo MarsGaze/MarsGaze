@@ -25,15 +25,19 @@ import java.util.*
 
 class RoversResultFragment : Fragment(), RoversResultAdapter.OnItemClickListener {
     private val args: RoversResultFragmentArgs by navArgs()
-    private val viewModel: RoversResultViewModel by viewModels() {
+    private val viewModel: RoversResultViewModel by viewModels {
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+                @Suppress("UNCHECKED_CAST")
                 return RoversResultViewModel(MarsRoversPhotosService.create()) as T
             }
         }
     }
 
-    private lateinit var binding: FragmentRoversResultBinding // replaces kotlin synthetics
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private var _binding: FragmentRoversResultBinding? = null
+    private val binding get() = _binding!!
     private lateinit var resultAdapter: RoversResultAdapter
     private lateinit var roverParameter: String
     private lateinit var solParameter: String
@@ -42,7 +46,7 @@ class RoversResultFragment : Fragment(), RoversResultAdapter.OnItemClickListener
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentRoversResultBinding.inflate(inflater, container, false)
+        _binding = FragmentRoversResultBinding.inflate(inflater, container, false)
 
         // Sets listener and behavior for "Filtrar" expandable menu and button
         setExpandableFilterMenuClickListener()
@@ -164,4 +168,8 @@ class RoversResultFragment : Fragment(), RoversResultAdapter.OnItemClickListener
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }

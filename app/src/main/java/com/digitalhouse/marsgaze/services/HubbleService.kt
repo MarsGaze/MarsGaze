@@ -1,7 +1,6 @@
 package com.digitalhouse.marsgaze.services
 
 import com.digitalhouse.marsgaze.models.hubble.HubbleResponse
-import com.digitalhouse.marsgaze.models.rovers.RoverResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

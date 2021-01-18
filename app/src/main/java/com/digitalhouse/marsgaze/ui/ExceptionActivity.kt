@@ -2,15 +2,17 @@ package com.digitalhouse.marsgaze.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.digitalhouse.marsgaze.R
-import kotlinx.android.synthetic.main.activity_exception.*
+import com.digitalhouse.marsgaze.databinding.ActivityExceptionBinding
 
 class ExceptionActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityExceptionBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_exception)
+        binding = ActivityExceptionBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        iv_backArrow_exception.setOnClickListener {
+        binding.ivBackArrowException.setOnClickListener {
             finish()
         }
     }

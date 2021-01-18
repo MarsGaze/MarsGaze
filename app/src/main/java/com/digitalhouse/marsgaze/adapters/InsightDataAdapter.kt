@@ -1,13 +1,12 @@
 package com.digitalhouse.marsgaze.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.viewpager.widget.PagerAdapter
 import com.digitalhouse.marsgaze.R
-import com.digitalhouse.marsgaze.models.InsightInfo
+import com.digitalhouse.marsgaze.models.insight.InsightInfo
 
 class InsightDataAdapter(var infoList: ArrayList<InsightInfo> = ArrayList()) : PagerAdapter() {
     var sol: Int = 0
@@ -19,11 +18,6 @@ class InsightDataAdapter(var infoList: ArrayList<InsightInfo> = ArrayList()) : P
             R.layout.insight_sol_info, container, false
         )
 
-        var msg = " aslkjdaksldhalskjdh"
-
-        Log.i("\n\n\n\n\n AOISDASLDH", infoList.toString())
-        Log.i("\n\n\n\n\n 5435465465454", msg)
-
         if (infoList.isEmpty()) {
             container.addView(view)
             return view
@@ -32,23 +26,37 @@ class InsightDataAdapter(var infoList: ArrayList<InsightInfo> = ArrayList()) : P
         val obj = infoList[sol]
 
         val media = view.findViewById<TextView>(R.id.tv_media)
-        val tv_valorMinima = view.findViewById<TextView>(R.id.tv_valorMinima)
-        val tv_valorMaxima = view.findViewById<TextView>(R.id.tv_valorMaxima)
-        val tv_amostras = view.findViewById<TextView>(R.id.tv_amostras)
+        val tvValorMinima = view.findViewById<TextView>(R.id.tv_valorMinima)
+        val tvValorMaxima = view.findViewById<TextView>(R.id.tv_valorMaxima)
+        val tvAmostras = view.findViewById<TextView>(R.id.tv_amostras)
 
 
         when(position) {
             0 -> {
-                media.text = obj.AT.av
-                tv_valorMinima.text = obj.AT.mn
-                tv_valorMaxima.text = obj.AT.mx
-                tv_amostras.text = obj.AT.ct
+                val res: (String) -> String =  {
+                    media!!.resources.getString(R.string.insightTemp, it)
+                }
+
+                media.text = res(obj.AT.av)
+                tvValorMinima.text = res(obj.AT.mn)
+                tvValorMaxima.text = res(obj.AT.mx)
+                val amostras = tvAmostras.resources.getString(
+                    R.string.insightSampleSize, obj.AT.ct
+                )
+                tvAmostras.text = amostras
             }
             1 -> {
-                media.text = obj.PRE.av
-                tv_valorMinima.text = obj.PRE.mn
-                tv_valorMaxima.text = obj.PRE.mx
-                tv_amostras.text = obj.PRE.ct
+                val res: (String) -> String =  {
+                    media!!.resources.getString(R.string.insightPress, it)
+                }
+
+                media.text = res(obj.PRE.av)
+                tvValorMinima.text = res(obj.PRE.mn)
+                tvValorMaxima.text = res(obj.PRE.mx)
+                val amostras = tvAmostras.resources.getString(
+                    R.string.insightSampleSize, obj.PRE.ct
+                )
+                tvAmostras.text = amostras
             }
         }
 

@@ -8,11 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.models.hubble.HubbleResponse
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.item_hubble.view.*
 
 class HubbleAdapter(
     var adapterHubbleList: HubbleResponse,
-    private var itemClickListener: OnItemClickListener
+    private var itemClickListener: OnItemClickListener,
 ) :
     RecyclerView.Adapter<HubbleAdapter.ImageViewHolder>() {
 
@@ -21,10 +20,10 @@ class HubbleAdapter(
         fun onItemClick(position: Int)
     }
 
-    class ImageViewHolder(
+    inner class ImageViewHolder(
         itemView: View, listener: OnItemClickListener
     ) : RecyclerView.ViewHolder(itemView) {
-        val hubbleResult: ImageView = itemView.hubble_result
+        val hubbleResult: ImageView = itemView.findViewById(R.id.hubble_result)
 
         init {
             itemView.setOnClickListener {

@@ -10,13 +10,15 @@ import androidx.navigation.fragment.navArgs
 import androidx.transition.AutoTransition
 import androidx.transition.TransitionManager
 import com.digitalhouse.marsgaze.databinding.FragmentImageDetailBinding
-import com.digitalhouse.marsgaze.ui.rovers.RoversPhotoDetailFragmentArgs
 import com.squareup.picasso.Picasso
 
 // TODO: Change layout name
 class RoversPhotoDetailFragment : Fragment() {
     private val args: RoversPhotoDetailFragmentArgs by navArgs()
-    private lateinit var binding: FragmentImageDetailBinding
+    private var _binding: FragmentImageDetailBinding? = null
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
 
     /**
      * In Android Jetpack, ViewBinding is replacing 'kotlin-android-extension' synthetics
@@ -27,7 +29,7 @@ class RoversPhotoDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentImageDetailBinding.inflate(inflater, container, false)
+        _binding = FragmentImageDetailBinding.inflate(inflater, container, false)
 
         val photo = args.roverPhoto
 
@@ -62,4 +64,8 @@ class RoversPhotoDetailFragment : Fragment() {
         return binding.root
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }

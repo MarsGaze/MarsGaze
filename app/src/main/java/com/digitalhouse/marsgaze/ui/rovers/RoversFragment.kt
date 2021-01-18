@@ -12,19 +12,19 @@ import androidx.transition.AutoTransition
 import androidx.transition.TransitionManager
 import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.databinding.FragmentRoversBinding
-import com.digitalhouse.marsgaze.ui.rovers.RoversFragmentDirections
-import kotlinx.android.synthetic.main.fragment_classic_toolbar.*
 
 class RoversFragment : Fragment() {
-
-    private lateinit var binding: FragmentRoversBinding
+    private var _binding: FragmentRoversBinding? = null
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
     private lateinit var navController: NavController
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentRoversBinding.inflate(inflater, container, false)
+        _binding = FragmentRoversBinding.inflate(inflater, container, false)
 
         navController = findNavController(this)
 
@@ -114,6 +114,11 @@ class RoversFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 }

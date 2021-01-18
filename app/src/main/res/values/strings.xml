@@ -33,6 +33,9 @@
     <string name="profileAccountCreation">Data de aterrissagem</string>
     <string name="profileAccountCreationVisual">01/10/1958</string>
     <string name="profileUserNameVisual">Desconhecido</string>
+    <string name="updateUserOk">Atualização do usuário feita com sucesso</string>
+    <string name="updateUserNoUserLogged">Não há um usuário logado</string>
+    <string name="updateUserDifferent">Não é possível alterar os dados de um outro usuário</string>
 
     <!-- Favorite Card Text -->
     <string name="favoriteTitle">Meus favoritos</string>
@@ -40,9 +43,9 @@
     <string name="favoriteCardTextVisual">Sol 690 - FHAZ</string>
 
     <!-- Insight Page Resources -->
-    <string name="insightSelectDate">%1$d de %2$s</string>
+    <string name="insightSelectDate">%1$s de %2$s</string>
     <string name="insightSelectDateVisual">19 de Novembro</string>
-    <string name="insightSolMars">Sol %1$d</string>
+    <string name="insightSolMars">Sol %1$s</string>
     <string name="insightSolMarsVisual">Sol 421</string>
     <string name="insightSeasonVisual">Verão</string>
 
@@ -50,8 +53,10 @@
     <string name="insightPressure">Pressão média</string>
     <string name="insightMinAny">Minima</string>
     <string name="insightMaxAny">Máxima</string>
-    <string name="insightSampleSize">Amostras registradas: %1$d</string>
+    <string name="insightSampleSize">Amostras registradas: %1$s</string>
+    <string name="insightTemp">%1$sºC</string>
     <string name="insightTempVisual">70ºC</string>
+    <string name="insightPress">%1$sPa</string>
 
     <!-- Navigation Header Resources -->
     <string name="navigationHeader">MENU</string>
@@ -160,6 +165,7 @@ Até hoje, os rovers mais bem-sucedidos foram/são os gêmeos Spirit e Opportuni
     <string name="profileSenhaAtual">Senha atual</string>
     <string name="profileSenhaAtualVisual">banana123</string>
     <string name="btnEditar">Editar</string>
+    <string name="btnEditarSavar">Salvar Alterações</string>
     <string name="title_activity_hubble">HubbleActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -172,4 +178,17 @@ Até hoje, os rovers mais bem-sucedidos foram/são os gêmeos Spirit e Opportuni
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!-- Mensagens de validação do formulário de registro -->
+    <string name="emptyField">%1$s está vázio</string>
+    <string name="invalidEmail">nome está inválido</string>
+    <string name="invalidName">email está inválido</string>
+    <string name="emailAlreadyExists">Já existe algum usuário com o email passado</string>
+    <string name="unknownDBError">Ocorreu um erro ao tentar cadastrar o usuário</string>
+    <string name="userRegistered">Usuário cadastrado com sucesso</string>
+
+    <!-- Mensagens de validação do formulário de login -->
+    <string name="userLoginInvalid">Email ou senha estão errados</string>
+    <string name="imagens_favoritadas">Imagens favoritadas</string>
+
+    <string name="anonUserName">Explorador</string>
 </resources>

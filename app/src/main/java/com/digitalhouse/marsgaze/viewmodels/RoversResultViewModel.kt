@@ -22,7 +22,7 @@ class RoversResultViewModel(private val repository: MarsRoversPhotosService) : V
 
     fun getLatestRoverPhotos(rover: String) {
         viewModelScope.launch {
-            photoList.value = repository.getLatestPhotos(rover)
+            photoList.value = repository.getLatestPhotos(rover).body()
         }
     }
 
@@ -30,13 +30,13 @@ class RoversResultViewModel(private val repository: MarsRoversPhotosService) : V
         viewModelScope.launch {
             val response = repository.getPhotos(rover, sol)
 
-            if (response.photos.isEmpty()) {
+            if (response.isSuccessful && response.body()?.photos.isNullOrEmpty()) {
                 getLatestRoverPhotos(rover)
                 statusMessage.value = Event(
                     """Não foram encontradas imagens de ${rover.capitalize(Locale.ROOT)} no Sol $sol.
                         |Alternativamente, buscamos as últimas imagens disponíveis.""".trimMargin()
                 )
-            } else photoList.value = response
+            } else photoList.value = response.body()
         }
     }
 }
