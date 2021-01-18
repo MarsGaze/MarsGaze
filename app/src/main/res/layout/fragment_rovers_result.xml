@@ -81,12 +81,10 @@
                 android:layout_height="wrap_content"
                 android:paddingVertical="16dp"
                 android:paddingStart="16dp"
-                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/filledTextField"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/filter_text"
-                tools:visibility="visible">
+                app:layout_constraintTop_toBottomOf="@+id/filter_text">
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
                     android:id="@+id/radio_curiosity"
@@ -125,11 +123,9 @@
                 android:background="#00FAFAFA"
                 android:paddingEnd="16dp"
                 android:textColorHint="@color/colorWhite"
-                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/radioGroup"
-                app:layout_constraintTop_toBottomOf="@+id/filter_text"
-                tools:visibility="visible">
+                app:layout_constraintTop_toBottomOf="@+id/filter_text">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/input_sol"
@@ -154,10 +150,16 @@
                 android:text="Filtrar"
                 android:textColor="@color/colorWhite"
                 android:textSize="14sp"
-                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/filledTextField"
+                app:layout_constraintTop_toBottomOf="@+id/filledTextField" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/filter_card_contents"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:constraint_referenced_ids="button_filter, radioGroup, filledTextField"
                 tools:visibility="visible" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

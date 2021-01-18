@@ -41,8 +41,11 @@ class InsightViewModel(private val repository: InsightService) : ViewModel() {
             info.season = solObject.asJsonObject.get("Season").asString
 
             info.sol = solKeys[i].asString
-            
-            // Getting and setting atmospheric temperature (AT) values
+
+            /**
+             * Getting and setting atmospheric temperature (AT) values
+             * TODO: use solObject.has()
+             */
             if (
                 try {
                     !solObject.getAsJsonObject("AT").isJsonNull

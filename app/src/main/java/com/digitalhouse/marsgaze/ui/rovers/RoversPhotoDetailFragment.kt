@@ -29,15 +29,11 @@ class RoversPhotoDetailFragment : Fragment() {
     ): View {
         binding = FragmentImageDetailBinding.inflate(inflater, container, false)
 
-        // TODO: Pass data as Serializable
-        val imageUrl = args.imageUrl
-        val sol = "Sol ${args.sol}"
-        val cameraText = "${args.cameraAbrr} - ${args.cameraFull}"
-        val earthDate = "Data: ${args.earthDate}"
+        val photo = args.roverPhoto
 
-        binding.tvInfoTitle.text = sol
-        binding.tvInfoImgCamera.text = cameraText
-        binding.tvInfoImgEarthDate.text = earthDate
+        binding.tvInfoTitle.text = "Sol ${photo.sol}"
+        binding.tvInfoImgCamera.text = "${photo.camera.abbrName} - ${photo.camera.fullName}"
+        binding.tvInfoImgEarthDate.text = photo.earthDate
 
         binding.expandButton.setOnClickListener {
             when (binding.groupInfo.visibility) {
@@ -61,7 +57,7 @@ class RoversPhotoDetailFragment : Fragment() {
         }
 
         val detailImageView: ImageView = binding.ivFullImage
-        Picasso.get().load(imageUrl).fit().centerInside().into(detailImageView)
+        Picasso.get().load(photo.imageUrl).fit().centerInside().into(detailImageView)
 
         return binding.root
     }

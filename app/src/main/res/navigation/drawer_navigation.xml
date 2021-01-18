@@ -69,20 +69,8 @@
         android:label="fragment_image_detail"
         tools:layout="@layout/fragment_image_detail" >
         <argument
-            android:name="imageUrl"
-            app:argType="string" />
-        <argument
-            android:name="sol"
-            app:argType="string" />
-        <argument
-            android:name="cameraAbrr"
-            app:argType="string" />
-        <argument
-            android:name="cameraFull"
-            app:argType="string" />
-        <argument
-            android:name="earthDate"
-            app:argType="string" />
+            android:name="roverPhoto"
+            app:argType="com.digitalhouse.marsgaze.models.rovers.RoverPhoto" />
     </fragment>
     <fragment
         android:id="@+id/hubbleFragment"
