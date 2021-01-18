@@ -18,7 +18,6 @@ import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.adapters.RoversResultAdapter
 import com.digitalhouse.marsgaze.databinding.FragmentRoversResultBinding
 import com.digitalhouse.marsgaze.models.rovers.RoverPhoto
-import com.digitalhouse.marsgaze.models.rovers.RoverResponse
 import com.digitalhouse.marsgaze.services.MarsRoversPhotosService
 import com.digitalhouse.marsgaze.utils.hideKeyboard
 import com.digitalhouse.marsgaze.viewmodels.RoversResultViewModel
@@ -35,11 +34,11 @@ class RoversResultFragment : Fragment(), RoversResultAdapter.OnItemClickListener
         }
     }
 
-    private var _binding: FragmentRoversResultBinding? = null
     // This property is only valid between onCreateView and
     // onDestroyView.
+    private var _binding: FragmentRoversResultBinding? = null
     private val binding get() = _binding!!
-    private lateinit var imageList: RoverResponse
+    private lateinit var resultAdapter: RoversResultAdapter
     private lateinit var roverParameter: String
     private lateinit var solParameter: String
 
@@ -53,40 +52,29 @@ class RoversResultFragment : Fragment(), RoversResultAdapter.OnItemClickListener
         setExpandableFilterMenuClickListener()
         setFilterButtonClickListener()
 
-        // Conditions prevent overriding imageList and roverParameter when navigating back to this fragment
-        if (!this::imageList.isInitialized) {
-            imageList = RoverResponse(listOf())
-        }
+        // Prevents overriding roverParameter when navigating back to this fragment
         if (!this::roverParameter.isInitialized) {
             roverParameter = args.rover
         }
 
-        val resultAdapter = RoversResultAdapter(imageList, this)
+        resultAdapter = RoversResultAdapter(this)
         val recyclerView = binding.rvRoversResult
         recyclerView.layoutManager = GridLayoutManager(context, 2)
         recyclerView.adapter = resultAdapter
 
         // TODO: Check best practices
         viewModel.photoList.observe(viewLifecycleOwner) {
-            imageList = it
-            resultAdapter.adapterImageList = imageList
-            recyclerView.adapter = resultAdapter
-
-            // Behavior if query returns no photos -> get latest photos instead
-            if (imageList.photos.isEmpty()) {
-                Toast.makeText(
-                    context,
-                    """Não foram encontradas imagens de ${roverParameter.capitalize(Locale.ROOT)} no Sol $solParameter.
-                        |Alternativamente, buscamos as últimas imagens disponíveis.""".trimMargin(),
-                    Toast.LENGTH_LONG
-                ).show()
-
-                viewModel.getLatestRoverPhotos(roverParameter)
-            } else {
-                solParameter = imageList.photos[0].sol.toString()
-            }
-
+            resultAdapter.roverResponse = it
+            resultAdapter.notifyDataSetChanged()
+            // recyclerView.adapter = resultAdapter
+            solParameter = resultAdapter.roverResponse.photos[0].sol
             binding.inputSol.setText(solParameter)
+        }
+
+        viewModel.message.observe(viewLifecycleOwner) {
+            it.getContentIfNotHandled()?.let {
+                Toast.makeText(context, it, Toast.LENGTH_LONG).show()
+            }
         }
 
         // Self-explanatory
@@ -103,14 +91,10 @@ class RoversResultFragment : Fragment(), RoversResultAdapter.OnItemClickListener
      *
      */
     override fun onItemClick(position: Int) {
-        val clickedItem: RoverPhoto = imageList.photos[position]
+        val clickedItem: RoverPhoto = resultAdapter.roverResponse.photos[position]
         findNavController(this).navigate(
             RoversResultFragmentDirections.actionRoversResultFragmentToImageDetailFragment2(
-                clickedItem.imageUrl,
-                solParameter,
-                clickedItem.camera.abbrName,
-                clickedItem.camera.fullName,
-                clickedItem.earthDate
+                clickedItem
             )
         )
     }
@@ -121,16 +105,15 @@ class RoversResultFragment : Fragment(), RoversResultAdapter.OnItemClickListener
         // TODO: Retry grouping views
         val expandableCard = binding.filterCard
         val expandButton = binding.expandButton
-        val hiddenRadio = binding.radioGroup
-        val hiddenTextInput = binding.filledTextField
-        val filterButton = binding.buttonFilter
+        val cardContents = binding.filterCardContents
+        val radioGroup = binding.radioGroup
+        // val hiddenTextInput = binding.filledTextField
+        // val filterButton = binding.buttonFilter
 
         expandButton.setOnClickListener {
-            when (hiddenRadio.visibility) {
+            when (cardContents.visibility) {
                 View.VISIBLE -> {
-                    hiddenRadio.visibility = View.GONE
-                    hiddenTextInput.visibility = View.GONE
-                    filterButton.visibility = View.GONE
+                    cardContents.visibility = View.GONE
                     TransitionManager.beginDelayedTransition(
                         expandableCard,
                         AutoTransition()
@@ -149,15 +132,13 @@ class RoversResultFragment : Fragment(), RoversResultAdapter.OnItemClickListener
                      * TODO: There might be a better way to do this.
                      */
                     when (roverParameter) {
-                        "curiosity" -> hiddenRadio.check(R.id.radio_curiosity)
-                        "spirit" -> hiddenRadio.check(R.id.radio_spirit)
-                        "opportunity" -> hiddenRadio.check(R.id.radio_opportunity)
+                        "curiosity" -> radioGroup.check(R.id.radio_curiosity)
+                        "spirit" -> radioGroup.check(R.id.radio_spirit)
+                        "opportunity" -> radioGroup.check(R.id.radio_opportunity)
                     }
 
                     expandButton.animate().rotationX(180F)
-                    hiddenRadio.visibility = View.VISIBLE
-                    hiddenTextInput.visibility = View.VISIBLE
-                    filterButton.visibility = View.VISIBLE
+                    cardContents.visibility = View.VISIBLE
                 }
             }
         }
@@ -179,7 +160,7 @@ class RoversResultFragment : Fragment(), RoversResultAdapter.OnItemClickListener
             }
 
             if (solParameter.isBlank()) viewModel.getLatestRoverPhotos(roverParameter)
-            else viewModel.getRoverPhotos(roverParameter, solParameter.toInt())
+            else viewModel.getRoverPhotos(roverParameter, solParameter)
 
             // From utils/ContextExtensions
             hideKeyboard()

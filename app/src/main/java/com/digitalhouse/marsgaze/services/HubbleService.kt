@@ -12,7 +12,7 @@ interface HubbleService {
 
     @GET("search")
     suspend fun getHubbleImg(
-        @Query("keywords") keywrods: String = "mars hubble space telescope",
+        @Query("keywords") keywords: String = "mars hubble",
         @Query("media_type") media_type: String = "image"
     ): HubbleResponse
 

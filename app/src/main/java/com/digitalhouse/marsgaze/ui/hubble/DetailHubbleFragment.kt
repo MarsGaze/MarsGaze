@@ -25,7 +25,7 @@ class DetailHubbleFragment : Fragment() {
     ): View {
         _binding = FragmentDetailHubbleBinding.inflate(inflater, container, false)
 
-        val imgUrl = args.hubble.links[0].linkHref.replace("thumb", "large")
+        val imgUrl = args.hubble.links[0].linkHref // TODO: .replace("thumb", "large")
         val title = args.hubble.data[0].title
         val description = args.hubble.data[0].description
         val date = args.hubble.data[0].date_created

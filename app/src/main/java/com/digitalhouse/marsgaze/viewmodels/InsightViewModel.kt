@@ -12,6 +12,7 @@ class InsightViewModel(private val controller: InsightController) : ViewModel() 
 
     fun getInsightInfo() {
         viewModelScope.launch {
+
             try {
                 val job = controller.jobInsight()
                 if (job == null) {

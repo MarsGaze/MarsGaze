@@ -31,11 +31,10 @@ interface MarsRoversPhotosService {
     /**
      * Fetches photos from a single rover queried by martian sol
      */
-
     @GET("rovers/{rover}/photos")
     suspend fun getPhotos(
         @Path("rover") rover: String,
-        @Query("sol") sol: Int,
+        @Query("sol") sol: String,
         @Query("api_key") api_key: String = API_KEY,
     ): Response<RoverResponse>
 
