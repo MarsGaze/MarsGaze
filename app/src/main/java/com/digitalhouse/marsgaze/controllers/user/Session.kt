@@ -1,9 +1,13 @@
 package com.digitalhouse.marsgaze.controllers.user
 
+import com.digitalhouse.marsgaze.database.AfterFavoriteAction
+import com.digitalhouse.marsgaze.database.FavoriteHelperAfter
 import com.digitalhouse.marsgaze.database.MarsGazeDB
 import com.digitalhouse.marsgaze.helper.MessageHash
 import com.digitalhouse.marsgaze.models.data.FavoriteTest
+import com.digitalhouse.marsgaze.models.data.FavoriteType
 import com.digitalhouse.marsgaze.models.data.User
+import com.google.gson.Gson
 import java.lang.Exception
 
 /**
@@ -13,16 +17,19 @@ import java.lang.Exception
  * EN-US
  * Geral session of the app in relation to the logged user.
  */
-class Session private constructor(private val marsGazeDB: MarsGazeDB) {
+class Session private constructor(
+    private val marsGazeDB: MarsGazeDB,
+    private val favoriteHelperAfter: FavoriteHelperAfter
+    ) {
     private var loggedUser: User? = null
 
     companion object {
         @Volatile
         private var INSTANCE: Session? = null
 
-        fun getInstance(marsGazeDB: MarsGazeDB): Session {
+        fun getInstance(marsGazeDB: MarsGazeDB, afterFavoriteAction: AfterFavoriteAction): Session {
             return INSTANCE ?: synchronized(this) {
-                val instance = Session(marsGazeDB)
+                val instance = Session(marsGazeDB, afterFavoriteAction)
                 INSTANCE = instance
                 instance
             }
@@ -147,6 +154,11 @@ class Session private constructor(private val marsGazeDB: MarsGazeDB) {
         val favDAO = marsGazeDB.favoriteDAO()
 
         favDAO.insert(fav)
+        favoriteHelperAfter.afterInsert(
+            FavoriteType.values()[fav.imageType],
+            fav.imageId,
+            Gson().toJson(fav)
+        )
     }
 
     /**
@@ -171,9 +183,15 @@ class Session private constructor(private val marsGazeDB: MarsGazeDB) {
 
         val favDAO = marsGazeDB.favoriteDAO()
 
+
         favDAO.delete(fav)
+        favoriteHelperAfter.afterDelete(FavoriteType.values()[fav.imageType], fav.imageId)
     }
 
+
+    fun isFavorited(fav: FavoriteTest) {
+
+    }
 
     /**
      * PT-BR
