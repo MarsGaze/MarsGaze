@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.controllers.user.Session
+import com.digitalhouse.marsgaze.database.AfterFavoriteAction
 import com.digitalhouse.marsgaze.database.MarsGazeDB
 import com.digitalhouse.marsgaze.databinding.FragmentProfileBinding
 import com.digitalhouse.marsgaze.helper.OkAndErrorSnack
@@ -37,7 +38,8 @@ class ProfileFragment : Fragment() {
     private val viewModel: ProfileViewModel by viewModels {
         ProfileViewModelFactory(
             Session.getInstance(
-                MarsGazeDB.getDatabase(requireContext())
+                MarsGazeDB.getDatabase(requireContext()),
+                AfterFavoriteAction(requireContext())
             )
         )
     }

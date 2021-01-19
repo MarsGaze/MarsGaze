@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.controllers.user.Session
+import com.digitalhouse.marsgaze.database.AfterFavoriteAction
 import com.digitalhouse.marsgaze.database.MarsGazeDB
 import com.digitalhouse.marsgaze.databinding.FragmentLoginBinding
 import com.digitalhouse.marsgaze.helper.OkAndErrorSnack
@@ -28,6 +29,9 @@ class LoginFragment : Fragment() {
     private val session: Session by lazy {
         Session.getInstance(
             MarsGazeDB.getDatabase(
+                requireContext()
+            ),
+            AfterFavoriteAction(
                 requireContext()
             )
         )
