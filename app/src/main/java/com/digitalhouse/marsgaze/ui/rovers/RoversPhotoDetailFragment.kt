@@ -6,10 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.transition.AutoTransition
 import androidx.transition.TransitionManager
+import com.digitalhouse.marsgaze.controllers.user.Session
+import com.digitalhouse.marsgaze.database.AfterFavoriteAction
+import com.digitalhouse.marsgaze.database.MarsGazeDB
 import com.digitalhouse.marsgaze.databinding.FragmentImageDetailBinding
+import com.digitalhouse.marsgaze.viewmodels.rover_image.RoverImageViewModel
+import com.digitalhouse.marsgaze.viewmodels.rover_image.RoverImageViewModelFactory
 import com.squareup.picasso.Picasso
 
 // TODO: Change layout name
@@ -19,6 +25,19 @@ class RoversPhotoDetailFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
+    private val viewModel by viewModels<RoverImageViewModel> {
+        RoverImageViewModelFactory (
+            Session.getInstance(
+                MarsGazeDB.getDatabase(
+                    requireContext()
+                ),
+                AfterFavoriteAction(
+                    requireContext()
+                )
+            )
+        )
+    }
 
     /**
      * In Android Jetpack, ViewBinding is replacing 'kotlin-android-extension' synthetics
@@ -58,6 +77,9 @@ class RoversPhotoDetailFragment : Fragment() {
             }
         }
 
+        binding.ivFavorite.setOnClickListener {
+
+        }
         val detailImageView: ImageView = binding.ivFullImage
         Picasso.get().load(photo.imageUrl).fit().centerInside().into(detailImageView)
 
