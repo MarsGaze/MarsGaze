@@ -7,7 +7,7 @@ plugins {
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    buildToolsVersion '30.0.3'
 
     defaultConfig {
         applicationId "com.digitalhouse.marsgaze"
@@ -68,7 +68,7 @@ dependencies {
     testImplementation "androidx.room:room-testing:$room_version"
 
     //Material
-    implementation 'com.google.android.material:material:1.3.0-beta01'
+    implementation 'com.google.android.material:material:1.3.0-rc01'
 
     //Lifecycle
     def lifecycle_version = "2.2.0"
@@ -100,10 +100,10 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
 
     //Paging
-    implementation "androidx.paging:paging-runtime-ktx:3.0.0-alpha11"
+    implementation 'androidx.paging:paging-runtime-ktx:3.0.0-alpha12'
 
     // PhotoView -> zoomable ImageViews
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
 
-    implementation 'com.squareup.retrofit2:converter-scalars:2.1.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.9.0'
 }
