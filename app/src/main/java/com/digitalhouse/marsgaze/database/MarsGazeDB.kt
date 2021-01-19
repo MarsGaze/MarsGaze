@@ -18,7 +18,7 @@ import com.digitalhouse.marsgaze.models.data.User
  *
  * @author Jomar Júnior
  */
-@Database(entities = [User::class, FavoriteTest::class], version = 1, exportSchema = false)
+@Database(entities = [User::class, FavoriteTest::class], version = 2, exportSchema = false)
 abstract class MarsGazeDB : RoomDatabase() {
     /**
      * PT-BR
@@ -60,7 +60,7 @@ abstract class MarsGazeDB : RoomDatabase() {
                     context.applicationContext,
                     MarsGazeDB::class.java,
                     "marsgaze_database"
-                ).build()
+                ).fallbackToDestructiveMigration().build()
                 INSTANCE = instance
                 // return instance
                 instance
