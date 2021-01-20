@@ -7,81 +7,97 @@
     android:background="@color/colorPrimaryDark"
     tools:context=".ui.onboarding.OnboardingFragment">
 
-
     <ImageView
         android:id="@+id/imageView8"
-        android:layout_width="400dp"
-        android:layout_height="466dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintHeight_percent="0.75"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.02"
-        app:srcCompat="@drawable/estrelas_ob" />
+        app:srcCompat="@drawable/ic_estrelas_ob" />
 
     <ImageView
         android:id="@+id/ivPlaneta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHeight_percent="0.5"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.9"
         app:srcCompat="@drawable/planeta_ob" />
 
     <ImageView
         android:id="@+id/ivAstronauta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="108dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.745"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.85"
+        app:layout_constraintWidth_percent="0.32"
         app:srcCompat="@drawable/astronauta" />
 
     <ImageView
         android:id="@+id/ivNave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="188dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.4"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.55"
+        app:layout_constraintWidth_percent="0.45"
         app:srcCompat="@drawable/nave" />
 
     <TextView
         android:id="@+id/tvBoasVindas"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="48dp"
+        android:autoSizeMinTextSize="36sp"
+        android:autoSizeTextType="uniform"
         android:fontFamily="@font/kanit_bold"
+        android:lineSpacingMultiplier="0.7"
+        android:maxLines="1"
         android:text="@string/tvBoasVindas"
         android:textAlignment="center"
         android:textColor="@color/colorWhite"
-        android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHeight_percent="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:lineHeight="40sp" />
+        app:layout_constraintWidth_percent="0.7" />
 
     <TextView
         android:id="@+id/tvInicio"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="124dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeMinTextSize="18sp"
+        android:autoSizeTextType="uniform"
         android:fontFamily="@font/roboto"
+        android:maxLines="3"
         android:text="@string/tvOnboarding"
         android:textAlignment="center"
         android:textColor="@color/colorWhite"
-        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHeight_percent="0.1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/tvBoasVindas"
+        app:layout_constraintWidth_percent="0.85" />
 
     <ImageButton
         android:id="@+id/btnNextOb"
@@ -89,10 +105,10 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
+        android:background="@color/colorTransparent"
         android:src="@drawable/arrow_forward"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/colorTransparent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
