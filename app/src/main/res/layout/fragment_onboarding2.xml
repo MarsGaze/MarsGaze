@@ -7,69 +7,80 @@
     android:background="@color/colorPrimaryDark"
     tools:context=".ui.onboarding.Onboarding2Fragment">
 
-
     <ImageView
         android:id="@+id/imageView8"
-        android:layout_width="351dp"
-        android:layout_height="400dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.75"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1"
-        app:srcCompat="@drawable/estrelas_ob2" />
+        app:layout_constraintVertical_bias="0"
+        app:srcCompat="@drawable/ic_estrelas_ob2" />
 
     <ImageView
         android:id="@+id/imageView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintWidth_percent="1"
         app:srcCompat="@drawable/planeta_ob2" />
 
     <ImageView
         android:id="@+id/imageView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHeight_percent="0.5"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.8"
         app:srcCompat="@drawable/astronauta_ob2" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="260dp"
-        android:layout_height="112dp"
-        android:layout_marginTop="52dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="48dp"
+        android:autoSizeMinTextSize="36sp"
+        android:autoSizeTextType="uniform"
         android:fontFamily="@font/kanit_bold"
+        android:lineSpacingMultiplier="0.7"
+        android:maxLines="2"
         android:text="@string/tvOnboarding2"
         android:textAlignment="center"
         android:textColor="@color/colorWhite"
-        android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.2"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:lineHeight="40sp" />
+        app:layout_constraintWidth_percent="0.7" />
 
     <Button
         android:id="@+id/btnComecar"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:autoSizeTextType="uniform"
         android:background="@drawable/round_button"
         android:fontFamily="@font/source_sans_pro_bold"
-        android:paddingHorizontal="30dp"
+        android:paddingVertical="8dp"
         android:text="@string/btnComecar"
+        android:textAllCaps="false"
         android:textColor="@color/colorWhite"
-        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.08"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
-        android:textAllCaps="false"/>
+        app:layout_constraintWidth_percent="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
