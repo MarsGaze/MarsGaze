@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.02"
-        app:srcCompat="@drawable/estrelas_ob" />
+        app:srcCompat="@drawable/ic_estrelas_ob" />
 
     <ImageView
         android:id="@+id/ivPlaneta"
