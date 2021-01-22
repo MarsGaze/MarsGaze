@@ -75,6 +75,21 @@ class InsightFragment : Fragment() {
                     insightDataBack.visibility = View.INVISIBLE
                     insightDataForward.visibility = View.VISIBLE
 
+                    when (position) {
+                        0 -> {
+                            btnInsightBackDay.visibility = View.INVISIBLE
+                            btnInsightForwardDay.visibility = View.VISIBLE
+                        }
+                        binding.insightVP.adapter!!.count - 1 -> {
+                            btnInsightBackDay.visibility = View.VISIBLE
+                            btnInsightForwardDay.visibility = View.INVISIBLE
+                        }
+                        else -> {
+                            btnInsightBackDay.visibility = View.VISIBLE
+                            btnInsightForwardDay.visibility = View.VISIBLE
+                        }
+                    }
+
                     insightDataTitle.currentItem = 0
                     insightDataInfo.adapter = data
                 }
@@ -95,44 +110,22 @@ class InsightFragment : Fragment() {
 
             btnInsightBackDay.setOnClickListener {
                 val value = insightVP.currentItem - 1
-                btnInsightForwardDay.visibility = View.VISIBLE
-
 
                 if (value != -1) {
                     insightVP.currentItem = value
-
-                    insightDataBack.visibility = View.INVISIBLE
-                    insightDataForward.visibility = View.VISIBLE
-
-                    if (insightVP.currentItem == 1) {
-                        btnInsightBackDay.visibility = View.INVISIBLE
-                        btnInsightForwardDay.visibility = View.VISIBLE
-                    }
                 }
             }
 
             btnInsightForwardDay.setOnClickListener {
                 val value = insightVP.currentItem + 1
 
-                btnInsightBackDay.visibility = View.VISIBLE
-
                 if (value != (insightVP.adapter as InsightSolDateAdapter).count) {
                     insightVP.currentItem = value
-
-                    insightDataBack.visibility = View.INVISIBLE
-                    insightDataForward.visibility = View.VISIBLE
-
                     val adapter = insightVP.adapter as InsightSolDateAdapter
-
-                    if(adapter.infoList.size -1 == value) {
-                        btnInsightForwardDay.visibility = View.INVISIBLE
-                    }
                 }
             }
 
             insightDataForward.setOnClickListener {
-                insightDataBack.visibility = View.VISIBLE
-                insightDataForward.visibility = View.INVISIBLE
                 val value = insightDataTitle.currentItem + 1
                 if (value != (insightDataTitle.adapter as InsightTitleMediaAdapter).count) {
                     insightDataTitle.currentItem = value
@@ -145,8 +138,6 @@ class InsightFragment : Fragment() {
             }
 
             insightDataBack.setOnClickListener {
-                insightDataBack.visibility = View.INVISIBLE
-                insightDataForward.visibility = View.VISIBLE
                 val value = insightDataTitle.currentItem - 1
                 if (value != -1) {
                     insightDataTitle.currentItem = value
@@ -177,6 +168,16 @@ class InsightFragment : Fragment() {
                 }
                 1 -> {
                     binding.insightDataTitle.currentItem = position
+                }
+            }
+            when (position) {
+                0 -> {
+                    binding.insightDataBack.visibility = View.INVISIBLE
+                    binding.insightDataForward.visibility = View.VISIBLE
+                }
+                else -> {
+                    binding.insightDataBack.visibility = View.VISIBLE
+                    binding.insightDataForward.visibility = View.INVISIBLE
                 }
             }
         }
