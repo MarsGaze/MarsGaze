@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,26 +9,32 @@
 
     <ImageButton
         android:id="@+id/btnBackLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:background="@color/colorTransparent"
+        android:scaleType="fitCenter"
         android:src="@drawable/arrow_orange"
+        app:layout_constraintHeight_percent="0.06"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.06" />
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:src="@drawable/logo_pequeno"
+        android:layout_margin="25dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_logo"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.4" />
 
 
     <LinearLayout
@@ -37,22 +42,21 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:background="@drawable/rounded_otop_card"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4">
+        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintWidth_percent="0.9">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tiNome"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="16dp"
             android:textColorHint="@color/colorWhite"
             app:boxStrokeWidth="2dp">
 
@@ -66,9 +70,10 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tiEmail"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginHorizontal="32dp"
             android:layout_marginTop="10dp"
             android:textColorHint="@color/colorWhite"
             app:boxStrokeWidth="2dp">
@@ -83,9 +88,10 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tiSenha"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginHorizontal="32dp"
             android:layout_marginTop="10dp"
             android:inputType="textPassword"
             android:textColorHint="@color/colorWhite"
@@ -103,9 +109,10 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tiRepeteSenha"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginHorizontal="32dp"
             android:layout_marginTop="10dp"
             android:inputType="textPassword"
             android:textColorHint="@color/colorWhite"
@@ -123,39 +130,17 @@
 
         <Button
             android:id="@+id/btnCadastrar"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="32dp"
             android:background="@drawable/round_button"
             android:fontFamily="@font/source_sans_pro_bold"
+            android:layout_marginHorizontal="80dp"
             android:text="@string/btnCadastro"
             android:textAllCaps="false"
             android:textColor="@color/colorWhite"
             android:textSize="24sp" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="26dp"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/btnFacebook"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:background="@color/colorTransparent"
-                android:src="@drawable/facebook" />
-
-            <ImageButton
-                android:id="@+id/imageButton3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/colorTransparent"
-                android:src="@drawable/google" />
-
-        </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

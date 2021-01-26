@@ -39,4 +39,5 @@ class RoversResultViewModel(private val repository: MarsRoversPhotosService) : V
             } else photoList.value = response.body()
         }
     }
+
 }

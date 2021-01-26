@@ -1,6 +1,8 @@
 package com.digitalhouse.marsgaze.viewmodels.login
 
 import android.content.Context
+import android.database.sqlite.SQLiteConstraintException
+import android.database.sqlite.SQLiteException
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -28,5 +30,27 @@ class LoginViewModel(val session: Session) : ViewModel() {
                 loginStatus.value = Pair(result, message)
             }
         }
+    }
+
+    val registerStatus = MutableLiveData<Pair<Boolean, Int>>()
+
+    fun registerUser(user: User) {
+        Dispatchers.IO.dispatch(viewModelScope.coroutineContext) {
+            var returnValue: Pair<Boolean, Int> = Pair(true, R.string.userRegistered)
+            try {
+                session.register(user)
+            } catch (e: SQLiteConstraintException) {
+                // Caso o erro de constraint aconteça deve somente ser relacionado ao email
+                returnValue = Pair(false, R.string.emailAlreadyExists)
+            } catch(e: SQLiteException) {
+                // Algo estranho que não sabemos o que aconteceu
+                returnValue = Pair(false, R.string.unknownDBError)
+            }
+
+            viewModelScope.launch {
+                registerStatus.value = returnValue
+            }
+        }
+
     }
 }
