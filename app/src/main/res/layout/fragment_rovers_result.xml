@@ -8,40 +8,16 @@
     android:orientation="vertical"
     tools:context=".ui.rovers.RoversResultFragment">
 
-    <View
-        android:id="@+id/container_left"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@id/filter_card"
-        app:layout_constraintEnd_toStartOf="@+id/filter_card"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/filter_card" />
-
-    <View
-        android:id="@+id/container_right"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@id/filter_card"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toEndOf="@+id/filter_card"
-        app:layout_constraintTop_toTopOf="@id/filter_card" />
-
     <androidx.cardview.widget.CardView
         android:id="@+id/filter_card"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorPrimary"
+        app:layout_constraintWidth_percent="0.6"
         app:cardCornerRadius="10dp"
-        app:layout_constraintEnd_toStartOf="@+id/container_right"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintHorizontal_weight="5"
-        app:layout_constraintStart_toEndOf="@+id/container_left"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -59,7 +35,6 @@
                 android:textColor="@color/colorAccentDark"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toStartOf="@+id/expand_button"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -71,7 +46,6 @@
                 android:src="@drawable/ic_arrow_down_white"
                 app:layout_constraintBottom_toBottomOf="@+id/filter_text"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/filter_text"
                 app:layout_constraintTop_toTopOf="@id/filter_text" />
 
@@ -120,7 +94,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="#00FAFAFA"
                 android:paddingEnd="16dp"
                 android:textColorHint="@color/colorWhite"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -173,7 +146,7 @@
         android:layout_marginStart="4dp"
         android:background="@color/colorPrimaryDark"
         android:clipToPadding="false"
-        android:paddingTop="56dp"
+        android:paddingTop="?android:attr/actionBarSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

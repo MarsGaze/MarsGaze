@@ -62,7 +62,12 @@ class CadastroFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.registerStatus.observe(viewLifecycleOwner, snackCreator::showSnack)
+        viewModel.registerStatus.observe(viewLifecycleOwner) {
+            snackCreator.showSnack(it)
+            if (it == Pair(true, R.string.userRegistered)) {
+                findNavController().navigate(R.id.action_cadastroFragment_to_loginFragment)
+            }
+        }
 
         binding.btnCadastrar.setOnClickListener {
             val user = User(

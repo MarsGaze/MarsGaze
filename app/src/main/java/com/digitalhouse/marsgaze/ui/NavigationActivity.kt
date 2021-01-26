@@ -1,6 +1,8 @@
 package com.digitalhouse.marsgaze.ui
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -14,8 +16,10 @@ class NavigationActivity : AppCompatActivity() {
     private lateinit var falseCall: String
 
     private lateinit var defaultPage: String
+
     // Controla quantas páginas estão abertas
     private var pages = 0
+
     // Ajuda na verificação do controle de páginas, evitando falsas adições.
     private var withToolbarPage = true
 
@@ -104,9 +108,9 @@ class NavigationActivity : AppCompatActivity() {
         if (falseCall != title) {
             falseCall = title
             when (title) {
-                getString(R.string.navigationItemStartPage) ->  {
+                getString(R.string.navigationItemStartPage) -> {
                     withToolbarPage = true
-                    navControl.popBackStack()
+                    navControl.popBackStack(R.id.welcomeFragment, false)
                     pages -= 2
                 }
                 else -> {
@@ -115,7 +119,7 @@ class NavigationActivity : AppCompatActivity() {
                         navControl.navigate(res)
                     } else {
                         pages -= 2
-                        navControl.popBackStack()
+                        navControl.popBackStack(R.id.welcomeFragment, false)
                         navControl.navigate(res)
                     }
                 }
@@ -127,8 +131,17 @@ class NavigationActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
+        // Condition prevents calling onDestroy when back pressed from welcomeFragment
+        if (navControl.currentDestination?.id == R.id.welcomeFragment) {
+            // Takes user to device's home screen instead of finishing activity
+            val intent = Intent(Intent.ACTION_MAIN)
+            intent.addCategory(Intent.CATEGORY_HOME)
+            startActivity(intent)
+            Log.i("Home,", "sweet home")
+            return
+        }
 
+        super.onBackPressed()
         // Evita problemas na hora de voltar quando temos telas de outros fragmentos
         // Não devemos mexer na navegação das outras telas afinal.
         if (pages > 3 && !withToolbarPage) {
@@ -139,5 +152,10 @@ class NavigationActivity : AppCompatActivity() {
                 falseCall = defaultPage
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i("destroy?", "Omae wa mou shindeiru")
     }
 }

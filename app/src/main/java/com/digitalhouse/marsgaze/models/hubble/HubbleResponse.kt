@@ -4,11 +4,11 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class HubbleResponse(
-    val collection: PhotoCollection
+    val collection: PhotoCollection = PhotoCollection(mutableListOf())
 )
 
 data class PhotoCollection(
-    val items: List<Item>
+    val items: MutableList<Item>
 )
 
 data class Item (

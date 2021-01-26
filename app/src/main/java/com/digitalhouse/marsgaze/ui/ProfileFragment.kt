@@ -1,6 +1,8 @@
 package com.digitalhouse.marsgaze.ui
 
 import android.content.Context
+import android.content.Intent
+import android.opengl.Visibility
 import android.os.Bundle
 import android.text.Editable
 import android.view.LayoutInflater
@@ -17,9 +19,11 @@ import com.digitalhouse.marsgaze.databinding.FragmentProfileBinding
 import com.digitalhouse.marsgaze.helper.OkAndErrorSnack
 import com.digitalhouse.marsgaze.helper.SnackCreator
 import com.digitalhouse.marsgaze.models.data.User
+import com.digitalhouse.marsgaze.ui.onboarding.LoginActivity
 import com.digitalhouse.marsgaze.viewmodels.profile.ProfileViewModel
 import com.digitalhouse.marsgaze.viewmodels.profile.ProfileViewModelFactory
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.auth.FirebaseAuth
 
 
 class ProfileFragment : Fragment() {
@@ -64,6 +68,18 @@ class ProfileFragment : Fragment() {
 
         _binding = FragmentProfileBinding.bind(view)
 
+        binding.signOutText.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            Session.getInstance(
+                MarsGazeDB.getDatabase(
+                    requireContext()
+                )
+            ).logoff()
+            val intent = Intent(requireActivity(), LoginActivity::class.java)
+            startActivity(intent)
+            requireActivity().finish()
+        }
+
         return binding.root
     }
 
@@ -84,7 +100,13 @@ class ProfileFragment : Fragment() {
 
     private fun setUserData(user: User) {
         binding.tiDataAtrs.editText!!.text = Editable.Factory().newEditable(user.createdOn)
-        binding.tiPassword.editText!!.text = Editable.Factory().newEditable(user.password)
+
+        if (user.password != null) {
+            binding.tiPassword.editText!!.text = Editable.Factory().newEditable(user.password)
+        } else {
+            binding.tiPassword.visibility = View.GONE
+        }
+
         binding.tiName.editText!!.text = Editable.Factory().newEditable(user.name)
         binding.tiEmail.editText!!.text = Editable.Factory().newEditable(user.email)
     }

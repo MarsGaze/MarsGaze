@@ -59,8 +59,12 @@ class Session private constructor(private val marsGazeDB: MarsGazeDB) {
     fun login(user: User): Boolean {
         // Hashs the password
         val tmpPass = user.password
-        user.password = MessageHash(user.password).hashAndSalt()
+        if (user.password != null) {
+            user.password = MessageHash(user.password!!).hashAndSalt()
+        }
+
         val userExists = marsGazeDB.userDAO().loginMatch(user.email, user.password)
+
         // Evita alterar o objeto passado
         user.password = tmpPass
         if (userExists != null) {
@@ -86,7 +90,10 @@ class Session private constructor(private val marsGazeDB: MarsGazeDB) {
      */
     fun register(user: User) {
         val tmpPass = user.password
-        user.password = MessageHash(user.password).hashAndSalt()
+
+        if (user.password != null) {
+            user.password = MessageHash(user.password!!).hashAndSalt()
+        }
 
         val userDao = marsGazeDB.userDAO()
         userDao.insert(user)
@@ -118,8 +125,10 @@ class Session private constructor(private val marsGazeDB: MarsGazeDB) {
             throw ForbiddenAction("Update will not affect logged user")
         }
 
+        if (user.password != null) {
+            user.password = MessageHash(user.password!!).hashAndSalt()
+        }
 
-        user.password = MessageHash(user.password).hashAndSalt()
         userDAO.update(user)
         loggedUser = user
     }

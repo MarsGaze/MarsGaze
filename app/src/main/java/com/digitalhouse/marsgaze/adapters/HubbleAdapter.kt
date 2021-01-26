@@ -10,10 +10,10 @@ import com.digitalhouse.marsgaze.models.hubble.HubbleResponse
 import com.squareup.picasso.Picasso
 
 class HubbleAdapter(
-    var adapterHubbleList: HubbleResponse,
-    private var itemClickListener: OnItemClickListener,
-) :
-    RecyclerView.Adapter<HubbleAdapter.ImageViewHolder>() {
+    private var itemClickListener: OnItemClickListener
+) : RecyclerView.Adapter<HubbleAdapter.ImageViewHolder>() {
+
+    var adapterHubbleList: HubbleResponse = HubbleResponse()
 
     // Must be implemented by the corresponding fragment overriding onItemClick
     interface OnItemClickListener {
