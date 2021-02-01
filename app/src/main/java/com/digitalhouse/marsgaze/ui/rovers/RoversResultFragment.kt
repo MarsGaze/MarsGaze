@@ -34,9 +34,9 @@ class RoversResultFragment : Fragment(), RoversResultAdapter.OnItemClickListener
         }
     }
 
+    private var _binding: FragmentRoversResultBinding? = null
     // This property is only valid between onCreateView and
     // onDestroyView.
-    private var _binding: FragmentRoversResultBinding? = null
     private val binding get() = _binding!!
     private lateinit var resultAdapter: RoversResultAdapter
     private lateinit var roverParameter: String
@@ -148,9 +148,6 @@ class RoversResultFragment : Fragment(), RoversResultAdapter.OnItemClickListener
     private fun setFilterButtonClickListener() {
         binding.buttonFilter.setOnClickListener {
 
-            /**
-             * TODO: Check solParameter implementation
-             */
             solParameter = binding.inputSol.text.toString()
             roverParameter = when (binding.radioGroup.checkedRadioButtonId) {
                 R.id.radio_spirit -> "spirit"

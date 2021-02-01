@@ -1,6 +1,7 @@
 package com.digitalhouse.marsgaze.ui.hubble
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.digitalhouse.marsgaze.adapters.HubbleAdapter
 import com.digitalhouse.marsgaze.databinding.FragmentHubbleBinding
 import com.digitalhouse.marsgaze.models.hubble.HubbleResponse
@@ -32,9 +34,9 @@ class HubbleFragment : Fragment(), HubbleAdapter.OnItemClickListener {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-
-
-    private lateinit var hubbleImageList: HubbleResponse
+    private lateinit var rvHubble: RecyclerView
+    private lateinit var hubbleAdapter: HubbleAdapter
+    private lateinit var hubbleResponse: HubbleResponse
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,24 +44,19 @@ class HubbleFragment : Fragment(), HubbleAdapter.OnItemClickListener {
     ): View {
         _binding = FragmentHubbleBinding.inflate(inflater, container, false)
 
-        // Condition prevents clearing hubbleImageList.collections.items
-        if (!this::hubbleImageList.isInitialized) {
-            hubbleImageList = HubbleResponse(PhotoCollection(listOf()))
-        }
-
-        val hubbleAdapter = HubbleAdapter(hubbleImageList, this)
-        val rvHubble = binding.rvHubble
+        hubbleAdapter = HubbleAdapter(this)
+        rvHubble = binding.rvHubble
         rvHubble.layoutManager = GridLayoutManager(context, 2)
         rvHubble.adapter = hubbleAdapter
 
         viewModel.hubbleImgList.observe(viewLifecycleOwner) {
-            hubbleImageList = it
-            hubbleAdapter.adapterHubbleList = hubbleImageList
-            rvHubble.adapter = hubbleAdapter
+            hubbleResponse = it
+            hubbleAdapter.adapterHubbleList = hubbleResponse
+            hubbleAdapter.notifyDataSetChanged()
         }
 
         // Condition prevents requesting when navigating back from DetailHubbleFragment
-        if (hubbleImageList.collection.items.isEmpty()) {
+        if (!this::hubbleResponse.isInitialized) {
             viewModel.getHubbleImg()
         }
 
@@ -68,7 +65,7 @@ class HubbleFragment : Fragment(), HubbleAdapter.OnItemClickListener {
     }
 
     override fun onItemClick(position: Int) {
-        val clickedItem: Item = hubbleImageList.collection.items[position]
+        val clickedItem: Item = hubbleAdapter.adapterHubbleList.collection.items[position]
         NavHostFragment.findNavController(this).navigate(
             HubbleFragmentDirections.actionHubbleFragment3ToDetailHubbleFragment2(
                 clickedItem
@@ -80,4 +77,5 @@ class HubbleFragment : Fragment(), HubbleAdapter.OnItemClickListener {
         super.onDestroy()
         _binding = null
     }
+
 }

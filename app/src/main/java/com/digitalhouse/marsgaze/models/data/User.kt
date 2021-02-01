@@ -29,7 +29,7 @@ import androidx.room.PrimaryKey
     @PrimaryKey
     var email: String,
     var name: String,
-    var password: String,
+    var password: String?,
     @ColumnInfo(name = "created_on", defaultValue = "DATE(\"now\")")
     var createdOn: String = ""
 )

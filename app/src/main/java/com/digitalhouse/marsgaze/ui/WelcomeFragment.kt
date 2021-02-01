@@ -1,5 +1,6 @@
 package com.digitalhouse.marsgaze.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import com.digitalhouse.marsgaze.controllers.user.Session
 import com.digitalhouse.marsgaze.database.AfterFavoriteAction
 import com.digitalhouse.marsgaze.database.MarsGazeDB
 import com.digitalhouse.marsgaze.databinding.FragmentWelcomePageBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class WelcomeFragment : Fragment() {
     private var _binding: FragmentWelcomePageBinding? = null
@@ -73,7 +75,7 @@ class WelcomeFragment : Fragment() {
 
     private fun defineWelcomeUser(session: Session) {
         if (session.isLogged()) {
-            binding.tvWelcome.text = getString(R.string.welcomeUser, session.user().name)
+            binding.tvWelcome.text = getString(R.string.welcomeUser, session.user().name.split(" ")[0])
         } else {
             binding.tvWelcome.text = getString(R.string.welcomeUser, getString(
                 R.string.anonUserName)
@@ -81,4 +83,6 @@ class WelcomeFragment : Fragment() {
         }
 
     }
+
+
 }

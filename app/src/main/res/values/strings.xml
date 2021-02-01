@@ -4,7 +4,7 @@
     <string name="tvBoasVindas">Seja bem-vindo!</string>
 
     <!-- Conheça o nosso aplicativo MarsGaze e aprenda várias coisas sobre marte além de poder explorar ela através dos rovers. -->
-    <string name="tvOnboarding">Conheça o MarsGaze e aprenda mais sobre Marte enquanto explora o planeta vermelho através dos nossos robôs!</string>
+    <string name="tvOnboarding">Conheça o MarsGaze e aprenda mais sobre Marte enquanto explora o planeta vermelho através dos rovers da NASA!</string>
     <string name="tvOnboarding2">Então, pronto para explorar?</string>
     <string name="btnComecar">Começar</string>
     <string name="htEmail">Email</string>
@@ -191,4 +191,8 @@ Até hoje, os rovers mais bem-sucedidos foram/são os gêmeos Spirit e Opportuni
     <string name="imagens_favoritadas">Imagens favoritadas</string>
 
     <string name="anonUserName">Explorador</string>
+
+    <!-- Facebook -->
+    <string name="facebook_app_id">1367651593579262</string>
+    <string name="fb_login_protocol_scheme">fb1367651593579262</string>
 </resources>

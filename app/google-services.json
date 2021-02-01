@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "936580898759",
+    "project_id": "marsgaze",
+    "storage_bucket": "marsgaze.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:936580898759:android:1f84e2f6078b09b99243e2",
+        "android_client_info": {
+          "package_name": "com.digitalhouse.marsgaze"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "936580898759-epa35hh6vs7omneudh45cdhmc77rqfk9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.digitalhouse.marsgaze",
+            "certificate_hash": "8e8a03a14e9ec2efcba1725622dbe0e988bb689e"
+          }
+        },
+        {
+          "client_id": "936580898759-0ellmnvapnbc8nviicbng44pmjo7qrmm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsUmY0WAL7NSsUNno7yltourt5GO2c6sc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "936580898759-0ellmnvapnbc8nviicbng44pmjo7qrmm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

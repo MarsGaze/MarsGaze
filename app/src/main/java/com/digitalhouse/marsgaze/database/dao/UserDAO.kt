@@ -83,6 +83,6 @@ import com.digitalhouse.marsgaze.models.data.User
      * @return Um usuário senão nulo
      *         An user otherwise null
      */
-    @Query("SELECT * FROM user WHERE user.email = :email AND user.password = :password")
-    fun loginMatch(email: String, password: String) : User?
+    @Query("SELECT * FROM user WHERE user.email = :email AND (user.password = :password or :password is NULL)")
+    fun loginMatch(email: String, password: String?) : User?
 }
