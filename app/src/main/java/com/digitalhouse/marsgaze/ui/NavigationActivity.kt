@@ -12,6 +12,10 @@ import com.digitalhouse.marsgaze.controllers.user.Session
 import com.digitalhouse.marsgaze.database.MarsGazeDB
 import com.digitalhouse.marsgaze.databinding.NavigationDrawerBinding
 import com.digitalhouse.marsgaze.ui.onboarding.LoginActivity
+import com.facebook.login.LoginManager
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.firebase.auth.FirebaseAuth
 
 
 class NavigationActivity : AppCompatActivity() {
@@ -62,6 +66,25 @@ class NavigationActivity : AppCompatActivity() {
             val title = it.title.toString()
             when (it.title) {
                 resources.getString(R.string.navigationItemLogout) -> {
+                    FirebaseAuth.getInstance().signOut()
+
+                    // Google sign out
+                    GoogleSignIn.getClient(
+                        this,
+                        GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
+                    ).signOut()
+
+                    // Facebook sign out
+                    LoginManager.getInstance().logOut()
+
+                    Session.getInstance(
+                        MarsGazeDB.getDatabase(
+                            this
+                        )
+                    ).logoff()
+                    val intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
+                    this.finish()
                     true
                 }
                 resources.getString(R.string.navigationItemHubble) -> {
