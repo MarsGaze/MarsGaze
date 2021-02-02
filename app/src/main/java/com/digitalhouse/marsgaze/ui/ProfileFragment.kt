@@ -71,28 +71,6 @@ class ProfileFragment : Fragment() {
 
         _binding = FragmentProfileBinding.bind(view)
 
-        binding.signOutText.setOnClickListener {
-            FirebaseAuth.getInstance().signOut()
-
-            // Google sign out
-            GoogleSignIn.getClient(
-                requireContext(),
-                GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
-            ).signOut()
-
-            // Facebook sign out
-            LoginManager.getInstance().logOut()
-
-            Session.getInstance(
-                MarsGazeDB.getDatabase(
-                    requireContext()
-                )
-            ).logoff()
-            val intent = Intent(requireActivity(), LoginActivity::class.java)
-            startActivity(intent)
-            requireActivity().finish()
-        }
-
         return binding.root
     }
 
