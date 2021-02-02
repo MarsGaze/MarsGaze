@@ -22,6 +22,9 @@ import com.digitalhouse.marsgaze.models.data.User
 import com.digitalhouse.marsgaze.ui.onboarding.LoginActivity
 import com.digitalhouse.marsgaze.viewmodels.profile.ProfileViewModel
 import com.digitalhouse.marsgaze.viewmodels.profile.ProfileViewModelFactory
+import com.facebook.login.LoginManager
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 
@@ -70,6 +73,16 @@ class ProfileFragment : Fragment() {
 
         binding.signOutText.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
+
+            // Google sign out
+            GoogleSignIn.getClient(
+                requireContext(),
+                GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
+            ).signOut()
+
+            // Facebook sign out
+            LoginManager.getInstance().logOut()
+
             Session.getInstance(
                 MarsGazeDB.getDatabase(
                     requireContext()
