@@ -1,4 +1,4 @@
-package com.digitalhouse.marsgaze.viewmodels.register
+package com.digitalhouse.marsgaze.viewmodels.session.register
 
 import android.database.sqlite.SQLiteConstraintException
 import android.database.sqlite.SQLiteException

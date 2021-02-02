@@ -2,7 +2,6 @@ package com.digitalhouse.marsgaze.ui
 
 import android.content.Context
 import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
 import android.text.Editable
 import android.view.LayoutInflater
@@ -21,8 +20,8 @@ import com.digitalhouse.marsgaze.helper.OkAndErrorSnack
 import com.digitalhouse.marsgaze.helper.SnackCreator
 import com.digitalhouse.marsgaze.models.data.User
 import com.digitalhouse.marsgaze.ui.onboarding.LoginActivity
-import com.digitalhouse.marsgaze.viewmodels.profile.ProfileViewModel
-import com.digitalhouse.marsgaze.viewmodels.profile.ProfileViewModelFactory
+import com.digitalhouse.marsgaze.viewmodels.session.SessionViewModelFactory
+import com.digitalhouse.marsgaze.viewmodels.session.profile.ProfileViewModel
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 
@@ -40,7 +39,7 @@ class ProfileFragment : Fragment() {
     }
 
     private val viewModel: ProfileViewModel by viewModels {
-        ProfileViewModelFactory(
+        SessionViewModelFactory(
             Session.getInstance(
                 MarsGazeDB.getDatabase(requireContext()),
                 AfterFavoriteAction(requireContext())
@@ -74,6 +73,9 @@ class ProfileFragment : Fragment() {
             FirebaseAuth.getInstance().signOut()
             Session.getInstance(
                 MarsGazeDB.getDatabase(
+                    requireContext()
+                ),
+                AfterFavoriteAction(
                     requireContext()
                 )
             ).logoff()

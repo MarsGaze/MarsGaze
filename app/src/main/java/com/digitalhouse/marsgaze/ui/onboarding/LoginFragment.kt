@@ -18,8 +18,8 @@ import com.digitalhouse.marsgaze.helper.OkAndErrorSnack
 import com.digitalhouse.marsgaze.helper.SnackCreator
 import com.digitalhouse.marsgaze.models.data.User
 import com.digitalhouse.marsgaze.ui.NavigationActivity
-import com.digitalhouse.marsgaze.viewmodels.login.LoginViewModel
-import com.digitalhouse.marsgaze.viewmodels.login.LoginViewModelFactory
+import com.digitalhouse.marsgaze.viewmodels.session.SessionViewModelFactory
+import com.digitalhouse.marsgaze.viewmodels.session.login.LoginViewModel
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
@@ -57,7 +57,7 @@ class LoginFragment : Fragment() {
     }
 
     private val viewModel: LoginViewModel by viewModels {
-        LoginViewModelFactory(
+        SessionViewModelFactory(
             session
         )
     }

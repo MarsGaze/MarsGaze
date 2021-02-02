@@ -1,5 +1,5 @@
 package com.digitalhouse.marsgaze.models.rovers
-
+import androidx.room.Entity
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
@@ -12,7 +12,9 @@ data class RoverPhoto(
     val id: Int,
     val sol: String,
     val camera: RoverCamera,
-    @SerializedName("img_src") val imageUrl: String,
-    @SerializedName("earth_date") val earthDate: String,
+    @SerializedName("img_src")
+    val imageUrl: String,
+    @SerializedName("earth_date")
+    val earthDate: String,
     val rover: Rover
 ) : Serializable

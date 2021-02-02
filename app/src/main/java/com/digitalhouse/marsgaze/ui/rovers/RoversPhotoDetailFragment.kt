@@ -3,7 +3,6 @@ package com.digitalhouse.marsgaze.ui.rovers
 import android.os.Bundle
 import android.view.*
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
@@ -13,8 +12,8 @@ import com.digitalhouse.marsgaze.controllers.user.Session
 import com.digitalhouse.marsgaze.database.AfterFavoriteAction
 import com.digitalhouse.marsgaze.database.MarsGazeDB
 import com.digitalhouse.marsgaze.databinding.FragmentImageDetailBinding
-import com.digitalhouse.marsgaze.viewmodels.rover_image.RoverImageViewModel
-import com.digitalhouse.marsgaze.viewmodels.rover_image.RoverImageViewModelFactory
+import com.digitalhouse.marsgaze.viewmodels.session.SessionViewModelFactory
+import com.digitalhouse.marsgaze.viewmodels.session.rover_image.RoverImageViewModel
 import com.squareup.picasso.Picasso
 
 // TODO: Change layout name
@@ -26,7 +25,7 @@ class RoversPhotoDetailFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel by viewModels<RoverImageViewModel> {
-        RoverImageViewModelFactory (
+        SessionViewModelFactory (
             Session.getInstance(
                 MarsGazeDB.getDatabase(
                     requireContext()

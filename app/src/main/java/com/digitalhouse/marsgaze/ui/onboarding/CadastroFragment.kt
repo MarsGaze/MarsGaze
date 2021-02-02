@@ -15,8 +15,8 @@ import com.digitalhouse.marsgaze.databinding.FragmentCadastroBinding
 import com.digitalhouse.marsgaze.helper.OkAndErrorSnack
 import com.digitalhouse.marsgaze.helper.SnackCreator
 import com.digitalhouse.marsgaze.models.data.User
-import com.digitalhouse.marsgaze.viewmodels.register.RegisterViewModel
-import com.digitalhouse.marsgaze.viewmodels.register.RegisterViewModelFactory
+import com.digitalhouse.marsgaze.viewmodels.session.SessionViewModelFactory
+import com.digitalhouse.marsgaze.viewmodels.session.register.RegisterViewModel
 
 class CadastroFragment : Fragment() {
     private var _binding: FragmentCadastroBinding? = null
@@ -37,7 +37,7 @@ class CadastroFragment : Fragment() {
 
     // Inicializado somente após a criação da view
     private val viewModel: RegisterViewModel by viewModels {
-        RegisterViewModelFactory(
+        SessionViewModelFactory(
             session
         )
     }

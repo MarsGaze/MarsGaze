@@ -1,4 +1,4 @@
-package com.digitalhouse.marsgaze.viewmodels.rover_image
+package com.digitalhouse.marsgaze.viewmodels.session.rover_image
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
