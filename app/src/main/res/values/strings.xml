@@ -67,6 +67,7 @@
     <string name="navigationItemInsight">Clima</string>
     <string name="navigationItemAboutMars">Sobre Marte</string>
     <string name="navigationItemHubble">Telescópio Hubble</string>
+    <string name="navigationItemLogout">Logout</string>
 
     <!-- Activity exception -->
     <string name="tv_mensagemException">Não foi possível carregar a imagem</string>

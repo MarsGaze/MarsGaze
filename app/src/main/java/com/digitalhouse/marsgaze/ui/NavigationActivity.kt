@@ -4,10 +4,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.digitalhouse.marsgaze.R
+import com.digitalhouse.marsgaze.controllers.user.Session
+import com.digitalhouse.marsgaze.database.MarsGazeDB
 import com.digitalhouse.marsgaze.databinding.NavigationDrawerBinding
+import com.digitalhouse.marsgaze.ui.onboarding.LoginActivity
+
 
 class NavigationActivity : AppCompatActivity() {
     private lateinit var binding: NavigationDrawerBinding
@@ -56,6 +61,9 @@ class NavigationActivity : AppCompatActivity() {
             // para evitar problemas caso haja mudança entre as posições dos elementos do menu
             val title = it.title.toString()
             when (it.title) {
+                resources.getString(R.string.navigationItemLogout) -> {
+                    true
+                }
                 resources.getString(R.string.navigationItemHubble) -> {
                     changePage(title, R.id.hubbleFragment)
 
