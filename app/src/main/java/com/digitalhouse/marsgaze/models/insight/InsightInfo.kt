@@ -1,16 +1,17 @@
 package com.digitalhouse.marsgaze.models.insight
 
 import com.google.gson.JsonObject
+import java.io.Serializable
 
 
-data class InsightInfo(
+data class InsightInfo (
     var sol: String = "NO_DATA",
     var firstUTC: String = "NO_DATA",
     var lastUTC: String = "NO_DATA",
     var PRE: Pressure,
     var AT: Temperature,
     var season: String = "NO_DATA"
-) {
+) : Serializable {
     companion object {
         fun fromJson(json: JsonObject): InsightInfo {
             val info = InsightInfo(PRE = Pressure(), AT = Temperature())

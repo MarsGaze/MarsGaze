@@ -71,16 +71,16 @@ class InsightDataAdapter(var infoList: ArrayList<InsightInfo> = ArrayList()) : P
 
         when(position) {
             0 -> {
-                media.text = obj.AT.av
-                tv_valorMinima.text = obj.AT.mn
-                tv_valorMaxima.text = obj.AT.mx
-                tv_amostras.text = obj.AT.ct
+                media.text = view.resources.getString(R.string.insightTemp, obj.AT.av)
+                tv_valorMinima.text = view.resources.getString(R.string.insightTemp, obj.AT.mn)
+                tv_valorMaxima.text = view.resources.getString(R.string.insightTemp, obj.AT.mx)
+                tv_amostras.text = view.resources.getString(R.string.insightSampleSize, obj.AT.ct)
             }
             1 -> {
-                media.text = obj.PRE.av
-                tv_valorMinima.text = obj.PRE.mn
-                tv_valorMaxima.text = obj.PRE.mx
-                tv_amostras.text = obj.PRE.ct
+                media.text = view.resources.getString(R.string.insightPress, obj.PRE.av)
+                tv_valorMinima.text = view.resources.getString(R.string.insightPress, obj.PRE.mn)
+                tv_valorMaxima.text = view.resources.getString(R.string.insightPress, obj.PRE.mx)
+                tv_amostras.text = view.resources.getString(R.string.insightSampleSize, obj.PRE.ct)
             }
         }
     }

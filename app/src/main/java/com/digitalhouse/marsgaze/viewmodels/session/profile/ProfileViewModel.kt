@@ -1,4 +1,4 @@
-package com.digitalhouse.marsgaze.viewmodels.profile
+package com.digitalhouse.marsgaze.viewmodels.session.profile
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

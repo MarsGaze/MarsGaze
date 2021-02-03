@@ -16,6 +16,9 @@ import androidx.transition.AutoTransition
 import androidx.transition.TransitionManager
 import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.adapters.RoversResultAdapter
+import com.digitalhouse.marsgaze.controllers.user.Session
+import com.digitalhouse.marsgaze.database.AfterFavoriteAction
+import com.digitalhouse.marsgaze.database.MarsGazeDB
 import com.digitalhouse.marsgaze.databinding.FragmentRoversResultBinding
 import com.digitalhouse.marsgaze.models.rovers.RoverPhoto
 import com.digitalhouse.marsgaze.services.MarsRoversPhotosService
@@ -25,6 +28,7 @@ import java.util.*
 
 class RoversResultFragment : Fragment(), RoversResultAdapter.OnItemClickListener {
     private val args: RoversResultFragmentArgs by navArgs()
+
     private val viewModel: RoversResultViewModel by viewModels {
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
@@ -93,7 +97,7 @@ class RoversResultFragment : Fragment(), RoversResultAdapter.OnItemClickListener
     override fun onItemClick(position: Int) {
         val clickedItem: RoverPhoto = resultAdapter.roverResponse.photos[position]
         findNavController(this).navigate(
-            RoversResultFragmentDirections.actionRoversResultFragmentToImageDetailFragment2(
+            RoversResultFragmentDirections.actionRoversResultFragmentToImageDetailFragment22(
                 clickedItem
             )
         )

@@ -65,12 +65,14 @@ abstract class ServiceController<CommonIdentifier> {
         }
 
         onCall[type] = true
-
+        val job = Job()
+        progressCalls[type] = job
         // Temos certeza que devemos receber o tipo T correto aqui. Qualquer problema aqui não,
         // deve ser alcançado por usuário
         @Suppress("UNCHECKED_CAST")
         val value = calls[type]?.invoke() as Response<T>
         cache[type] = value
+        job.complete()
 
         onCall[type] = false
     }

@@ -67,7 +67,7 @@ class HubbleFragment : Fragment(), HubbleAdapter.OnItemClickListener {
     override fun onItemClick(position: Int) {
         val clickedItem: Item = hubbleAdapter.adapterHubbleList.collection.items[position]
         NavHostFragment.findNavController(this).navigate(
-            HubbleFragmentDirections.actionHubbleFragment3ToDetailHubbleFragment2(
+            HubbleFragmentDirections.actionHubbleFragmentToImageDetailFragment2(
                 clickedItem
             )
         )

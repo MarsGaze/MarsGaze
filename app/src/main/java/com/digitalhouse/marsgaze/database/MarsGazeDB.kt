@@ -60,7 +60,7 @@ abstract class MarsGazeDB : RoomDatabase() {
                     context.applicationContext,
                     MarsGazeDB::class.java,
                     "marsgaze_database"
-                ).build()
+                ).fallbackToDestructiveMigration().build()
                 INSTANCE = instance
                 // return instance
                 instance

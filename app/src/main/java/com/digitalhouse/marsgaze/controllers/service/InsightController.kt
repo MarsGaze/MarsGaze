@@ -3,6 +3,8 @@ package com.digitalhouse.marsgaze.controllers.service
 import android.util.Log
 import com.digitalhouse.marsgaze.models.insight.InsightInfo
 import com.digitalhouse.marsgaze.services.InsightService
+import com.google.gson.Gson
+import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import kotlinx.coroutines.Job
 import retrofit2.Response
@@ -19,8 +21,6 @@ import retrofit2.Response
  * @param insightService Interface com as chamadas para a API do Insight
  *                       Interface with the API calls for Insight
  *
- * TODO: No momento não verificamos chamadas que já estão ocorrendo ou possibilitamos a espera delas
- *  junto com o recebimento do valor de tal
  */
 class InsightController private constructor(private val insightService: InsightService) :
         ServiceController<InsightType>() {
@@ -119,6 +119,7 @@ class InsightController private constructor(private val insightService: InsightS
             Log.i("solObject", solObject.toString())
 
             val info = InsightInfo.fromJson(solObject)
+
             info.sol = solKeys[i].asString
             // Populating our map
             infoList.add(info)
