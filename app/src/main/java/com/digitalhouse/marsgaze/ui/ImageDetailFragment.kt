@@ -177,7 +177,7 @@ class ImageDetailFragment : Fragment() {
             shareIntent.action = Intent.ACTION_SEND
             shareIntent.putExtra(Intent.EXTRA_STREAM, bmpUri)
             shareIntent.putExtra(Intent.EXTRA_TEXT, args.imageDetailAdapter.getTitle())
-            shareIntent.type = "/"
+            shareIntent.type = "*/*"
             // Launch sharing dialog for image
             startActivityForResult(Intent.createChooser(shareIntent, "Share Image"), 1000)
         } else {

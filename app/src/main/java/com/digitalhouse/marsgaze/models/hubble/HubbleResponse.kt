@@ -30,7 +30,7 @@ data class Item(
 
     override fun getType(): Int = FavoriteType.HUBBLE_IMAGE.ordinal
 
-    override fun getExtraInfo(): String? = data[0].date_created
+    override fun getExtraInfo(): String? = data[0].date_created.substring(0, 10)
 
     override fun toFavorite(user: User): FavoriteTest = FavoriteTest(
         null,
