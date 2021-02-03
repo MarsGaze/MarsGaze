@@ -9,6 +9,7 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.controllers.user.Session
+import com.digitalhouse.marsgaze.database.AfterFavoriteAction
 import com.digitalhouse.marsgaze.database.MarsGazeDB
 import com.digitalhouse.marsgaze.databinding.NavigationDrawerBinding
 import com.digitalhouse.marsgaze.ui.onboarding.LoginActivity
@@ -79,6 +80,9 @@ class NavigationActivity : AppCompatActivity() {
 
                     Session.getInstance(
                         MarsGazeDB.getDatabase(
+                            this
+                        ),
+                        AfterFavoriteAction(
                             this
                         )
                     ).logoff()

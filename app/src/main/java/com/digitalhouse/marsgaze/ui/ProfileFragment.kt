@@ -14,14 +14,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.controllers.user.Session
+import com.digitalhouse.marsgaze.database.AfterFavoriteAction
 import com.digitalhouse.marsgaze.database.MarsGazeDB
 import com.digitalhouse.marsgaze.databinding.FragmentProfileBinding
 import com.digitalhouse.marsgaze.helper.OkAndErrorSnack
 import com.digitalhouse.marsgaze.helper.SnackCreator
 import com.digitalhouse.marsgaze.models.data.User
 import com.digitalhouse.marsgaze.ui.onboarding.LoginActivity
-import com.digitalhouse.marsgaze.viewmodels.profile.ProfileViewModel
-import com.digitalhouse.marsgaze.viewmodels.profile.ProfileViewModelFactory
+import com.digitalhouse.marsgaze.viewmodels.session.SessionViewModelFactory
+import com.digitalhouse.marsgaze.viewmodels.session.profile.ProfileViewModel
 import com.facebook.login.LoginManager
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -42,9 +43,12 @@ class ProfileFragment : Fragment() {
     }
 
     private val viewModel: ProfileViewModel by viewModels {
-        ProfileViewModelFactory(
+        SessionViewModelFactory(
             Session.getInstance(
-                MarsGazeDB.getDatabase(requireContext())
+                MarsGazeDB.getDatabase(requireContext()),
+                AfterFavoriteAction(
+                    requireContext()
+                )
             )
         )
     }
