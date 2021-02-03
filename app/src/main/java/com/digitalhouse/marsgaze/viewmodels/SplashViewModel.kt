@@ -2,9 +2,9 @@ package com.digitalhouse.marsgaze.viewmodels
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.digitalhouse.marsgaze.controllers.service.InsightController
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class SplashViewModel : ViewModel() {
@@ -21,7 +21,8 @@ class SplashViewModel : ViewModel() {
      *                          insight controller to do the cache call
      */
     fun cacheInsight(insightController: InsightController) {
-        viewModelScope.launch(Dispatchers.IO) {
+        // Mantém o cache mesmo após esse view model ser destruido
+        GlobalScope.launch(Dispatchers.IO) {
             try {
                 insightController.cacheInsight()
             } catch (e: Exception) {
