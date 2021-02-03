@@ -1,9 +1,13 @@
 package com.digitalhouse.marsgaze.controllers.user
 
+import com.digitalhouse.marsgaze.database.AfterFavoriteAction
+import com.digitalhouse.marsgaze.database.FavoriteHelperAfter
 import com.digitalhouse.marsgaze.database.MarsGazeDB
 import com.digitalhouse.marsgaze.helper.MessageHash
 import com.digitalhouse.marsgaze.models.data.FavoriteTest
+import com.digitalhouse.marsgaze.models.data.FavoriteType
 import com.digitalhouse.marsgaze.models.data.User
+import com.google.gson.Gson
 import java.lang.Exception
 
 /**
@@ -13,16 +17,19 @@ import java.lang.Exception
  * EN-US
  * Geral session of the app in relation to the logged user.
  */
-class Session private constructor(private val marsGazeDB: MarsGazeDB) {
+class Session private constructor(
+    private val marsGazeDB: MarsGazeDB,
+    private val favoriteHelperAfter: FavoriteHelperAfter
+    ) {
     private var loggedUser: User? = null
 
     companion object {
         @Volatile
         private var INSTANCE: Session? = null
 
-        fun getInstance(marsGazeDB: MarsGazeDB): Session {
+        fun getInstance(marsGazeDB: MarsGazeDB, afterFavoriteAction: AfterFavoriteAction): Session {
             return INSTANCE ?: synchronized(this) {
-                val instance = Session(marsGazeDB)
+                val instance = Session(marsGazeDB, afterFavoriteAction)
                 INSTANCE = instance
                 instance
             }
@@ -144,7 +151,7 @@ class Session private constructor(private val marsGazeDB: MarsGazeDB) {
      *                           If no user was logged
      */
     @Throws(exceptionClasses = [NoUserWasLoggedIn::class, ForbiddenAction::class])
-    fun addFavorite(fav: FavoriteTest) {
+    fun addFavorite(fav: FavoriteTest): Long {
         val user = loggedUser ?: throw NoUserWasLoggedIn(
             "Can't add favorites if no user is logged"
         )
@@ -155,7 +162,14 @@ class Session private constructor(private val marsGazeDB: MarsGazeDB) {
 
         val favDAO = marsGazeDB.favoriteDAO()
 
-        favDAO.insert(fav)
+        val id = favDAO.insert(fav)
+        favoriteHelperAfter.afterInsert(
+            FavoriteType.values()[fav.imageType],
+            fav.imageId,
+            Gson().toJson(fav)
+        )
+
+        return id
     }
 
     /**
@@ -180,8 +194,24 @@ class Session private constructor(private val marsGazeDB: MarsGazeDB) {
 
         val favDAO = marsGazeDB.favoriteDAO()
 
+
         favDAO.delete(fav)
+        favoriteHelperAfter.afterDelete(FavoriteType.values()[fav.imageType], fav.imageId)
     }
+
+
+    /**
+     * PT-BR
+     * Retorna o favorito com o id a partir do nome da image, tipo e o usuário que favoritou ela.
+     *
+     * EN-US
+     * Returns the favorite with its id from the image name, type and user which owns it.
+     *
+     * @param fav Favorito
+     *            Favorite
+     */
+    fun isFavorited(fav: FavoriteTest): FavoriteTest? =
+        marsGazeDB.favoriteDAO().favoritedImage(fav.user, fav.imageType, fav.imageId)
 
 
     /**

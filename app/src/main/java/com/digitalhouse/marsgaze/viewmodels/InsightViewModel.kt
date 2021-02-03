@@ -1,10 +1,13 @@
 package com.digitalhouse.marsgaze.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.digitalhouse.marsgaze.controllers.service.InsightController
 import com.digitalhouse.marsgaze.models.insight.InsightInfo
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class InsightViewModel(private val controller: InsightController) : ViewModel() {
@@ -22,6 +25,18 @@ class InsightViewModel(private val controller: InsightController) : ViewModel() 
                     }
                 } else if (job.isCompleted && controller.getInsight(true)!!.isSuccessful) {
                     insightResponse.value = controller.getInsight(true)!!.body()
+                } else if (!job.isCompleted && controller.getInsight(true)!!.isSuccessful) {
+                    GlobalScope.launch(Dispatchers.IO) {
+                        controller.getInsight()
+                        val job = controller.jobInsight()
+                        if (job == null) {
+                            Log.e("CALL", "No job was done")
+                        } else {
+                            job.invokeOnCompletion {
+                                getInsightInfo()
+                            }
+                        }
+                    }
                 } else {
                     job.invokeOnCompletion {
                         getInsightInfo()
@@ -29,7 +44,8 @@ class InsightViewModel(private val controller: InsightController) : ViewModel() 
                 }
             } catch (e: Exception) {
                 // TODO: Não devemos pegar exceções no gerais aqui...
-
+                // Tentamos fazer novamente a conexão
+                getInsightInfo()
             }
         }
 

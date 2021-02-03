@@ -33,7 +33,7 @@ class InsightSolDateAdapter(var infoList: ArrayList<InsightInfo> = ArrayList()) 
         )
         insightDate.text = lastUTC
         val sol = insightMarsDay.resources.getString(
-            R.string.insightSolMars, obj.sol
+            R.string.solDay, obj.sol
         )
         insightMarsDay.text = sol
         insightSeason.text = obj.season

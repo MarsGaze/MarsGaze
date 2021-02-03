@@ -49,21 +49,15 @@ class Favorite(val image: Int, val sol: Int, val rover: String) {
     indices = [Index("user")]
 )
 data class FavoriteTest(
-    // Usamos identificador único a parte do id da imagem já que elas podem conflitar
-    // em relação ao seu tipo
     @PrimaryKey(autoGenerate = true)
-    var id: Int,
+    val id: Long? = null,
     @ColumnInfo(name = "image_type")
     val imageType: Int,
-    val imageId: Int,
+    val imageId: String,
     val user: String
 )
 
-
-data class RoverImage(
-    val a: String
-)
-
-data class HubbleImage(
-    val a: String
-)
+enum class FavoriteType {
+    ROVERS_IMAGE,
+    HUBBLE_IMAGE
+}

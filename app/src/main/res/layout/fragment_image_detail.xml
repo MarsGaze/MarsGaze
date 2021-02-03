@@ -67,7 +67,7 @@
                 android:layout_marginTop="8dp"
                 android:textColor="@color/colorWhite"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@+id/iv_favorite"
+                app:layout_constraintEnd_toEndOf="@+id/iv_favorite_holder"
                 app:layout_constraintStart_toStartOf="@+id/tv_info_title"
                 app:layout_constraintTop_toBottomOf="@+id/tv_info_title"
                 tools:text="Earth date" />
@@ -79,20 +79,37 @@
                 android:paddingBottom="8dp"
                 android:textColor="@color/colorWhite"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@+id/iv_favorite"
+                app:layout_constraintEnd_toEndOf="@+id/iv_favorite_holder"
                 app:layout_constraintStart_toStartOf="@+id/tv_info_title"
                 app:layout_constraintTop_toBottomOf="@+id/tv_info_img_earth_date"
                 tools:text="CameraAbbr - CameraFull" />
 
-            <ImageView
-                android:id="@+id/iv_favorite"
+
+            <FrameLayout
+                android:id="@+id/iv_favorite_holder"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_marginEnd="20dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_favorite"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_info_title" />
+                app:layout_constraintTop_toTopOf="@+id/tv_info_title"
+                >
+                <ImageView
+                    android:id="@+id/iv_favorite"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_favorite" />
+
+                <ImageView
+                    android:id="@+id/iv_favorite_full"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:scaleType="fitCenter"
+                    android:visibility="gone"
+                    android:src="@drawable/ic_favorite_full"
+                     />
+            </FrameLayout>
+
 
             <ImageView
                 android:id="@+id/iv_share"
@@ -101,7 +118,7 @@
                 android:layout_marginEnd="16dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_share"
-                app:layout_constraintEnd_toStartOf="@+id/iv_favorite"
+                app:layout_constraintEnd_toStartOf="@+id/iv_favorite_holder"
                 app:layout_constraintTop_toTopOf="@+id/tv_info_title" />
 
             <androidx.constraintlayout.widget.Group
@@ -109,7 +126,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="visible"
-                app:constraint_referenced_ids="iv_share, iv_favorite, tv_info_title, tv_info_img_earth_date, tv_info_img_camera" />
+                app:constraint_referenced_ids="iv_share, iv_favorite_holder, tv_info_title, tv_info_img_earth_date, tv_info_img_camera" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
