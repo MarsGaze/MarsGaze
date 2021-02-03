@@ -57,13 +57,13 @@ class ImageDetailViewModel(val session: Session) : ViewModel() {
             if (inFavorite != null && isFavorite.value != null && isFavorite.value!!) {
                 removeFavoriteRoverImage(inFavorite!!)
             } else {
-                favoriteRoverImage(adapter.toFavorite(session.user()))
+                favoriteRoverImage(adapter)
             }
         }
     }
 
 
-    private fun favoriteRoverImage(favorite: FavoriteTest) {
+    private fun favoriteRoverImage(favorite: ImageDetailAdapter) {
         var message = Pair(true, R.string.favoriteAdded)
 
         try {
@@ -77,9 +77,10 @@ class ImageDetailViewModel(val session: Session) : ViewModel() {
 
             inFavorite = FavoriteTest(
                 id,
-                imageType = favorite.imageType,
-                imageId = favorite.imageId,
+                imageType = favorite.getType(),
+                imageId = favorite.getId(),
                 user = session.user().email,
+                favorite.getImg()
             )
         } catch (ex: SQLiteConstraintException) {
             message = Pair(false, R.string.favoriteException)

@@ -36,7 +36,8 @@ data class Item(
         null,
         getType(),
         getId(),
-        user.email
+        user.email,
+        getImg()
     )
 }
 

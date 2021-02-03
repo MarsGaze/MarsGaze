@@ -19,7 +19,11 @@
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.digitalhouse.marsgaze.ui.FavoriteFragment"
-        android:label="FavoriteFragment" />
+        android:label="FavoriteFragment" >
+        <action
+            android:id="@+id/action_favoriteFragment_to_imageDetailFragment2"
+            app:destination="@id/imageDetailFragment2" />
+    </fragment>
 
     <fragment
         android:id="@+id/roversFragment"

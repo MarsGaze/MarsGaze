@@ -7,7 +7,11 @@ import com.digitalhouse.marsgaze.helper.MessageHash
 import com.digitalhouse.marsgaze.models.data.FavoriteTest
 import com.digitalhouse.marsgaze.models.data.FavoriteType
 import com.digitalhouse.marsgaze.models.data.User
+import com.digitalhouse.marsgaze.models.favorite.ImageDetailAdapter
+import com.digitalhouse.marsgaze.models.hubble.Item
+import com.digitalhouse.marsgaze.models.rovers.RoverPhoto
 import com.google.gson.Gson
+import java.io.File
 import java.lang.Exception
 
 /**
@@ -27,7 +31,7 @@ class Session private constructor(
         @Volatile
         private var INSTANCE: Session? = null
 
-        fun getInstance(marsGazeDB: MarsGazeDB, afterFavoriteAction: AfterFavoriteAction): Session {
+        fun getInstance(marsGazeDB: MarsGazeDB, afterFavoriteAction: FavoriteHelperAfter): Session {
             return INSTANCE ?: synchronized(this) {
                 val instance = Session(marsGazeDB, afterFavoriteAction)
                 INSTANCE = instance
@@ -150,23 +154,32 @@ class Session private constructor(
      * @throws NoUserWasLoggedIn Se nenhum usuário estiver logado
      *                           If no user was logged
      */
-    @Throws(exceptionClasses = [NoUserWasLoggedIn::class, ForbiddenAction::class])
-    fun addFavorite(fav: FavoriteTest): Long {
+    @Throws(exceptionClasses = [NoUserWasLoggedIn::class])
+    fun addFavorite(fav: ImageDetailAdapter): Long {
         val user = loggedUser ?: throw NoUserWasLoggedIn(
             "Can't add favorites if no user is logged"
         )
 
-        if (user.email != fav.user) {
-            throw ForbiddenAction("User is not related to the given favorite")
-        }
-
         val favDAO = marsGazeDB.favoriteDAO()
 
-        val id = favDAO.insert(fav)
+        lateinit var data: String
+        when (
+            fav.getType()
+        ) {
+            FavoriteType.ROVERS_IMAGE.ordinal -> {
+                data = Gson().toJson(fav as RoverPhoto)
+            }
+
+            FavoriteType.HUBBLE_IMAGE.ordinal -> {
+                data = Gson().toJson(fav as Item)
+            }
+        }
+
+        val id = favDAO.insert(fav.toFavorite(user()))
         favoriteHelperAfter.afterInsert(
-            FavoriteType.values()[fav.imageType],
-            fav.imageId,
-            Gson().toJson(fav)
+            FavoriteType.values()[fav.getType()],
+            fav.getId(),
+            data
         )
 
         return id
@@ -216,6 +229,30 @@ class Session private constructor(
 
     /**
      * PT-BR
+     * Pega todos os favoritos do usuário
+     *
+     * EN-US
+     * Returns all the user favorites
+     *
+     * @throws NoUserWasLoggedIn Se nenhum usuário estiver logado
+     *                           If no user was logged
+     *
+     * @return Favoritos do usuário
+     *         User favorites
+     */
+    @Throws(NoUserWasLoggedIn::class)
+    fun getAllFavorites(): List<FavoriteTest> {
+        val user = loggedUser ?: throw NoUserWasLoggedIn(
+            "No user is logged to get all its favorites"
+        )
+
+        val favoriteDAO = marsGazeDB.favoriteDAO()
+
+        return favoriteDAO.getUserFavorites(user.email)
+    }
+
+    /**
+     * PT-BR
      * Pega o usuário logado
      *
      * EN-US
@@ -225,6 +262,12 @@ class Session private constructor(
      *                           If no user was logged
      */
     fun user(): User = loggedUser ?: throw NoUserWasLoggedIn("No user was logged in")
+
+
+    fun getFavoriteFile(id: String, type: FavoriteType): File {
+        val favAction = favoriteHelperAfter as AfterFavoriteAction
+        return favAction.getFavFile(type, id)
+    }
 
     class NoUserWasLoggedIn : Exception {
         constructor(message: String?): super(message)

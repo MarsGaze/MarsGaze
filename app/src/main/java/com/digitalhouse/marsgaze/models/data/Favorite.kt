@@ -54,7 +54,8 @@ data class FavoriteTest(
     @ColumnInfo(name = "image_type")
     val imageType: Int,
     val imageId: String,
-    val user: String
+    val user: String,
+    val imgPath: String
 )
 
 enum class FavoriteType {
