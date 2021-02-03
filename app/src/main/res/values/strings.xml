@@ -45,7 +45,7 @@
     <!-- Insight Page Resources -->
     <string name="insightSelectDate">%1$s de %2$s</string>
     <string name="insightSelectDateVisual">19 de Novembro</string>
-    <string name="insightSolMars">Sol %1$s</string>
+    <string name="solDay">Sol %1$s</string>
     <string name="insightSolMarsVisual">Sol 421</string>
     <string name="insightSeasonVisual">Verão</string>
 
@@ -195,4 +195,8 @@ Até hoje, os rovers mais bem-sucedidos foram/são os gêmeos Spirit e Opportuni
     <!-- Facebook -->
     <string name="facebook_app_id">1367651593579262</string>
     <string name="fb_login_protocol_scheme">fb1367651593579262</string>
+
+    <string name="favoriteAdded">Adicionado aos favoritos com sucesso</string>
+    <string name="favoriteRemoved">Removido dos favoritos com sucesso</string>
+    <string name="favoriteException">Houve uma falha ao realizar a ação</string>
 </resources>

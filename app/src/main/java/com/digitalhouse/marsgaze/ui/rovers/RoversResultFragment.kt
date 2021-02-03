@@ -97,7 +97,7 @@ class RoversResultFragment : Fragment(), RoversResultAdapter.OnItemClickListener
     override fun onItemClick(position: Int) {
         val clickedItem: RoverPhoto = resultAdapter.roverResponse.photos[position]
         findNavController(this).navigate(
-            RoversResultFragmentDirections.actionRoversResultFragmentToImageDetailFragment2(
+            RoversResultFragmentDirections.actionRoversResultFragmentToImageDetailFragment22(
                 clickedItem
             )
         )

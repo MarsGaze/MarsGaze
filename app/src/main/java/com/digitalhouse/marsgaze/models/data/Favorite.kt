@@ -50,7 +50,7 @@ class Favorite(val image: Int, val sol: Int, val rover: String) {
 )
 data class FavoriteTest(
     @PrimaryKey(autoGenerate = true)
-    val id: Int? = null,
+    val id: Long? = null,
     @ColumnInfo(name = "image_type")
     val imageType: Int,
     val imageId: String,

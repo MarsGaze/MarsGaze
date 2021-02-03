@@ -1,5 +1,8 @@
 package com.digitalhouse.marsgaze.models.rovers
-import androidx.room.Entity
+import com.digitalhouse.marsgaze.models.data.FavoriteTest
+import com.digitalhouse.marsgaze.models.data.FavoriteType
+import com.digitalhouse.marsgaze.models.data.User
+import com.digitalhouse.marsgaze.models.favorite.ImageDetailAdapter
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
@@ -17,4 +20,23 @@ data class RoverPhoto(
     @SerializedName("earth_date")
     val earthDate: String,
     val rover: Rover
-) : Serializable
+) : Serializable, ImageDetailAdapter {
+    override fun getTitle(): String = sol
+
+    override fun getImg(): String = imageUrl
+
+    override fun getDesc(): String = "${camera.abbrName} - ${camera.fullName}"
+
+    override fun getExtraInfo(): String? = earthDate
+
+    override fun getId(): String = id.toString()
+
+    override fun getType(): Int = FavoriteType.ROVERS_IMAGE.ordinal
+
+    override fun toFavorite(user: User): FavoriteTest = FavoriteTest(
+        null,
+        getType(),
+        getId(),
+        user.email
+    )
+}

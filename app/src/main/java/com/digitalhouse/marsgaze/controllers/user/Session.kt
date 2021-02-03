@@ -151,7 +151,7 @@ class Session private constructor(
      *                           If no user was logged
      */
     @Throws(exceptionClasses = [NoUserWasLoggedIn::class, ForbiddenAction::class])
-    fun addFavorite(fav: FavoriteTest) {
+    fun addFavorite(fav: FavoriteTest): Long {
         val user = loggedUser ?: throw NoUserWasLoggedIn(
             "Can't add favorites if no user is logged"
         )
@@ -162,12 +162,14 @@ class Session private constructor(
 
         val favDAO = marsGazeDB.favoriteDAO()
 
-        favDAO.insert(fav)
+        val id = favDAO.insert(fav)
         favoriteHelperAfter.afterInsert(
             FavoriteType.values()[fav.imageType],
             fav.imageId,
             Gson().toJson(fav)
         )
+
+        return id
     }
 
     /**
@@ -198,9 +200,19 @@ class Session private constructor(
     }
 
 
-    fun isFavorited(fav: FavoriteTest) {
+    /**
+     * PT-BR
+     * Retorna o favorito com o id a partir do nome da image, tipo e o usuário que favoritou ela.
+     *
+     * EN-US
+     * Returns the favorite with its id from the image name, type and user which owns it.
+     *
+     * @param fav Favorito
+     *            Favorite
+     */
+    fun isFavorited(fav: FavoriteTest): FavoriteTest? =
+        marsGazeDB.favoriteDAO().favoritedImage(fav.user, fav.imageType, fav.imageId)
 
-    }
 
     /**
      * PT-BR
