@@ -2,6 +2,7 @@ package com.digitalhouse.marsgaze.ui
 
 import android.content.Context
 import android.content.Intent
+import android.opengl.Visibility
 import android.os.Bundle
 import android.text.Editable
 import android.view.LayoutInflater
@@ -13,15 +14,17 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.controllers.user.Session
-import com.digitalhouse.marsgaze.database.AfterFavoriteAction
 import com.digitalhouse.marsgaze.database.MarsGazeDB
 import com.digitalhouse.marsgaze.databinding.FragmentProfileBinding
 import com.digitalhouse.marsgaze.helper.OkAndErrorSnack
 import com.digitalhouse.marsgaze.helper.SnackCreator
 import com.digitalhouse.marsgaze.models.data.User
 import com.digitalhouse.marsgaze.ui.onboarding.LoginActivity
-import com.digitalhouse.marsgaze.viewmodels.session.SessionViewModelFactory
-import com.digitalhouse.marsgaze.viewmodels.session.profile.ProfileViewModel
+import com.digitalhouse.marsgaze.viewmodels.profile.ProfileViewModel
+import com.digitalhouse.marsgaze.viewmodels.profile.ProfileViewModelFactory
+import com.facebook.login.LoginManager
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 
@@ -39,10 +42,9 @@ class ProfileFragment : Fragment() {
     }
 
     private val viewModel: ProfileViewModel by viewModels {
-        SessionViewModelFactory(
+        ProfileViewModelFactory(
             Session.getInstance(
-                MarsGazeDB.getDatabase(requireContext()),
-                AfterFavoriteAction(requireContext())
+                MarsGazeDB.getDatabase(requireContext())
             )
         )
     }
@@ -68,21 +70,6 @@ class ProfileFragment : Fragment() {
         val view: View = localInflater.inflate(R.layout.fragment_profile, container, false)
 
         _binding = FragmentProfileBinding.bind(view)
-
-        binding.signOutText.setOnClickListener {
-            FirebaseAuth.getInstance().signOut()
-            Session.getInstance(
-                MarsGazeDB.getDatabase(
-                    requireContext()
-                ),
-                AfterFavoriteAction(
-                    requireContext()
-                )
-            ).logoff()
-            val intent = Intent(requireActivity(), LoginActivity::class.java)
-            startActivity(intent)
-            requireActivity().finish()
-        }
 
         return binding.root
     }
