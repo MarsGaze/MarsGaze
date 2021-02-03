@@ -8,9 +8,11 @@ import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
+import android.util.Log
 import android.view.*
 import android.widget.ImageView
 import androidx.core.content.FileProvider
+import androidx.core.net.toFile
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
@@ -179,7 +181,7 @@ class ImageDetailFragment : Fragment() {
             shareIntent.putExtra(Intent.EXTRA_TEXT, args.imageDetailAdapter.getTitle())
             shareIntent.type = "*/*"
             // Launch sharing dialog for image
-            startActivityForResult(Intent.createChooser(shareIntent, "Share Image"), 1000)
+            startActivity(Intent.createChooser(shareIntent, "Share Image"))
         } else {
             // ...sharing failed, handle error
             return
@@ -199,49 +201,14 @@ class ImageDetailFragment : Fragment() {
         // Store image to default external storage directory
         var bmpUri: Uri? = null
         try {
-            // Use methods on Context to access package-specific directories on external storage.
-            // This way, you don't need to request external read/write permission.
-            // See https://youtu.be/5xVh-7ywKpE?t=25m25s
             val file = File(
-                requireActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES),
+                requireActivity().cacheDir,
                 "share_image_" + System.currentTimeMillis() + ".png"
             )
             val out = FileOutputStream(file)
             bmp.compress(Bitmap.CompressFormat.PNG, 90, out)
             out.close()
-            // **Warning:** This will fail for API >= 24, use a FileProvider as shown below instead.
             bmpUri = FileProvider.getUriForFile(requireActivity(), "com.digitalhouse.marsgaze", file)
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
-        return bmpUri
-    }
-
-    // Method when launching drawable within Glide
-    fun getBitmapFromDrawable(bmp: Bitmap): Uri? {
-
-        // Store image to default external storage directory
-        var bmpUri: Uri? = null
-        try {
-            // Use methods on Context to access package-specific directories on external storage.
-            // This way, you don't need to request external read/write permission.
-            // See https://youtu.be/5xVh-7ywKpE?t=25m25s
-            val file = File(
-                requireActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES),
-                "share_image_" + System.currentTimeMillis() + ".png"
-            )
-            val out = FileOutputStream(file)
-            bmp.compress(Bitmap.CompressFormat.PNG, 90, out)
-            out.close()
-
-            // wrap File object into a content provider. NOTE: authority here should match authority in manifest declaration
-            bmpUri = FileProvider.getUriForFile(
-                requireContext(),
-                "com.digitalhouse.marsgaze",
-                file
-            ) // use this version for API >= 24
-
-            // **Note:** For API < 24, you may use bmpUri = Uri.fromFile(file);
         } catch (e: IOException) {
             e.printStackTrace()
         }
