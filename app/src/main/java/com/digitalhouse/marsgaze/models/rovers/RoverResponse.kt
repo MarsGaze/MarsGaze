@@ -11,4 +11,4 @@ import java.io.Serializable
  */
 data class RoverResponse(
     @SerializedName("photos", alternate = ["latest_photos"]) val photos: List<RoverPhoto> = listOf()
-)
+) : Serializable
