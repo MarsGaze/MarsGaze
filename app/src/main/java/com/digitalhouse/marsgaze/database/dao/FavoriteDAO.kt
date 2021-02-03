@@ -91,4 +91,22 @@ import com.digitalhouse.marsgaze.models.data.FavoriteTest
         imageType: Int,
         imageName: String
     ): FavoriteTest?
+
+    /**
+     * PT-BR
+     * Retorna todos os favoritos do usuário
+     *
+     * EN-US
+     * Returns all the favorites of the user.
+     *
+     * @param user usuario logado da sessão (email)
+     *             user in session (email)
+     *
+     * @return Todos os favoritos do usuário
+     *         All favorites of the user
+     */
+    @Query("SELECT * FROM favorite WHERE user = :user")
+    fun getUserFavorites(
+        user: String // Email do usuário
+    ): List<FavoriteTest>
 }

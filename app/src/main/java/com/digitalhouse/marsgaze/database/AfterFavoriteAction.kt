@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.digitalhouse.marsgaze.database.dao.FavoriteDAO
 import com.digitalhouse.marsgaze.models.data.FavoriteType
+import com.digitalhouse.marsgaze.models.favorite.ImageDetailAdapter
 import com.google.gson.JsonObject
 import java.io.File
 
@@ -59,7 +60,7 @@ class AfterFavoriteAction(
     override fun afterInsert(favType: FavoriteType, name: String, data: String): List<Boolean> {
         val file = getFavFile(favType, name)
         if (!file.exists()) {
-            file.writeText(data.toString())
+            file.writeText(data)
 
             return listOf(true, true)
         }

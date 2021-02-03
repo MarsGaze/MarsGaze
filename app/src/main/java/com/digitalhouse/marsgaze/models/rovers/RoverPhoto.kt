@@ -37,6 +37,7 @@ data class RoverPhoto(
         null,
         getType(),
         getId(),
-        user.email
+        user.email,
+        getImg()
     )
 }
