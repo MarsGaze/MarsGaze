@@ -68,16 +68,16 @@ class ImageDetailFragment : Fragment() {
 
         val adapter = args.imageDetailAdapter
 
-        binding.tvInfoTitle.text = getString(R.string.solDay, adapter.getTitle())
-
         when(adapter.getType()){
             // Rovers tem data e informação da camera
             FavoriteType.ROVERS_IMAGE.ordinal -> {
+                binding.tvInfoTitle.text = getString(R.string.solDay, adapter.getTitle())
                 binding.tvInfoImgCamera.text = adapter.getDesc()
                 binding.tvInfoImgEarthDate.text = adapter.getExtraInfo() ?: ""
             }
             // Partes do hubble tem somente a data
             FavoriteType.HUBBLE_IMAGE.ordinal -> {
+                binding.tvInfoTitle.text = adapter.getTitle()
                 binding.tvInfoImgCamera.text = adapter.getExtraInfo() ?: ""
             }
         }
