@@ -434,7 +434,7 @@
                 android:lineSpacingMultiplier="0.7"
                 android:fontFamily="@font/kanit_bold"
                 android:gravity="center"
-                android:text="Coming sometime\nin 2021"
+                android:text="Em breve"
                 android:textAllCaps="true"
                 android:textColor="@color/colorAccent"
                 android:textSize="28sp" />
