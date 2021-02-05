@@ -151,8 +151,7 @@
                     android:textSize="26sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/mission_curiosity_card"
@@ -270,8 +269,9 @@
             android:id="@+id/op_card"
             android:layout_width="0dp"
             android:layout_height="@dimen/card_height_tall"
+            android:layout_marginBottom="16dp"
             app:cardCornerRadius="@dimen/spacing_regular"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/pers_card"
             app:layout_constraintEnd_toEndOf="@+id/vector_rover"
             app:layout_constraintStart_toStartOf="@+id/text_rover"
             app:layout_constraintTop_toBottomOf="@+id/sp_card">
@@ -340,6 +340,104 @@
                     app:layout_constraintEnd_toEndOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/pers_card"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/card_height_tall"
+            app:cardCornerRadius="@dimen/spacing_regular"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/vector_rover"
+            app:layout_constraintStart_toStartOf="@+id/text_rover"
+            app:layout_constraintTop_toBottomOf="@+id/op_card">
+
+            <ImageView
+                android:id="@+id/portrait_pers_card"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/perseverance_portrait"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/name_pers_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/kanit_bold"
+                    android:text="Perseverance"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/mission_pers_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:text="Mars 2020"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/name_pers_card"
+                    app:layout_constraintTop_toBottomOf="@+id/name_pers_card" />
+
+                <Button
+                    android:id="@+id/info_button_pers_card"
+                    style="@style/AppTheme.RoverCard"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="@dimen/spacing_small"
+                    android:layout_marginBottom="@dimen/spacing_small"
+                    android:gravity="center"
+                    android:text="Saiba mais"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <Button
+                    android:id="@+id/photos_button_pers_card"
+                    style="@style/AppTheme.RoverCard"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="@dimen/spacing_small"
+                    android:layout_marginBottom="@dimen/spacing_small"
+                    android:gravity="center"
+                    android:text="Imagens"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/overlay_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha="0.75"
+                android:background="@android:color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:lineSpacingMultiplier="0.7"
+                android:fontFamily="@font/kanit_bold"
+                android:gravity="center"
+                android:text="Em breve"
+                android:textAllCaps="true"
+                android:textColor="@color/colorAccent"
+                android:textSize="28sp" />
 
         </androidx.cardview.widget.CardView>
 
