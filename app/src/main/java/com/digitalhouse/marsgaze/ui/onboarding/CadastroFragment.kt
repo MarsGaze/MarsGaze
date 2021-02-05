@@ -1,9 +1,11 @@
 package com.digitalhouse.marsgaze.ui.onboarding
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -74,13 +76,7 @@ class CadastroFragment : Fragment() {
         }
 
         binding.btnCadastrar.setOnClickListener {
-            val user = User(
-                binding.tiEmail.editText!!.text.toString(),
-                binding.tiNome.editText!!.text.toString(),
-                binding.tiSenha.editText!!.text.toString(),
-            )
-
-            viewModel.registerUser(user)
+            registerUser()
 
             /*
             val intent = Intent(requireActivity(), NavigationActivity::class.java)
@@ -92,6 +88,44 @@ class CadastroFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    private fun registerUser() {
+        val email = binding.tiEmail.editText!!.text.toString()
+        val name = binding.tiNome.editText!!.text.toString()
+        val password = binding.tiSenha.editText!!.text.toString()
+
+        if (!email.isEmailValid()) {
+            Toast.makeText(requireContext(), "email inválido", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if (name.isEmpty() || name.length > 25) {
+            Toast.makeText(requireContext(), "nome inválido", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if (password != binding.tiRepeteSenha.editText!!.text.toString()) {
+            Toast.makeText(requireContext(), "senhas não conferem", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if (password.length < 8 || password.length > 25) {
+            Toast.makeText(requireContext(), "senha inválida", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val user = User(
+            binding.tiEmail.editText!!.text.toString(),
+            binding.tiNome.editText!!.text.toString(),
+            binding.tiSenha.editText!!.text.toString(),
+        )
+
+        viewModel.registerUser(user)
+    }
+
+    private fun String.isEmailValid(): Boolean {
+        return !TextUtils.isEmpty(this) && android.util.Patterns.EMAIL_ADDRESS.matcher(this).matches()
     }
 
 }

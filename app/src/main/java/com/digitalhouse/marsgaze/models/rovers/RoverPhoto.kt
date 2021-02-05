@@ -21,7 +21,7 @@ data class RoverPhoto(
     val earthDate: String,
     val rover: Rover
 ) : Serializable, ImageDetailAdapter {
-    override fun getTitle(): String = sol
+    override fun getTitle(): String = "Sol $sol"
 
     override fun getImg(): String = imageUrl
 

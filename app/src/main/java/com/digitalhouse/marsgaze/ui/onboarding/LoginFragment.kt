@@ -269,12 +269,6 @@ class LoginFragment : Fragment() {
         val timeEpoch = userFirebase?.metadata?.creationTimestamp
         val date = Date(timeEpoch!!)
 
-        /*
-         * se o usuário logou em outro dispositivo, isNew retorna false do firebase,
-         * impossibilitando novo registro e subsequente login, daí a necessidade do
-         * bloco try catch
-         *
-         */
         viewModel.registerUser(user, date)
         viewModel.loginUser(user)
     }
