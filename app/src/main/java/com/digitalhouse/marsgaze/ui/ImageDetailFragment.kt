@@ -2,9 +2,17 @@ package com.digitalhouse.marsgaze.ui
 
 // pew, pew, pew
 // pow?
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
+import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
+import android.util.Log
 import android.view.*
 import android.widget.ImageView
+import androidx.core.content.FileProvider
+import androidx.core.net.toFile
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
@@ -21,6 +29,9 @@ import com.digitalhouse.marsgaze.models.data.FavoriteType
 import com.digitalhouse.marsgaze.viewmodels.session.SessionViewModelFactory
 import com.digitalhouse.marsgaze.viewmodels.session.image.ImageDetailViewModel
 import com.squareup.picasso.Picasso
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
 
 class ImageDetailFragment : Fragment() {
     private val args: ImageDetailFragmentArgs by navArgs()
@@ -57,21 +68,24 @@ class ImageDetailFragment : Fragment() {
 
         val adapter = args.imageDetailAdapter
 
-        binding.tvInfoTitle.text = getString(R.string.solDay, adapter.getTitle())
-
         when(adapter.getType()){
             // Rovers tem data e informação da camera
             FavoriteType.ROVERS_IMAGE.ordinal -> {
+                binding.tvInfoTitle.text = getString(R.string.solDay, adapter.getTitle())
                 binding.tvInfoImgCamera.text = adapter.getDesc()
                 binding.tvInfoImgEarthDate.text = adapter.getExtraInfo() ?: ""
             }
             // Partes do hubble tem somente a data
             FavoriteType.HUBBLE_IMAGE.ordinal -> {
+                binding.tvInfoTitle.text = adapter.getTitle()
                 binding.tvInfoImgCamera.text = adapter.getExtraInfo() ?: ""
             }
         }
 
         setExpandableCardBehavior()
+        binding.ivShare.setOnClickListener {
+            onShareItem(binding.ivFullImage)
+        }
 
         val detailImageView: ImageView = binding.ivFullImage
         Picasso.get().load(adapter.getImg()).fit().centerInside().into(detailImageView)
@@ -150,4 +164,55 @@ class ImageDetailFragment : Fragment() {
         super.onDestroy()
         _binding = null
     }
+
+    // Can be triggered by a view event such as a button press
+    private fun onShareItem(v: View?) {
+        // Get access to bitmap image from view
+        val ivImage = binding.ivFullImage as ImageView
+        // Get access to the URI for the bitmap
+        val bmpUri: Uri? = getLocalBitmapUri(ivImage)
+        if (bmpUri != null) {
+            // Construct a ShareIntent with link to image
+            val shareIntent = Intent()
+            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            shareIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
+            shareIntent.action = Intent.ACTION_SEND
+            shareIntent.putExtra(Intent.EXTRA_STREAM, bmpUri)
+            shareIntent.putExtra(Intent.EXTRA_TEXT, args.imageDetailAdapter.getTitle())
+            shareIntent.type = "*/*"
+            // Launch sharing dialog for image
+            startActivity(Intent.createChooser(shareIntent, "Share Image"))
+        } else {
+            // ...sharing failed, handle error
+            return
+        }
+    }
+
+    // Returns the URI path to the Bitmap displayed in specified ImageView
+    private fun getLocalBitmapUri(imageView: ImageView): Uri? {
+        // Extract Bitmap from ImageView drawable
+        val drawable = imageView.drawable
+        var bmp: Bitmap? = null
+        bmp = if (drawable is BitmapDrawable) {
+            (imageView.drawable as BitmapDrawable).bitmap
+        } else {
+            return null
+        }
+        // Store image to default external storage directory
+        var bmpUri: Uri? = null
+        try {
+            val file = File(
+                requireActivity().cacheDir,
+                "share_image_" + System.currentTimeMillis() + ".png"
+            )
+            val out = FileOutputStream(file)
+            bmp.compress(Bitmap.CompressFormat.PNG, 90, out)
+            out.close()
+            bmpUri = FileProvider.getUriForFile(requireActivity(), "com.digitalhouse.marsgaze", file)
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        return bmpUri
+    }
+
 }

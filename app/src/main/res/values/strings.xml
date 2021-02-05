@@ -56,7 +56,7 @@
     <string name="insightSampleSize">Amostras registradas: %1$s</string>
     <string name="insightTemp">%1$sºC</string>
     <string name="insightTempVisual">70ºC</string>
-    <string name="insightPress">%1$sPa</string>
+    <string name="insightPress">%1$s Pa</string>
 
     <!-- Navigation Header Resources -->
     <string name="navigationHeader">MENU</string>
