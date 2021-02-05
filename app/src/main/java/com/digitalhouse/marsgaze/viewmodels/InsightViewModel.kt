@@ -19,11 +19,13 @@ class InsightViewModel(private val controller: InsightController) : ViewModel() 
             try {
                 val job = controller.jobInsight()
                 if (job == null) {
+                    Log.i("CALL", "Doing it")
                     val resp = controller.getInsight(true)
                     if (resp != null && resp.isSuccessful) {
                         insightResponse.value = resp.body()
                     }
                 } else if (job.isCompleted && controller.getInsight(true)!!.isSuccessful) {
+                    Log.i("CALL", "Cached")
                     insightResponse.value = controller.getInsight(true)!!.body()
                 } else if (!job.isCompleted && controller.getInsight(true)!!.isSuccessful) {
                     GlobalScope.launch(Dispatchers.IO) {
@@ -39,6 +41,7 @@ class InsightViewModel(private val controller: InsightController) : ViewModel() 
                     }
                 } else {
                     job.invokeOnCompletion {
+                        Log.i("CALL", "Wait till done")
                         getInsightInfo()
                     }
                 }

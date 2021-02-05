@@ -29,10 +29,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import java.util.*
 
 private const val ID_TOKEN =
     "936580898759-0ellmnvapnbc8nviicbng44pmjo7qrmm.apps.googleusercontent.com"
@@ -226,31 +226,11 @@ class LoginFragment : Fragment() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d("Google", "signInWithCredential:success")
-                    val userFirebase = mAuth.currentUser
-
-                    // val isNew = task.result!!.additionalUserInfo!!.isNewUser
-                    // Log.d("MyTAG", "onComplete: " + if (isNew) "new user" else "old user")
-
-                    val user = User(
-                        userFirebase?.email.toString(),
-                        userFirebase?.displayName.toString(),
-                        null
-                    )
-
-                    /**
-                     * se o usuário logou em outro dispositivo, isNew retorna false do firebase,
-                     * impossibilitando novo registro e subsequente login, daí a necessidade do
-                     * bloco try catch
-                     *
-                     */
-                    viewModel.registerUser(user)
-                    viewModel.loginUser(user)
-
+                    handleAuth(mAuth)
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w("Google", "signInWithCredential:failure", task.exception)
-                    val view = binding.root
-                    Snackbar.make(view, "Authentication Failed.", Snackbar.LENGTH_SHORT).show()
+                    snackCreator.showSnack(Pair(false, R.string.userLoginInvalid))
                 }
             }
     }
@@ -264,30 +244,39 @@ class LoginFragment : Fragment() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d("Facebook", "signInWithCredential:success")
-                    val userFirebase = mAuth.currentUser
-
-                    val user = User(
-                        userFirebase?.email.toString(),
-                        userFirebase?.displayName.toString(),
-                        null
-                    )
-                    Log.i("Facebook user", user.toString())
-
-                    /**
-                     * se o usuário logou em outro dispositivo, isNew retorna false do firebase,
-                     * impossibilitando novo registro e subsequente login, daí a necessidade do
-                     * bloco try catch
-                     *
-                     */
-                    viewModel.registerUser(user)
-                    viewModel.loginUser(user)
+                    handleAuth(mAuth)
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w("Facebook", "signInWithCredential:failure", task.exception)
-                    val view = binding.root
-                    Snackbar.make(view, "Authentication Failed.", Snackbar.LENGTH_SHORT).show()
+                    snackCreator.showSnack(Pair(false, R.string.userLoginInvalid))
                 }
             }
+    }
+
+    private fun handleAuth(auth: FirebaseAuth) {
+        val userFirebase = mAuth.currentUser
+
+        // val isNew = task.result!!.additionalUserInfo!!.isNewUser
+        // Log.d("MyTAG", "onComplete: " + if (isNew) "new user" else "old user")
+
+        val user = User(
+            userFirebase?.email.toString(),
+            userFirebase?.displayName.toString(),
+            null
+        )
+
+        // Devemos coincidir com o cadastro no console do Firebase
+        val timeEpoch = userFirebase?.metadata?.creationTimestamp
+        val date = Date(timeEpoch!!)
+
+        /*
+         * se o usuário logou em outro dispositivo, isNew retorna false do firebase,
+         * impossibilitando novo registro e subsequente login, daí a necessidade do
+         * bloco try catch
+         *
+         */
+        viewModel.registerUser(user, date)
+        viewModel.loginUser(user)
     }
 
     override fun onDestroy() {

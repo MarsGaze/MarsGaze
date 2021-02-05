@@ -80,12 +80,19 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.userFavorites.observe(viewLifecycleOwner) {
+            binding.tiFavImgs.editText!!.text = Editable.Factory.getInstance().newEditable(
+                it.toString()
+            )
+        }
 
         // Atualiza os dados na tela
         setUserData(viewModel.getUser())
         binding.btnEditar.setOnClickListener(EditOrSaveManager()::action)
 
+        viewModel.getUserFavorites()
         viewModel.userUpdateStatus.observe(viewLifecycleOwner, snackCreator::showSnack)
+
     }
 
     override fun onDestroy() {
