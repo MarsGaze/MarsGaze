@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.databinding.FragmentCuriosidadesBinding
@@ -42,7 +43,8 @@ class CuriosidadesFragment : Fragment() {
             val textoHistoria = hiddenTextHistoria
 
             //ação para mostrar o texto Hitória
-            setExpandable(cardHistoria, botaoHistoria, textoHistoria, null)
+            setExpandable(cardHistoria, botaoHistoria, textoHistoria, null,
+                          tituloHistoria)
 
             //variaveis de controle para o card que contém o texto NOME
             val cardNome = expandableTextName
@@ -50,7 +52,8 @@ class CuriosidadesFragment : Fragment() {
             val textoNome = hiddenTextName
 
             //ação para mostrar o texto NOME
-            setExpandable(cardNome, botaoNome, textoNome, null)
+            setExpandable(cardNome, botaoNome, textoNome, null,
+                          binding.textoName)
 
 
             //variaveis de controle para o card que contém o texto CLIMA
@@ -59,7 +62,8 @@ class CuriosidadesFragment : Fragment() {
             val textoClima = hiddenTextClima
 
             //ação para mostrar o texto CLIMA
-            setExpandable(cardClima, botaoClima, textoClima, null)
+            setExpandable(cardClima, botaoClima, textoClima, null,
+                          binding.textoClima)
 
             //variaveis de controle para o card que contém o texto SOLO
             val cardSolo = expandableTextSolo
@@ -67,7 +71,8 @@ class CuriosidadesFragment : Fragment() {
             val textoSolo = hiddenTextSolo
 
             //ação para mostrar o texto SOLO
-            setExpandable(cardSolo, botaoSolo, textoSolo, null)
+            setExpandable(cardSolo, botaoSolo, textoSolo, null,
+                          binding.tituloSolo)
 
             //variaveis de controle para o card que contém o texto SATELITES
             val cardSatelites = expandableTextSatelites
@@ -75,7 +80,8 @@ class CuriosidadesFragment : Fragment() {
             val textoSatelites = hiddenTextSatelites
 
             //ação para mostrar o texto SATELITES
-            setExpandable(cardSatelites, botaoSatelites, textoSatelites, null)
+            setExpandable(cardSatelites, botaoSatelites, textoSatelites, null,
+                          binding.textoSatelites)
 
             //variaveis de controle para o card que contém o texto ATMOSFERA
             val cardAtmosfera = expandableTextAtmosfera
@@ -83,7 +89,8 @@ class CuriosidadesFragment : Fragment() {
             val textoAtmosfera = hiddenTextAtmosfera
 
             //ação para mostrar o texto ATMOSFERA
-            setExpandable(cardAtmosfera, botaoAtmosfera, textoAtmosfera, null)
+            setExpandable(cardAtmosfera, botaoAtmosfera, textoAtmosfera, null,
+                          binding.textoAtmosfera)
 
             //PARTE DE CURIOSIDADES
 
@@ -94,7 +101,8 @@ class CuriosidadesFragment : Fragment() {
             val imgCydonia = imgCydonia
 
             //ação para mostrar o texto CYDONIA
-            setExpandable(cardCydonia, botaoCydonia, textoCydonia, imgCydonia)
+            setExpandable(cardCydonia, botaoCydonia, textoCydonia, imgCydonia,
+                          binding.textoCydonia)
 
             //variaveis de controle para o card que contém o texto HAPPY FACE
             val cardHappyFace = expandableTextHappyFace
@@ -103,7 +111,8 @@ class CuriosidadesFragment : Fragment() {
             val imgHappyFace = imgHappyFace
 
             //ação para mostrar o texto HAPPY FACE
-            setExpandable(cardHappyFace, botaoHappyFace, textoHappyFace, imgHappyFace)
+            setExpandable(cardHappyFace, botaoHappyFace, textoHappyFace, imgHappyFace,
+                          binding.textoHappyFace)
 
             //variaveis de controle para o card que contém o texto BUTTERFLY
             val cardButterfly = expandableTextButterfly
@@ -112,7 +121,8 @@ class CuriosidadesFragment : Fragment() {
             val imgButterfly = imgButterfly
 
             //ação para mostrar o texto BUTTERFLY
-            setExpandable(cardButterfly, botaoButterfly, textoButterfly, imgButterfly)
+            setExpandable(cardButterfly, botaoButterfly, textoButterfly, imgButterfly,
+                          binding.textoButterfly)
 
             //variaveis de controle para o card que contém o texto ANEL DE MARTE
             val cardAnelMarte = expandableTextAnelMarte
@@ -120,7 +130,8 @@ class CuriosidadesFragment : Fragment() {
             val textoAnelMarte = hiddenTextAnelMarte
 
             //ação para mostrar o texto ANEL DE MARTE
-            setExpandable(cardAnelMarte, botaoAnelMarte, textoAnelMarte, null)
+            setExpandable(cardAnelMarte, botaoAnelMarte, textoAnelMarte, null,
+                          binding.textoAnelMarte)
 
             //variaveis de controle para o card que contém o texto CURIOSIDADES GEOGRAFICAS
             val cardCuriosidadesGeograficas = expandableTextCuriosidadesGeograficas
@@ -128,11 +139,14 @@ class CuriosidadesFragment : Fragment() {
             val textoCuriosidadesGeograficas = hiddenTextCuriosidadesGeograficas
 
             //ação para mostrar o texto CURIOSIDADES GEOGRAFICAS
-            setExpandable(cardCuriosidadesGeograficas, botaoCuriosidadesGeograficas, textoCuriosidadesGeograficas, null)
+            setExpandable(cardCuriosidadesGeograficas, botaoCuriosidadesGeograficas,
+                textoCuriosidadesGeograficas, null, binding.textoCuriosidadesGeograficas)
         }
     }
 
-    private fun setExpandable(expandableText: CardView,  expandButton: ImageView, hiddenText: TextView, hiddenImage: CardView?) {
+    private fun setExpandable(expandableText: CardView,  expandButton: ImageView,
+                              hiddenText: TextView, hiddenImage: CardView?,
+                              titleText: TextView) {
         expandButton.setOnClickListener {
             when (hiddenText.visibility) {
                 View.VISIBLE -> {
@@ -145,6 +159,9 @@ class CuriosidadesFragment : Fragment() {
                         androidx.transition.AutoTransition()
                     )
                     expandButton.animate().rotationX(0F)
+
+                    val col = ContextCompat.getColor(requireContext(), R.color.colorWhite);
+                    titleText.setTextColor(col)
                 }
 
                 else -> {
@@ -158,6 +175,9 @@ class CuriosidadesFragment : Fragment() {
                         androidx.transition.AutoTransition()
                     )
                     expandButton.animate().rotationX(180F)
+
+                    val col = ContextCompat.getColor(requireContext(), R.color.colorAccentDark);
+                    titleText.setTextColor(col)
                 }
             }
         }
