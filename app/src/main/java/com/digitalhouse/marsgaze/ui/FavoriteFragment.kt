@@ -24,8 +24,6 @@ class FavoriteFragment : Fragment(), FavoriteAdapter.FavoriteAction {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    private var inDetail = false
-
     private var inDetailFavorite: ImageDetailAdapter? = null
 
     private var actionAfterDetail: ((Boolean) -> Unit)? = null

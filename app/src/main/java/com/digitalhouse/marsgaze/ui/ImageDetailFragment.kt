@@ -73,7 +73,15 @@ class ImageDetailFragment : Fragment() {
             FavoriteType.ROVERS_IMAGE.ordinal -> {
                 binding.tvInfoTitle.text = adapter.getTitle()
                 binding.tvInfoImgCamera.text = adapter.getDesc()
-                binding.tvInfoImgEarthDate.text = adapter.getExtraInfo() ?: ""
+                if (!adapter.getExtraInfo().isNullOrBlank()) {
+                    val text = adapter.getExtraInfo()!!
+                    val splited =  text.split("-")
+                    val textSplit =splited[2] + "/" + splited[1] + "/" + splited[0]
+                    binding.tvInfoImgEarthDate.text = textSplit
+                } else {
+                    binding.tvInfoImgEarthDate.text = adapter.getExtraInfo() ?: ""
+                }
+
             }
             // Partes do hubble tem somente a data
             FavoriteType.HUBBLE_IMAGE.ordinal -> {

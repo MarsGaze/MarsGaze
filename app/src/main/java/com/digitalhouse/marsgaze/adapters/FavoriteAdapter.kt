@@ -46,10 +46,14 @@ class FavoriteAdapter(val list: ArrayList<ImageDetailAdapter>, val favoriteActio
 
         when (favorite.getType()) {
             FavoriteType.ROVERS_IMAGE.ordinal -> {
+                val text = favorite.getExtraInfo()!!
+                val splited =  text.split("-")
+                val textSplit =splited[2] + "/" + splited[1] + "/" + splited[0]
+
                 favoriteText.text = holder.itemView.resources.getString(
                     R.string.favoriteCardText,
                     favorite.getTitle().toInt(),
-                    favorite.getExtraInfo() ?: ""
+                    textSplit
                 )
             }
             FavoriteType.HUBBLE_IMAGE.ordinal -> {
@@ -81,12 +85,7 @@ class FavoriteAdapter(val list: ArrayList<ImageDetailAdapter>, val favoriteActio
     override fun getItemCount(): Int = list.size
 
     inner class FavoriteHolder(val binding: FavoriteCardBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-            init {
-                val image = binding.favoriteImage
-
-            }
-        }
+        RecyclerView.ViewHolder(binding.root)
 
     interface FavoriteAction {
         fun favAction(favoriteTest: ImageDetailAdapter, position: Int, binding: FavoriteCardBinding)
