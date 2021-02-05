@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.onboarding.LoginActivity" />
+        <activity android:name=".ui.onboarding.LoginActivity"
+            android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".ui.onboarding.OnboardingActivity" />
         <activity android:name=".ui.onboarding.SplashActivity">
             <intent-filter>
