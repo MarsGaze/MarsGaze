@@ -13,6 +13,8 @@ import kotlinx.coroutines.launch
 class ProfileViewModel(private val session: Session) : ViewModel() {
     val userUpdateStatus = MutableLiveData<Pair<Boolean, Int>>()
 
+    val userFavorites = MutableLiveData<Int>()
+
     fun getUser(): User {
         return try {
             session.user()
@@ -42,6 +44,20 @@ class ProfileViewModel(private val session: Session) : ViewModel() {
             viewModelScope.launch {
                 userUpdateStatus.value = result
             }
+        }
+    }
+
+    fun getUserFavorites() {
+        if (session.isLogged()) {
+            viewModelScope.launch(Dispatchers.IO) {
+                val size = session.getAllFavorites().size
+
+                viewModelScope.launch {
+                    userFavorites.value = size
+                }
+            }
+        } else {
+            userFavorites.value = Int.MAX_VALUE
         }
     }
 }

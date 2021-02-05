@@ -13,6 +13,8 @@ import com.digitalhouse.marsgaze.models.rovers.RoverPhoto
 import com.google.gson.Gson
 import java.io.File
 import java.lang.Exception
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * PT-BR
@@ -99,13 +101,15 @@ class Session private constructor(
      * @param user Usuário com a senha pura
      *             User with the original password
      */
-    fun register(user: User) {
+    fun register(user: User, date: Date = Date()) {
         val tmpPass = user.password
 
         if (user.password != null) {
             user.password = MessageHash(user.password!!).hashAndSalt()
         }
 
+        val parser = SimpleDateFormat("dd/MM/yyyy", Locale.UK)
+        user.createdOn = parser.format(date)
         val userDao = marsGazeDB.userDAO()
         userDao.insert(user)
 
@@ -136,11 +140,14 @@ class Session private constructor(
             throw ForbiddenAction("Update will not affect logged user")
         }
 
+        val actualPassword = user.password
+
         if (user.password != null) {
             user.password = MessageHash(user.password!!).hashAndSalt()
         }
 
         userDAO.update(user)
+        user.password = actualPassword
         loggedUser = user
     }
 
@@ -175,7 +182,7 @@ class Session private constructor(
             }
         }
 
-        val id = favDAO.insert(fav.toFavorite(user()))
+        val id = favDAO.insert(fav.toFavorite(user))
         favoriteHelperAfter.afterInsert(
             FavoriteType.values()[fav.getType()],
             fav.getId(),
@@ -269,15 +276,7 @@ class Session private constructor(
         return favAction.getFavFile(type, id)
     }
 
-    class NoUserWasLoggedIn : Exception {
-        constructor(message: String?): super(message)
+    class NoUserWasLoggedIn(message: String?) : Exception(message)
 
-        constructor() : super()
-    }
-
-    class ForbiddenAction : Exception {
-        constructor(message: String?): super(message)
-
-        constructor(): super()
-    }
+    class ForbiddenAction(message: String?) : Exception(message)
 }

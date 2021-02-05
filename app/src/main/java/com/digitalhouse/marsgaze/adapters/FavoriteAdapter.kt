@@ -16,10 +16,24 @@ import com.squareup.picasso.Picasso
 class FavoriteAdapter(val list: ArrayList<ImageDetailAdapter>, val favoriteAction: FavoriteAction) :
     RecyclerView.Adapter<FavoriteAdapter.FavoriteHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteHolder {
+        val binding = FavoriteCardBinding.inflate(
+            LayoutInflater.from(parent.context), parent, false
+        )
+        val image = binding.favoriteImage
+
+        // Definimos o tamanho da imagem de forma programática
+        var drawn = false
+        image.viewTreeObserver.addOnPreDrawListener {
+            if (image.width > 0 && image.height > 0 && !drawn) {
+                drawn = true
+                image.layoutParams.height = (image.width * 0.736024845).toInt()
+                image.requestLayout()
+            }
+
+            true
+        }
         return FavoriteHolder(
-            FavoriteCardBinding.inflate(
-                LayoutInflater.from(parent.context), parent, false
-            )
+            binding
         )
     }
 
@@ -52,15 +66,24 @@ class FavoriteAdapter(val list: ArrayList<ImageDetailAdapter>, val favoriteActio
             favoriteAction.favAction(favorite, position, holder.binding)
         }
 
-        holder.binding.favoriteImage.setOnClickListener {
+        val image = holder.binding.favoriteImage
+
+        image.setOnClickListener {
             favoriteAction.favDetail(favorite, holder.binding)
         }
+
     }
+
 
     override fun getItemCount(): Int = list.size
 
     inner class FavoriteHolder(val binding: FavoriteCardBinding) :
-        RecyclerView.ViewHolder(binding.root)
+        RecyclerView.ViewHolder(binding.root) {
+            init {
+                val image = binding.favoriteImage
+
+            }
+        }
 
     interface FavoriteAction {
         fun favAction(favoriteTest: ImageDetailAdapter, position: Int, binding: FavoriteCardBinding)
