@@ -71,7 +71,7 @@ class ImageDetailFragment : Fragment() {
         when(adapter.getType()){
             // Rovers tem data e informação da camera
             FavoriteType.ROVERS_IMAGE.ordinal -> {
-                binding.tvInfoTitle.text = getString(R.string.solDay, adapter.getTitle())
+                binding.tvInfoTitle.text = adapter.getTitle()
                 binding.tvInfoImgCamera.text = adapter.getDesc()
                 if (!adapter.getExtraInfo().isNullOrBlank()) {
                     val text = adapter.getExtraInfo()!!
