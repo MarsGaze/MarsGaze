@@ -87,6 +87,7 @@
         android:layout_height="0dp"
         android:autoSizeMinTextSize="16sp"
         android:autoSizeTextType="uniform"
+        android:autoSizeMaxTextSize="24sp"
         android:fontFamily="@font/roboto"
         android:paddingBottom="24dp"
         android:text="@string/tvOnboarding"

@@ -139,12 +139,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <View
+                    android:id="@+id/overlay_gradient_cur"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintHeight_percent="0.5"
+                    android:alpha="0.8"
+                    app:layout_constraintVertical_bias="0"
+                    android:background="@drawable/gradient_shape"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <TextView
                     android:id="@+id/name_curiosity_card"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/spacing_regular"
-                    android:layout_marginTop="@dimen/spacing_small"
                     android:fontFamily="@font/kanit_bold"
                     android:text="Curiosity"
                     android:textColor="@color/colorAccent"
@@ -213,12 +225,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <View
+                    android:id="@+id/overlay_gradient_sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintHeight_percent="0.5"
+                    android:alpha="0.8"
+                    app:layout_constraintVertical_bias="0"
+                    android:background="@drawable/gradient_shape"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <TextView
                     android:id="@+id/name_sp_card"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/spacing_regular"
-                    android:layout_marginTop="@dimen/spacing_small"
                     android:fontFamily="@font/kanit_bold"
                     android:text="Spirit"
                     android:textColor="@color/colorAccent"
@@ -291,12 +315,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <View
+                    android:id="@+id/overlay_gradient_op"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintHeight_percent="0.5"
+                    android:alpha="0.8"
+                    app:layout_constraintVertical_bias="0"
+                    android:background="@drawable/gradient_shape"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <TextView
                     android:id="@+id/name_op_card"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
                     android:fontFamily="@font/kanit_bold"
                     android:text="Opportunity"
                     android:textColor="@color/colorAccent"
@@ -373,7 +409,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
                     android:fontFamily="@font/kanit_bold"
                     android:text="Perseverance"
                     android:textColor="@color/colorAccent"
@@ -431,9 +466,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:lineSpacingMultiplier="0.7"
                 android:fontFamily="@font/kanit_bold"
                 android:gravity="center"
+                android:lineSpacingMultiplier="0.7"
                 android:text="Em breve"
                 android:textAllCaps="true"
                 android:textColor="@color/colorAccent"

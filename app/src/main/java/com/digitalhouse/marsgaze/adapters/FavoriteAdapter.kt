@@ -52,6 +52,9 @@ class FavoriteAdapter(val list: ArrayList<ImageDetailAdapter>, val favoriteActio
                     favorite.getExtraInfo() ?: ""
                 )
             }
+            FavoriteType.HUBBLE_IMAGE.ordinal -> {
+                favoriteText.text = favorite.getTitle()
+            }
         }
 
         val favoriteImage = holder.itemView.findViewById<ImageView>(R.id.favoriteImage)
