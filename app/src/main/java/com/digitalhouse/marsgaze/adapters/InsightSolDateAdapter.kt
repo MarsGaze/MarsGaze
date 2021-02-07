@@ -24,12 +24,11 @@ class InsightSolDateAdapter(var infoList: ArrayList<InsightInfo> = ArrayList()) 
         val insightSeason = view.findViewById<TextView>(R.id.insightSeason)
 
 
-
         val splitUTC = obj.lastUTC.split("-")
         val lastUTC = insightDate.resources.getString(
             R.string.insightSelectDate,
             splitUTC[2],
-            splitUTC[0]
+            convertMonth(splitUTC[1])
         )
         insightDate.text = lastUTC
         val sol = insightMarsDay.resources.getString(
@@ -44,5 +43,26 @@ class InsightSolDateAdapter(var infoList: ArrayList<InsightInfo> = ArrayList()) 
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
         container.removeView(`object` as View)
+    }
+
+    private fun convertMonth(num: String): String {
+        var month = ""
+
+        month = when (num) {
+            "01" -> "Janeiro"
+            "02" -> "Fevereiro"
+            "03" -> "Março"
+            "04" -> "Abril"
+            "05" -> "Maio"
+            "06" -> "Junho"
+            "07" -> "Julho"
+            "08" -> "Agosto"
+            "09" -> "Setembro"
+            "10" -> "Outubro"
+            "11" -> "Novembro"
+            else -> "Dezembro"
+        }
+
+        return month
     }
 }

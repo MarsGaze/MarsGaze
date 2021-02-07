@@ -50,11 +50,7 @@ class FavoriteAdapter(val list: ArrayList<ImageDetailAdapter>, val favoriteActio
                 val splited =  text.split("-")
                 val textSplit =splited[2] + "/" + splited[1] + "/" + splited[0]
 
-                favoriteText.text = holder.itemView.resources.getString(
-                    R.string.favoriteCardText,
-                    favorite.getTitle().toInt(),
-                    textSplit
-                )
+                favoriteText.text = favorite.getTitle()
             }
             FavoriteType.HUBBLE_IMAGE.ordinal -> {
                 favoriteText.text = favorite.getTitle()
