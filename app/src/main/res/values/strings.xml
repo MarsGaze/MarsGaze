@@ -19,11 +19,6 @@
     <string name="welcomeUser">Saudações, %1$s!</string>
     <string name="welcomeExplore">Vamos explorar marte?</string>
     <!-- Placeholder-->
-    <string name="ipsumPlaceholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</string>
-    <string name="welcomeMarte">O que você precisa saber sobre o planeta vermelho</string>
-    <string name="welcomeRover">Descubra Marte pelos olhos dos rovers da NASA</string>
-    <string name="welcomeInsight">Como está a temperatura na superfície do planeta vermelho</string>
-    <string name="welcomeHubble">Veja as imagens tiradas pelo telescópio Hubble diretamente do espaço</string>
 
 
     <!-- Profile Page Resources -->
@@ -55,7 +50,6 @@
     <string name="insightMaxAny">Máxima</string>
     <string name="insightSampleSize">Amostras registradas: %1$s</string>
     <string name="insightTemp">%1$sºC</string>
-    <string name="insightTempVisual">70ºC</string>
     <string name="insightPress">%1$s Pa</string>
 
     <!-- Navigation Header Resources -->
@@ -167,22 +161,11 @@ Até hoje, os rovers mais bem-sucedidos foram/são os gêmeos Spirit e Opportuni
     <string name="profileSenhaAtualVisual">banana123</string>
     <string name="btnEditar">Editar</string>
     <string name="btnEditarSavar">Salvar Alterações</string>
-    <string name="title_activity_hubble">HubbleActivity</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- Mensagens de validação do formulário de registro -->
-    <string name="emptyField">%1$s está vázio</string>
-    <string name="invalidEmail">nome está inválido</string>
-    <string name="invalidName">email está inválido</string>
     <string name="emailAlreadyExists">Já existe algum usuário com o email passado</string>
     <string name="unknownDBError">Ocorreu um erro ao tentar cadastrar o usuário</string>
     <string name="userRegistered">Usuário cadastrado com sucesso</string>
@@ -200,4 +183,15 @@ Até hoje, os rovers mais bem-sucedidos foram/são os gêmeos Spirit e Opportuni
     <string name="favoriteAdded">Adicionado aos favoritos com sucesso</string>
     <string name="favoriteRemoved">Removido dos favoritos com sucesso</string>
     <string name="favoriteException">Houve uma falha ao realizar a ação</string>
+
+    <string name="invalidEmail">Email inválido</string>
+    <string name="emptyEmail">Email vázio</string>
+    <string name="invalidName">
+        Nome deve conter mais de 2 caracteres e menos de 25 caracteres
+    </string>
+    <string name="emptyName">Nome vázio</string>
+    <string name="invalidPasswordRepeat">Senhas não conferem</string>
+    <string name="emptyPassword">Senha vázia</string>
+    <string name="emptyPasswordRepeat">Senha de validação vázia</string>
+    <string name="invalidPassword">Senha deve conter mais de 8 e menos de 25 caracteres</string>
 </resources>

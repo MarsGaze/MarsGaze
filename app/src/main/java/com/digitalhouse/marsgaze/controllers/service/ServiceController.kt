@@ -1,10 +1,7 @@
 package com.digitalhouse.marsgaze.controllers.service
 
-import kotlinx.coroutines.CompletableJob
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.supervisorScope
-import retrofit2.Response as Response
+import retrofit2.Response
 
 /**
  * PT-BR
@@ -17,7 +14,7 @@ import retrofit2.Response as Response
  *
  * @author Jomar Júnior
  *
- * @param CommonIdentifier Tipo que será usada para identificar as chamadas, usar enum class
+ * @property CommonIdentifier Tipo que será usada para identificar as chamadas, usar enum class
  *                         Type which will be used to identify the calls, use enum class
  */
 abstract class ServiceController<CommonIdentifier> {
@@ -30,7 +27,7 @@ abstract class ServiceController<CommonIdentifier> {
      * EN-US
      * Verifies if a request is still on going
      */
-    protected val onCall: MutableMap<CommonIdentifier, Boolean> = mutableMapOf()
+    private val onCall: MutableMap<CommonIdentifier, Boolean> = mutableMapOf()
 
     protected val progressCalls:
             MutableMap<CommonIdentifier, Job> = mutableMapOf()

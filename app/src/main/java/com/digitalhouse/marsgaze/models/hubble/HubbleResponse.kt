@@ -1,6 +1,6 @@
 package com.digitalhouse.marsgaze.models.hubble
 
-import com.digitalhouse.marsgaze.models.data.FavoriteTest
+import com.digitalhouse.marsgaze.models.data.Favorite
 import com.digitalhouse.marsgaze.models.data.FavoriteType
 import com.digitalhouse.marsgaze.models.data.User
 import com.digitalhouse.marsgaze.models.favorite.ImageDetailAdapter
@@ -30,9 +30,9 @@ data class Item(
 
     override fun getType(): Int = FavoriteType.HUBBLE_IMAGE.ordinal
 
-    override fun getExtraInfo(): String? = data[0].date_created.substring(0, 10)
+    override fun getExtraInfo(): String = data[0].date_created.substring(0, 10)
 
-    override fun toFavorite(user: User): FavoriteTest = FavoriteTest(
+    override fun toFavorite(user: User): Favorite = Favorite(
         null,
         getType(),
         getId(),

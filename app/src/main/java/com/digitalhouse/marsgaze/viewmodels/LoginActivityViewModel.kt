@@ -16,7 +16,7 @@ class LoginActivityViewModel : ViewModel() {
      * EN-US
      * Verifies if it's the first time using the app.
      *
-     * @param Context Contexto da aplicação
+     * @param context Contexto da aplicação
      *                App Context
      *
      * @return Boolean Verdadeiro se sim senão falso.

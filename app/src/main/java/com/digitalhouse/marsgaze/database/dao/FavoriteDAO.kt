@@ -1,7 +1,7 @@
 package com.digitalhouse.marsgaze.database.dao
 
 import androidx.room.*
-import com.digitalhouse.marsgaze.models.data.FavoriteTest
+import com.digitalhouse.marsgaze.models.data.Favorite
 
 /**
  * PT-BR
@@ -29,7 +29,7 @@ import com.digitalhouse.marsgaze.models.data.FavoriteTest
      *         The id of the favorite
      */
     @Insert(onConflict = OnConflictStrategy.ABORT)
-    fun insert(favorite: FavoriteTest): Long
+    fun insert(favorite: Favorite): Long
 
     /**
      * PT-BR
@@ -43,7 +43,7 @@ import com.digitalhouse.marsgaze.models.data.FavoriteTest
      *                 The favorite to delete
      */
     @Delete
-    fun delete(favorite: FavoriteTest)
+    fun delete(favorite: Favorite)
 
 
     /**
@@ -63,7 +63,7 @@ import com.digitalhouse.marsgaze.models.data.FavoriteTest
      *         favorite list
      */
     @Query("SELECT * FROM favorite WHERE image_type = :imageType AND imageId = :imageId")
-    fun usersUsingImage(imageType: Int, imageId: String): List<FavoriteTest>
+    fun usersUsingImage(imageType: Int, imageId: String): List<Favorite>
 
     /**
      * PT-BR
@@ -90,7 +90,7 @@ import com.digitalhouse.marsgaze.models.data.FavoriteTest
         user: String,
         imageType: Int,
         imageName: String
-    ): FavoriteTest?
+    ): Favorite?
 
     /**
      * PT-BR
@@ -108,5 +108,5 @@ import com.digitalhouse.marsgaze.models.data.FavoriteTest
     @Query("SELECT * FROM favorite WHERE user = :user")
     fun getUserFavorites(
         user: String // Email do usuário
-    ): List<FavoriteTest>
+    ): List<Favorite>
 }

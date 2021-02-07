@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.digitalhouse.marsgaze.R
 
+@Suppress("unused")
 open class CuriosidadesToolbarFragment : ClassicToolbarFragment() {
     override fun onCreateView(
         inflater: LayoutInflater,

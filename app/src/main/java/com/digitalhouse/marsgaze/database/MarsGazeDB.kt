@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.digitalhouse.marsgaze.database.dao.FavoriteDAO
 import com.digitalhouse.marsgaze.database.dao.UserDAO
-import com.digitalhouse.marsgaze.models.data.FavoriteTest
+import com.digitalhouse.marsgaze.models.data.Favorite
 import com.digitalhouse.marsgaze.models.data.User
 
 /**
@@ -18,7 +18,7 @@ import com.digitalhouse.marsgaze.models.data.User
  *
  * @author Jomar Júnior
  */
-@Database(entities = [User::class, FavoriteTest::class], version = 2, exportSchema = false)
+@Database(entities = [User::class, Favorite::class], version = 2, exportSchema = false)
 abstract class MarsGazeDB : RoomDatabase() {
     /**
      * PT-BR
