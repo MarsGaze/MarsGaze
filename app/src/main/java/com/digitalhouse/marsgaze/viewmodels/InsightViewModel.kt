@@ -14,29 +14,35 @@ class InsightViewModel(private val controller: InsightController) : ViewModel() 
     val insightResponse = MutableLiveData<ArrayList<InsightInfo>>()
 
     fun getInsightInfo() {
-        viewModelScope.launch {
-
+        viewModelScope.launch(Dispatchers.IO) {
             try {
                 val job = controller.jobInsight()
                 if (job == null) {
                     Log.i("CALL", "Doing it")
-                    val resp = controller.getInsight(true)
-                    if (resp != null && resp.isSuccessful) {
-                        insightResponse.value = resp.body()
+                    try {
+                        val resp = controller.getInsight(true)
+
+                        if (resp != null && resp.isSuccessful) {
+                            viewModelScope.launch {
+                                insightResponse.value = resp.body()
+                            }
+                        }
+                    } catch (e: Exception) {
+                        Log.e("INSIGHT", "Not possible to get insight result")
                     }
                 } else if (job.isCompleted && controller.getInsight(true)!!.isSuccessful) {
                     Log.i("CALL", "Cached")
-                    insightResponse.value = controller.getInsight(true)!!.body()
+                    viewModelScope.launch {
+                        insightResponse.value = controller.getInsight(true)!!.body()
+                    }
                 } else if (!job.isCompleted && controller.getInsight(true)!!.isSuccessful) {
-                    GlobalScope.launch(Dispatchers.IO) {
-                        controller.getInsight()
-                        val job = controller.jobInsight()
-                        if (job == null) {
-                            Log.e("CALL", "No job was done")
-                        } else {
-                            job.invokeOnCompletion {
-                                getInsightInfo()
-                            }
+                    controller.getInsight()
+                    val jobT = controller.jobInsight()
+                    if (jobT == null) {
+                        Log.e("CALL", "No job was done")
+                    } else {
+                        jobT.invokeOnCompletion {
+                            getInsightInfo()
                         }
                     }
                 } else {
@@ -49,6 +55,7 @@ class InsightViewModel(private val controller: InsightController) : ViewModel() 
                 // TODO: Não devemos pegar exceções no gerais aqui...
                 // Tentamos fazer novamente a conexão
                 getInsightInfo()
+
             }
         }
 
