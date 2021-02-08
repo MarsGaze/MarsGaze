@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.controllers.user.Session
-import com.digitalhouse.marsgaze.models.data.FavoriteTest
+import com.digitalhouse.marsgaze.models.data.Favorite
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.sql.SQLException
@@ -17,7 +17,7 @@ class ImageDetailViewModel(val session: Session) : ViewModel() {
 
     val isFavorite = MutableLiveData<Boolean>()
 
-    private var inFavorite: FavoriteTest? = null
+    private var inFavorite: Favorite? = null
 
     /**
      * PT-BR
@@ -30,8 +30,8 @@ class ImageDetailViewModel(val session: Session) : ViewModel() {
      *
      * @see Session.isFavorited for more info
      *
-     * @param Rover Entidade do rover
-     *              Rover entity
+     * @param adapter Adapter que contém alguns dados do favorito
+     *                Adapter which contains a few data of the favorite
      */
     fun isFavorited(adapter: ImageDetailAdapter) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -75,7 +75,7 @@ class ImageDetailViewModel(val session: Session) : ViewModel() {
                 isFavorite.value = true
             }
 
-            inFavorite = FavoriteTest(
+            inFavorite = Favorite(
                 id,
                 imageType = favorite.getType(),
                 imageId = favorite.getId(),
@@ -93,7 +93,7 @@ class ImageDetailViewModel(val session: Session) : ViewModel() {
         }
     }
 
-    private fun removeFavoriteRoverImage(favorite: FavoriteTest) {
+    private fun removeFavoriteRoverImage(favorite: Favorite) {
         var message = Pair(true, R.string.favoriteRemoved)
         try {
             session.removeFavorite(

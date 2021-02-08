@@ -2,6 +2,7 @@ package com.digitalhouse.marsgaze.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -13,7 +14,8 @@ import com.digitalhouse.marsgaze.models.favorite.ImageDetailAdapter
 import com.squareup.picasso.Picasso
 
 
-class FavoriteAdapter(val list: ArrayList<ImageDetailAdapter>, val favoriteAction: FavoriteAction) :
+class FavoriteAdapter(val list: ArrayList<ImageDetailAdapter>,
+                      private val favoriteAction: FavoriteAction) :
     RecyclerView.Adapter<FavoriteAdapter.FavoriteHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteHolder {
         val binding = FavoriteCardBinding.inflate(
@@ -21,17 +23,21 @@ class FavoriteAdapter(val list: ArrayList<ImageDetailAdapter>, val favoriteActio
         )
         val image = binding.favoriteImage
 
-        // Definimos o tamanho da imagem de forma programática
-        var drawn = false
-        image.viewTreeObserver.addOnPreDrawListener {
-            if (image.width > 0 && image.height > 0 && !drawn) {
-                drawn = true
-                image.layoutParams.height = (image.width * 0.736024845).toInt()
-                image.requestLayout()
-            }
+        // Definimos o tamanho da imagem de forma programática após ele ter sido renderizado
+        // caso contrario não temos acesso ao tamanho dele de antemão
+        image.viewTreeObserver.addOnPreDrawListener( object : ViewTreeObserver.OnPreDrawListener {
+            override fun onPreDraw(): Boolean {
+                if (image.width > 0 && image.height > 0) {
+                    // Revemos esse listener já que não necessitamos mais dele
+                    image.viewTreeObserver.removeOnPreDrawListener(this)
+                    image.layoutParams.height = (image.width * 0.736024845).toInt()
+                    image.requestLayout()
+                }
 
-            true
-        }
+                return true
+            }
+        })
+
         return FavoriteHolder(
             binding
         )

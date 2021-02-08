@@ -1,19 +1,19 @@
 package com.digitalhouse.marsgaze.ui
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
-import com.digitalhouse.marsgaze.R
-import com.digitalhouse.marsgaze.adapters.InsightSolDateAdapter
 import com.digitalhouse.marsgaze.adapters.InsightDataAdapter
+import com.digitalhouse.marsgaze.adapters.InsightSolDateAdapter
 import com.digitalhouse.marsgaze.adapters.InsightTitleMediaAdapter
 import com.digitalhouse.marsgaze.controllers.service.InsightController
 import com.digitalhouse.marsgaze.databinding.FragmentInsightBinding
-import com.digitalhouse.marsgaze.services.InsightService
 import com.digitalhouse.marsgaze.viewmodels.InsightViewModel
 
 
@@ -69,7 +69,7 @@ class InsightFragment : Fragment() {
                 }
 
                 override fun onPageSelected(position: Int) {
-                    var data = insightDataInfo.adapter as InsightDataAdapter
+                    val data = insightDataInfo.adapter as InsightDataAdapter
                     data.sol = position
 
                     insightDataBack.visibility = View.INVISIBLE
@@ -104,7 +104,7 @@ class InsightFragment : Fragment() {
 
             insightVP.adapter = InsightSolDateAdapter()
             insightDataInfo.adapter = InsightDataAdapter()
-            insightDataTitle.adapter = InsightTitleMediaAdapter(insightDataInfo)
+            insightDataTitle.adapter = InsightTitleMediaAdapter()
 
             viewModel.getInsightInfo()
 
@@ -152,7 +152,7 @@ class InsightFragment : Fragment() {
 
     }
 
-    inner class InsightListener(val insightTypeInsight: Int) : ViewPager.OnPageChangeListener {
+    inner class InsightListener(private val insightTypeInsight: Int) : ViewPager.OnPageChangeListener {
         override fun onPageScrolled(
             position: Int,
             positionOffset: Float,

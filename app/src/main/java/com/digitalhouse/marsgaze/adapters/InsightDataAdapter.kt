@@ -1,12 +1,12 @@
 package com.digitalhouse.marsgaze.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.viewpager.widget.PagerAdapter
 import com.digitalhouse.marsgaze.R
+import com.digitalhouse.marsgaze.databinding.InsightSolInfoBinding
 import com.digitalhouse.marsgaze.models.insight.InsightInfo
 
 class InsightDataAdapter(var infoList: ArrayList<InsightInfo> = ArrayList()) : PagerAdapter() {
@@ -16,7 +16,6 @@ class InsightDataAdapter(var infoList: ArrayList<InsightInfo> = ArrayList()) : P
     override fun getCount(): Int = 2
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
-
         if (infoList.isEmpty()) {
             view = LayoutInflater.from(container.context).inflate(
                 R.layout.insight_exception, container, false )
@@ -63,24 +62,30 @@ class InsightDataAdapter(var infoList: ArrayList<InsightInfo> = ArrayList()) : P
         container.removeView(`object` as View)
     }
 
-    fun inflateDataLayout(view: View, position: Int, obj: InsightInfo) {
+    private fun inflateDataLayout(view: View, position: Int, obj: InsightInfo) {
         val media = view.findViewById<TextView>(R.id.tv_media)
-        val tv_valorMinima = view.findViewById<TextView>(R.id.tv_valorMinima)
-        val tv_valorMaxima = view.findViewById<TextView>(R.id.tv_valorMaxima)
-        val tv_amostras = view.findViewById<TextView>(R.id.tv_amostras)
+        val binding = InsightSolInfoBinding.bind(view)
 
-        when(position) {
-            0 -> {
-                media.text = view.resources.getString(R.string.insightTemp, obj.AT.av)
-                tv_valorMinima.text = view.resources.getString(R.string.insightTemp, obj.AT.mn)
-                tv_valorMaxima.text = view.resources.getString(R.string.insightTemp, obj.AT.mx)
-                tv_amostras.text = view.resources.getString(R.string.insightSampleSize, obj.AT.ct)
-            }
-            1 -> {
-                media.text = view.resources.getString(R.string.insightPress, obj.PRE.av)
-                tv_valorMinima.text = view.resources.getString(R.string.insightPress, obj.PRE.mn)
-                tv_valorMaxima.text = view.resources.getString(R.string.insightPress, obj.PRE.mx)
-                tv_amostras.text = view.resources.getString(R.string.insightSampleSize, obj.PRE.ct)
+        binding.run {
+            when(position) {
+                0 -> {
+                    media.text = view.resources.getString(R.string.insightTemp, obj.AT.av)
+                    tvValorMinima.text = view.resources.getString(R.string.insightTemp, obj.AT.mn)
+                    tvValorMaxima.text = view.resources.getString(R.string.insightTemp, obj.AT.mx)
+                    tvAmostras.text = view.resources.getString(
+                        R.string.insightSampleSize,
+                        obj.AT.ct
+                    )
+                }
+                1 -> {
+                    media.text = view.resources.getString(R.string.insightPress, obj.PRE.av)
+                    tvValorMinima.text = view.resources.getString(R.string.insightPress, obj.PRE.mn)
+                    tvValorMaxima.text = view.resources.getString(R.string.insightPress, obj.PRE.mx)
+                    tvAmostras.text = view.resources.getString(
+                        R.string.insightSampleSize,
+                        obj.PRE.ct
+                    )
+                }
             }
         }
     }

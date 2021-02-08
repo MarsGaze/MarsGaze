@@ -104,11 +104,13 @@ class LoginFragment : Fragment() {
                     currentUser.email.toString(),
                     currentUser.displayName.toString(),
                     null
-                )
+                ),
+                false
             )
             return
         }
 
+        viewModel.userInSession()
     }
 
     override fun onCreateView(
@@ -156,7 +158,8 @@ class LoginFragment : Fragment() {
                         mAuth.currentUser!!.email.toString(),
                         mAuth.currentUser!!.displayName.toString(),
                         null
-                    )
+                    ),
+                    false
                 )
             }
         }
@@ -222,7 +225,7 @@ class LoginFragment : Fragment() {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
 
         mAuth.signInWithCredential(credential)
-            .addOnCompleteListener() { task ->
+            .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d("Google", "signInWithCredential:success")
@@ -240,7 +243,7 @@ class LoginFragment : Fragment() {
 
         val credential = FacebookAuthProvider.getCredential(token.token)
         mAuth.signInWithCredential(credential)
-            .addOnCompleteListener() { task ->
+            .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d("Facebook", "signInWithCredential:success")
@@ -270,7 +273,7 @@ class LoginFragment : Fragment() {
         val date = Date(timeEpoch!!)
 
         viewModel.registerUser(user, date)
-        viewModel.loginUser(user)
+        viewModel.loginUser(user, false)
     }
 
     override fun onDestroy() {

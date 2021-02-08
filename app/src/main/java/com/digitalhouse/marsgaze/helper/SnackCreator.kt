@@ -1,8 +1,6 @@
 package com.digitalhouse.marsgaze.helper
 
-import android.content.Context
-import android.graphics.Color
-import android.view.View
+
 import com.google.android.material.snackbar.Snackbar
 
 /**
@@ -15,30 +13,19 @@ import com.google.android.material.snackbar.Snackbar
  * @author Jomar Júnior
  */
 interface SnackCreator {
+    /**
+     * PT-BR
+     * Mostra a snack bar de acordo com os valores passados.
+     *
+     * EN-US
+     * Shows a snack bar accordingly to the given values
+     *
+     * @param value Par de valores onde o primeiro é se foi ok e o segundo o id do recurso de string
+     *              pair where the first value is to check if its ok and the second is the id of the
+     *              string resource
+     *
+     * @return A snack criada
+     *         The created snack
+     */
     fun showSnack(value: Pair<Boolean, Int>): Snackbar
-}
-
-// TODO Documentação e provavelmente um meio mais bonito de realizar essa tarefa aqui né
-class OkAndErrorSnack(
-    private val view: View,
-    private val context: Context
-) : SnackCreator {
-    override fun showSnack(value: Pair<Boolean, Int>): Snackbar {
-        val snack = Snackbar.make(
-            context,
-            view,
-            context.getString(value.second),
-            Snackbar.LENGTH_SHORT
-        )
-
-        snack.show()
-
-        if (value.first) {
-            snack.setBackgroundTint(Color.GREEN)
-        } else {
-            snack.setBackgroundTint(Color.RED)
-        }
-
-        return snack
-    }
 }

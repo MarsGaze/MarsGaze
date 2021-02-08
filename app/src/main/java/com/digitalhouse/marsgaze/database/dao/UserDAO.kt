@@ -1,7 +1,7 @@
 package com.digitalhouse.marsgaze.database.dao
 
 import androidx.room.*
-import com.digitalhouse.marsgaze.models.data.FavoriteTest
+import com.digitalhouse.marsgaze.models.data.Favorite
 import com.digitalhouse.marsgaze.models.data.User
 
 /**
@@ -65,7 +65,7 @@ import com.digitalhouse.marsgaze.models.data.User
      *         A list of favorites from the user
      */
     @Query("SELECT * FROM favorite WHERE favorite.user = :userEmail")
-    fun getFavorites(userEmail: String): List<FavoriteTest>
+    fun getFavorites(userEmail: String): List<Favorite>
 
     /**
      * PT-BR
@@ -85,4 +85,17 @@ import com.digitalhouse.marsgaze.models.data.User
      */
     @Query("SELECT * FROM user WHERE user.email = :email AND (user.password = :password or :password is NULL)")
     fun loginMatch(email: String, password: String?) : User?
+
+    /**
+     * PT-BR
+     * Retorna o usuário que está na sessão mesmo que ela já tenha expirado
+     *
+     * EN-US
+     * Returns the user in session even if its expired already.
+     *
+     * @return Usuário da sessão
+     *         User in session
+     */
+    @Query("SELECT * FROM user WHERE user.in_session_until != 0")
+    fun userInSession(): User?
 }

@@ -15,9 +15,9 @@ import java.util.*
 class LoginViewModel(val session: Session) : ViewModel() {
     val loginStatus = MutableLiveData<Pair<Boolean, Int>>()
 
-    fun loginUser(user: User) {
+    fun loginUser(user: User, keepLogin: Boolean = true) {
         viewModelScope.launch(Dispatchers.IO) {
-            val result = session.login(user)
+            val result = session.login(user, keepLogin)
 
             var message = 0
             if (!result) {
@@ -50,5 +50,18 @@ class LoginViewModel(val session: Session) : ViewModel() {
             }
         }
 
+    }
+
+    /**
+     * PT-BR
+     * Verifica se tem um usuário na sessão e pula o login
+     *
+     * EN-US
+     * Verifies if there's an user in the session and jumps the login
+     */
+    fun userInSession() {
+        if (session.isLogged()) {
+            loginStatus.value = Pair(true, 0)
+        }
     }
 }

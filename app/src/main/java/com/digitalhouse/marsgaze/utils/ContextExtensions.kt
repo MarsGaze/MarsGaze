@@ -1,3 +1,5 @@
+@file:Suppress("unused", "unused")
+
 package com.digitalhouse.marsgaze.utils
 
 import android.app.Activity
