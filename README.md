@@ -19,8 +19,10 @@ APIs from [NASA's portal](https://api.nasa.gov/):
 ## Team :ok_hand:
 - **Angelica dos Santos**
   - [GitHub](https://github.com/angelcomp)
+  - [LinkedIn](https://www.linkedin.com/in/angelica-santos-55a352150/)
 - **Jomar Junior**
   - [GitHub](https://github.com/thinkaboutmin)
+  - [LinkedIn](https://www.linkedin.com/in/jomar-de-andrade-lemos-júnior-736770162/)
 - **Matheus Vianna**
   - [GitHub](https://github.com/matheusvianna95)
   - [LinkedIn](https://www.linkedin.com/in/matheus-vianna/)
