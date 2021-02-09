@@ -7,7 +7,7 @@ package com.digitalhouse.marsgaze.utils
  */
 open class Event<out T>(private val content: T) {
 
-    var hasBeenHandled = false
+    private var hasBeenHandled = false
         private set // Allow external read but not write
 
     /**
@@ -22,8 +22,4 @@ open class Event<out T>(private val content: T) {
         }
     }
 
-    /**
-     * Returns the content, even if it's already been handled.
-     */
-    fun peekContent(): T = content
 }

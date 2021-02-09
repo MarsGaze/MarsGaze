@@ -3,8 +3,6 @@ package com.digitalhouse.marsgaze.controllers.service
 import android.util.Log
 import com.digitalhouse.marsgaze.models.insight.InsightInfo
 import com.digitalhouse.marsgaze.services.InsightService
-import com.google.gson.Gson
-import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import kotlinx.coroutines.Job
 import retrofit2.Response
@@ -18,7 +16,7 @@ import retrofit2.Response
  *
  * @author Jomar Júnior
  *
- * @param insightService Interface com as chamadas para a API do Insight
+ * @property insightService Interface com as chamadas para a API do Insight
  *                       Interface with the API calls for Insight
  *
  */
@@ -84,7 +82,7 @@ class InsightController private constructor(private val insightService: InsightS
     fun jobInsight(): Job? = progressCalls[InsightType.INSIGHT]
 
     companion object {
-        var INSTANCE: InsightController? = null
+        private var INSTANCE: InsightController? = null
 
         fun getController(service: InsightService = InsightService.create()): InsightController {
             return INSTANCE ?: synchronized(this) {

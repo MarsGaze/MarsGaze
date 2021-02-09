@@ -16,15 +16,11 @@ import androidx.transition.AutoTransition
 import androidx.transition.TransitionManager
 import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.adapters.RoversResultAdapter
-import com.digitalhouse.marsgaze.controllers.user.Session
-import com.digitalhouse.marsgaze.database.AfterFavoriteAction
-import com.digitalhouse.marsgaze.database.MarsGazeDB
 import com.digitalhouse.marsgaze.databinding.FragmentRoversResultBinding
 import com.digitalhouse.marsgaze.models.rovers.RoverPhoto
 import com.digitalhouse.marsgaze.services.MarsRoversPhotosService
 import com.digitalhouse.marsgaze.utils.hideKeyboard
 import com.digitalhouse.marsgaze.viewmodels.RoversResultViewModel
-import java.util.*
 
 class RoversResultFragment : Fragment(), RoversResultAdapter.OnItemClickListener {
     private val args: RoversResultFragmentArgs by navArgs()
@@ -75,7 +71,7 @@ class RoversResultFragment : Fragment(), RoversResultAdapter.OnItemClickListener
             binding.inputSol.setText(solParameter)
         }
 
-        viewModel.message.observe(viewLifecycleOwner) {
+        viewModel.message.observe(viewLifecycleOwner) { it ->
             it.getContentIfNotHandled()?.let {
                 Toast.makeText(context, it, Toast.LENGTH_LONG).show()
             }

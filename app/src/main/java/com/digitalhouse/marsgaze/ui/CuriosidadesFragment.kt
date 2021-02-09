@@ -1,8 +1,8 @@
+@file:Suppress("RedundantNullableReturnType", "RedundantNullableReturnType")
+
 package com.digitalhouse.marsgaze.ui
 
 import android.os.Bundle
-import android.transition.AutoTransition
-import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,7 +25,7 @@ class CuriosidadesFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentCuriosidadesBinding.inflate(inflater, container, false)
 
         return binding.root
@@ -160,7 +160,7 @@ class CuriosidadesFragment : Fragment() {
                     )
                     expandButton.animate().rotationX(0F)
 
-                    val col = ContextCompat.getColor(requireContext(), R.color.colorWhite);
+                    val col = ContextCompat.getColor(requireContext(), R.color.colorWhite)
                     titleText.setTextColor(col)
                 }
 
@@ -176,7 +176,7 @@ class CuriosidadesFragment : Fragment() {
                     )
                     expandButton.animate().rotationX(180F)
 
-                    val col = ContextCompat.getColor(requireContext(), R.color.colorAccentDark);
+                    val col = ContextCompat.getColor(requireContext(), R.color.colorAccentDark)
                     titleText.setTextColor(col)
                 }
             }

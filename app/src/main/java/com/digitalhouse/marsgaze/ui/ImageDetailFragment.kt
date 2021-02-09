@@ -7,18 +7,16 @@ import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
-import android.util.Log
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.core.content.FileProvider
-import androidx.core.net.toFile
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.transition.AutoTransition
 import androidx.transition.TransitionManager
-import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.controllers.user.Session
 import com.digitalhouse.marsgaze.database.AfterFavoriteAction
 import com.digitalhouse.marsgaze.database.MarsGazeDB
@@ -71,7 +69,7 @@ class ImageDetailFragment : Fragment() {
         when(adapter.getType()){
             // Rovers tem data e informação da camera
             FavoriteType.ROVERS_IMAGE.ordinal -> {
-                binding.tvInfoTitle.text = getString(R.string.solDay, adapter.getTitle())
+                binding.tvInfoTitle.text = adapter.getTitle()
                 binding.tvInfoImgCamera.text = adapter.getDesc()
                 if (!adapter.getExtraInfo().isNullOrBlank()) {
                     val text = adapter.getExtraInfo()!!

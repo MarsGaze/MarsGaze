@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 /**
+ *
  * Data class that represents the Rover associated with a particular
  * photo from Mars Rover Photos.
  *

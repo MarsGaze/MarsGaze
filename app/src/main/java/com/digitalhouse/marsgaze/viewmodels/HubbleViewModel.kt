@@ -5,25 +5,32 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.digitalhouse.marsgaze.models.hubble.HubbleResponse
-import com.digitalhouse.marsgaze.models.hubble.Item
-import com.digitalhouse.marsgaze.models.hubble.PhotoCollection
 import com.digitalhouse.marsgaze.services.HubbleService
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.lang.Exception
 
 class HubbleViewModel(private val service: HubbleService) : ViewModel() {
     val hubbleImgList = MutableLiveData<HubbleResponse>()
 
     fun getHubbleImg() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val result = HubbleResponse()
             result.collection.items.apply {
-                addAll(service.getHubbleImg("hubble mars").collection.items)
-                addAll(service.getHubbleImg(title = "odyssey all stars").collection.items)
-                addAll(service.getHubbleImg("mgs", "Mars at Ls").collection.items)
-                addAll(service.getHubbleImg("viking", "Center is at Latitude").collection.items)
+                try {
+                    addAll(service.getHubbleImg("hubble mars").collection.items)
+                    addAll(service.getHubbleImg(title = "odyssey all stars").collection.items)
+                    addAll(service.getHubbleImg("mgs", "Mars at Ls").collection.items)
+                    addAll(service.getHubbleImg("viking", "Center is at Latitude").collection.items)
+                } catch (e: Exception) {
+                    Log.e("HUBBLE", "Not possible to load images")
+                }
             }
             result.collection.items.shuffle()
-            hubbleImgList.value = result
+
+            viewModelScope.launch {
+                hubbleImgList.value = result
+            }
         }
     }
 }

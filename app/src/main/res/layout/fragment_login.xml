@@ -55,6 +55,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/colorAccentDark"
                 android:hint="@string/htEmail"
+                android:maxLines="1"
                 android:textColor="@color/colorWhite" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -77,6 +78,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/colorAccentDark"
                 android:hint="@string/htSenha"
+                android:maxLines="1"
                 android:textColor="@color/colorWhite" />
         </com.google.android.material.textfield.TextInputLayout>
 

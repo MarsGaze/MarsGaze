@@ -19,7 +19,6 @@ import androidx.room.PrimaryKey
  *
  * @author Jomar Júnior
  *
- * @property id Id do usuário / User id
  * @property name Nome do usuário / User name
  * @property email Email do usuário / User email
  * @property password Senha do usuário / User password
@@ -30,7 +29,11 @@ import androidx.room.PrimaryKey
     var email: String,
     var name: String,
     var password: String?,
-    @ColumnInfo(name = "created_on", defaultValue = "DATE(\"now\")")
-    var createdOn: String = ""
+    @ColumnInfo(name = "created_on")
+    var createdOn: String = "",
+    @ColumnInfo(name = "in_session_until")
+    var inSessionUntil: Long = 0,
+    @ColumnInfo(name = "pure_password")
+    var purePassword: String = ""
 )
 

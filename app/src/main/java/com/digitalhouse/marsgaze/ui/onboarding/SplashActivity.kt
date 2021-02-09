@@ -1,17 +1,15 @@
 package com.digitalhouse.marsgaze.ui.onboarding
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.controllers.service.InsightController
 import com.digitalhouse.marsgaze.viewmodels.SplashViewModel
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlin.Exception
 
 class SplashActivity : AppCompatActivity() {
     private val viewModel: SplashViewModel by viewModels()
@@ -29,5 +27,6 @@ class SplashActivity : AppCompatActivity() {
         }
 
         viewModel.cacheInsight(InsightController.getController())
+        viewModel.startMemoryClasses(this)
     }
 }

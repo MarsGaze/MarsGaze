@@ -67,25 +67,15 @@ class CadastroFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.registerStatus.observe(viewLifecycleOwner) {
-            snackCreator.showSnack(it)
-            if (it == Pair(true, R.string.userRegistered)) {
+            if (it.first) {
                 findNavController().navigate(R.id.action_cadastroFragment_to_loginFragment)
+            } else {
+                snackCreator.showSnack(it)
             }
         }
 
         binding.btnCadastrar.setOnClickListener {
-            val user = User(
-                binding.tiEmail.editText!!.text.toString(),
-                binding.tiNome.editText!!.text.toString(),
-                binding.tiSenha.editText!!.text.toString(),
-            )
-
-            viewModel.registerUser(user)
-
-            /*
-            val intent = Intent(requireActivity(), NavigationActivity::class.java)
-            startActivity(intent)
-            requireActivity().finish() */
+            registerUser()
         }
     }
 
@@ -94,4 +84,13 @@ class CadastroFragment : Fragment() {
         _binding = null
     }
 
+    private fun registerUser() {
+        val user = User(
+            binding.tiEmail.editText!!.text.toString(),
+            binding.tiNome.editText!!.text.toString(),
+            binding.tiSenha.editText!!.text.toString(),
+        )
+
+        viewModel.registerUser(user, binding.tiRepeteSenha.editText!!.text.toString())
+    }
 }

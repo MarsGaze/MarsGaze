@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.digitalhouse.marsgaze.R
@@ -17,6 +16,9 @@ import com.facebook.login.LoginManager
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 
 class NavigationActivity : AppCompatActivity() {
@@ -33,7 +35,7 @@ class NavigationActivity : AppCompatActivity() {
     // Ajuda na verificação do controle de páginas, evitando falsas adições.
     private var withToolbarPage = true
 
-    lateinit var navControl: NavController
+    private lateinit var navControl: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,14 +80,16 @@ class NavigationActivity : AppCompatActivity() {
                     // Facebook sign out
                     LoginManager.getInstance().logOut()
 
-                    Session.getInstance(
-                        MarsGazeDB.getDatabase(
-                            this
-                        ),
-                        AfterFavoriteAction(
-                            this
-                        )
-                    ).logoff()
+                    GlobalScope.launch(Dispatchers.IO) {
+                        Session.getInstance(
+                            MarsGazeDB.getDatabase(
+                                this@NavigationActivity
+                            ),
+                            AfterFavoriteAction(
+                                this@NavigationActivity
+                            )
+                        ).logoff()
+                    }
                     val intent = Intent(this, LoginActivity::class.java)
                     startActivity(intent)
                     this.finish()

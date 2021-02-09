@@ -5,11 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.viewpager.widget.PagerAdapter
-import androidx.viewpager.widget.ViewPager
 import com.digitalhouse.marsgaze.R
 
 // TODO: Essa classe não deixa claro como as informações vão ser linkadas depois
-class InsightTitleMediaAdapter(val info: ViewPager) : PagerAdapter() {
+class InsightTitleMediaAdapter : PagerAdapter() {
     override fun getCount(): Int = 2
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean = `object` == view

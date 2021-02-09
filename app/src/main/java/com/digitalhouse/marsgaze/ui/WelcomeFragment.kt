@@ -1,6 +1,5 @@
 package com.digitalhouse.marsgaze.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +10,6 @@ import com.digitalhouse.marsgaze.controllers.user.Session
 import com.digitalhouse.marsgaze.database.AfterFavoriteAction
 import com.digitalhouse.marsgaze.database.MarsGazeDB
 import com.digitalhouse.marsgaze.databinding.FragmentWelcomePageBinding
-import com.google.firebase.auth.FirebaseAuth
 
 class WelcomeFragment : Fragment() {
     private var _binding: FragmentWelcomePageBinding? = null

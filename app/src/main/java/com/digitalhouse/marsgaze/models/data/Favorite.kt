@@ -1,45 +1,31 @@
 package com.digitalhouse.marsgaze.models.data
 
 import androidx.room.*
-import com.digitalhouse.marsgaze.R
 
 /**
- * Classe temporária para o elemneto Favorito
- *
+ * PT-BR
  * O Favorito, assim por se dizer, é o conteudo provido de um rover na qual
- * o usuário gostou. Ela é temporária já que vai ser usado somente para os
- * visuais.
+ * o usuário gostou.
  *
- * Dummy class for a Favorite element.
- *
+ * EN-US
  * Favorite, as per say, is the content of an image from a rover which the
- * the user gave liked. This is a dummy ony as it will be used only for
- * visuals.
+ * the user gave liked.
+ *
+ * @property id Não usado mas necessario para conter favoritos únicos
+ *           Not used but necessary for unique favorites
+ *
+ * @property imageType Tipo do favorito @see FavoriteType
+ *                  Favorite type @see FavoriteType
+ *
+ * @property imageId Id vindo do favorito
+ *                Id from the favorite
+ *
+ * @property user O email do usuário
+ *             The user email
+ *
+ * @property imgPath Caminho da imagem (URI)
+ *                Image path (URI)
  */
-class Favorite(val image: Int, val sol: Int, val rover: String) {
-    companion object {
-        fun generator(): ArrayList<Favorite> {
-            val favorites = arrayListOf<Favorite>()
-            for (i in 690..712) {
-                var image = R.drawable.favorite_1
-                if (i % 2 == 0) {
-                   image = R.drawable.favorite_2
-                }
-
-                favorites.add(
-                    Favorite(
-                    image,
-                    i,
-                    "Curiosity"
-                )
-                )
-            }
-
-            return favorites
-        }
-    }
-}
-
 @Entity(
     foreignKeys = [
         ForeignKey(entity = User::class, onDelete = ForeignKey.CASCADE, parentColumns = ["email"],
@@ -48,7 +34,7 @@ class Favorite(val image: Int, val sol: Int, val rover: String) {
     tableName = "Favorite",
     indices = [Index("user")]
 )
-data class FavoriteTest(
+data class Favorite(
     @PrimaryKey(autoGenerate = true)
     val id: Long? = null,
     @ColumnInfo(name = "image_type")

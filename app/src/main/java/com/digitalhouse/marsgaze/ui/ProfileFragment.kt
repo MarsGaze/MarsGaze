@@ -1,8 +1,6 @@
 package com.digitalhouse.marsgaze.ui
 
 import android.content.Context
-import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
 import android.text.Editable
 import android.view.LayoutInflater
@@ -20,14 +18,9 @@ import com.digitalhouse.marsgaze.databinding.FragmentProfileBinding
 import com.digitalhouse.marsgaze.helper.OkAndErrorSnack
 import com.digitalhouse.marsgaze.helper.SnackCreator
 import com.digitalhouse.marsgaze.models.data.User
-import com.digitalhouse.marsgaze.ui.onboarding.LoginActivity
 import com.digitalhouse.marsgaze.viewmodels.session.SessionViewModelFactory
 import com.digitalhouse.marsgaze.viewmodels.session.profile.ProfileViewModel
-import com.facebook.login.LoginManager
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.textfield.TextInputLayout
-import com.google.firebase.auth.FirebaseAuth
 
 
 class ProfileFragment : Fragment() {
