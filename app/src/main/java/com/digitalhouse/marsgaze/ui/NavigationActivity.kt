@@ -132,6 +132,11 @@ class NavigationActivity : AppCompatActivity() {
                     true
                 }
 
+                resources.getString(R.string.sobre_nos) -> {
+                    changePage(title, R.id.aboutFragment)
+                    true
+                }
+
                 else -> {
                     false
                 }

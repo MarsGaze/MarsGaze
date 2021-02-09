@@ -1,60 +1,117 @@
 package com.digitalhouse.marsgaze.ui
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import com.digitalhouse.marsgaze.R
+import com.digitalhouse.marsgaze.databinding.FragmentAboutBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [AboutFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AboutFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentAboutBinding? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_about, container, false)
+        _binding = FragmentAboutBinding.inflate(inflater, container, false)
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AboutFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AboutFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.run {
+            twitterImage.setOnClickListener {
+                val intent = twitterIntent()
+                startActivity(intent)
+            }
+
+            emailImage.setOnClickListener {
+                val intent = emailIntent()
+                startActivity(intent)
+            }
+
+            setExpandable(
+                expandableText, expandButtonPeople, aboutUs.root, null, teamText
+            )
+        }
+    }
+
+    private fun twitterIntent(user: String = "gaze_mars"): Intent {
+        var intent: Intent? = null
+        try {
+            // get the Twitter app if possible
+            requireContext().packageManager.getPackageInfo("com.twitter.android", 0)
+            intent = Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("twitter://user?screen_name=$user")
+            )
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        } catch (e: Exception) {
+            // no Twitter app, revert to browser
+            intent =
+                Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/$user"))
+        }
+
+        return intent!!
+    }
+
+    private fun emailIntent(email: String = "marsgazeapp@gmail.com"): Intent {
+        val intent = Intent(Intent.ACTION_SENDTO)
+        intent.data = Uri.parse("mailto:$email")
+
+        return Intent.createChooser(intent, "Send Email")
+    }
+
+    private fun setExpandable(expandableText: CardView, expandButton: ImageView,
+                              hiddenText: View, hiddenImage: CardView?,
+                              titleText: TextView
+    ) {
+        expandButton.setOnClickListener {
+            when (hiddenText.visibility) {
+                View.VISIBLE -> {
+                    if (hiddenImage != null) {
+                        hiddenImage.visibility = View.GONE
+                    }
+                    hiddenText.visibility = View.GONE
+                    androidx.transition.TransitionManager.beginDelayedTransition(
+                        expandableText,
+                        androidx.transition.AutoTransition()
+                    )
+                    expandButton.animate().rotationX(0F)
+
+                    val col = ContextCompat.getColor(requireContext(), R.color.colorWhite)
+                    titleText.setTextColor(col)
+                }
+
+                else -> {
+                    if (hiddenImage != null) {
+                        hiddenImage.visibility = View.VISIBLE
+                    }
+
+                    hiddenText.visibility = View.VISIBLE
+                    androidx.transition.TransitionManager.beginDelayedTransition(
+                        expandableText,
+                        androidx.transition.AutoTransition()
+                    )
+                    expandButton.animate().rotationX(180F)
+
+                    val col = ContextCompat.getColor(requireContext(), R.color.colorAccentDark)
+                    titleText.setTextColor(col)
                 }
             }
+        }
     }
 }

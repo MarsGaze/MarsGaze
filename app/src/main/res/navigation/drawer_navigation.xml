@@ -84,4 +84,9 @@
             android:name="imageDetailAdapter"
             app:argType="com.digitalhouse.marsgaze.models.favorite.ImageDetailAdapter" />
     </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.digitalhouse.marsgaze.ui.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
 </navigation>

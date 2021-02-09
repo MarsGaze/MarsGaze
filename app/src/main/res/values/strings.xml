@@ -194,4 +194,5 @@ Até hoje, os rovers mais bem-sucedidos foram/são os gêmeos Spirit e Opportuni
     <string name="emptyPassword">Senha vázia</string>
     <string name="emptyPasswordRepeat">Senha de validação vázia</string>
     <string name="invalidPassword">Senha deve conter mais de 8 e menos de 25 caracteres</string>
+    <string name="sobre_nos">Sobre Nós</string>
 </resources>
