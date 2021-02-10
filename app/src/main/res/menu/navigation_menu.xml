@@ -2,14 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:icon="@drawable/navigation_profile"
-        android:title="@string/navigationItemProfile" />
-    <item
         android:icon="@drawable/navigation_home"
         android:title="@string/navigationItemStartPage" />
     <item
-        android:icon="@drawable/navigation_favorite"
-        android:title="@string/navigationItemFavorite" />
+        android:icon="@drawable/navigation_mars"
+        android:title="@string/navigationItemAboutMars" />
     <item
         android:icon="@drawable/navigation_rover"
         android:title="@string/navigationItemRover" />
@@ -17,6 +14,18 @@
         android:icon="@drawable/navigation_insight"
         android:title="@string/navigationItemInsight" />
     <item
-        android:icon="@drawable/navigation_mars"
-        android:title="@string/navigationItemAboutMars" />
+        android:icon="@drawable/navigation_hubble"
+        android:title="@string/navigationItemHubble" />
+    <item
+        android:icon="@drawable/navigation_favorite"
+        android:title="@string/navigationItemFavorite" />
+    <item
+        android:icon="@drawable/navigation_profile"
+        android:title="@string/navigationItemProfile" />
+    <item
+        android:icon="@drawable/ic_about_us"
+        android:title="@string/sobre_nos" />
+    <item
+        android:icon="@drawable/ic_logout"
+        android:title="@string/navigationItemLogout" />
 </menu>

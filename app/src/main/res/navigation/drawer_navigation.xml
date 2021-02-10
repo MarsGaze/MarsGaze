@@ -19,7 +19,11 @@
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.digitalhouse.marsgaze.ui.FavoriteFragment"
-        android:label="FavoriteFragment" />
+        android:label="FavoriteFragment" >
+        <action
+            android:id="@+id/action_favoriteFragment_to_imageDetailFragment2"
+            app:destination="@id/imageDetailFragment2" />
+    </fragment>
 
     <fragment
         android:id="@+id/roversFragment"
@@ -51,12 +55,12 @@
         android:name="com.digitalhouse.marsgaze.ui.rovers.RoversResultFragment"
         android:label="fragment_rovers_result"
         tools:layout="@layout/fragment_rovers_result" >
-        <action
-            android:id="@+id/action_roversResultFragment_to_imageDetailFragment2"
-            app:destination="@id/imageDetailFragment" />
         <argument
             android:name="rover"
             app:argType="string" />
+        <action
+            android:id="@+id/action_roversResultFragment_to_imageDetailFragment22"
+            app:destination="@id/imageDetailFragment2" />
     </fragment>
     <fragment
         android:id="@+id/curiosidadesFragment"
@@ -64,24 +68,25 @@
         android:label="fragment_curiosidades"
         tools:layout="@layout/fragment_curiosidades" />
     <fragment
-        android:id="@+id/imageDetailFragment"
-        android:name="com.digitalhouse.marsgaze.ui.rovers.RoversPhotoDetailFragment"
-        android:label="fragment_image_detail"
-        tools:layout="@layout/fragment_image_detail" >
-        <argument
-            android:name="imageUrl"
-            app:argType="string" />
-        <argument
-            android:name="sol"
-            app:argType="string" />
-        <argument
-            android:name="cameraAbrr"
-            app:argType="string" />
-        <argument
-            android:name="cameraFull"
-            app:argType="string" />
-        <argument
-            android:name="earthDate"
-            app:argType="string" />
+        android:id="@+id/hubbleFragment"
+        android:name="com.digitalhouse.marsgaze.ui.hubble.HubbleFragment"
+        android:label="fragment_hubble"
+        tools:layout="@layout/fragment_hubble" >
+        <action
+            android:id="@+id/action_hubbleFragment_to_imageDetailFragment2"
+            app:destination="@id/imageDetailFragment2" />
     </fragment>
+    <fragment
+        android:id="@+id/imageDetailFragment2"
+        android:name="com.digitalhouse.marsgaze.ui.ImageDetailFragment"
+        android:label="ImageDetailFragment">
+        <argument
+            android:name="imageDetailAdapter"
+            app:argType="com.digitalhouse.marsgaze.models.favorite.ImageDetailAdapter" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.digitalhouse.marsgaze.ui.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
 </navigation>

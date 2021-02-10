@@ -8,48 +8,17 @@
     android:orientation="vertical"
     tools:context=".ui.rovers.RoversResultFragment">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView3"
-        android:name="com.digitalhouse.marsgaze.ui.ClassicToolbarFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:id="@+id/container_left"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@id/filter_card"
-        app:layout_constraintEnd_toStartOf="@+id/filter_card"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/filter_card" />
-
-    <View
-        android:id="@+id/container_right"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@id/filter_card"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toEndOf="@+id/filter_card"
-        app:layout_constraintTop_toTopOf="@id/filter_card" />
-
     <androidx.cardview.widget.CardView
         android:id="@+id/filter_card"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorPrimary"
+        app:layout_constraintWidth_percent="0.6"
         app:cardCornerRadius="10dp"
-        app:layout_constraintEnd_toStartOf="@+id/container_right"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintHorizontal_weight="5"
-        app:layout_constraintStart_toEndOf="@+id/container_left"
-        app:layout_constraintTop_toTopOf="@+id/toolbar">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -66,7 +35,6 @@
                 android:textColor="@color/colorAccentDark"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toStartOf="@+id/expand_button"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -78,7 +46,6 @@
                 android:src="@drawable/ic_arrow_down_white"
                 app:layout_constraintBottom_toBottomOf="@+id/filter_text"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/filter_text"
                 app:layout_constraintTop_toTopOf="@id/filter_text" />
 
@@ -88,12 +55,10 @@
                 android:layout_height="wrap_content"
                 android:paddingVertical="16dp"
                 android:paddingStart="16dp"
-                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/filledTextField"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/filter_text"
-                tools:visibility="visible">
+                app:layout_constraintTop_toBottomOf="@+id/filter_text">
 
                 <com.google.android.material.radiobutton.MaterialRadioButton
                     android:id="@+id/radio_curiosity"
@@ -129,14 +94,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="#00FAFAFA"
                 android:paddingEnd="16dp"
                 android:textColorHint="@color/colorWhite"
-                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/radioGroup"
-                app:layout_constraintTop_toBottomOf="@+id/filter_text"
-                tools:visibility="visible">
+                app:layout_constraintTop_toBottomOf="@+id/filter_text">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/input_sol"
@@ -161,10 +123,16 @@
                 android:text="Filtrar"
                 android:textColor="@color/colorWhite"
                 android:textSize="14sp"
-                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/filledTextField"
+                app:layout_constraintTop_toBottomOf="@+id/filledTextField" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/filter_card_contents"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:constraint_referenced_ids="button_filter, radioGroup, filledTextField"
                 tools:visibility="visible" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -178,7 +146,7 @@
         android:layout_marginStart="4dp"
         android:background="@color/colorPrimaryDark"
         android:clipToPadding="false"
-        android:paddingTop="56dp"
+        android:paddingTop="?android:attr/actionBarSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

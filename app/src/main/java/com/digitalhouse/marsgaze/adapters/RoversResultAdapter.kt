@@ -8,13 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.models.rovers.RoverResponse
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.rovers_image_item.view.*
 
 class RoversResultAdapter(
-    var adapterImageList: RoverResponse,
     private var itemClickListener: OnItemClickListener
-) :
-    RecyclerView.Adapter<RoversResultAdapter.ImageViewHolder>() {
+) : RecyclerView.Adapter<RoversResultAdapter.ImageViewHolder>() {
+
+    var roverResponse: RoverResponse = RoverResponse()
 
     // Must be implemented by the corresponding fragment overriding onItemClick
     interface OnItemClickListener {
@@ -25,7 +24,7 @@ class RoversResultAdapter(
     class ImageViewHolder(
         itemView: View, listener: OnItemClickListener
     ) : RecyclerView.ViewHolder(itemView) {
-        val imageResult: ImageView = itemView.image_result
+        val imageResult: ImageView = itemView.findViewById(R.id.image_result)
 
         init {
             itemView.setOnClickListener {
@@ -45,11 +44,11 @@ class RoversResultAdapter(
     }
 
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
-        val currentItem = adapterImageList.photos[position]
+        val currentItem = roverResponse.photos[position]
         val imgUrl = currentItem.imageUrl
 
         Picasso.get().load(imgUrl).fit().centerCrop().into(holder.imageResult)
     }
 
-    override fun getItemCount() = adapterImageList.photos.size
+    override fun getItemCount() = roverResponse.photos.size
 }

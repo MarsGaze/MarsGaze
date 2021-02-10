@@ -421,6 +421,19 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="36dp">
+                        <ImageView
+                            android:id="@+id/leftBar"
+                            android:layout_width="180dp"
+                            android:layout_height="2dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="5dp"
+                            android:background="@drawable/insight_divisor"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/tv_curiosidades"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
 
                         <TextView
                             android:id="@+id/tv_curiosidades"
@@ -437,7 +450,7 @@
                             app:layout_constraintVertical_bias="0.0" />
 
                         <ImageView
-                            android:id="@+id/imageView6"
+                            android:id="@+id/rightBar"
                             android:layout_width="180dp"
                             android:layout_height="2dp"
                             android:layout_gravity="center"
@@ -491,18 +504,23 @@
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
-                            <ImageView
+                            <androidx.cardview.widget.CardView
                                 android:id="@+id/img_cydonia"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:visibility="gone"
+                                app:cardCornerRadius="10dp"
                                 android:layout_marginTop="12dp"
                                 android:layout_marginBottom="12dp"
-                                android:src="@drawable/cydonia_mars_face"
-                                android:visibility="gone"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintHorizontal_bias="0.497"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/texto_cydonia" />
+                                app:layout_constraintTop_toBottomOf="@+id/texto_cydonia">
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/cydonia_mars_face"/>
+                            </androidx.cardview.widget.CardView>
 
                             <TextView
                                 android:id="@+id/hidden_text_cydonia"
@@ -560,18 +578,23 @@
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
-                            <ImageView
+                            <androidx.cardview.widget.CardView
                                 android:id="@+id/img_happyFace"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:visibility="gone"
+                                app:cardCornerRadius="10dp"
                                 android:layout_marginTop="12dp"
                                 android:layout_marginBottom="12dp"
-                                android:src="@drawable/happy_face"
-                                android:visibility="gone"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintHorizontal_bias="0.497"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/texto_happyFace" />
+                                app:layout_constraintTop_toBottomOf="@+id/texto_happyFace" >
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/happy_face"/>
+                            </androidx.cardview.widget.CardView>
 
                             <TextView
                                 android:id="@+id/hidden_text_happyFace"
@@ -629,18 +652,23 @@
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
-                            <ImageView
+                            <androidx.cardview.widget.CardView
                                 android:id="@+id/img_butterfly"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:visibility="gone"
+                                app:cardCornerRadius="10dp"
                                 android:layout_marginTop="12dp"
                                 android:layout_marginBottom="12dp"
-                                android:src="@drawable/butterfly"
-                                android:visibility="gone"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintHorizontal_bias="0.497"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/texto_butterfly" />
+                                app:layout_constraintTop_toBottomOf="@+id/texto_butterfly">
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/butterfly"/>
+                            </androidx.cardview.widget.CardView>
 
                             <TextView
                                 android:id="@+id/hidden_text_butterfly"

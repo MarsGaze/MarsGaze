@@ -1,6 +1,7 @@
 package com.digitalhouse.marsgaze.models.rovers
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 
 /**
@@ -9,5 +10,5 @@ import com.google.gson.annotations.SerializedName
  *
  */
 data class RoverResponse(
-    @SerializedName("photos", alternate = ["latest_photos"]) val photos: List<RoverPhoto>
-)
+    @SerializedName("photos", alternate = ["latest_photos"]) val photos: List<RoverPhoto> = listOf()
+) : Serializable
