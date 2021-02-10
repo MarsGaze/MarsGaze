@@ -43,8 +43,48 @@ class AboutFragment : Fragment() {
                 startActivity(intent)
             }
 
+            info.gitAngel.setOnClickListener {
+                val intent = browserIntent("https://github.com/angelcomp")
+                startActivity(intent)
+            }
+
+            info.gitJomar.setOnClickListener {
+                val intent = browserIntent("https://github.com/thinkaboutmin")
+                startActivity(intent)
+            }
+
+            info.gitMatheus.setOnClickListener {
+                val intent = browserIntent("https://github.com/matheusvianna95")
+                startActivity(intent)
+            }
+
+            info.gitVictoria.setOnClickListener {
+                val intent = browserIntent("https://github.com/VicPrieto")
+                startActivity(intent)
+            }
+
+            info.linkedinAngel.setOnClickListener {
+                val intent = linkedinIntent("angelica-santos-55a352150")
+                startActivity(intent)
+            }
+
+            info.linkedinJomar.setOnClickListener {
+                val intent = linkedinIntent("jomar-de-andrade-lemos-júnior-736770162")
+                startActivity(intent)
+            }
+
+            info.linkedinMatheus.setOnClickListener {
+                val intent = linkedinIntent("matheus-vianna")
+                startActivity(intent)
+            }
+
+            info.linkedinVictoria.setOnClickListener {
+                val intent = linkedinIntent("victoriagprieto")
+                startActivity(intent)
+            }
+
             setExpandable(
-                expandableText, expandButtonPeople, aboutUs.root, null, teamText
+                expandableText, expandButtonPeople, info.root, null, teamText
             )
         }
     }
@@ -113,5 +153,25 @@ class AboutFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun linkedinIntent(ref: String): Intent {
+        val intent = Intent(Intent.ACTION_VIEW)
+
+        try {
+            requireContext().getPackageManager().getPackageInfo("com.linkedin.android", 0);
+            intent.data = Uri.parse("linkedin://$ref")
+        } catch (e: Exception) {
+            intent.data = Uri.parse("https://www.linkedin.com/in/$ref/")
+        }
+
+        return intent
+    }
+
+    private fun browserIntent(url: String): Intent {
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = Uri.parse(url)
+
+        return Intent.createChooser(intent, "Navigate to")
     }
 }

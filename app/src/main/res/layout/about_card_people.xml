@@ -13,6 +13,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:orientation="horizontal">
 
             <TextView
@@ -22,7 +23,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Angelica"
-                android:textColor="@color/colorWhite" />
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/tvJomar"
@@ -31,7 +33,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Jomar"
-                android:textColor="@color/colorWhite" />
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -40,33 +43,37 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/gitAngel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
                 android:layout_weight="1"
                 android:background="#00FFFFFF"
                 app:srcCompat="@drawable/ic_github" />
 
             <ImageButton
-                android:id="@+id/imageButton2"
+                android:id="@+id/linkedinAngel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="36dp"
                 android:layout_weight="1"
                 android:background="#00FFFFFF"
                 app:srcCompat="@drawable/ic_linkedin" />
 
             <ImageButton
-                android:id="@+id/imageButton3"
+                android:id="@+id/gitJomar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
                 android:layout_weight="1"
                 android:background="#00FFFFFF"
                 app:srcCompat="@drawable/ic_github" />
 
             <ImageButton
-                android:id="@+id/imageButton4"
+                android:id="@+id/linkedinJomar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="36dp"
                 android:layout_weight="1"
                 android:background="#00FFFFFF"
                 app:srcCompat="@drawable/ic_linkedin" />
@@ -76,6 +83,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
+            android:layout_marginBottom="8dp"
             android:orientation="horizontal">
 
             <TextView
@@ -85,7 +93,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Matheus"
-                android:textColor="@color/colorWhite" />
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/tvVictoria"
@@ -94,7 +103,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Victória"
-                android:textColor="@color/colorWhite" />
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -103,33 +113,37 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/imageButton5"
+                android:id="@+id/gitMatheus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
                 android:layout_weight="1"
                 android:background="#00FFFFFF"
                 app:srcCompat="@drawable/ic_github" />
 
             <ImageButton
-                android:id="@+id/imageButton6"
+                android:id="@+id/linkedinMatheus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="36dp"
                 android:layout_weight="1"
                 android:background="#00FFFFFF"
                 app:srcCompat="@drawable/ic_linkedin" />
 
             <ImageButton
-                android:id="@+id/imageButton7"
+                android:id="@+id/gitVictoria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
                 android:layout_weight="1"
                 android:background="#00FFFFFF"
                 app:srcCompat="@drawable/ic_github" />
 
             <ImageButton
-                android:id="@+id/imageButton8"
+                android:id="@+id/linkedinVictoria"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="36dp"
                 android:layout_weight="1"
                 android:background="#00FFFFFF"
                 app:srcCompat="@drawable/ic_linkedin" />
