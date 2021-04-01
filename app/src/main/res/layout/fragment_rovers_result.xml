@@ -13,12 +13,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorPrimary"
-        app:layout_constraintWidth_percent="0.6"
         app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.7">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -87,6 +87,16 @@
 
                 </com.google.android.material.radiobutton.MaterialRadioButton>
 
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/radio_perseverance"
+                    style="@style/AppTheme.RadioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Perseverance"
+                    android:textSize="14sp">
+
+                </com.google.android.material.radiobutton.MaterialRadioButton>
+
             </RadioGroup>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -104,6 +114,7 @@
                     android:id="@+id/input_sol"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical"
                     android:backgroundTint="@color/colorAccentDark"
                     android:hint="Sol"
                     android:inputType="number"
@@ -125,6 +136,7 @@
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/radioGroup"
                 app:layout_constraintTop_toBottomOf="@+id/filledTextField" />
 
             <androidx.constraintlayout.widget.Group

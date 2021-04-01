@@ -63,7 +63,7 @@
             android:layout_marginBottom="16dp"
             android:backgroundTint="@color/colorPrimary"
             app:cardCornerRadius="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/curiosity_card"
+            app:layout_constraintBottom_toTopOf="@+id/pers_card"
             app:layout_constraintEnd_toEndOf="@+id/vector_rover"
             app:layout_constraintStart_toStartOf="@+id/text_rover"
             app:layout_constraintTop_toBottomOf="@+id/text_rover">
@@ -123,7 +123,7 @@
             app:layout_constraintBottom_toTopOf="@+id/sp_card"
             app:layout_constraintEnd_toEndOf="@+id/vector_rover"
             app:layout_constraintStart_toStartOf="@+id/text_rover"
-            app:layout_constraintTop_toBottomOf="@+id/rover_expandable_text">
+            app:layout_constraintTop_toBottomOf="@+id/pers_card">
 
             <ImageView
                 android:id="@+id/portrait_curiosity_card"
@@ -143,14 +143,14 @@
                     android:id="@+id/overlay_gradient_cur"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    app:layout_constraintHeight_percent="0.5"
                     android:alpha="0.8"
-                    app:layout_constraintVertical_bias="0"
                     android:background="@drawable/gradient_shape"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0" />
 
                 <TextView
                     android:id="@+id/name_curiosity_card"
@@ -293,9 +293,8 @@
             android:id="@+id/op_card"
             android:layout_width="0dp"
             android:layout_height="@dimen/card_height_tall"
-            android:layout_marginBottom="16dp"
             app:cardCornerRadius="@dimen/spacing_regular"
-            app:layout_constraintBottom_toTopOf="@id/pers_card"
+            app:layout_constraintBottom_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/vector_rover"
             app:layout_constraintStart_toStartOf="@+id/text_rover"
             app:layout_constraintTop_toBottomOf="@+id/sp_card">
@@ -319,14 +318,14 @@
                     android:id="@+id/overlay_gradient_op"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    app:layout_constraintHeight_percent="0.5"
                     android:alpha="0.8"
-                    app:layout_constraintVertical_bias="0"
                     android:background="@drawable/gradient_shape"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0" />
 
                 <TextView
                     android:id="@+id/name_op_card"
@@ -383,11 +382,12 @@
             android:id="@+id/pers_card"
             android:layout_width="0dp"
             android:layout_height="@dimen/card_height_tall"
+            android:layout_marginBottom="16dp"
             app:cardCornerRadius="@dimen/spacing_regular"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/curiosity_card"
             app:layout_constraintEnd_toEndOf="@+id/vector_rover"
             app:layout_constraintStart_toStartOf="@+id/text_rover"
-            app:layout_constraintTop_toBottomOf="@+id/op_card">
+            app:layout_constraintTop_toBottomOf="@+id/rover_expandable_text">
 
             <ImageView
                 android:id="@+id/portrait_pers_card"
@@ -437,7 +437,7 @@
                     android:layout_marginBottom="@dimen/spacing_small"
                     android:gravity="center"
                     android:text="Saiba mais"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
@@ -449,30 +449,11 @@
                     android:layout_marginBottom="@dimen/spacing_small"
                     android:gravity="center"
                     android:text="Imagens"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <View
-                android:id="@+id/overlay_image"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:alpha="0.75"
-                android:background="@android:color/black" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/kanit_bold"
-                android:gravity="center"
-                android:lineSpacingMultiplier="0.7"
-                android:text="Em breve"
-                android:textAllCaps="true"
-                android:textColor="@color/colorAccent"
-                android:textSize="28sp" />
 
         </androidx.cardview.widget.CardView>
 
