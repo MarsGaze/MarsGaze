@@ -175,6 +175,7 @@ class NavigationActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+        var prevented = false
         // Condition prevents calling onDestroy when back pressed from welcomeFragment
         if (navControl.currentDestination?.id == R.id.welcomeFragment) {
             // Takes user to device's home screen instead of finishing activity
@@ -182,20 +183,25 @@ class NavigationActivity : AppCompatActivity() {
             intent.addCategory(Intent.CATEGORY_HOME)
             startActivity(intent)
             Log.i("Home,", "sweet home")
-            return
+            prevented = true
         }
 
-        super.onBackPressed()
         // Evita problemas na hora de voltar quando temos telas de outros fragmentos
         // Não devemos mexer na navegação das outras telas afinal.
         if (pages > 3 && !withToolbarPage) {
             pages -= 2
         } else {
             pages -= 2
-            if (pages == 1) {
+            if (pages == 0) {
                 falseCall = defaultPage
             }
         }
+
+        if (prevented) {
+            return
+        }
+
+        super.onBackPressed()
     }
 
     override fun onDestroy() {
