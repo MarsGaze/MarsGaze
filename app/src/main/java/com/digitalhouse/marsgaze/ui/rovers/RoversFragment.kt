@@ -53,6 +53,8 @@ class RoversFragment : Fragment() {
         binding.infoButtonOpCard.setOnClickListener {
             navController.navigate(R.id.action_roversFragment_to_spOpDetailFragment)
         }
+
+
     }
 
     private fun setPhotosButtonsListeners() {
@@ -77,6 +79,14 @@ class RoversFragment : Fragment() {
             navController.navigate(
                 RoversFragmentDirections.actionRoversFragmentToRoversResultFragment(
                     "opportunity"
+                )
+            )
+        }
+
+        binding.photosButtonPersCard.setOnClickListener {
+            navController.navigate(
+                RoversFragmentDirections.actionRoversFragmentToRoversResultFragment(
+                    "perseverance"
                 )
             )
         }

@@ -135,6 +135,7 @@ class RoversResultFragment : Fragment(), RoversResultAdapter.OnItemClickListener
                         "curiosity" -> radioGroup.check(R.id.radio_curiosity)
                         "spirit" -> radioGroup.check(R.id.radio_spirit)
                         "opportunity" -> radioGroup.check(R.id.radio_opportunity)
+                        "perseverance" -> radioGroup.check(R.id.radio_perseverance)
                     }
 
                     expandButton.animate().rotationX(180F)
@@ -153,6 +154,7 @@ class RoversResultFragment : Fragment(), RoversResultAdapter.OnItemClickListener
                 R.id.radio_spirit -> "spirit"
                 R.id.radio_opportunity -> "opportunity"
                 R.id.radio_curiosity -> "curiosity"
+                R.id.radio_perseverance -> "perseverance"
                 else -> roverParameter
             }
 
