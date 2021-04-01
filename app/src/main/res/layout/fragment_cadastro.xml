@@ -118,6 +118,7 @@
             app:layout_constraintEnd_toEndOf="@+id/linearLayout"
             app:layout_constraintStart_toStartOf="@+id/linearLayout"
             app:layout_constraintTop_toBottomOf="@+id/tiEmail"
+            app:passwordToggleDrawable="@drawable/closed_eye"
             app:passwordToggleEnabled="true"
             app:passwordToggleTint="@color/colorWhite">
 
@@ -127,6 +128,7 @@
                 android:backgroundTint="@color/colorAccentDark"
                 android:hint="@string/htSenha"
                 android:maxLines="1"
+                android:password="true"
                 android:textColor="@color/colorWhite" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -145,6 +147,7 @@
             app:layout_constraintEnd_toEndOf="@+id/linearLayout"
             app:layout_constraintStart_toStartOf="@+id/linearLayout"
             app:layout_constraintTop_toBottomOf="@+id/tiSenha"
+            app:passwordToggleDrawable="@drawable/closed_eye"
             app:passwordToggleEnabled="true"
             app:passwordToggleTint="@color/colorWhite">
 
@@ -154,6 +157,7 @@
                 android:backgroundTint="@color/colorAccentDark"
                 android:hint="@string/htRepeteSenha"
                 android:maxLines="1"
+                android:password="true"
                 android:textColor="@color/colorWhite" />
         </com.google.android.material.textfield.TextInputLayout>
 
