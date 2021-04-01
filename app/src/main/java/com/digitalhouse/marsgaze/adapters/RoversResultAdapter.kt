@@ -1,10 +1,13 @@
 package com.digitalhouse.marsgaze.adapters
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.models.rovers.RoverResponse
 import com.squareup.picasso.Picasso
@@ -20,7 +23,6 @@ class RoversResultAdapter(
         fun onItemClick(position: Int)
     }
 
-    // TODO: Learn how to use ViewBinding instead of kotlin synthetics in this case
     class ImageViewHolder(
         itemView: View, listener: OnItemClickListener
     ) : RecyclerView.ViewHolder(itemView) {
@@ -47,7 +49,23 @@ class RoversResultAdapter(
         val currentItem = roverResponse.photos[position]
         val imgUrl = currentItem.imageUrl
 
-        Picasso.get().load(imgUrl).fit().centerCrop().into(holder.imageResult)
+        val progressBar = CircularProgressDrawable(holder.itemView.context)
+        progressBar.strokeWidth = 7f
+        progressBar.centerRadius = 90f
+
+        val accent = ContextCompat.getColor(holder.itemView.context, R.color.colorAccent)
+        val white = ContextCompat.getColor(holder.itemView.context, R.color.colorWhite)
+        progressBar.setColorSchemeColors(accent, white)
+
+        val progressBar2 = CircularProgressDrawable(holder.itemView.context)
+        progressBar2.strokeWidth = 7f
+        progressBar2.centerRadius = 90f
+        progressBar2.setColorSchemeColors(accent, white)
+
+        Picasso.get().load(imgUrl).placeholder(progressBar).error(progressBar2).fit().centerCrop()
+            .into(holder.imageResult)
+        progressBar.start()
+        progressBar2.start()
     }
 
     override fun getItemCount() = roverResponse.photos.size

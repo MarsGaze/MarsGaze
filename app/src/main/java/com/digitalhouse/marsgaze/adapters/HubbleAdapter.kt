@@ -4,7 +4,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.models.hubble.HubbleResponse
 import com.squareup.picasso.Picasso
@@ -46,7 +48,24 @@ class HubbleAdapter(
         val currentItem = adapterHubbleList.collection.items[position]
         val hubbleUrl = currentItem.links[0].linkHref
 
-        Picasso.get().load(hubbleUrl).fit().centerCrop().into(holder.hubbleResult)
+        val progressBar = CircularProgressDrawable(holder.itemView.context)
+        progressBar.strokeWidth = 7f
+        progressBar.centerRadius = 90f
+
+        val accent = ContextCompat.getColor(holder.itemView.context, R.color.colorAccent)
+        val white = ContextCompat.getColor(holder.itemView.context, R.color.colorWhite)
+        progressBar.setColorSchemeColors(accent, white)
+
+        val progressBar2 = CircularProgressDrawable(holder.itemView.context)
+        progressBar2.strokeWidth = 7f
+        progressBar2.centerRadius = 90f
+        progressBar2.setColorSchemeColors(accent, white)
+
+        Picasso.get().load(hubbleUrl).placeholder(progressBar).error(progressBar2).fit()
+            .centerCrop().into(holder.hubbleResult)
+
+        progressBar.start()
+        progressBar2.start()
     }
 
     override fun getItemCount() = adapterHubbleList.collection.items.size
