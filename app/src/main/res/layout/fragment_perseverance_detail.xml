@@ -9,8 +9,8 @@
         android:id="@+id/rover_portrait_banner"
         android:layout_width="match_parent"
         android:layout_height="320dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/perseverance_portrait"
+        android:scaleType="fitStart"
+        android:src="@drawable/ingenuity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
