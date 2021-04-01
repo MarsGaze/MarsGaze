@@ -54,7 +54,9 @@ class RoversFragment : Fragment() {
             navController.navigate(R.id.action_roversFragment_to_spOpDetailFragment)
         }
 
-
+        binding.infoButtonPersCard.setOnClickListener {
+            navController.navigate(R.id.action_roversFragment_to_perseveranceDetailFragment)
+        }
     }
 
     private fun setPhotosButtonsListeners() {

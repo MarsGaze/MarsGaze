@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark">
+
+    <ImageView
+        android:id="@+id/rover_portrait_banner"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/perseverance_portrait"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/name_curiosity_card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:lineSpacingMultiplier="0.9"
+        android:paddingStart="16dp"
+        android:paddingBottom="8dp"
+        android:text="Perseverance"
+        android:textColor="@color/colorAccent"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/scroll_view_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/scroll_view_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/round_card_dark"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/rover_portrait_banner"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="20dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="16dp">
+
+                <TextView
+                    android:id="@+id/mission_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="16dp"
+                    android:text="Missão"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/status_text"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/mission_name_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="16dp"
+                    android:text="Mars 2020"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/mission_text"
+                    app:layout_constraintStart_toStartOf="@+id/mission_text"
+                    app:layout_constraintTop_toBottomOf="@+id/mission_text" />
+
+                <TextView
+                    android:id="@+id/status_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:paddingStart="10dp"
+                    android:text="Status"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toEndOf="@+id/mission_text"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/mission_status_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:layout_marginStart="23dp"
+                    android:layout_marginEnd="20dp"
+                    android:paddingStart="10dp"
+                    android:text="Ativa"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/status_text"
+                    app:layout_constraintStart_toStartOf="@+id/status_text"
+                    app:layout_constraintTop_toBottomOf="@+id/status_text" />
+
+                <TextView
+                    android:id="@+id/launch_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:paddingStart="16dp"
+                    android:text="Lançamento"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/mission_text"
+                    app:layout_constraintStart_toStartOf="@+id/mission_text"
+                    app:layout_constraintTop_toBottomOf="@+id/mission_name_text" />
+
+                <TextView
+                    android:id="@+id/launch_date_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="16dp"
+                    android:text="30 de julho de 2020"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/mission_text"
+                    app:layout_constraintStart_toStartOf="@+id/mission_text"
+                    app:layout_constraintTop_toBottomOf="@+id/launch_text" />
+
+                <TextView
+                    android:id="@+id/launch_site_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="16dp"
+                    android:text="Estação da Força Aérea de Cabo Canaveral (Flórida, EUA) "
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="@+id/mission_text"
+                    app:layout_constraintStart_toStartOf="@+id/mission_text"
+                    app:layout_constraintTop_toBottomOf="@+id/launch_date_text" />
+
+                <TextView
+                    android:id="@+id/landing_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:paddingStart="10dp"
+                    android:text="Aterrissagem"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/status_text"
+                    app:layout_constraintStart_toStartOf="@+id/status_text"
+                    app:layout_constraintTop_toBottomOf="@+id/mission_status_text" />
+
+                <TextView
+                    android:id="@+id/landing_date_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="10dp"
+                    android:text="18 de fevereiro de 2021"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/status_text"
+                    app:layout_constraintStart_toStartOf="@+id/status_text"
+                    app:layout_constraintTop_toBottomOf="@+id/landing_text" />
+
+                <TextView
+                    android:id="@+id/landing_site_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="10dp"
+                    android:text="Cratera Jezero, Marte"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="@+id/status_text"
+                    app:layout_constraintStart_toStartOf="@+id/status_text"
+                    app:layout_constraintTop_toBottomOf="@+id/landing_date_text" />
+
+                <TextView
+                    android:id="@+id/ingenuity_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:paddingStart="10dp"
+                    android:text="Helicóptero Ingenuity"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/landing_site_text"
+                    app:layout_constraintStart_toStartOf="@+id/landing_site_text"
+                    app:layout_constraintTop_toBottomOf="@+id/landing_site_text" />
+
+                <TextView
+                    android:id="@+id/ingenuity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="10dp"
+                    android:text="Provará se é possível operar e erguer um helicóptero nas difíceis condições de Marte"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="@+id/ingenuity_text"
+                    app:layout_constraintStart_toStartOf="@+id/ingenuity_text"
+                    app:layout_constraintTop_toBottomOf="@+id/ingenuity_text" />
+
+                <TextView
+                    android:id="@+id/dimensions_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:paddingStart="16dp"
+                    android:text="Dimensões"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/mission_text"
+                    app:layout_constraintStart_toStartOf="@+id/mission_text"
+                    app:layout_constraintTop_toBottomOf="@+id/launch_site_text" />
+
+                <TextView
+                    android:id="@+id/dimensions_measurement_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="16dp"
+                    android:text="2,2m x 2,7m x 3m"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/mission_text"
+                    app:layout_constraintStart_toStartOf="@+id/mission_text"
+                    app:layout_constraintTop_toBottomOf="@+id/dimensions_text" />
+
+                <TextView
+                    android:id="@+id/dimensions_hint_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="16dp"
+                    android:text="altura x largura x comprimento"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="@+id/mission_text"
+                    app:layout_constraintStart_toStartOf="@+id/mission_text"
+                    app:layout_constraintTop_toBottomOf="@+id/dimensions_measurement_text" />
+
+                <TextView
+                    android:id="@+id/about_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:paddingStart="16dp"
+                    android:text="Sobre"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/mission_text"
+                    app:layout_constraintStart_toStartOf="@+id/mission_text"
+                    app:layout_constraintTop_toBottomOf="@+id/dimensions_hint_text" />
+
+                <TextView
+                    android:id="@+id/mission_description_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:paddingHorizontal="20dp"
+                    android:paddingStart="16dp"
+                    android:text="O antecessor do Perseverance foi o robô Curiosity, que confirmou que existiram condições de vida em Marte, e o Perseverance que tem o tamanho de um carro e pesa cerca de uma tonelada, conta com novos instrumentos, cerca de 20 câmeras, um helicóptero e até microfones, vai agora dar o próximo passo e tentar responder uma das grandes questões da astrobiologia: há sinais concretos de vida microbiana passada em Marte?\n\nA cratera Jezero que foi o local de pouso, já foi, há 3,5 bilhões de anos, permeada por rios e lagos, os quais podem ter abrigado vida. Por esse motivo, Perseverance foi desenvolvido para analisar rochas e o solo da região em busca de sinais de vida antiga, ele coletará amostras que serão trazidas à Terra no futuro e testará tecnologias pioneiras para uma eventual presença humana no planeta vermelho."
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@id/status_text"
+                    app:layout_constraintStart_toStartOf="@id/mission_text"
+                    app:layout_constraintTop_toBottomOf="@+id/about_text" />
+
+                <!-- O antecessor do Perseverance foi o robô Curiosity, que confirmou que existiram condições de vida em Marte,
+                e o Perseverance que tem o tamanho de um carro e pesa cerca de uma tonelada, conta com novos instrumentos, cerca de 20 câmeras, um helicóptero e até microfones,
+                 vai agora dar o próximo passo e tentar responder uma das grandes questões da astrobiologia: há sinais concretos de vida microbiana passada em Marte?\n
+                A cratera Jezero já foi, há 3,5 bilhões de anos, permeada por rios e lagos, os quais podem ter abrigado vida. Por esse motivo,
+                    Perseverance foi desenvolvido para analisar rochas e o solo da região em busca de sinais de vida antiga,
+                ele coletará amostras que serão trazidas à Terra no futuro e testará tecnologias pioneiras para uma eventual presença humana no planeta vermelho.
+
+                -->
+                <TextView
+                    android:id="@+id/missao_concluida"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:paddingStart="16dp"
+                    android:text="Conclusão da missão"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/mission_text"
+                    app:layout_constraintStart_toStartOf="@+id/mission_text"
+                    app:layout_constraintTop_toBottomOf="@+id/mission_description_text" />
+
+                <TextView
+                    android:id="@+id/mission_accomplished"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:paddingHorizontal="20dp"
+                    android:paddingStart="16dp"
+                    android:text="O plano é de que a missão dure pelo menos um ano na superfície de Marte (668 sois ou 687 dias terrestres)"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@id/status_text"
+                    app:layout_constraintStart_toStartOf="@id/mission_text"
+                    app:layout_constraintTop_toBottomOf="@+id/missao_concluida" />
+
+                <TextView
+                    android:id="@+id/reference_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:paddingEnd="20dp"
+                    android:text="Saiba mais em"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@id/status_text"
+                    app:layout_constraintStart_toEndOf="@id/mission_text"
+                    app:layout_constraintTop_toBottomOf="@+id/mission_accomplished" />
+
+                <TextView
+                    android:id="@+id/reference_link_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="21dp"
+                    android:layout_marginBottom="20dp"
+                    android:paddingEnd="20dp"
+                    android:text="https://mars.nasa.gov/mer/"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/status_text"
+                    app:layout_constraintTop_toBottomOf="@+id/reference_text" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

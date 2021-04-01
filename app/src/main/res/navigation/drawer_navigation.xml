@@ -39,6 +39,9 @@
         <action
             android:id="@+id/action_roversFragment_to_roversResultFragment"
             app:destination="@id/roversResultFragment" />
+        <action
+            android:id="@+id/action_roversFragment_to_perseveranceDetailFragment"
+            app:destination="@id/perseveranceDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/curiosityDetailFragment"
@@ -89,4 +92,8 @@
         android:name="com.digitalhouse.marsgaze.ui.AboutFragment"
         android:label="fragment_about"
         tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/perseveranceDetailFragment"
+        android:name="com.digitalhouse.marsgaze.ui.rovers.PerseveranceDetailFragment"
+        android:label="PerseveranceDetailFragment" />
 </navigation>
