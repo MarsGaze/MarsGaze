@@ -10,13 +10,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.databinding.FavoriteCardBinding
 import com.digitalhouse.marsgaze.models.data.FavoriteType
+import com.digitalhouse.marsgaze.models.favorite.FavoriteDetailAdapter
 import com.digitalhouse.marsgaze.models.favorite.ImageDetailAdapter
 import com.squareup.picasso.Picasso
 
 
-class FavoriteAdapter(val list: ArrayList<ImageDetailAdapter>,
+class FavoriteAdapter(val list: ArrayList<FavoriteDetailAdapter>,
                       private val favoriteAction: FavoriteAction) :
     RecyclerView.Adapter<FavoriteAdapter.FavoriteHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteHolder {
         val binding = FavoriteCardBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
@@ -43,7 +45,6 @@ class FavoriteAdapter(val list: ArrayList<ImageDetailAdapter>,
         )
     }
 
-
     override fun onBindViewHolder(holder: FavoriteHolder, position: Int) {
         val favorite = list[position]
 
@@ -67,27 +68,36 @@ class FavoriteAdapter(val list: ArrayList<ImageDetailAdapter>,
         Picasso.get().load(favorite.getImg()).into(favoriteImage)
 
         val favoriteButton = holder.itemView.findViewById<ImageButton>(R.id.favoriteButton)
+
         favoriteButton.setOnClickListener {
-            favoriteAction.favAction(favorite, position, holder.binding)
+            favoriteAction.favAction(favorite.parentAdapter(), position, holder.binding)
         }
 
         holder.binding.favoriteButtonFull.setOnClickListener {
-            favoriteAction.favAction(favorite, position, holder.binding)
+            favoriteAction.favAction(favorite.parentAdapter(), position, holder.binding)
         }
 
         val image = holder.binding.favoriteImage
 
         image.setOnClickListener {
-            favoriteAction.favDetail(favorite, holder.binding)
+            favoriteAction.favDetail(favorite.parentAdapter(), holder.binding)
         }
 
+
+        if(list[position].isFavorited()) {
+            holder.binding.favoriteButtonFull.scaleX = 1f
+            holder.binding.favoriteButtonFull.scaleY = 1f
+        } else {
+            holder.binding.favoriteButtonFull.scaleX = 0f
+            holder.binding.favoriteButtonFull.scaleY = 0f
+        }
     }
 
 
     override fun getItemCount(): Int = list.size
 
     inner class FavoriteHolder(val binding: FavoriteCardBinding) :
-        RecyclerView.ViewHolder(binding.root)
+        RecyclerView.ViewHolder(binding.root) {}
 
     interface FavoriteAction {
         fun favAction(favoriteTest: ImageDetailAdapter, position: Int, binding: FavoriteCardBinding)

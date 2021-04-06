@@ -1,5 +1,6 @@
 package com.digitalhouse.marsgaze.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,12 +9,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.digitalhouse.marsgaze.adapters.FavoriteAdapter
 import com.digitalhouse.marsgaze.controllers.user.Session
 import com.digitalhouse.marsgaze.database.AfterFavoriteAction
 import com.digitalhouse.marsgaze.database.MarsGazeDB
 import com.digitalhouse.marsgaze.databinding.FavoriteCardBinding
 import com.digitalhouse.marsgaze.databinding.FragmentFavoritosBinding
+import com.digitalhouse.marsgaze.models.favorite.FavoriteDetailAdapter
 import com.digitalhouse.marsgaze.models.favorite.ImageDetailAdapter
 import com.digitalhouse.marsgaze.viewmodels.session.SessionViewModelFactory
 import com.digitalhouse.marsgaze.viewmodels.session.favorite.FavoriteViewModel
@@ -27,6 +30,10 @@ class FavoriteFragment : Fragment(), FavoriteAdapter.FavoriteAction {
     private var inDetailFavorite: ImageDetailAdapter? = null
 
     private var actionAfterDetail: ((Boolean) -> Unit)? = null
+
+    private val adapter: FavoriteAdapter by lazy {
+        binding.recyFav.adapter as FavoriteAdapter
+    }
 
     private val viewModel by viewModels<FavoriteViewModel> {
         SessionViewModelFactory(
@@ -52,25 +59,21 @@ class FavoriteFragment : Fragment(), FavoriteAdapter.FavoriteAction {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        viewModel.favorites.observe(viewLifecycleOwner) {
-            val adapter = binding.recyFav.adapter as FavoriteAdapter
-            adapter.list.clear()
-            adapter.list.addAll(it)
-            adapter.notifyDataSetChanged()
-        }
-
         val adapter = FavoriteAdapter(arrayListOf(), this)
         binding.recyFav.setHasFixedSize(true)
         binding.recyFav.adapter = adapter
         binding.recyFav.layoutManager = LinearLayoutManager(context)
 
-        findNavController().addOnDestinationChangedListener { controller, destination, arguments ->
-            if (arguments == null) {
-                viewModel.getAllFavorites()
-            }
+        viewModel.favorites.observe(viewLifecycleOwner) {
+            adapter.list.clear()
+            adapter.list.addAll(it)
+            adapter.notifyDataSetChanged()
+        }.run {
+            viewModel.getAllFavorites()
         }
+
+
+        super.onViewCreated(view, savedInstanceState)
     }
 
     override fun onDestroy() {
@@ -91,10 +94,15 @@ class FavoriteFragment : Fragment(), FavoriteAdapter.FavoriteAction {
                 val animate = binding.favoriteButtonFull.animate()
                 animate.duration = 200
                 animate.scaleY(1f).scaleX(1f)
+                adapter.list[position] = FavoriteDetailAdapter.imageDetailAdapterToThis(
+                    favoriteTest, true)
+
             } else {
                 val animate = binding.favoriteButtonFull.animate()
                 animate.duration = 200
                 animate.scaleY(0f).scaleX(0f)
+                adapter.list[position] = FavoriteDetailAdapter.imageDetailAdapterToThis(
+                    favoriteTest, false)
             }
         }
     }

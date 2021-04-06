@@ -8,6 +8,7 @@ import com.digitalhouse.marsgaze.R
 import com.digitalhouse.marsgaze.controllers.user.Session
 import com.digitalhouse.marsgaze.models.data.Favorite
 import com.digitalhouse.marsgaze.models.data.FavoriteType
+import com.digitalhouse.marsgaze.models.favorite.FavoriteDetailAdapter
 import com.digitalhouse.marsgaze.models.favorite.ImageDetailAdapter
 import com.digitalhouse.marsgaze.models.hubble.Item
 import com.digitalhouse.marsgaze.models.rovers.RoverPhoto
@@ -19,7 +20,7 @@ import java.sql.SQLException
 class FavoriteViewModel(private val session: Session) : ViewModel() {
     private val status = MutableLiveData<Pair<Boolean, Int>>()
 
-    val favorites = MutableLiveData<MutableList<ImageDetailAdapter>>()
+    val favorites = MutableLiveData<MutableList<FavoriteDetailAdapter>>()
 
 
     fun favoriteAction(adapter: ImageDetailAdapter, afterSuccessAction: (Boolean) -> Unit) {
@@ -48,7 +49,7 @@ class FavoriteViewModel(private val session: Session) : ViewModel() {
             try {
                 val data = session.getAllFavorites()
 
-                val convertedData = mutableListOf<ImageDetailAdapter>()
+                val convertedData = mutableListOf<FavoriteDetailAdapter>()
 
                 for (fav in data) {
                     val type = FavoriteType.values()[fav.imageType]
@@ -69,7 +70,11 @@ class FavoriteViewModel(private val session: Session) : ViewModel() {
                                  adapter = Gson().fromJson(text, Item::class.java)
                              }
                          }
-                         convertedData.add(adapter)
+
+                         convertedData.add(FavoriteDetailAdapter.imageDetailAdapterToThis(
+                             adapter, true
+                            )
+                         )
                      }
                 }
 
@@ -94,7 +99,7 @@ class FavoriteViewModel(private val session: Session) : ViewModel() {
         var message = Pair(true, R.string.favoriteAdded)
 
         try {
-            val id = session.addFavorite(
+            session.addFavorite(
                 favorite
             )
 
