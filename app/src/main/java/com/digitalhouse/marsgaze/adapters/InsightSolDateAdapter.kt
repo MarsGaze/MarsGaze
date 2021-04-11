@@ -46,9 +46,7 @@ class InsightSolDateAdapter(var infoList: ArrayList<InsightInfo> = ArrayList()) 
     }
 
     private fun convertMonth(num: String): String {
-        var month = ""
-
-        month = when (num) {
+        return when (num) {
             "01" -> "Janeiro"
             "02" -> "Fevereiro"
             "03" -> "Março"
@@ -62,7 +60,5 @@ class InsightSolDateAdapter(var infoList: ArrayList<InsightInfo> = ArrayList()) 
             "11" -> "Novembro"
             else -> "Dezembro"
         }
-
-        return month
     }
 }

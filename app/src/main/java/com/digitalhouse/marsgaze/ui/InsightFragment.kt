@@ -64,9 +64,7 @@ class InsightFragment : Fragment() {
                     position: Int,
                     positionOffset: Float,
                     positionOffsetPixels: Int
-                ) {
-                    position
-                }
+                ) {}
 
                 override fun onPageSelected(position: Int) {
                     val data = insightDataInfo.adapter as InsightDataAdapter
@@ -94,9 +92,7 @@ class InsightFragment : Fragment() {
                     insightDataInfo.adapter = data
                 }
 
-                override fun onPageScrollStateChanged(state: Int) {
-                    state
-                }
+                override fun onPageScrollStateChanged(state: Int) {}
             } )
 
             insightDataInfo.addOnPageChangeListener (InsightListener(1))
@@ -121,7 +117,6 @@ class InsightFragment : Fragment() {
 
                 if (value != (insightVP.adapter as InsightSolDateAdapter).count) {
                     insightVP.currentItem = value
-                    val adapter = insightVP.adapter as InsightSolDateAdapter
                 }
             }
 
@@ -157,9 +152,7 @@ class InsightFragment : Fragment() {
             position: Int,
             positionOffset: Float,
             positionOffsetPixels: Int
-        ) {
-            position
-        }
+        ) {}
 
         override fun onPageSelected(position: Int) {
             when (insightTypeInsight) {
@@ -182,9 +175,7 @@ class InsightFragment : Fragment() {
             }
         }
 
-        override fun onPageScrollStateChanged(state: Int) {
-            state
-        }
+        override fun onPageScrollStateChanged(state: Int) {}
     }
 
     override fun onDestroy() {

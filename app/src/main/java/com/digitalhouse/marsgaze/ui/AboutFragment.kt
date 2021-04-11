@@ -90,7 +90,7 @@ class AboutFragment : Fragment() {
     }
 
     private fun twitterIntent(user: String = "gaze_mars"): Intent {
-        var intent: Intent? = null
+        var intent: Intent?
         try {
             // get the Twitter app if possible
             requireContext().packageManager.getPackageInfo("com.twitter.android", 0)

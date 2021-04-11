@@ -90,7 +90,7 @@ class ImageDetailFragment : Fragment() {
 
         setExpandableCardBehavior()
         binding.ivShare.setOnClickListener {
-            onShareItem(binding.ivFullImage)
+            onShareItem()
         }
 
         val detailImageView: ImageView = binding.ivFullImage
@@ -172,7 +172,7 @@ class ImageDetailFragment : Fragment() {
     }
 
     // Can be triggered by a view event such as a button press
-    private fun onShareItem(v: View?) {
+    private fun onShareItem() {
         // Get access to bitmap image from view
         val ivImage = binding.ivFullImage as ImageView
         // Get access to the URI for the bitmap
@@ -198,7 +198,7 @@ class ImageDetailFragment : Fragment() {
     private fun getLocalBitmapUri(imageView: ImageView): Uri? {
         // Extract Bitmap from ImageView drawable
         val drawable = imageView.drawable
-        var bmp: Bitmap? = null
+        var bmp: Bitmap?
         bmp = if (drawable is BitmapDrawable) {
             (imageView.drawable as BitmapDrawable).bitmap
         } else {

@@ -229,7 +229,7 @@ class LoginFragment : Fragment() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d("Google", "signInWithCredential:success")
-                    handleAuth(mAuth)
+                    handleAuth()
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w("Google", "signInWithCredential:failure", task.exception)
@@ -247,7 +247,7 @@ class LoginFragment : Fragment() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d("Facebook", "signInWithCredential:success")
-                    handleAuth(mAuth)
+                    handleAuth()
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w("Facebook", "signInWithCredential:failure", task.exception)
@@ -256,7 +256,7 @@ class LoginFragment : Fragment() {
             }
     }
 
-    private fun handleAuth(auth: FirebaseAuth) {
+    private fun handleAuth() {
         val userFirebase = mAuth.currentUser
 
         // val isNew = task.result!!.additionalUserInfo!!.isNewUser
