@@ -277,21 +277,13 @@
                     android:fontFamily="@font/roboto"
                     android:paddingHorizontal="20dp"
                     android:paddingStart="16dp"
-                    android:text="O antecessor do Perseverance foi o robô Curiosity, que confirmou que existiram condições de vida em Marte, e o Perseverance que tem o tamanho de um carro e pesa cerca de uma tonelada, conta com novos instrumentos, cerca de 20 câmeras, um helicóptero e até microfones, vai agora dar o próximo passo e tentar responder uma das grandes questões da astrobiologia: há sinais concretos de vida microbiana passada em Marte?\n\nA cratera Jezero que foi o local de pouso, já foi, há 3,5 bilhões de anos, permeada por rios e lagos, os quais podem ter abrigado vida. Por esse motivo, Perseverance foi desenvolvido para analisar rochas e o solo da região em busca de sinais de vida antiga, ele coletará amostras que serão trazidas à Terra no futuro e testará tecnologias pioneiras para uma eventual presença humana no planeta vermelho."
+                    android:text="O antecessor do Perseverance foi o robô Curiosity, que confirmou que existiram condições de vida em Marte, já o Perseverance que tem o tamanho de um carro e pesa cerca de uma tonelada, conta com novos instrumentos, cerca de 20 câmeras, um helicóptero e até microfones, vai agora dar o próximo passo e tentar responder uma das grandes questões da astrobiologia: há sinais concretos de vida microbiana passada em Marte?\n\nA cratera Jezero que foi o local de pouso, já foi, há 3,5 bilhões de anos, permeada por rios e lagos, os quais podem ter abrigado vida. Por esse motivo, Perseverance foi desenvolvido para analisar rochas e o solo da região em busca de sinais de vida antiga, ele coletará amostras que serão trazidas à Terra no futuro e testará tecnologias pioneiras para uma eventual presença humana no planeta vermelho."
                     android:textColor="@color/colorWhite"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="@id/status_text"
                     app:layout_constraintStart_toStartOf="@id/mission_text"
                     app:layout_constraintTop_toBottomOf="@+id/about_text" />
 
-                <!-- O antecessor do Perseverance foi o robô Curiosity, que confirmou que existiram condições de vida em Marte,
-                e o Perseverance que tem o tamanho de um carro e pesa cerca de uma tonelada, conta com novos instrumentos, cerca de 20 câmeras, um helicóptero e até microfones,
-                 vai agora dar o próximo passo e tentar responder uma das grandes questões da astrobiologia: há sinais concretos de vida microbiana passada em Marte?\n
-                A cratera Jezero já foi, há 3,5 bilhões de anos, permeada por rios e lagos, os quais podem ter abrigado vida. Por esse motivo,
-                    Perseverance foi desenvolvido para analisar rochas e o solo da região em busca de sinais de vida antiga,
-                ele coletará amostras que serão trazidas à Terra no futuro e testará tecnologias pioneiras para uma eventual presença humana no planeta vermelho.
-
-                -->
                 <TextView
                     android:id="@+id/missao_concluida"
                     android:layout_width="0dp"

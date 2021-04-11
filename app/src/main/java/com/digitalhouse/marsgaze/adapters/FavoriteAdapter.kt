@@ -12,6 +12,8 @@ import com.digitalhouse.marsgaze.databinding.FavoriteCardBinding
 import com.digitalhouse.marsgaze.models.data.FavoriteType
 import com.digitalhouse.marsgaze.models.favorite.FavoriteDetailAdapter
 import com.digitalhouse.marsgaze.models.favorite.ImageDetailAdapter
+import com.digitalhouse.marsgaze.models.rovers.Rover
+import com.digitalhouse.marsgaze.models.rovers.RoverPhoto
 import com.squareup.picasso.Picasso
 
 
@@ -53,11 +55,9 @@ class FavoriteAdapter(val list: ArrayList<FavoriteDetailAdapter>,
 
         when (favorite.getType()) {
             FavoriteType.ROVERS_IMAGE.ordinal -> {
-                val text = favorite.getExtraInfo()!!
-                val splited =  text.split("-")
-                val textSplit =splited[2] + "/" + splited[1] + "/" + splited[0]
+                val roverPhoto= favorite.parentAdapter() as RoverPhoto
 
-                favoriteText.text = favorite.getTitle()
+                favoriteText.text = favorite.getTitle() + " - " + roverPhoto.rover.roverName
             }
             FavoriteType.HUBBLE_IMAGE.ordinal -> {
                 favoriteText.text = favorite.getTitle()
